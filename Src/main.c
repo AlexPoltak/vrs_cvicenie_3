@@ -100,6 +100,42 @@ int main(void)
 }
 
 /* USER CODE BEGIN 4 */
+enum EDGE_TYPE edgeDetect(uint8_t pin_state, uint8_t samples){
+	static int i=0;
+
+	static int savingState=1;
+	static int numOfDet=0;
+
+    enum EDGE_TYPE {NONE=0, RISE=1, FALL=2};
+
+	enum EDGE_TYPE forReturn;
+
+
+	if(pin_state!=savingState ){
+		if(pin_state==1){
+		savingState=1;
+
+				numOfDet=0;
+
+		}
+		if(pin_state==0){
+		savingState=0;
+		numOfDet=0;
+		}
+			i=1;
+		}
+	if(i==1){
+		numOfDet=numOfDet+1;
+		if(numOfDet==samples){
+			if(pin_state==1){forReturn= RISE;}
+			if(pin_state==0){forReturn= FALL;i=0;}
+		}
+		else forReturn= NONE;
+	}
+	else{forReturn= NONE;}
+
+return forReturn;
+}
 
 /* USER CODE END 4 */
 
