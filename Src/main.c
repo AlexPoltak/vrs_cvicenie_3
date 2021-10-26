@@ -79,22 +79,12 @@ int main(void)
   while (1)
   {
 	  type=(edgeDetect(BUTTON_GET_STATE,5));
-	  if(!(BUTTON_GET_STATE))
+	  if((type==FALL)&&(!(LED_GET_STATE)))
 	  {
-		  // 0.25s delay
-		  LL_mDelay(250);
 		  LED_ON;
-		  // 0.25s delay
-		  LL_mDelay(250);
-		  LED_OFF;
 	  }
-	  else
+  	  else if((type==FALL)&&(LED_GET_STATE))
 	  {
-		  // 1s delay
-		  LL_mDelay(1000);
-		  LED_ON;
-		  // 1s delay
-		  LL_mDelay(1000);
 		  LED_OFF;
 	  }
   }
