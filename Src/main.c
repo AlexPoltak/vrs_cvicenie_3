@@ -76,6 +76,7 @@ int main(void)
   			GPIOA_PUPDR_REG &= ~(0x3 << 8);
 
   			enum EDGE_TYPE type;
+  			LED_OFF;
   while (1)
   {
 	  type=(edgeDetect(BUTTON_GET_STATE,5));
@@ -83,7 +84,7 @@ int main(void)
 	  {
 		  LED_ON;
 	  }
-  	  else if((type==FALL)&&(LED_GET_STATE))
+  	  else if(type==FALL)
 	  {
 		  LED_OFF;
 	  }
