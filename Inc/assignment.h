@@ -13,6 +13,7 @@
  * 		Your task is to provide their actual implementation so you can use them in application in "main.c"
  * 		and make your "LED blink" application code readable and great again!
  */
+enum EDGE_TYPE {NONE=0,RISE=1,FALL=2};
 
 /* General purpose input output port A macros */
 //GPIOA peripheral base address
