@@ -47,6 +47,7 @@ enum EDGE_TYPE edgeDetect(uint8_t pin_state, uint8_t samples);
 #define LED_OFF					GPIOA_BRR_REG |= (1 << 4)/* Add LED_OFF implementation here. */
 
 #define BUTTON_GET_STATE		GPIOA_IDR_REG &(1 << 3)/* Add BUTTON_GET_STATE implementation here. */
+#define LED_GET_STATE			GPIOA_ODR_REG &(1 << 4)/* Add BUTTON_GET_STATE implementation here. */
 
 
 #endif /* ASSIGNMENT_H_ */
