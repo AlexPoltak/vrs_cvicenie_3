@@ -75,8 +75,10 @@ int main(void)
   		//Set no pull for GPIOB pin 4
   			GPIOA_PUPDR_REG &= ~(0x3 << 8);
 
+  			enum EDGE_TYPE type;
   while (1)
   {
+	  type=(edgeDetect(BUTTON_GET_STATE,5));
 	  if(!(BUTTON_GET_STATE))
 	  {
 		  // 0.25s delay
