@@ -105,14 +105,13 @@ enum EDGE_TYPE edgeDetect(uint8_t pin_state, uint8_t samples){
 
 
 	if(pin_state!=savingState ){
-		if(pin_state==1){
-		savingState=1;
 
-				numOfDet=0;
-
-		}
 		if(pin_state==0){
 		savingState=0;
+		numOfDet=0;
+		}
+		else{
+		savingState=1;
 		numOfDet=0;
 		}
 			i=1;
@@ -120,10 +119,10 @@ enum EDGE_TYPE edgeDetect(uint8_t pin_state, uint8_t samples){
 	if(i==1){
 		numOfDet=numOfDet+1;
 		if(numOfDet==samples){
-			if(pin_state==1){forReturn= RISE;}
 			if(pin_state==0){forReturn= FALL;i=0;}
+			else{forReturn= RISE;}
 		}
-		else forReturn= NONE;
+		else {forReturn= NONE;}
 	}
 	else{forReturn= NONE;}
 
