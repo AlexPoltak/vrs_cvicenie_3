@@ -80,11 +80,11 @@ int main(void)
   while (1)
   {
 	  type=(edgeDetect(BUTTON_GET_STATE,5));
-	  if((type==FALL)&&(!(LED_GET_STATE)))
+	  if((type==RISE)&&(!(LED_GET_STATE)))
 	  {
 		  LED_ON;
 	  }
-  	  else if(type==FALL)
+  	  else if(type==RISE)
 	  {
 		  LED_OFF;
 	  }
@@ -119,8 +119,8 @@ enum EDGE_TYPE edgeDetect(uint8_t pin_state, uint8_t samples){
 	if(i==1){
 		numOfDet=numOfDet+1;
 		if(numOfDet==samples){
-			if(pin_state==0){forReturn= FALL;i=0;}
-			else{forReturn= RISE;}
+			if(pin_state==0){forReturn= RISE;i=0;}
+			else{forReturn= FALL;}
 		}
 		else {forReturn= NONE;}
 	}
