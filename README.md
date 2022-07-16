@@ -5,11 +5,12 @@
 ### Getting Started
 For generating graphs you need to :
  1.Call function chartbuilder - it will prepare all graphs with axes and legends to variable chartView.
-```c
+```js
 chartbuilder name-of-chartbuilder(std::shared_ptr<Project> project, QPixmap *trImg, QObject *parent, QWidget *mainwind);
 ```
  2.Call function chartbuilder.exportToPdf - it will export all charts to preddefined file
-```c
+```js
+
 name-of-chartbuilder.exportToPdf(pdfFileName,this);
 ```
 
