@@ -8,9 +8,9 @@ For generating graphs you need to :
 ```js
 chartbuilder name_of_chartbuilder( std::shared_ptr<Project> project, QPixmap *trImg, QObject *parent, QWidget *mainwind);
 ```
- 2.Call function chartbuilder.exportToPdf(QString pdfFileName, QWidget *mainwind) - it will export all charts to preddefined file
+ 2.Call function chartbuilder.exportToPdf - it will export all charts to preddefined file
 ```js
-name_of_chartbuilder.exportToPdf(pdfFileName,this);
+name_of_chartbuilder.exportToPdf(QString pdfFileName, QWidget *mainwind);
 ```
 
 - podľa nastavenia makra "POLLING" na "1" alebo "0" sa bude využívať jeden z uvedených spôsobov prenosu dát (makro sa nastavuje vo vlastnosťiach projektu, project->properties)
