@@ -5,9 +5,9 @@
     <img src="https://github.com/alexpoltak/vrs_cvicenie_7/blob/main/images/logo_white.svg" alt="Logo" height="60">
   </a>
 
-  <h3 align="left">Best-README-Template</h3>
+  <h3 align="left">Libs Charts</h3>
+  
 </p>
-# Libs Charts
 
 - This library is used for generating graphs from trajectory.
 
