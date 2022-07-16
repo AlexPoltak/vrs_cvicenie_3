@@ -2,7 +2,7 @@
 <br />
 <p align="left">
   <a href="https://github.com/dekdekan/lidaretto-desktop">
-    <img src="https://github.com/alexpoltak/vrs_cvicenie_7/blob/main/images/logo_white.svg" alt="Logo" width="80" height="80">
+    <img src="https://github.com/alexpoltak/vrs_cvicenie_7/blob/main/images/logo_white.svg" alt="Logo" height="80">
   </a>
 
   <h3 align="left">Best-README-Template</h3>
