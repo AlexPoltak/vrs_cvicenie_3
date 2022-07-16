@@ -8,7 +8,7 @@ For generating graphs you need to :
 ```c
 chartbuilder name_of_chartbuilder( std::shared_ptr<Project> project, QPixmap *trImg, QObject *parent, QWidget *mainwind);
 ```
- 2.Call function chartbuilder.exportToPdf - it will export all charts to preddefined file
+ 2.Call function chartbuilder.exportToPdf(QString pdfFileName, QWidget *mainwind) - it will export all charts to preddefined file
 ```c
 name_of_chartbuilder.exportToPdf(pdfFileName,this);
 ```
