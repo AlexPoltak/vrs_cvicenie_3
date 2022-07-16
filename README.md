@@ -5,7 +5,7 @@
     <img src="https://github.com/alexpoltak/vrs_cvicenie_7/blob/main/images/logo_white.svg" alt="Logo" height="60">
   </a>
 
-  <h3 align="left">Libs Charts</h3>
+  <h1 align="left">Libs Charts</h1>
   
 </p>
 
