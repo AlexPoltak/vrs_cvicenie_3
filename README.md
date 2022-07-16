@@ -6,11 +6,11 @@
 For generating graphs you need to :
  1.Call function chartbuilder - it will prepare all graphs with axes and legends to variable chartView.
 ```c
-	chartbuilder name-of-chartbuilder(std::shared_ptr<Project> project, QPixmap *trImg, QObject *parent, QWidget *mainwind);
+chartbuilder name-of-chartbuilder(std::shared_ptr<Project> project, QPixmap *trImg, QObject *parent, QWidget *mainwind);
 ```
  2.Call function chartbuilder.exportToPdf - it will export all charts to preddefined file
 ```c
-	name-of-chartbuilder.exportToPdf(pdfFileName,this);
+name-of-chartbuilder.exportToPdf(pdfFileName,this);
 ```
 
 - podľa nastavenia makra "POLLING" na "1" alebo "0" sa bude využívať jeden z uvedených spôsobov prenosu dát (makro sa nastavuje vo vlastnosťiach projektu, project->properties)
