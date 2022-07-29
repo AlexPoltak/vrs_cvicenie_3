@@ -23,7 +23,10 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 ```js
 bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
 ```
-- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+- If you want to get position on image, where user clicked:  (parameter widgetpos is position of widget from global)
+ ```js
+QPoint CQtOpenCVViewerGl::getImageClickPos(QPoint widgetpos)
+``` 
 
 </p>
 </details>
