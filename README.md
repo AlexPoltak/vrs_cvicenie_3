@@ -4,16 +4,28 @@
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_black.svg#gh-light-mode-only">
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_white.svg#gh-dark-mode-only">
 </div>
-  <h1 align="left">Libs Devices</h1>
+  <h1 align="left">Libs MAPInteraction</h1>
 
 This library is used for transformation of **poses**.<br /><br />
-There are 3 types of **poses**:
-- Construction pose of given device(lidar or camera)
-- Pose placed between imu and vehicle (IMU_VEH)
-- Pose placed between device and imu (DEV_IMU)
+This library Consists of classes **poses**:
+- cvwidget
+- mymapcontrol
+- qcloudaerial
+- qcloudcutwindow
+- qpolygonrubberband
+- qsidewayview
+- undoselectionstack
+
 
 
 ### Getting Started
+#### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html#details">Show documentation</a> thanks to which we can display OpenGL graphics.
+
+
+
+
+
 #### You can get, set or clear all transformation records for given device:<br />
 > Example for (DEV_IMU) pose. Except of the function getTransformationIMU_VEH, where parameter gain is missing, have functions for another poses the same input parameters.
   - Get all transformation records of DEV_IMU pose for given device:
