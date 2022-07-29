@@ -8,13 +8,6 @@
 
 This library is used for transformation of **poses**.<br /><br />
 This library Consists of classes:
-- cvwidget
-- mymapcontrol
-- qcloudaerial
-- qcloudcutwindow
-- qpolygonrubberband
-- qsidewayview
-- undoselectionstack
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
