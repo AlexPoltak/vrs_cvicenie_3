@@ -20,7 +20,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 #### Getting Started
 - When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
 - Then you just call only function showImage on this widget, and defined image in widget will be rendered, also on resizing. Function showImage:
-  ```js
+```js
 bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
 ```
 - If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
