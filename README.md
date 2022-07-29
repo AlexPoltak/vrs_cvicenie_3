@@ -16,7 +16,17 @@ This library Consists of classes:
 - qsidewayview
 - undoselectionstack
 
+<details><summary> - cvwidget</summary>
+<p>
 
+#### We can hide anything, even code!
+
+```ruby
+   puts "Hello World"
+```
+
+</p>
+</details>
 
 ### Getting Started
 #### cvwidget is widget class where defined image is rendered.
