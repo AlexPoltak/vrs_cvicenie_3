@@ -24,6 +24,18 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 </p>
 </details>
 
+<details><summary>CLICK ME</summary>
+<p>
+
+#### We can hide anything, even code!
+
+```ruby
+   puts "Hello World"
+```
+
+</p>
+</details>
+
 ### Getting Started
 
 
