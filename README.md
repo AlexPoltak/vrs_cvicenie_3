@@ -18,12 +18,12 @@ This library Consists of classes:
 There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
   
 #### Getting Started
-- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
-- Then you just call only function showImage on this widget, and defined image in widget will be rendered, also on resizing. Function showImage:
+1. When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.. 
+2. Then you just call only function showImage on this widget, and defined image in widget will be rendered, also on resizing. Function showImage:
 ```js
 bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
 ```
-- If you want to get position on image, where user clicked:  (parameter widgetpos is position of widget from global)
+3. If you want to get position on image, where user clicked:  (parameter widgetpos is position of widget from global)
  ```js
 QPoint CQtOpenCVViewerGl::getImageClickPos(QPoint widgetpos)
 ``` 
