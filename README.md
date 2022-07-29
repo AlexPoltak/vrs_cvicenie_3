@@ -16,6 +16,8 @@ This library Consists of classes:
 - qsidewayview
 - undoselectionstack
 
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 <details><summary>cvwidget</summary>
 <p>
 
@@ -30,13 +32,123 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 </p>
 </details>
 
-### Getting Started
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
+<details><summary>mymapcontrol</summary>
+<p>
 
+### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+#### Getting Started
+- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
+- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
+- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
 
+</p>
+</details>
 
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
+<details><summary>qcloudaerial</summary>
+<p>
 
+### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+#### Getting Started
+- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
+- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
+- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+
+</p>
+</details>
+
+  
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  
+<details><summary>qcloudcutwindow</summary>
+<p>
+
+### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+#### Getting Started
+- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
+- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
+- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+
+</p>
+</details>
+
+  
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>qpolygonrubberband</summary>
+<p>
+
+### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+#### Getting Started
+- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
+- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
+- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+
+</p>
+</details>
+
+  
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>qsidewayview</summary>
+<p>
+
+### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+#### Getting Started
+- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
+- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
+- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+
+</p>
+</details>
+
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>undoselectionstack</summary>
+<p>
+
+### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+#### Getting Started
+- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
+- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
+- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+
+</p>
+</details>
+  
+<//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 #### You can get, set or clear all transformation records for given device:<br />
 > Example for (DEV_IMU) pose. Except of the function getTransformationIMU_VEH, where parameter gain is missing, have functions for another poses the same input parameters.
   - Get all transformation records of DEV_IMU pose for given device:
