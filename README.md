@@ -16,21 +16,16 @@ This library Consists of classes:
 - qsidewayview
 - undoselectionstack
 
-<details><summary> - cvwidget</summary>
+<details><summary> cvwidget</summary>
 <p>
-
-#### We can hide anything, even code!
-
-```ruby
-   puts "Hello World"
-```
+#### cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html#details">Show documentation</a> thanks to which we can display OpenGL graphics.
 
 </p>
 </details>
 
 ### Getting Started
-#### cvwidget is widget class where defined image is rendered.
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html#details">Show documentation</a> thanks to which we can display OpenGL graphics.
+
 
 
 
