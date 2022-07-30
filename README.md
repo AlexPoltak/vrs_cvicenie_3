@@ -58,7 +58,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
-2. Then you just call only function **addAndShowCloud** on this frame, and everything will be painted. Function **addAndShowCloud**:
+2. Then you just call only function **addAndShowCloud** with input parameters on this frame, and everything will be painted. Function **addAndShowCloud**:
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
