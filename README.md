@@ -49,16 +49,14 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>qcloudaerial</summary>
+<details><summary>qcloudaerialview</summary>
 <p>
 
-### cvwidget is widget class where defined image is rendered.
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+### qcloudaerialview is frame class which display cloud points in 2D projection, specifically in plane XY 
   
 #### Getting Started
-- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
-- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
-- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+- When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
+
 
 </p>
 </details>
