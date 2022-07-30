@@ -59,17 +59,19 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
 2. To show this view with painted cloud points call **addAndShowCloud**:
+  
+- `inputcloud` - generated point cloud of selected frames
+- `llp1` - right centered point of selection rectangle(on right side in the direction of trajectory)
+- `llc1` - centered point of selection rectangle defined by user
+- `llp2` - left centered point of selection rectangle(on left side in the direction of trajectory)
+- `cutwidth` - value defined by user(with double spin box "Buffer" in right menu)
+- `newusedZones` - used zones
+
+
+  
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
-
-#### common rule
-
-- `required` - if `required` is set to false, this property can be null or undefined. default to `true`.
-- `type` - The type of property, every type has it's own rule for the validate.
-- `convertType` - Make parameter convert the input param to the specific type, support `int`, `number`, `string` and `boolean`, also support a function to customize your own convert method.
-- `default` - The default value of property, once the property is allowed non-required and missed, parameter will use this as the default value. __This may change the original input params__.
-- `widelyUndefined` - override `options.widelyUndefined`
 
 </p>
 </details>
