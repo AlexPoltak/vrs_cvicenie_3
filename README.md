@@ -7,7 +7,7 @@
   <h1 align="left">Libs MAPInteraction</h1>
 
 This library is used to interact with the map.<br />
-qcloudaerialview, qcloudcutwindow, qsidewayview are frames which will be shown, when user selects Profiles from the side menu. More in specific sections. <br /><br />
+qcloudaerialview, qcloudcutwindow, qsidewayview are frames which will be shown, when user selects **Profiles** from the side menu. More in specific sections. <br /><br />
 This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
