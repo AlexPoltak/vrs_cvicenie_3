@@ -107,7 +107,7 @@ void hideSidewayCut()
 void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```
 
-6. To set RTKPoints call **setRtkPoints** on this frame:
+7. To set RTKPoints call **setRtkPoints** on this frame:
   
     - `newPoints` - new RTK points
     - `lc1` - centered point of cut, defined by user
@@ -117,6 +117,14 @@ void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```js
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
 ```
+
+Or only:
+
+    - `newPoints` - new RTK points
+    - `lc1` - centered point of cut, defined by user
+    - `lp1` - right centered point of cut(on right side of trajectory)
+    - `lp2` - left centered point of cut(on left side of trajectory)
+    - `widthd` - distance from cut
 
 </p>
 </details>
