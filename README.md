@@ -107,7 +107,7 @@ void hideSidewayCut()
 void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```
 
-7. To set RTKPoints call **setRtkPoints** on this frame:
+7. - To set RTKPoints call **setRtkPoints** on this frame:
   
     - `newPoints` - new RTK points
     - `lc1` - centered point of cut, defined by user
