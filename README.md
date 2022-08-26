@@ -201,6 +201,15 @@ void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1
 void setSidewayCutParams(double cx,double cy)
 ```
 
+4. To get distance of two points, selected by user in Measuring mode, call **getDists** on this frame:
+  
+    - `x` - distance in x axis
+    - `y` - distance in y axis
+
+```js
+void qcloudcutwindow::getDists(double &x,double &y )
+```
+
 
 
 </p>
