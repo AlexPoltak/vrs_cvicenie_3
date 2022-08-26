@@ -6,8 +6,8 @@
 </div>
   <h1 align="left">Libs MAPInteraction</h1>
 
-This library is used for transformation of **poses**.<br /><br />
-This library Consists of classes:
+This library is used for interaction with map.<br /><br />
+This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
