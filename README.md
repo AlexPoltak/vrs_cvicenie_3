@@ -20,14 +20,17 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
   
 #### Getting Started
 1. When you want to use this widget somewhere, first of all you have to add widget with class **CQtOpenCVViewerGl** to .ui file.
+   </br>
 2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing. If image shows properly this funtcion **return true**, else **return false**. Function **showImage**:
 ```js
 bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
 ```
+  </br>
 3. If you want to get position on image, where user clicked:  (parameter widgetpos is position of widget from global)
  ```js
 QPoint CQtOpenCVViewerGl::getImageClickPos(QPoint widgetpos)
 ``` 
+ </br>
 4. If you want to get position of point, which should be at the same position on image, when widget is resized:
  ```js
 QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
@@ -63,7 +66,8 @@ This class also takes care of the interaction during measurement(in this frame) 
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
-2. To show this view with painted cloud points call **addAndShowCloud** on this frame:
+2.  </br>
+3. To show this view with painted cloud points call **addAndShowCloud** on this frame:
   
     - `inputcloud` - generated point cloud of selected frames
     - `llp1` - right centered point of selection rectangle(on right side in the direction of trajectory)
@@ -75,6 +79,7 @@ This class also takes care of the interaction during measurement(in this frame) 
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
+ </br>
 3. If you want to set colorization pallete call **setColorizationPallete** on this frame:</br>
   types of palletes</br>
                     - `QCloudAerialView::intenzity`</br>
@@ -83,6 +88,7 @@ void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1
 ```js
 void setColorizationPallete(ColorPalette palette)
 ```
+ </br>
 4. If you want to set mouse mode call **setMouseMode** on this frame:</br>
   types of mouse mode</br>
                     - `Dragging`- To move with the content in the frame</br>
@@ -91,12 +97,12 @@ void setColorizationPallete(ColorPalette palette)
 ```js
 void setMouseMode(MouseMode newmode)
 ```
-
+ </br>
 5. To hide cutting line call on this frame function:
 ```js
 void hideSidewayCut()
 ```
-
+ </br>
 6. To get visual parameters of this frame call **getVisualParams** on this frame:
   
     - `PiZoom` - actual zoom in frame
@@ -106,7 +112,7 @@ void hideSidewayCut()
 ```js
 void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```
-
+ </br>
 7. To set RTKPoints call **setRtkPoints** on this frame:
 -
     - `newPoints` - new RTK points
@@ -126,7 +132,7 @@ void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointX
 ```js
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
 ```
-
+ </br>
 8. To set used zones call **setUsedZones** on this frame:
 
 ```js
