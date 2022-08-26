@@ -119,6 +119,7 @@ void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
 ```
 
+- To set RTKPoints call **setRtkPoints** on this frame:
   
     - `newPoints` - new RTK points
     - `lc1` - centered point of cut, defined by user
