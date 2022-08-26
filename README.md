@@ -280,11 +280,10 @@ All this methods are same like in qcloudaerialview:
 
 #### Getting Started
 1. To set polygon which should be drawn call **setPolygon** on object of this class:
--
 ```js
 void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints)
 ```
-- Or :
+Or :
 ```js
 void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
 ```
