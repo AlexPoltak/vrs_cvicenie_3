@@ -283,7 +283,7 @@ All this methods are same like in qcloudaerialview:
 ```js
 void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints)
 ```
-Or :
+&emsp;Or :
 ```js
 void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
 ```
