@@ -75,7 +75,7 @@ This class also takes care of the interaction during measurement(in this frame) 
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
-3. If you want to set colorization pallete call on this frame function:</br>
+3. If you want to set colorization pallete call **setColorizationPallete** on this frame:</br>
   types of palletes</br>
                     - `QCloudAerialView::intenzity`</br>
                     - `QCloudAerialView::zone`</br>
@@ -83,7 +83,7 @@ void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1
 ```js
 void setColorizationPallete(ColorPalette palette)
 ```
-4. If you want to set mouse mode call on this frame function:</br>
+4. If you want to set mouse mode call **setMouseMode** on this frame:</br>
   types of mouse mode</br>
                     - `Dragging`- To move with the content in the frame</br>
                     - `Measuring`- To enable measuring in this frame</br>
