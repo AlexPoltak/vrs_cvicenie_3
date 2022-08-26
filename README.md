@@ -76,9 +76,9 @@ This class also takes care of the interaction during measurement(in this frame) 
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
 3. If you want to set colorization pallete:
-  palletes  - `intenzity`
-            - `zone`
-            - `elevation`
+  types of palletes - `QCloudAerialView::intenzity`
+                    , `QCloudAerialView::zone`
+                    , `QCloudAerialView::elevation`
 ```js
 void setColorizationPallete(ColorPalette palette)
 ```
