@@ -97,6 +97,15 @@ void setMouseMode(MouseMode newmode)
 void hideSidewayCut()
 ```
 
+6. To get visual parameters of this frame call **getVisualParams** on this frame:
+  
+    - `PiZoom` - actual zoom in frame
+    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
+    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
+
+```js
+void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
+```
 
 
 </p>
