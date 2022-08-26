@@ -71,11 +71,11 @@ This class also takes care of the interaction during measurement(in this frame) 
 \
 &emsp;2. To show this view with painted cloud points call **addAndShowCloud** on this frame:
   
-      - `inputcloud` - generated point cloud of selected frames
-          - `llp1` - right centered point of selection rectangle(on right side in the direction of trajectory)
-          - `llc1` - centered point of selection rectangle defined by user
-          - `llp2` - left centered point of selection rectangle(on left side in the direction of trajectory)
-          - `cutwidth` - value defined by user(with double spin box "Buffer" in right menu)
+     - `inputcloud` - generated point cloud of selected frames
+      - `llp1` - right centered point of selection rectangle(on right side in the direction of trajectory)
+       - `llc1` - centered point of selection rectangle defined by user
+        - `llp2` - left centered point of selection rectangle(on left side in the direction of trajectory)
+         - `cutwidth` - value defined by user(with double spin box "Buffer" in right menu)
           - `newusedZones` - used zones
 
 ```js
