@@ -276,14 +276,19 @@ All this methods are same like in qcloudaerialview:
 <details><summary>qpolygonrubberband</summary>
 <p>
 
-### cvwidget is widget class where defined image is rendered.
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
-  
-#### Getting Started
-- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
-- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
-- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+### qpolygonrubberband is class for painting polygon.
 
+#### Getting Started
+1. To set polygon which should be drawn call **setPolygon** on object of this class:
+-
+```js
+void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints)
+```
+- Or :
+```js
+void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
+```
+  
 </p>
 </details>
 
