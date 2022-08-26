@@ -117,8 +117,8 @@ void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```js
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
 ```
-
-Or only:
+</br>
+&emsp;&emsp; Or only:
 
     - `newPoints` - new RTK points
     - `lc1` - centered point of cut, defined by user
