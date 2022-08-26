@@ -68,7 +68,6 @@ This class also takes care of the interaction during measurement(in this frame) 
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
 
-\
 2. To show this view with painted cloud points call **addAndShowCloud** on this frame:
   
     - `inputcloud` - generated point cloud of selected frames
@@ -81,7 +80,7 @@ This class also takes care of the interaction during measurement(in this frame) 
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
-\
+
 3. If you want to set colorization pallete call **setColorizationPallete** on this frame:</br>
   types of palletes</br>
                     - `QCloudAerialView::intenzity`</br>
@@ -90,7 +89,7 @@ void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1
 ```js
 void setColorizationPallete(ColorPalette palette)
 ```
-\
+
 4. If you want to set mouse mode call **setMouseMode** on this frame:</br>
   types of mouse mode</br>
                     - `Dragging`- To move with the content in the frame</br>
@@ -99,12 +98,12 @@ void setColorizationPallete(ColorPalette palette)
 ```js
 void setMouseMode(MouseMode newmode)
 ```
-\
+
 5. To hide cutting line call on this frame function:
 ```js
 void hideSidewayCut()
 ```
-\
+
 6. To get visual parameters of this frame call **getVisualParams** on this frame:
   
     - `PiZoom` - actual zoom in frame
@@ -114,7 +113,7 @@ void hideSidewayCut()
 ```js
 void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```
-\
+
 7. To set RTKPoints call **setRtkPoints** on this frame:
 -
     - `newPoints` - new RTK points
