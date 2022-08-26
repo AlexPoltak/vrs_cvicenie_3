@@ -124,9 +124,7 @@ void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointX
     - `lp1` - right centered point of cut(on right side of trajectory)
     - `lp2` - left centered point of cut(on left side of trajectory)
     - `widthd` - distance from cut
-```js
-    void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
-```
+
   
 
 </p>
