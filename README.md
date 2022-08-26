@@ -54,7 +54,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 <details><summary>qcloudaerialview</summary>
 <p>
 
-### qcloudaerialview is frame class which display cloud points in 2D projection, specifically in plane XY 
+### Is frame class which display cloud points in 2D projection, specifically in plane XY 
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
