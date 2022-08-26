@@ -288,6 +288,10 @@ void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints)
 void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
 ```
   
+2. To change color of polygon  call **changeColor** on object of this class:
+```js
+void changeColor(QColor newcolor)
+```
 </p>
 </details>
 
