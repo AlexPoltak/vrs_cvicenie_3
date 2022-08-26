@@ -217,7 +217,6 @@ All this methods are same like in qcloudaerialview:
   - getVisualParams
   - setRtkPoints
   - setUsedZones
-  - hideSidewayCut
 
 </p>
 </details>
