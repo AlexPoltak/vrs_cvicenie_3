@@ -63,7 +63,7 @@ This class also takes care of the interaction during measurement(in this frame) 
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
-2. To show this view with painted cloud points call **addAndShowCloud**:
+2. To show this view with painted cloud points call **addAndShowCloud** on this frame:
   
     - `inputcloud` - generated point cloud of selected frames
     - `llp1` - right centered point of selection rectangle(on right side in the direction of trajectory)
@@ -75,13 +75,23 @@ This class also takes care of the interaction during measurement(in this frame) 
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
-3. If you want to set colorization pallete:
-  types of palletes - `QCloudAerialView::intenzity`</br>
+3. If you want to set colorization pallete call on this frame function:
+  types of palletes</br>
+                    - `QCloudAerialView::intenzity`</br>
                     - `QCloudAerialView::zone`</br>
                     - `QCloudAerialView::elevation`
 ```js
 void setColorizationPallete(ColorPalette palette)
 ```
+4. If you want to set mouse mode call on this frame function:
+  types of mouse mode</br>
+                    - `Dragging`- To move with the content in the frame</br>
+                    - `Measuring`- To enable measuring in this frame</br>
+                    - `sideWayPicker`- to select 
+```js
+void setMouseMode(MouseMode newmode)
+```
+
 
 </p>
 </details>
