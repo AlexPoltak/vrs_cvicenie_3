@@ -115,10 +115,7 @@ void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
     - `lp2` - left centered point of cut(on left side of trajectory)
     - `widthd` - distance from cut
 
-```js
-void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
-```
-</br>
+
 &emsp;&emsp; Or only:
 
     - `newPoints` - new RTK points
