@@ -63,16 +63,16 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
 #### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
+1. When you want to use this view somewhere, first of all you have to add frame with class **QCloudAerialView** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
   
-    - `inputcloud` - generated point cloud of selected frames
-    - `llp1` - right centered point of selection rectangle(on right side in the direction of trajectory)
-    - `llc1` - centered point of selection rectangle defined by user
-    - `llp2` - left centered point of selection rectangle(on left side in the direction of trajectory)
-    - `cutwidth` - value defined by user(with double spin box "Buffer" in right menu)
-    - `newusedZones` - used zones
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
 
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
@@ -95,8 +95,12 @@ void setColorizationPallete(ColorPalette palette)
 ```js
 void setMouseMode(MouseMode newmode)
 ```
+5.To get mouse mode, call **getMouseMode** on this frame:</br>
+```js
+MouseMode getMouseMode()
+```
 
-5. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
+6. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
   
     - `cx` - X position of center
     - `cy` - Y position of center
@@ -108,9 +112,82 @@ void setMouseMode(MouseMode newmode)
 void setSidewayCutParams(double cx,double cy,double rx,double ry)
 ```
 
-6. To hide cutting line, call on this frame function:
+7. To hide cutting line, call on this frame function:
 ```js
 void hideSidewayCut()
+```
+
+8. To get visual parameters of this frame, call **getVisualParams** on this frame:
+  
+    - `PiZoom` - actual zoom in frame
+    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
+    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
+
+```js
+void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
+```
+
+9. To set RTKPoints, call **setRtkPoints** on this frame:
+-
+    - `newPoints` - new RTK points
+    - `lc1` - centered point of cut, defined by user
+    - `lp1` - right centered point of cut(on right side of trajectory)
+    - `lp2` - left centered point of cut(on left side of trajectory)
+    - `widthd` - distance from cut
+    - 
+```js
+void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
+```
+
+- Or only:
+  
+    - `newPoints` - new RTK points
+    - `widthd` - distance from cut
+```js
+void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
+```
+
+10. To set used zones, call **setUsedZones** on this frame:
+
+```js
+void setUsedZones(std::map<int, bool> newusedZones)
+```
+
+</p>
+</details>
+
+  
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  
+<details><summary>qcloudcutwindow</summary>
+<p>
+
+### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
+This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+  
+#### Getting Started
+1. When you want to use this view somewhere, first of all you have to add frame with class **qcloudcutwindow** to .ui file.
+
+2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+  
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
+
+```js
+void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+```
+
+5. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
+  
+    - `cx` - X position of center
+    - `cy` - Y position of center
+
+```js
+void setSidewayCutParams(double cx,double cy)
 ```
 
 7. To get visual parameters of this frame, call **getVisualParams** on this frame:
@@ -148,24 +225,6 @@ void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double width
 ```js
 void setUsedZones(std::map<int, bool> newusedZones)
 ```
-
-</p>
-</details>
-
-  
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  
-<details><summary>qcloudcutwindow</summary>
-<p>
-
-### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
-This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
-  
-#### Getting Started
-- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
-- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
-- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
-
 </p>
 </details>
   
