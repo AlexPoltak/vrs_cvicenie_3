@@ -231,9 +231,43 @@ All this methods are same like in qcloudaerialview:
 This class also takes care of the interaction during measurement(in this frame).
   
 #### Getting Started
-- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
-- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
-- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+1. When you want to use this view somewhere, first of all you have to add frame with class **qcloudcutwindow** to .ui file.
+
+2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+  
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
+
+```js
+void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+```
+
+3. To clear cloud and measured distances from view, call **removeCloud** on this frame:
+```js
+void removeCloud()
+```
+
+4. To get distance of two points, selected by user in Measuring mode, call **getDists** on this frame:
+  
+    - `x` - distance in x axis
+    - `y` - distance in y axis
+
+```js
+void qcloudcutwindow::getDists(double &x,double &y )
+```
+All this methods are same like in qcloudaerialview: 
+  - setColorizationPallete
+  - setMouseMode
+  - getMouseMode
+  - setVisualParams
+  - getVisualParams
+  - setRtkPoints
+  - setUsedZones
+  - hideSidewayCut
 
 </p>
 </details>
