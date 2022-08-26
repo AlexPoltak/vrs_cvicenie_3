@@ -209,8 +209,15 @@ void setSidewayCutParams(double cx,double cy)
 ```js
 void qcloudcutwindow::getDists(double &x,double &y )
 ```
-
-
+All this methods are same like in qcloudaerialview: 
+-setColorizationPallete
+-setMouseMode
+-getMouseMode
+-setVisualParams
+-getVisualParams
+-setRtkPoints
+-setUsedZones
+-hideSidewayCut
 
 </p>
 </details>
