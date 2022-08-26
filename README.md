@@ -96,7 +96,7 @@ void setColorizationPallete(ColorPalette palette)
 void setMouseMode(MouseMode newmode)
 ```
 
-5.To get mouse mode, call **getMouseMode** on this frame:</br>
+5. To get mouse mode, call **getMouseMode** on this frame:</br>
 ```js
 MouseMode getMouseMode()
 ```
