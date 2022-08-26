@@ -59,7 +59,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 <p>
 
 ### Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
-This class also takes care of the interaction during measurement or selection cutting line in this frame.
+This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
@@ -85,8 +85,8 @@ void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1
 <details><summary>qcloudcutwindow</summary>
 <p>
 
-### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut) .
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
+This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
 #### Getting Started
 - When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
@@ -101,8 +101,8 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 <details><summary>qsidewayview</summary>
 <p>
 
-### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way) .
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way).</br>
+This class also takes care of the interaction during measurement(in this frame).
   
 #### Getting Started
 - When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
