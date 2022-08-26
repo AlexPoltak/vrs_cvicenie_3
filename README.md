@@ -58,7 +58,8 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 <details><summary>qcloudaerialview</summary>
 <p>
 
-### Is frame class which projects cloud points into one coordination plane. Specifically to plane XY(aerial) 
+### Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
+This class also takes care of the interaction during measurement or selection cutting line in this frame.
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
@@ -71,8 +72,6 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
     - `cutwidth` - value defined by user(with double spin box "Buffer" in right menu)
     - `newusedZones` - used zones
 
-
-  
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
