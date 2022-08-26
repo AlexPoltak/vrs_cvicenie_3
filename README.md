@@ -96,12 +96,24 @@ void setColorizationPallete(ColorPalette palette)
 void setMouseMode(MouseMode newmode)
 ```
 
-5. To hide cutting line call on this frame function:
+5. To set parameters and enable cutting line painting call **setSidewayCutParams** on this frame:
+  
+    - `cx` - X position of center
+    - `cy` - Y position of center
+    - `rx` - direction vector
+    - `ry` - direction vector
+
+
+```js
+void setSidewayCutParams(double cx,double cy,double rx,double ry)
+```
+
+6. To hide cutting line call on this frame function:
 ```js
 void hideSidewayCut()
 ```
 
-6. To get visual parameters of this frame call **getVisualParams** on this frame:
+7. To get visual parameters of this frame call **getVisualParams** on this frame:
   
     - `PiZoom` - actual zoom in frame
     - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
@@ -111,7 +123,7 @@ void hideSidewayCut()
 void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```
 
-7. To set RTKPoints call **setRtkPoints** on this frame:
+8. To set RTKPoints call **setRtkPoints** on this frame:
 -
     - `newPoints` - new RTK points
     - `lc1` - centered point of cut, defined by user
@@ -131,7 +143,7 @@ void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointX
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
 ```
 
-8. To set used zones call **setUsedZones** on this frame:
+9. To set used zones call **setUsedZones** on this frame:
 
 ```js
 void setUsedZones(std::map<int, bool> newusedZones)
