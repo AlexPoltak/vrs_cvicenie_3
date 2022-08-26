@@ -118,7 +118,17 @@ void setSidewayCutParams(double cx,double cy,double rx,double ry)
 void hideSidewayCut()
 ```
 
-8. To get visual parameters of this frame, call **getVisualParams** on this frame:
+8. To set visual parameters of this frame, call **setVisualParams** on this frame:
+  
+    - `PiZoom` - actual zoom in frame
+    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
+    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
+
+```js
+void setVisualParams(double PiZoom,double PiXoff,double PiYoff)
+```
+
+9. To get visual parameters of this frame, call **getVisualParams** on this frame:
   
     - `PiZoom` - actual zoom in frame
     - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
@@ -128,7 +138,7 @@ void hideSidewayCut()
 void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
 ```
 
-9. To set RTKPoints, call **setRtkPoints** on this frame:
+10. To set RTKPoints, call **setRtkPoints** on this frame:
 -
     - `newPoints` - new RTK points
     - `lc1` - centered point of cut, defined by user
@@ -148,7 +158,7 @@ void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointX
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
 ```
 
-10. To set used zones, call **setUsedZones** on this frame:
+11. To set used zones, call **setUsedZones** on this frame:
 
 ```js
 void setUsedZones(std::map<int, bool> newusedZones)
@@ -182,7 +192,7 @@ This class also takes care of the interaction during measurement(in this frame) 
 void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
 ```
 
-5. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
+3. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
   
     - `cx` - X position of center
     - `cy` - Y position of center
@@ -191,41 +201,8 @@ void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1
 void setSidewayCutParams(double cx,double cy)
 ```
 
-7. To get visual parameters of this frame, call **getVisualParams** on this frame:
-  
-    - `PiZoom` - actual zoom in frame
-    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
-    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
 
-```js
-void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
-```
 
-8. To set RTKPoints, call **setRtkPoints** on this frame:
--
-    - `newPoints` - new RTK points
-    - `lc1` - centered point of cut, defined by user
-    - `lp1` - right centered point of cut(on right side of trajectory)
-    - `lp2` - left centered point of cut(on left side of trajectory)
-    - `widthd` - distance from cut
-    - 
-```js
-void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
-```
-
-- Or only:
-  
-    - `newPoints` - new RTK points
-    - `widthd` - distance from cut
-```js
-void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
-```
-
-9. To set used zones, call **setUsedZones** on this frame:
-
-```js
-void setUsedZones(std::map<int, bool> newusedZones)
-```
 </p>
 </details>
   
