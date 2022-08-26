@@ -87,10 +87,16 @@ void setColorizationPallete(ColorPalette palette)
   types of mouse mode</br>
                     - `Dragging`- To move with the content in the frame</br>
                     - `Measuring`- To enable measuring in this frame</br>
-                    - `sideWayPicker`- to select 
+                    - `sideWayPicker`- to select cutting line
 ```js
 void setMouseMode(MouseMode newmode)
 ```
+
+5. To hide cutting line call on this frame function:
+```js
+void hideSidewayCut()
+```
+
 
 
 </p>
