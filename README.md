@@ -54,7 +54,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 <details><summary>qcloudaerialview</summary>
 <p>
 
-### Is frame class which display cloud points in 2D projection, specifically in plane XY 
+### Is frame class which projects cloud points into one coordination plane. Specifically to plane XY(aerial) 
   
 #### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class QCloudAerialView to .ui file.
@@ -82,7 +82,7 @@ void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1
 <details><summary>qcloudcutwindow</summary>
 <p>
 
-### cvwidget is widget class where defined image is rendered.
+### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut) .
 There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
   
 #### Getting Started
@@ -116,7 +116,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 <details><summary>qsidewayview</summary>
 <p>
 
-### cvwidget is widget class where defined image is rendered.
+### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way) .
 There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
   
 #### Getting Started
