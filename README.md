@@ -127,6 +127,11 @@ void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointX
 void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
 ```
 
+8. To set used zones call **setUsedZones** on this frame:
+
+```js
+void setUsedZones(std::map<int, bool> newusedZones)
+```
 
 </p>
 </details>
