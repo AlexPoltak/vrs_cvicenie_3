@@ -45,7 +45,8 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
   - Contact e-mail: kaiwinter@gmx.de
   - Program URL   : http://qmapcontrol.sourceforge.net/
   - Changes were made by Martin Dekan for the purpose of trajectory selection
-  - github: https://github.com/kaiwinter/QMapControl
+  - github: https://github.com/kaiwinter/QMapControl</br>
+  
  QMapControl is implemented in external libs of lidaretto project.
 
   
