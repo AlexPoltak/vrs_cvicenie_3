@@ -41,8 +41,13 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 <details><summary>mymapcontrol</summary>
 <p>
 
-### cvwidget is widget class where defined image is rendered.
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+### mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
+  - Contact e-mail: kaiwinter@gmx.de
+  - Program URL   : http://qmapcontrol.sourceforge.net/
+  - Changes were made by Martin Dekan for the purpose of trajectory selection
+  - github: https://github.com/kaiwinter/QMapControl
+ QMapControl is implemented in external libs of lidaretto project.
+
   
 #### Getting Started
 - When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
