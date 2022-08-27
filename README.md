@@ -304,7 +304,7 @@ void changeColor(QColor newcolor)
 <details><summary>undoselectionstack</summary>
 <p>
 
-### undoselectionstack is the class which holds history of selections, so you can go through this history of selections.
+### undoselectionstack is the class which holds history of selections, so you can go through this history.
 
 #### Getting Started
 1. When you want to use this somewhere, first of all you have to create project and call **createNewProject**, with created project in input, on object of this class:
