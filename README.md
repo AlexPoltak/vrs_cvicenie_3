@@ -43,7 +43,6 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
 ### mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
   - Contact e-mail: kaiwinter@gmx.de
-  - Program URL   : http://qmapcontrol.sourceforge.net/
   - Changes were made by Martin Dekan for the purpose of trajectory selection
   - github: https://github.com/kaiwinter/QMapControl</br>
   
