@@ -50,8 +50,9 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
   
 #### Getting Started
-- When you want to use this widget somewhere, first of all you have to add OpenGL widget with class CQtOpenCVViewerGl to .ui file.
-- Defined image in widget will be rendered, also on resizing, when you will just call on widget this function:
+1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
+2. Then promote this QFrame to class MyMapControl.
+3.  
 
 - Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
 - If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
