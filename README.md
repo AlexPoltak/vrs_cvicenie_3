@@ -76,9 +76,19 @@ mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
 void MyMapControl::addLayer(Layer* layer)
 ```
 
-
-- Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
-- If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
+#### Methods for manipulation with map
+1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
+```js
+void MyMapControl::setView(const QPointF& coordinate)
+```
+2. To Keep the center of the map on the Geometry, even when it moves, call **followGeometry** on map QFrame:
+```js
+void followGeometry ( const Geometry* geometry )
+```
+3. To set the zoom level, call **setZoom** on map QFrame:
+```js
+void setZoom ( int zoomlevel )
+```
 
 </p>
 </details>
