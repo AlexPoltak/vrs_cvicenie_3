@@ -76,7 +76,7 @@ mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
 void MyMapControl::addLayer(Layer* layer)
 ```
 
-#### Methods for manipulation with map
+#### Methods for manipulation with map position, view
 1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
 ```js
 void MyMapControl::setView(const QPointF& coordinate)
@@ -85,10 +85,65 @@ void MyMapControl::setView(const QPointF& coordinate)
 ```js
 void followGeometry ( const Geometry* geometry )
 ```
-3. To set the zoom level, call **setZoom** on map QFrame:
+3. If the view is set to follow a Geometry this method stops the trace:
+```js
+void stopFollowing ( const Geometry* geometry )
+```
+4. To move smoothly the center of the view to the given Coordinate, call **moveTo** on map QFrame:
+```js
+oid moveTo	( QPointF coordinate )
+```
+5. To get the coordinate of the center of the map, call **currentCoordinate** on map QFrame:
+```js
+QPointF	currentCoordinate()
+```
+6. To scroll the view to the left, call **scrollLeft** on map QFrame:
+```js
+void scrollLeft ( int pixel)
+```
+7. To scroll the view to the right, call **scrollRight** on map QFrame:
+```js
+void scrollRight ( int pixel)
+```
+8. To scroll the view up, call **scrollUp** on map QFrame:
+```js
+void scrollUp ( int pixel)
+```
+9. To scroll the view down, call **scrollDown** on map QFrame:
+```js
+void scrollDown ( int pixel)
+```
+10. To scroll the view by the given point, call **scroll** on map QFrame:
+```js
+void scroll ( const QPoint scroll )
+```
+
+#### Methods for manipulation with zoom
+1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
+```js
+void setImageZoomLimit(int newLimit)
+```
+2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
+```js
+int getImageZoomLimit()
+```
+3. To set current zoom, call **setZoom** on map QFrame: 
 ```js
 void setZoom ( int zoomlevel )
 ```
+4. To zoom in one step, call **zoomIn** on map QFrame: 
+```js
+void zoomIn()
+```
+5. To zoom out in one step, call **zoomOut** on map QFrame: 
+```js
+void zoomOut()
+```
+6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum for showing the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
+```js
+void MyMapControl::setCenterAndMaxZoomForProject()
+```
+
 
 </p>
 </details>
