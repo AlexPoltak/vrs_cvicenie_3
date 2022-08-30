@@ -1,0 +1,38 @@
+include(../../Lidaretto.pri)
+
+QT += network
+#for common.h and file.h
+INCLUDEPATH += ../../libs
+
+# QMapControl
+INCLUDEPATH += ../../libs/external/QMapControl/src
+win32: LIBS += -L../../bin -llidaretto_QMapControl0
+unix:  LIBS += -L../../bin -llidaretto_QMapControl
+
+# Garmin
+INCLUDEPATH += ../../libs/external/Garmin
+LIBS += -L../../bin -llidaretto_Garmin
+
+# LidarAndTrans (docasne spojene do jedneho)
+INCLUDEPATH += ../../libs/LidarAndTrans/LidarAndTrans
+LIBS += -L../../bin -llidaretto_LidarAndTrans
+
+# Datums (docasne spojene Trajectory a Datums)
+INCLUDEPATH += ../../libs/Datums/Datums
+LIBS += -L../../bin -llidaretto_Datums\
+
+# MapInteraction
+INCLUDEPATH += ../../libs/MapInteraction/MapInteraction
+LIBS += -L../../bin -llidaretto_MapInteraction
+
+# Devices
+INCLUDEPATH += ../../libs/Devices/Devices
+LIBS += -L../../bin -llidaretto_Devices
+
+# Project
+INCLUDEPATH += ../../libs/Project/Project
+LIBS += -L../../bin -llidaretto_Project
+
+# PugiXml
+INCLUDEPATH += ../../libs/external/PugiXml
+LIBS += -L../../bin -llidaretto_PugiXml
