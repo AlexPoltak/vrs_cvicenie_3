@@ -59,7 +59,14 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
     - `#include <osmmapadapter.h>`
     - `#include <maplayer.h>`
     - `#include "common.h"`
-
+2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
+  
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
 
 - Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
 - If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
