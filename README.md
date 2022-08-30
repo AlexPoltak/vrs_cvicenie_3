@@ -58,12 +58,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
     - `#include <osmmapadapter.h>`
     - `#include <maplayer.h>`
     - `#include "common.h"`
-6. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
-  
-    - `cx` - X position of center
-    - `cy` - Y position of center
-    - `rx` - direction vector
-    - `ry` - direction vector
+
 
 
 - Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
