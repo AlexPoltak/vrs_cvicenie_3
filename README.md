@@ -55,10 +55,10 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 3. <p>Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
 </p>
 4. Include to header file of application:
-    - #include "mymapcontrol.h"
-    - #include <osmmapadapter.h>
-    - #include <maplayer.h>
-    - #include "common.h"
+   - #include "mymapcontrol.h"
+   - #include <osmmapadapter.h>
+   - #include <maplayer.h>
+   - #include "common.h"
 
 - Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
 - If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
