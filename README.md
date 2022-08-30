@@ -59,7 +59,11 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
     - `#include <maplayer.h>`
     - `#include "common.h"`
 
-
+5. You need to create new map adapter(example is for OpenStreetMap):
+    - `MapAdapter* mapadapter;`
+```js
+mapadapter = new OSMMapAdapter();
+```
 
 - Then you just call only function showImage(const cv::Mat& image) on this widget, and defined image in widget will be rendered, also on resizing.
 - If you want to get position on image, where was clicked, call function getImageClickPos(QPoint widgetpos).
