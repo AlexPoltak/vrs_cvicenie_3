@@ -59,102 +59,102 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 ### Getting Started
 <details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
 
-    1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
-    2. Then promote this QFrame to class **MyMapControl**.
-    3. Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
-    4. Include to header file of application:
-        - `#include "mymapcontrol.h"`
-        - `#include <osmmapadapter.h>`
-        - `#include <maplayer.h>`
-        - `#include "common.h"`
+1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
+2. Then promote this QFrame to class **MyMapControl**.
+3. Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
+4. Include to header file of application:
+    - `#include "mymapcontrol.h"`
+    - `#include <osmmapadapter.h>`
+    - `#include <maplayer.h>`
+    - `#include "common.h"`
 
-    5. You need to create new map adapter(example is for OpenStreetMap):
-        - `MapAdapter* mapadapter;`
-    ```js
-    mapadapter = new OSMMapAdapter();
-    ```
-    6. Create new layer with map adapter created in previous step:
-        - `Layer* mainlayer;`
-    ```js
-    mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
-    ```
-    7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values.
-    8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
-    ```js
-    void MyMapControl::addLayer(Layer* layer)
-    ```
+5. You need to create new map adapter(example is for OpenStreetMap):
+    - `MapAdapter* mapadapter;`
+```js
+mapadapter = new OSMMapAdapter();
+```
+6. Create new layer with map adapter created in previous step:
+    - `Layer* mainlayer;`
+```js
+mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
+```
+7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values.
+8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
+```js
+void MyMapControl::addLayer(Layer* layer)
+```
 </details>
 
-        <details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
-        1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
-        ```js
-        void MyMapControl::setView(const QPointF& coordinate)
-        ```
-        2. To Keep the center of the map on the Geometry, even when it moves, call **followGeometry** on map QFrame:
-        ```js
-        void followGeometry ( const Geometry* geometry )
-        ```
-        3. If the view is set to follow a Geometry this method stops the trace:
-        ```js
-        void stopFollowing ( const Geometry* geometry )
-        ```
-        4. To move smoothly the center of the view to the given Coordinate, call **moveTo** on map QFrame:
-        ```js
-        oid moveTo	( QPointF coordinate )
-        ```
-        5. To get the coordinate of the center of the map, call **currentCoordinate** on map QFrame:
-        ```js
-        QPointF	currentCoordinate()
-        ```
-        6. To scroll the view to the left, call **scrollLeft** on map QFrame:
-        ```js
-        void scrollLeft ( int pixel)
-        ```
-        7. To scroll the view to the right, call **scrollRight** on map QFrame:
-        ```js
-        void scrollRight ( int pixel)
-        ```
-        8. To scroll the view up, call **scrollUp** on map QFrame:
-        ```js
-        void scrollUp ( int pixel)
-        ```
-        9. To scroll the view down, call **scrollDown** on map QFrame:
-        ```js
-        void scrollDown ( int pixel)
-        ```
-        10. To scroll the view by the given point, call **scroll** on map QFrame:
-        ```js
-        void scroll ( const QPoint scroll )
-        ```
-        </details>
+<details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
+1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
+```js
+void MyMapControl::setView(const QPointF& coordinate)
+```
+2. To Keep the center of the map on the Geometry, even when it moves, call **followGeometry** on map QFrame:
+```js
+void followGeometry ( const Geometry* geometry )
+```
+3. If the view is set to follow a Geometry this method stops the trace:
+```js
+void stopFollowing ( const Geometry* geometry )
+```
+4. To move smoothly the center of the view to the given Coordinate, call **moveTo** on map QFrame:
+```js
+oid moveTo	( QPointF coordinate )
+```
+5. To get the coordinate of the center of the map, call **currentCoordinate** on map QFrame:
+```js
+QPointF	currentCoordinate()
+```
+6. To scroll the view to the left, call **scrollLeft** on map QFrame:
+```js
+void scrollLeft ( int pixel)
+```
+7. To scroll the view to the right, call **scrollRight** on map QFrame:
+```js
+void scrollRight ( int pixel)
+```
+8. To scroll the view up, call **scrollUp** on map QFrame:
+```js
+void scrollUp ( int pixel)
+```
+9. To scroll the view down, call **scrollDown** on map QFrame:
+```js
+void scrollDown ( int pixel)
+```
+10. To scroll the view by the given point, call **scroll** on map QFrame:
+```js
+void scroll ( const QPoint scroll )
+```
+</details>
 
-        <details><summary> Methods for manipulation with zoom> <!--/////////////////////////////////////////////////////////////////////// -->
+<details><summary> Methods for manipulation with zoom> <!--/////////////////////////////////////////////////////////////////////// -->
 
-        1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
-        ```js
-        void setImageZoomLimit(int newLimit)
-        ```
-        2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
-        ```js
-        int getImageZoomLimit()
-        ```
-        3. To set current zoom, call **setZoom** on map QFrame: 
-        ```js
-        void setZoom ( int zoomlevel )
-        ```
-        4. To zoom in one step, call **zoomIn** on map QFrame: 
-        ```js
-        void zoomIn()
-        ```
-        5. To zoom out in one step, call **zoomOut** on map QFrame: 
-        ```js
-        void zoomOut()
-        ```
-        6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum for showing the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
-        ```js
-        void MyMapControl::setCenterAndMaxZoomForProject()
-        ```
-        </details>  
+1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
+```js
+void setImageZoomLimit(int newLimit)
+```
+2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
+```js
+int getImageZoomLimit()
+```
+3. To set current zoom, call **setZoom** on map QFrame: 
+```js
+void setZoom ( int zoomlevel )
+```
+4. To zoom in one step, call **zoomIn** on map QFrame: 
+```js
+void zoomIn()
+```
+5. To zoom out in one step, call **zoomOut** on map QFrame: 
+```js
+void zoomOut()
+```
+6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum for showing the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
+```js
+void MyMapControl::setCenterAndMaxZoomForProject()
+```
+</details>  
   
 ---
 
