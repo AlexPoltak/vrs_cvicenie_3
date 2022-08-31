@@ -57,8 +57,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
 
 ### Getting Started
-    <details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
-
+<details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
 
     1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
     2. Then promote this QFrame to class **MyMapControl**.
@@ -84,7 +83,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
     ```js
     void MyMapControl::addLayer(Layer* layer)
     ```
-    </details>
+  </details>
 
         <details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
         1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
