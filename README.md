@@ -194,7 +194,13 @@ void setInfo(int info)
 
 
 <details><summary>&emsp;&emsp; Methods of selecting trajectory points </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
-
+Points can be in different states:
+| state number  | state                          |
+| :-------------| :-------------                 | 
+| 0             | not selected                   |
+| 1             | during selection(prepared)     |
+| 2             | selected                       |
+| 3             | split point                    |
 1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
 
 | enum MouseMode      | enum MouseMode-Description                          |      | enum SelectionType  |
