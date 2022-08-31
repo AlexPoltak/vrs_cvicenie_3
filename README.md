@@ -26,7 +26,9 @@ If image shows properly this function **returns true**, else **returns false**. 
 ```js
 bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
 ```
-3. If you want to get position on image, where user clicked:  (parameter widgetpos is position of widget from global)
+3. If you want to get position on image, where user clicked:
+
+    - `widgetpos` - position of widget from global
  ```js
 QPoint CQtOpenCVViewerGl::getImageClickPos(QPoint widgetpos)
 ``` 
