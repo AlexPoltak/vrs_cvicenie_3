@@ -144,24 +144,24 @@ Methods for displaying add-ons on the map </summary> <!--///////////////////////
 
 | previousIndexOfInterest condition        | Description                                           |   
 | :-------------                           | :-------------                                        |
-| default_hand_open      | checks if some trajectory point is in defined area    | 
-| default_hand_closed      | checks if some trajectory point is in defined area    | 
-| circle_selecting_hand_open      | checks if some trajectory point is in defined area    | 
-| circle_selecting_hand_closed      | checks if some trajectory point is in defined area    | 
-| circle_selecting_notSelecting      | checks if some trajectory point is in defined area    | 
-| circle_selecting_selecting      | checks if some trajectory point is in defined area    | 
-| circle_selecting_polygon      | checks if some trajectory point is in defined area    | 
-| circle_selecting_rectangle      | checks if some trajectory point is in defined area    | 
-| circle_selecting_time      | checks if some trajectory point is in defined area    | 
-| circle_deselecting_hand_open      | checks if some trajectory point is in defined area    | 
-| circle_deselecting_hand_closed      | checks if some trajectory point is in defined area    | 
-| circle_deselecting_notSelecting      | checks if some trajectory point is in defined area    | 
-| circle_deselecting_selecting      | checks if some trajectory point is in defined area    | 
-| circle_deselecting_rectangle      | checks if some trajectory point is in defined area    | 
-| adding_splitpoint_hand_open      | checks if some trajectory point is in defined area    | 
-| adding_splitpoint_hand_closed      | checks if some trajectory point is in defined area    | 
-| adding_splitpoint_adding      | checks if some trajectory point is in defined area    | 
-| info_point_select      | checks if some trajectory point is in defined area    | 
+| default_hand_open               | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| default_hand_closed             | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_closed.png"></p>| 
+| circle_selecting_hand_open      | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/selecting_hand_open.png"></p>| 
+| circle_selecting_hand_closed    | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/selecting_hand_closed.png"></p>| 
+| circle_selecting_notSelecting   | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/selecting_noselect.png"></p>|  
+| circle_selecting_selecting      | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/selecting.png"></p>| 
+| circle_selecting_polygon        | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_selecting_rectangle      | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_selecting_time           | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_deselecting_hand_open    | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_deselecting_hand_closed  | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_deselecting_notSelecting | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_deselecting_selecting    | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| circle_deselecting_rectangle    | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| adding_splitpoint_hand_open     | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| adding_splitpoint_hand_closed   | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| adding_splitpoint_adding        | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
+| info_point_select               | <p align="center"><img src="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/Src/cursor/default_hand_open.png"></p>| 
 ```js
 void setCursorFromList(int index)
 ```
