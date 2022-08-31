@@ -135,8 +135,9 @@ void scroll ( const QPoint scroll )
 <details><summary>&emsp;&emsp; Methods of selecting trajectory points, view </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
 1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
-| enum MouseMode      | Description |
-| -------------       | ------------- |
+
+| enum MouseMode      | Description                                                             |
+| -------------       | -------------                                                           |
 | Panning             | The map can be moved                                                    |
 | Dragging            | Selection rectangular area can be drawn in the map                      |
 | None                | Mouse move events have no efect to the map                              |
