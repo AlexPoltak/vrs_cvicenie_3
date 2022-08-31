@@ -222,7 +222,7 @@ void setMouseMode(MouseMode mousemode,SelectionType selectiontype )
 ```
 
 
-2. To select all points among defined points, call **selectInTrajectory** on map QFrame: 
+2. To select all points among defined points(to change state to "selected"), call **selectInTrajectory** on map QFrame: 
 
     - `start` - index of start point
     - `goal` - index of end point
@@ -230,7 +230,7 @@ void setMouseMode(MouseMode mousemode,SelectionType selectiontype )
 ```js
 void selectInTrajectory(int fromPoint,int toPoint)
 ```
-3. To deselect all points among defined points, call **deselectInTrajectory** on map QFrame: 
+3. To deselect all points among defined points(to change state to "not selected"), call **deselectInTrajectory** on map QFrame: 
 
     - `start` - index of start point
     - `goal` - index of end point
@@ -239,8 +239,8 @@ void selectInTrajectory(int fromPoint,int toPoint)
 void deselectInTrajectory(int fromPoint,int toPoint)
 ```
 4.  To select or deselect all points among defined points, based on mouse mode, call **doWithTrajectoryBetweenPoints** on map QFrame: 
-    - `mouse mode is Selecting ` - selectInTrajectory is called
-    - `mouse mode is Deselecting` - deselectInTrajectory is called
+    - `when mouse mode is Selecting ` - selectInTrajectory is called
+    - `when mouse mode is Deselecting` - deselectInTrajectory is called
 ```js
 void MyMapControl::doWithTrajectoryBetweenPoints(int lastIndex,int newindex)
 ```
