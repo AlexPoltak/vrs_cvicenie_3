@@ -330,7 +330,7 @@ void MyMapControl::CheckPointsBetweenPoints(int start, int goal)
 
 <details><summary>&emsp;&emsp; Methods for manipulation with map layers </summary> <!--/////////////////////////////////////////////////////////////////////// -->
 <br />
-If multiple layers are added, they are painted in the added order.
+If multiple layers are added, they are painted in the added order.<br />
 
 1. To add new layer, call **addLayer** on map QFrame: 
 ```js
