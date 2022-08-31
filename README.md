@@ -230,12 +230,22 @@ void checkColisionWithPolygon()
 int MyMapControl::checkColisionWithCircle(QPoint center,double radius,int previousIndexOfInterest)
 ```
 
+5. To find out if some split point is in defined area and get its index, call **checkSplitpointAroundPoint** on map QFrame: 
+```js
+int MyMapControl::checkSplitpointAroundPoint(int indexintraj,int areaofinterest)
+```
+6. To find out if some RTK point is in defined area and get its index, call **checkColisionWithRtkPoint** on map QFrame:
+
+    - `center` - center of area
+    - `radius` - radius of area
+```js
+int MyMapControl::checkColisionWithRtkPoint(QPoint center,double radius)
+```
 
 
 
 
-
-3. To find points that are not "selected" among the defined indexes and change their state to "during selection", call **CheckPointsBetweenPoints** on map QFrame: 
+7. To find points that are not "selected" among the defined indexes and change their state to "during selection", call **CheckPointsBetweenPoints** on map QFrame: 
 
     - `start` - index of start point
     - `goal` - index of end point
