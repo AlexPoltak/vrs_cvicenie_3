@@ -132,7 +132,7 @@ void scroll ( const QPoint scroll )
 ```
 </details>
 
-<details><summary>&emsp;&emsp; Methods of selecting trajectory points, view </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Methods of selecting trajectory points </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
 1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
 
@@ -184,11 +184,62 @@ void SelectPreparedPoints()
 ```js
 void DeselectPreparedPoints()
 ```
-  
-  
-  
-  
+
+7. To select all points of trajectory(to change points states to "selected"), call **selectWholeTrajectory** on map QFrame: 
+```js
+void selectWholeTrajectory()
+```
+8. To deselect all points of trajectory(to change points states to "not selected"), call **deselectWholeTrajectory** on map QFrame: 
+```js
+void deselectWholeTrajectory()
+```
+ 
 </details>  
+
+<details><summary>&emsp;&emsp; Methods for checking whether the points are in the defined area</summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+1. To find points that are in the selection rectangle and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithRectangle** on map QFrame: 
+
+```js
+void checkColisionWithRectangle()
+```
+
+2. To points that are in the deselection rectangle and changes their state from 2-"selected" to 1-"during selection" state, call **checkDeColisionWithRectangle** on map QFrame: 
+
+```js
+void checkDeColisionWithRectangle()
+```
+
+3. To find points that are in the selection polygon and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithPolygon** on map QFrame: 
+
+```js
+void checkColisionWithPolygon()
+```
+4. To find out if some trajectory point is in defined circle and get its index, call **checkColisionWithCircle** on map QFrame: 
+
+    - `center` - center of area
+    - `radius` - radius of area
+    - `previousIndexOfInterest` - When (previousIndexOfInterest is -1) ,checks if some trajectory point is in defined area
+                                - When (previousIndexOfInterest is not -1) ,checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest)
+```js
+int MyMapControl::checkColisionWithCircle(QPoint center,double radius,int previousIndexOfInterest)
+```
+
+
+
+
+
+
+3. To find points that are not "selected" among the defined indexes and change their state to "during selection", call **CheckPointsBetweenPoints** on map QFrame: 
+
+    - `start` - index of start point
+    - `goal` - index of end point
+    
+```js
+void MyMapControl::CheckPointsBetweenPoints(int start, int goal)
+```
+
+</details>  
+
 
 <details><summary>&emsp;&emsp; Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
