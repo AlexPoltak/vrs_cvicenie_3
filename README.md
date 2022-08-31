@@ -197,6 +197,7 @@ void deselectWholeTrajectory()
 </details>  
 
 <details><summary>&emsp;&emsp; Methods for checking whether the points are in the defined area</summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+
 1. To find points that are in the selection rectangle and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithRectangle** on map QFrame: 
 
 ```js
@@ -219,7 +220,7 @@ void checkColisionWithPolygon()
     - `center` - center of area
     - `radius` - radius of area
     - `previousIndexOfInterest` - When (previousIndexOfInterest is -1) ,checks if some trajectory point is in defined area</br>
-                                - When (previousIndexOfInterest is not -1) ,checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest)
+        &emsp;&emsp;&emsp;&emsp;- When (previousIndexOfInterest is not -1) ,checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest)
 ```js
 int MyMapControl::checkColisionWithCircle(QPoint center,double radius,int previousIndexOfInterest)
 ```
