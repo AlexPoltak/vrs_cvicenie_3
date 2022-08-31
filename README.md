@@ -19,7 +19,7 @@ This library Consists of:
 There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
   
 ### Getting Started
-1. When you want to use this widget somewhere, first of all you have to add widget with class **CQtOpenCVViewerGl** to .ui file.
+1. When you want to use this widget somewhere, first of all you have to add widget promoted to class **CQtOpenCVViewerGl** to .ui file.
   
 2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing. If image shows properly this funtcion **return true**, else **return false**. Function **showImage**:
 ```js
@@ -389,7 +389,7 @@ void setCenterAndMaxZoomForProject()
 This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame with class **QCloudAerialView** to .ui file.
+1. When you want to use this view somewhere, first of all you have to add frame promoted to class **QCloudAerialView** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
   
@@ -504,7 +504,7 @@ void setUsedZones(std::map<int, bool> newusedZones)
 This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame with class **qcloudcutwindow** to .ui file.
+1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
   
@@ -559,7 +559,7 @@ All this methods are same like in qcloudaerialview:
 This class also takes care of the interaction during measurement(in this frame).
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame with class **qcloudcutwindow** to .ui file.
+1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
   
