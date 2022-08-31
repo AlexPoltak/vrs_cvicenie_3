@@ -57,7 +57,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
 
 ### Getting Started
-<details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
+<details><summary> &emsp;&emsp;Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
 
 1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
 2. Then promote this QFrame to class **MyMapControl**.
@@ -85,7 +85,7 @@ void MyMapControl::addLayer(Layer* layer)
 ```
 </details>
 
-<details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
+<details><summary>&emsp;&emsp; Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
 1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
 ```js
 void MyMapControl::setView(const QPointF& coordinate)
@@ -128,7 +128,7 @@ void scroll ( const QPoint scroll )
 ```
 </details>
 
-<details><summary> Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// -->
+<details><summary>&emsp;&emsp; Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// -->
 
 1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
 ```js
