@@ -142,8 +142,8 @@ void resize(const QSize newSize)
 Methods for displaying add-ons on the map </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
 
-| previousIndexOfInterest condition        | Description                                                  |   
-| :-------------                           | :-------------                                               |
+| name of cursor                  | image of cursor                                                       |   
+| :-------------                  | :-------------                                                        |
 | default_hand_open               | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/default_hand_open.png"></p>                | 
 | default_hand_closed             | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/default_hand_closed.png"></p>              | 
 | circle_selecting_hand_open      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_hand_open.png"></p>              | 
