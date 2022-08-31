@@ -257,6 +257,36 @@ void MyMapControl::CheckPointsBetweenPoints(int start, int goal)
 </details>  
 
 
+<details><summary>&emsp;&emsp; Methods for manipulation with map layers </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+If multiple layers are added, they are painted in the added order.
+
+1. To add new layer, call **addLayer** on map QFrame: 
+```js
+void addLayer ( Layer* layer )
+```
+2. To remove layer, call **removeLayer** on map QFrame: 
+```js
+void removeLayer ( Layer* layer )
+```
+3. To get layer by given name, call **layer** on map QFrame: 
+```js
+Layer* layer ( const QString& layername )
+```
+4. To get names of all layers, call **layers** on map QFrame: 
+```js
+QList<QString> layers()
+```
+5. To get number of layers, call **numberOfLayers** on map QFrame: 
+```js
+int numberOfLayers()
+```
+6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
+```js
+void setCenterAndMaxZoomForProject()
+```
+  
+</details>  
+
 <details><summary>&emsp;&emsp; Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
 1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
