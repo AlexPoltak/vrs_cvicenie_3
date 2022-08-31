@@ -85,7 +85,7 @@ mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
 ```js
  void __init()
 ```
-8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
+8. To add layer created in step 6(or another layer) to layers of map, call **addLayer** on map QFrame:
 ```js
 void addLayer(Layer* layer)
 ```
