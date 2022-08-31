@@ -83,7 +83,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
     ```js
     void MyMapControl::addLayer(Layer* layer)
     ```
-  </details>
+</details>
 
         <details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
         1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
