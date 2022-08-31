@@ -70,11 +70,13 @@ QPoint getImagePosToWidgetPos(QPoint imagepos)
     - `#include "common.h"`
 
 5. You need to create new map adapter(example is for OpenStreetMap):
+    
     - `MapAdapter* mapadapter;`
 ```js
 mapadapter = new OSMMapAdapter();
 ```
 6. Create new layer with map adapter created in previous step:
+    
     - `Layer* mainlayer;`
 ```js
 mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
