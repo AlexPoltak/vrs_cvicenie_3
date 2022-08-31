@@ -62,7 +62,7 @@ QPoint getImagePosToWidgetPos(QPoint imagepos)
 
 1. To display the map and control it, first of all you have to add some container with QFrame class to .ui file.
 2. Then promote this QFrame to class **MyMapControl**.
-3. Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
+3. Add this <a href="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/Includes_for_mymapcontrol.txt">Includes</a> to .pro file of app.
 4. Include to header file of application:
     - `#include "mymapcontrol.h"`
     - `#include <osmmapadapter.h>`
