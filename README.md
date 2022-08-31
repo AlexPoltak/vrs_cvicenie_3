@@ -44,7 +44,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <details><summary>mymapcontrol</summary>
-<p>
+
 
 ### mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
   - Contact e-mail: kaiwinter@gmx.de
@@ -53,7 +53,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
   
  QMapControl is implemented in external libs of lidaretto project.
 
-  
+<p>
 ### Getting Started
 <details><summary> **Needed steps to show map** </summary>
 1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
