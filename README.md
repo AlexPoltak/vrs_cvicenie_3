@@ -78,7 +78,10 @@ mapadapter = new OSMMapAdapter();
 ```js
 mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
 ```
-7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values.
+7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values:
+```js
+ void __init()
+```
 8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
 ```js
 void MyMapControl::addLayer(Layer* layer)
