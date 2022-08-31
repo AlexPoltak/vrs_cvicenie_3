@@ -24,17 +24,17 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing.</br>
 If image shows properly this function **returns true**, else **returns false**. Function **showImage**:
 ```js
-bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
+bool showImage(const cv::Mat& image)
 ```
-3. If you want to get position on image, where user clicked:
+3. If you want to get position on image, where user clicked, call **getImageClickPos** on widget:
 
     - `widgetpos` - position of widget from global
  ```js
-QPoint CQtOpenCVViewerGl::getImageClickPos(QPoint widgetpos)
+QPoint getImageClickPos(QPoint widgetpos)
 ``` 
-4. If you want to get position of point, which should be at the same position on image, when widget is resized:
+4. If you want to get position of point, which should be at the same position on image,also when widget is resized, call **getImagePosToWidgetPos** on widget: :
  ```js
-QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
+QPoint getImagePosToWidgetPos(QPoint imagepos)
 ```
   
 ---  
@@ -48,8 +48,6 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
 <details><summary>mymapcontrol</summary>
 <p>
-  
----
   
 ## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
   - Contact e-mail: kaiwinter@gmx.de
