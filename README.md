@@ -290,10 +290,11 @@ void checkColisionWithPolygon()
     - `radius` - radius of area
     - `previousIndexOfInterest` 
  
-| previousIndexOfInterest condition        | Description                                           |   
-| :-------------                           | :-------------                                        |
-| When (previousIndexOfInterest is -1      | checks if some trajectory point is in defined area    | 
-| When (previousIndexOfInterest is not -1) | checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest)                                                                           | 
+| previousIndexOfInterest condition        | Description                                                                  |   
+| :-------------                           | :-------------                                                               |
+| When (previousIndexOfInterest is -1      | checks if some trajectory point is in defined area and returns its index     | 
+| When (previousIndexOfInterest is not -1) | checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest) and returns its index                                                                            | 
+| When no point was finded                 | returns -1                                                                   | 
 
 ```js
 int MyMapControl::checkColisionWithCircle(QPoint center,double radius,int previousIndexOfInterest)
