@@ -32,11 +32,14 @@ QPoint CQtOpenCVViewerGl::getImageClickPos(QPoint widgetpos)
 4. If you want to get position of point, which should be at the same position on image, when widget is resized:
  ```js
 QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
-``` 
+```
+  
+---  
+  
 </p>
 </details>
 
----
+
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -147,12 +150,11 @@ void zoomOut()
 ```js
 void MyMapControl::setCenterAndMaxZoomForProject()
 ```
-
+  
+---
 
 </p>
 </details>
-
----
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
