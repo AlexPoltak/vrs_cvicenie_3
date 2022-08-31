@@ -32,7 +32,7 @@ bool showImage(const cv::Mat& image)
  ```js
 QPoint getImageClickPos(QPoint widgetpos)
 ``` 
-4. If you want to get position of point, which should be at the same position on image,also when widget is resized, call **getImagePosToWidgetPos** on widget: :
+4. If you want to get position of point, which should be at the same position on image, also when widget is resized, call **getImagePosToWidgetPos** on widget: :
  ```js
 QPoint getImagePosToWidgetPos(QPoint imagepos)
 ```
