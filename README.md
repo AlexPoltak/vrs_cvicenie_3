@@ -15,10 +15,10 @@ This library Consists of:
 <details><summary>cvwidget</summary>
 <p>
 
-### cvwidget is widget class where defined image is rendered.
+## cvwidget is widget class where defined image is rendered.
 There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
   
-#### Getting Started
+### Getting Started
 1. When you want to use this widget somewhere, first of all you have to add widget with class **CQtOpenCVViewerGl** to .ui file.
   
 2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing. If image shows properly this funtcion **return true**, else **return false**. Function **showImage**:
@@ -48,7 +48,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
   
 ---
   
-### mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
+## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
   - Contact e-mail: kaiwinter@gmx.de
   - Changes were made by Martin Dekan for the purpose of trajectory selection
   - github: https://github.com/kaiwinter/QMapControl</br>
