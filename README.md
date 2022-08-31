@@ -136,16 +136,16 @@ void scroll ( const QPoint scroll )
 
 1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
 
-| enum MouseMode      | Description                                                             |
-| -------------       | -------------                                                           |
-| Panning             | The map can be moved                                                    |
-| Dragging            | Selection rectangular area can be drawn in the map                      |
-| None                | Mouse move events have no efect to the map                              |
-| Selecting           | Selecting a trajectory                                                  |
-| Deselecting         | Deselecting a trajectory                                                |
-| InsertSplitPoint    | Inserting split point                                                   |
-| PointInfoSelection  | Painting info about selected point on trajectory                        |
-| LineForCut_Selecting| It is used to select point for cutting line                             |
+| enum MouseMode      | Description                                         |   | enum SelectionType  |
+| -------------       | -------------                                       |   | -------------       | 
+| Panning             | The map can be moved                                |   | CircleSelection     | 
+| Dragging            | Selection rectangular area can be drawn in the map  |   | PolygonSelection    |
+| None                | Mouse move events have no efect to the map          |   | RectangleSelection  |
+| Selecting           | Selecting a trajectory                              |   | TimeSelection       | 
+| Deselecting         | Deselecting a trajectory                            |   | AreaSelection       | 
+| InsertSplitPoint    | Inserting split point                               |   | CircleDeselection   |
+| PointInfoSelection  | Painting info about selected point on trajectory    |   | RectangleDeselection|
+| LineForCut_Selecting| It is used to select point for cutting line         |   | TimeDeselection     |
 
 
 | enum SelectionType  | 
