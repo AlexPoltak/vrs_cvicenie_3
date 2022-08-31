@@ -137,7 +137,7 @@ void scroll ( const QPoint scroll )
 1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
 
 | enum MouseMode      | enum MouseMode-Description                          |      | enum SelectionType  |
-| -------------       | -------------                                       |------| -------------       | 
+| :-------------      | :-------------                                      |------| :-------------      | 
 | Panning             | The map can be moved                                |      | CircleSelection     | 
 | Dragging            | Selection rectangular area can be drawn in the map  |      | PolygonSelection    |
 | None                | Mouse move events have no efect to the map          |      | RectangleSelection  |
