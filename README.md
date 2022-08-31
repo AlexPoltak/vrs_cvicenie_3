@@ -350,6 +350,10 @@ QList<QString> layers()
 ```js
 int numberOfLayers()
 ```
+6. To update view, call **updateView** on map QFrame: 
+```js
+void updateView()
+``` 
 
   
 </details>  
@@ -376,7 +380,15 @@ void zoomIn()
 ```js
 void zoomOut()
 ```
-6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
+6. To enable or disable mouse wheel events(zooming), call **enableMouseWheelEvents** on map QFrame: 
+```js
+void enableMouseWheelEvents( bool enabled )
+```
+7. To get if mouse wheel events(zooming) is enabled/disabled, call **mouseWheelEventsEnabled** on map QFrame: 
+```js
+bool mouseWheelEventsEnabled()
+``` 
+8. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
 ```js
 void setCenterAndMaxZoomForProject()
 ```
