@@ -84,7 +84,7 @@ mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
 ```
 8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
 ```js
-void MyMapControl::addLayer(Layer* layer)
+void addLayer(Layer* layer)
 ```
 </details>
 
@@ -92,7 +92,7 @@ void MyMapControl::addLayer(Layer* layer)
   
 1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
 ```js
-void MyMapControl::setView(const QPointF& coordinate)
+void setView(const QPointF& coordinate)
 ```
 2. To Keep the center of the map on the Geometry, even when it moves, call **followGeometry** on map QFrame:
 ```js
@@ -149,14 +149,44 @@ void scroll ( const QPoint scroll )
 
 
 ```js
-void MyMapControl::setMouseMode(MouseMode mousemode,SelectionType selectiontype )
+void setMouseMode(MouseMode mousemode,SelectionType selectiontype )
 ```
 
 
-2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
+2. To select all points among defined points, call **selectInTrajectory** on map QFrame: 
+
+    - `start` - index of start point
+    - `goal` - index of end point
+
 ```js
-int getImageZoomLimit()
+void selectInTrajectory(int fromPoint,int toPoint)
 ```
+3. To deselect all points among defined points, call **deselectInTrajectory** on map QFrame: 
+
+    - `start` - index of start point
+    - `goal` - index of end point
+
+```js
+void deselectInTrajectory(int fromPoint,int toPoint)
+```
+4.  To select or deselect all points among defined points, based on mouse mode, call **doWithTrajectoryBetweenPoints** on map QFrame: 
+    - `mouse mode is Selecting ` - selectInTrajectory is called
+    - `mouse mode is Deselecting` - deselectInTrajectory is called
+```js
+void MyMapControl::doWithTrajectoryBetweenPoints(int lastIndex,int newindex)
+```
+
+5. To select all prepared points(to change points states from "during selection" to "selected"), call **SelectPreparedPoints** on map QFrame: 
+```js
+void SelectPreparedPoints()
+```
+6. To deselect all prepared points(to change points states from "during selection" to "not selected"), call **DeselectPreparedPoints** on map QFrame: 
+```js
+void DeselectPreparedPoints()
+```
+  
+  
+  
   
 </details>  
 
@@ -184,7 +214,7 @@ void zoomOut()
 ```
 6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
 ```js
-void MyMapControl::setCenterAndMaxZoomForProject()
+void setCenterAndMaxZoomForProject()
 ```
   
 </details>  
@@ -349,7 +379,7 @@ void setSidewayCutParams(double cx,double cy)
     - `y` - distance in y axis
 
 ```js
-void qcloudcutwindow::getDists(double &x,double &y )
+void getDists(double &x,double &y )
 ```
 All this methods are same like in qcloudaerialview: 
   - setColorizationPallete
@@ -400,7 +430,7 @@ void removeCloud()
     - `y` - distance in y axis
 
 ```js
-void qcloudcutwindow::getDists(double &x,double &y )
+void getDists(double &x,double &y )
 ```
 All this methods are same like in qcloudaerialview: 
   - setColorizationPallete
@@ -427,11 +457,11 @@ All this methods are same like in qcloudaerialview:
 ### Getting Started
 1. To set polygon which should be drawn call **setPolygon** on object of this class:
 ```js
-void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints)
+void setPolygon(std::vector<QPoint> polygonPoints)
 ```
 &emsp;&emsp;Or :
 ```js
-void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
+void setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
 ```
   
 2. To change color of polygon  call **changeColor** on object of this class:
@@ -461,15 +491,15 @@ void changeColor(QColor newcolor)
   
 2. Then call addNewSelection on object of this class, whenever something in the selection changes:
 ```js
-void UndoSelectionStack::addNewSelection()
+void addNewSelection()
 ```
 
 3. Then if you want to go through the history of selections, call **redo** to go to upcoming states or **undo** to go to previous states:
 ```js
-void UndoSelectionStack::redo()
+void redo()
 ```
 ```js
-void UndoSelectionStack::undo()
+void undo()
 ```
   
 ---  
