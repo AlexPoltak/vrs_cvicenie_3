@@ -128,7 +128,7 @@ void scroll ( const QPoint scroll )
 ```
 </details>
 
-<details><summary> Methods for manipulation with zoom> <!--/////////////////////////////////////////////////////////////////////// -->
+<details><summary> Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// -->
 
 1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
 ```js
@@ -154,6 +154,7 @@ void zoomOut()
 ```js
 void MyMapControl::setCenterAndMaxZoomForProject()
 ```
+  
 </details>  
   
 ---
