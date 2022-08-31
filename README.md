@@ -132,6 +132,42 @@ void scroll ( const QPoint scroll )
 ```
 </details>
 
+<details><summary>&emsp;&emsp; Methods of selecting trajectory points, view </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+
+1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
+| enum MouseMode      | Description |
+| -------------       | ------------- |
+| Panning             | The map can be moved                                                    |
+| Dragging            | Selection rectangular area can be drawn in the map                      |
+| None                | Mouse move events have no efect to the map                              |
+| Selecting           | Selecting a trajectory                                                  |
+| Deselecting         | Deselecting a trajectory                                                |
+| InsertSplitPoint    | Inserting split point                                                   |
+| PointInfoSelection  | Painting info about selected point on trajectory                        |
+| LineForCut_Selecting| It is used to select point for cutting line                             |
+
+
+| enum SelectionType  | 
+| -------------       | 
+| CircleSelection     | 
+| PolygonSelection    | 
+| None                | 
+| Selecting           | 
+| Deselecting         | 
+| InsertSplitPoint    | 
+
+```js
+void MyMapControl::setMouseMode(MouseMode mousemode,SelectionType selectiontype )
+```
+
+
+2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
+```js
+int getImageZoomLimit()
+```
+  
+</details>  
+
 <details><summary>&emsp;&emsp; Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
 1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
@@ -154,13 +190,14 @@ void zoomIn()
 ```js
 void zoomOut()
 ```
-6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum for showing the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
+6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
 ```js
 void MyMapControl::setCenterAndMaxZoomForProject()
 ```
   
 </details>  
-  
+
+
 ---
 
 </p>
