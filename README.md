@@ -180,7 +180,7 @@ void showScale ( bool visible )
 void showCrosshairs ( bool visible )
 ```
 4. To display information about trajectory point defined by index, call **setInfo** on map QFrame: <br />
-information is also displayed when mouse mode is set to "PointInfoSelection" and user clickes somewhere on trajectory.
+Information is also displayed when mouse mode is set to "PointInfoSelection" and user clickes somewhere on trajectory.
 
     - `info` - index of point whose information should be displayed
 
