@@ -194,7 +194,7 @@ void setInfo(int info)
 
 
 <details><summary>&emsp;&emsp; Methods of selecting trajectory points </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
-Points can be in different states:
+Points of trajectory can be in 4 different states:
 
 | state number  | state                          |
 | :-------------| :-------------                 | 
