@@ -148,15 +148,6 @@ void scroll ( const QPoint scroll )
 | LineForCut_Selecting| It is used to select point for cutting line         |      | TimeDeselection     |
 
 
-| enum SelectionType  | 
-| -------------       | 
-| CircleSelection     | 
-| PolygonSelection    | 
-| None                | 
-| Selecting           | 
-| Deselecting         | 
-| InsertSplitPoint    | 
-
 ```js
 void MyMapControl::setMouseMode(MouseMode mousemode,SelectionType selectiontype )
 ```
