@@ -22,7 +22,7 @@ There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopeng
 1. When you want to use this widget somewhere, first of all you have to add widget promoted to class **CQtOpenCVViewerGl** to .ui file.
   
 2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing.</br>
-If image shows properly this function **return true**, else **return false**. Function **showImage**:
+If image shows properly this function **returns true**, else **returns false**. Function **showImage**:
 ```js
 bool CQtOpenCVViewerGl::showImage(const cv::Mat& image)
 ```
