@@ -312,9 +312,6 @@ int MyMapControl::checkSplitpointAroundPoint(int indexintraj,int areaofinterest)
 int MyMapControl::checkColisionWithRtkPoint(QPoint center,double radius)
 ```
 
-
-
-
 7. To find points that are not "selected" among the defined indexes and change their state to "during selection", call **CheckPointsBetweenPoints** on map QFrame: 
 
     - `start` - index of start point
@@ -353,10 +350,7 @@ QList<QString> layers()
 ```js
 int numberOfLayers()
 ```
-6. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
-```js
-void setCenterAndMaxZoomForProject()
-```
+
   
 </details>  
 
