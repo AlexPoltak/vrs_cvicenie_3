@@ -647,10 +647,10 @@ void changeColor(QColor newcolor)
 ## undoselectionstack is the class which holds history of selections, so you can go through this history.
 
 ### Getting Started
-1. When you want to use this somewhere, first of all you have call **createNewProject** on object of this class:
-     - `projj` - reference for changing states of trajectory
+1. If you want to use this somewhere, first of all you have to call **createNewProject** on object of this class:
+     - `projj` - reference for changing trajectory states 
 ```js
- void UndoSelectionStack::createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
+ void createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
 ```  
   
 2. Then call addNewSelection on object of this class, whenever something in the selection changes:
@@ -658,7 +658,7 @@ void changeColor(QColor newcolor)
 void addNewSelection()
 ```
 
-3. Then if you want to go through the history of selections, call **redo** to go to upcoming states or **undo** to go to previous states:
+3. Then if you want to go through the history of selections, call **redo** to go to upcoming states or **undo** to go to previous states of trajectory:
 ```js
 void redo()
 ```
