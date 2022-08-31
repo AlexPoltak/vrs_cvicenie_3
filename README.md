@@ -57,34 +57,34 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
 
 ### Getting Started
-        <details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
+    <details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
 
 
-        1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
-        2. Then promote this QFrame to class **MyMapControl**.
-        3. Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
-        4. Include to header file of application:
-            - `#include "mymapcontrol.h"`
-            - `#include <osmmapadapter.h>`
-            - `#include <maplayer.h>`
-            - `#include "common.h"`
+    1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
+    2. Then promote this QFrame to class **MyMapControl**.
+    3. Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
+    4. Include to header file of application:
+        - `#include "mymapcontrol.h"`
+        - `#include <osmmapadapter.h>`
+        - `#include <maplayer.h>`
+        - `#include "common.h"`
 
-        5. You need to create new map adapter(example is for OpenStreetMap):
-            - `MapAdapter* mapadapter;`
-        ```js
-        mapadapter = new OSMMapAdapter();
-        ```
-        6. Create new layer with map adapter created in previous step:
-            - `Layer* mainlayer;`
-        ```js
-        mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
-        ```
-        7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values.
-        8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
-        ```js
-        void MyMapControl::addLayer(Layer* layer)
-        ```
-        </details>
+    5. You need to create new map adapter(example is for OpenStreetMap):
+        - `MapAdapter* mapadapter;`
+    ```js
+    mapadapter = new OSMMapAdapter();
+    ```
+    6. Create new layer with map adapter created in previous step:
+        - `Layer* mainlayer;`
+    ```js
+    mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
+    ```
+    7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values.
+    8. To add layer created in step 6, or another layer, to layers of map call **addLayer** on map QFrame:
+    ```js
+    void MyMapControl::addLayer(Layer* layer)
+    ```
+    </details>
 
         <details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
         1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
