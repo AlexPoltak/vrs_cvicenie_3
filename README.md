@@ -57,7 +57,9 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
 
 
 ### Getting Started
-<details><summary>Needed steps to show map </summary>
+<details><summary> Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// -->
+ 
+  
 1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
 2. Then promote this QFrame to class **MyMapControl**.
 3. Add this <a href="https://github.com/alexpoltak/vrs_cvicenie_3/blob/main/documents/Includes.txt">Includes</a> to .pro file of app.
@@ -84,7 +86,7 @@ void MyMapControl::addLayer(Layer* layer)
 ```
 </details>
 
-<details><summary>#### Methods for manipulation with map position, view</summary>
+<details><summary> Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
 1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
 ```js
 void MyMapControl::setView(const QPointF& coordinate)
@@ -127,7 +129,8 @@ void scroll ( const QPoint scroll )
 ```
 </details>
 
-#### Methods for manipulation with zoom
+<details><summary> Methods for manipulation with zoom> <!--/////////////////////////////////////////////////////////////////////// -->
+
 1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
 ```js
 void setImageZoomLimit(int newLimit)
@@ -163,10 +166,10 @@ void MyMapControl::setCenterAndMaxZoomForProject()
 <details><summary>qcloudaerialview</summary>
 <p>
 
-### Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
+## Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
 This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
-#### Getting Started
+### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class **QCloudAerialView** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
@@ -278,10 +281,10 @@ void setUsedZones(std::map<int, bool> newusedZones)
 <details><summary>qcloudcutwindow</summary>
 <p>
 
-### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
+## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
 This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
   
-#### Getting Started
+### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class **qcloudcutwindow** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
@@ -333,10 +336,10 @@ All this methods are same like in qcloudaerialview:
 <details><summary>qsidewayview</summary>
 <p>
 
-### Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way).</br>
+## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way).</br>
 This class also takes care of the interaction during measurement(in this frame).
   
-#### Getting Started
+### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame with class **qcloudcutwindow** to .ui file.
 
 2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
@@ -385,9 +388,9 @@ All this methods are same like in qcloudaerialview:
 <details><summary>qpolygonrubberband</summary>
 <p>
 
-### qpolygonrubberband is class for painting polygon.
+## qpolygonrubberband is class for painting polygon.
 
-#### Getting Started
+### Getting Started
 1. To set polygon which should be drawn call **setPolygon** on object of this class:
 ```js
 void QPolygonRubberBand::setPolygon(std::vector<QPoint> polygonPoints)
@@ -413,9 +416,9 @@ void changeColor(QColor newcolor)
 <details><summary>undoselectionstack</summary>
 <p>
 
-### undoselectionstack is the class which holds history of selections, so you can go through this history.
+## undoselectionstack is the class which holds history of selections, so you can go through this history.
 
-#### Getting Started
+### Getting Started
 1. When you want to use this somewhere, first of all you have call **createNewProject** on object of this class:
      - `projj` - reference for changing states of trajectory
 ```js
