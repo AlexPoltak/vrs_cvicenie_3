@@ -7,7 +7,7 @@
   <h1 align="left">Libs MAPInteraction</h1>
 
 **This library is used to display and interact with the map.**<br />
-qcloudaerialview, qcloudcutwindow, qsidewayview are frames which will be shown, when user selects **Profiles** from the side menu. More in specific sections. <br /><br />
+More in specific sections. <br /><br />
 This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -665,9 +665,16 @@ void undo()
  
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
+  qcloudaerialview, qcloudcutwindow, qsidewayview are frames which will be shown, when user selects **Profiles** from the side menu.
 
 ### This library is used in:
-#### 1. LidarAndTrans library, specifically in globaltramsformation.h and baselidarreader.h. 
-- In **globaltramsformation.h**  are used from this library info about camera model(enum cameraModel) and data info(struct CameraDataInfo).
-#### 2. project.h
-- In **Project** library is created object of this class which includes all calibration data about devices of actual project.
+#### 1. Creator app. 
+-   qcloudaerialview, qcloudcutwindow, qsidewayview will be shown, when user selects **Profiles** from the side menu.
+  
+#### 2. ColorCalibrator app
+#### 3. GarminPlayer app
+#### 4. GlobalCloudColorizer app
+#### 5. GarminPlayer app
+#### 6. GoProPlayer app
+
+
