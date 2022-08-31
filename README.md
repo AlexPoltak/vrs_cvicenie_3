@@ -88,7 +88,7 @@ void addLayer(Layer* layer)
 ```
 </details>
 
-<details><summary>&emsp;&emsp; Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Methods for manipulation with map position, size</summary> <!--/////////////////////////////////////////////// --></br>
   
 1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
 ```js
@@ -130,7 +130,63 @@ void scrollDown ( int pixel)
 ```js
 void scroll ( const QPoint scroll )
 ```
+
+11. To resize the map to the given size, call **resize** on map QFrame:
+```js
+void resize(const QSize newSize)
+```
 </details>
+
+
+<details><summary>&emsp;&emsp; 
+Methods for displaying add-ons on the map </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
+
+| previousIndexOfInterest condition        | Description                                           |   
+| :-------------                           | :-------------                                        |
+| default_hand_open      | checks if some trajectory point is in defined area    | 
+| default_hand_closed      | checks if some trajectory point is in defined area    | 
+| circle_selecting_hand_open      | checks if some trajectory point is in defined area    | 
+| circle_selecting_hand_closed      | checks if some trajectory point is in defined area    | 
+| circle_selecting_notSelecting      | checks if some trajectory point is in defined area    | 
+| circle_selecting_selecting      | checks if some trajectory point is in defined area    | 
+| circle_selecting_polygon      | checks if some trajectory point is in defined area    | 
+| circle_selecting_rectangle      | checks if some trajectory point is in defined area    | 
+| circle_selecting_time      | checks if some trajectory point is in defined area    | 
+| circle_deselecting_hand_open      | checks if some trajectory point is in defined area    | 
+| circle_deselecting_hand_closed      | checks if some trajectory point is in defined area    | 
+| circle_deselecting_notSelecting      | checks if some trajectory point is in defined area    | 
+| circle_deselecting_selecting      | checks if some trajectory point is in defined area    | 
+| circle_deselecting_rectangle      | checks if some trajectory point is in defined area    | 
+| adding_splitpoint_hand_open      | checks if some trajectory point is in defined area    | 
+| adding_splitpoint_hand_closed      | checks if some trajectory point is in defined area    | 
+| adding_splitpoint_adding      | checks if some trajectory point is in defined area    | 
+| info_point_select      | checks if some trajectory point is in defined area    | 
+```js
+void setCursorFromList(int index)
+```
+
+2. To display the scale within the widget, call **showScale** with "true" in input on map QFrame: 
+```js
+void showScale ( bool visible )
+```
+3. To display crosshairs, call **showCrosshairs** with "true" in input on map QFrame:
+```js
+void showCrosshairs ( bool visible )
+```
+4. To display information about trajectory point defined by index, call **setInfo** on map QFrame: 
+information is also displayed when mouse mode is set to "PointInfoSelection" and user clickes somewhere on trajectory.
+
+    - `info` - index of point whose information should be displayed
+
+```js
+void setInfo(int info)
+```
+
+  
+</details>  
+
+
 
 <details><summary>&emsp;&emsp; Methods of selecting trajectory points </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
@@ -255,6 +311,7 @@ void MyMapControl::CheckPointsBetweenPoints(int start, int goal)
 ```
 
 </details>  
+
 
 
 <details><summary>&emsp;&emsp; Methods for manipulation with map layers </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
