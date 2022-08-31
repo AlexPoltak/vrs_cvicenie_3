@@ -665,16 +665,15 @@ void undo()
  
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-  qcloudaerialview, qcloudcutwindow, qsidewayview are frames which will be shown, when user selects **Profiles** from the side menu.
 
-### This library is used in:
-#### 1. Creator app. 
+## This library is used in:
+### 1. Creator app. 
 -   qcloudaerialview, qcloudcutwindow, qsidewayview will be shown, when user selects **Profiles** from the side menu.
   
-#### 2. ColorCalibrator app
-#### 3. GarminPlayer app
-#### 4. GlobalCloudColorizer app
-#### 5. GarminPlayer app
-#### 6. GoProPlayer app
+### 2. ColorCalibrator app
+### 3. GarminPlayer app
+### 4. GlobalCloudColorizer app
+### 5. GarminPlayer app
+### 6. GoProPlayer app
 
 
