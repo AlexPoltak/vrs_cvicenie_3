@@ -619,7 +619,7 @@ All this methods are same like in qcloudaerialview:
 ## qpolygonrubberband is class for painting polygon.
 
 ### Getting Started
-1. To set polygon which should be drawn call **setPolygon** on object of this class:
+1. To set polygon and draw it, call **setPolygon** on object of this class:
 ```js
 void setPolygon(std::vector<QPoint> polygonPoints)
 ```
