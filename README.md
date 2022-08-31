@@ -53,7 +53,7 @@ QPoint CQtOpenCVViewerGl::getImagePosToWidgetPos(QPoint imagepos)
   
  QMapControl is implemented in external libs of lidaretto project.
 
-<p>
+&emsp;<p>
 ### Getting Started
 <details><summary> **Needed steps to show map** </summary>
 1. To use this map control, first of all you have to add some container with QFrame class to .ui file.
