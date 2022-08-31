@@ -107,7 +107,7 @@ void stopFollowing ( const Geometry* geometry )
 ```
 4. To move smoothly the center of the view to the given Coordinate, call **moveTo** on map QFrame:
 ```js
-oid moveTo	( QPointF coordinate )
+void moveTo	( QPointF coordinate )
 ```
 5. To get the coordinate of the center of the map, call **currentCoordinate** on map QFrame:
 ```js
