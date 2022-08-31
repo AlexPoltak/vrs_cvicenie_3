@@ -254,11 +254,11 @@ void SelectPreparedPoints()
 void DeselectPreparedPoints()
 ```
 
-7. To select all points of trajectory(to change points states to "selected"), call **selectWholeTrajectory** on map QFrame: 
+7. To select all trajectory points(to change points states to "selected"), call **selectWholeTrajectory** on map QFrame: 
 ```js
 void selectWholeTrajectory()
 ```
-8. To deselect all points of trajectory(to change points states to "not selected"), call **deselectWholeTrajectory** on map QFrame: 
+8. To deselect all trajectory points(to change points states to "not selected"), call **deselectWholeTrajectory** on map QFrame: 
 ```js
 void deselectWholeTrajectory()
 ```
