@@ -86,6 +86,7 @@ void MyMapControl::addLayer(Layer* layer)
 </details>
 
 <details><summary>&emsp;&emsp; Methods for manipulation with map position, view</summary> <!--/////////////////////////////////////////////// -->
+  
 1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
 ```js
 void MyMapControl::setView(const QPointF& coordinate)
