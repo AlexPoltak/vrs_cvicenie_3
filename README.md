@@ -59,7 +59,6 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
   
  All reader inherited from this class should contain methods:
  
- ### getLasFrame, which Returns requested lidar frame:
     - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is in common.h file) that should be added
     - `recalcRGB` - whether point should be colored according to its intensity
 
