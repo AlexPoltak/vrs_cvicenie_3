@@ -17,26 +17,31 @@ This library Consists of:
 <details><summary>baseframe</summary>
 <p>
 
-## cvwidget is widget class where defined image is rendered.
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+## baseframe is class where we can store lidar frame with points.
+We can get some frame/s from lidar file by some file reader of this library(fileReader, hesaifilereader, OptechFileReader, optechinternalfilereader) and manipulate with this frame(points), colorize them and so on.
+
   
 ### Getting Started
-1. When you want to use this widget somewhere, first of all you have to add widget promoted to class **CQtOpenCVViewerGl** to .ui file.
-  
-2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing.</br>
-If image shows properly this function **returns true**, else **returns false**. Function **showImage**:
+1. To start, simply create object of this class and then you can use corresponding methods.
+2. You can also create and init object of this class by using conscructor:
 ```js
-bool showImage(const cv::Mat& image)
+new BaseFrame();
 ```
-3. If you want to get position on image, where user clicked, call **getImageClickPos** on widget:
+2. To add point to frame use method **addPoint** on object:
+  
+  
+    - `pointtoadd` - point(structure that holds point info which we can get from lidar file- it is in common.h file) that should be added
+    - `r ,g, b` - defines a RGB color of point
 
-    - `widgetpos` - position of widget from global
- ```js
-QPoint getImageClickPos(QPoint widgetpos)
-``` 
-4. If you want to get position of point, which should be at the same position on image, also when widget is resized, call **getImagePosToWidgetPos** on widget: :
- ```js
-QPoint getImagePosToWidgetPos(QPoint imagepos)
+```js
+void BaseFrame::addPoint(basepointinfo &pointtoadd,int r,int g, int b)
+```
+3. You can also add point by another method **addPoint** on object:
+    - `pointtoadd` - point(structure that holds point info which we can get from lidar file- it is in common.h file) that should be added
+    - `recalcRGB` - whether point should be colored according to its intensity
+
+```js
+void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 ```
   
 ---  
