@@ -59,7 +59,7 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
   
  All reader inherited from this class should contain methods:
   
-  1. Open prepared file:
+1. Open prepared file:
   
     - `pcapfile` -  name of lidar file
 
@@ -68,9 +68,7 @@ If given file exists **returns true**, else **returns false**.
 int openPreparedFile(std::string pcapfile)
 ``` 
   
-  
-  1. To get some lidar frame use method **getLasFrame** on object:
-  
+2. To get some lidar frame use method **getLasFrame** on object:
   
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
