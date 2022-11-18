@@ -58,7 +58,7 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 ## baselidarreader is a template for all readers which inherit from this class.
   
  All reader inherited from this class should contain methods:
-  1. Open prepared file:<br />
+  1. Open prepared file:
   
     - `pcapfile` -  name of lidar file
   
