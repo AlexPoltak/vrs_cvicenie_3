@@ -4,7 +4,7 @@
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_black.svg#gh-light-mode-only">
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_white.svg#gh-dark-mode-only">
 </div>
-  <h1 align="left">Libs MAPInteraction</h1>
+  <h1 align="left">Libs LidarAndTrans</h1>
 
 ## This library is used in two main ways: 
 1. For transformation between devices(lidar,camera,imu) and also between  what the device is connected to(drone, car, pedestrian).
@@ -30,14 +30,14 @@ new BaseFrame();
 2. To add point to frame use method **addPoint** on object:
   
   
-    - `pointtoadd` - point(structure that holds point info which we can get from lidar file- it is in common.h file) that should be added
+    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is in common.h file) that should be added
     - `r ,g, b` - defines a RGB color of point
 
 ```js
 void BaseFrame::addPoint(basepointinfo &pointtoadd,int r,int g, int b)
 ```
 3. You can also add point by another method **addPoint** on object:
-    - `pointtoadd` - point(structure that holds point info which we can get from lidar file- it is in common.h file) that should be added
+    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is in common.h file) that should be added
     - `recalcRGB` - whether point should be colored according to its intensity
 
 ```js
