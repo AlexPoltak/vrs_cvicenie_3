@@ -63,7 +63,7 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
   
     - `pcapfile` -  name of lidar file
 
-If given file exists **returns true**, else **returns false**.
+&emsp;&emsp; If given file exists **returns true**, else **returns false**.
 ```js
 int openPreparedFile(std::string pcapfile)
 ``` 
