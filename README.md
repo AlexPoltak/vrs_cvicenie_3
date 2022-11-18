@@ -104,7 +104,7 @@ void setFramesIDs(std::vector<FrameFileInfo> newFrames)
 ``` 
   
   
-2. To get some lidar frame use method **getLasFrame** on object:
+6. To get some lidar frame use method **getLasFrame** on object:
   
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
@@ -118,6 +118,32 @@ void setFramesIDs(std::vector<FrameFileInfo> newFrames)
 ```js
 BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor);
 ```
+
+7. To get actual position of reading in lidar file use method:
+  
+```js
+uint64_t getactualfilepos();
+``` 
+
+8. To get maximum position in lidar file use method:
+  
+```js
+ uint64_t getmaxfilepos();
+``` 
+
+9. To get model of lidar use method:
+  
+```js
+int getLaserModelType()
+``` 
+
+
+
+10. To get id of lines for a preset option. This output is used for filtering when only some of the laser data are wanted:
+  
+```js
+std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines)
+``` 
 
 ---
 
