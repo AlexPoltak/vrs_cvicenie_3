@@ -63,6 +63,12 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
   
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
+    - `lidToFrame` - lidar transformation
+    - `restriction` - restriction to add some points to frame
+    - `openedFileID` - openedFileID
+    - `colormodel` - colormodel
+    - `minIntensityColor` - minimum intensity color
+    - `maxIntensityColor` - maximum intensity color
 
 ```js
 BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor  );
