@@ -67,6 +67,42 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 ```js
 int openPreparedFile(std::string pcapfile)
 ``` 
+2. Basic Init of prepared file:
+  
+    - `pcapfile` -  name of lidar file
+
+&emsp;&emsp;If given file was init **returns number of frames**.
+```js
+int initFile(std::string pcapfile)
+``` 
+3. Inits frames data info structure based on the info from lidar file and given transformation:
+  
+    - `outputData` - holds all frames data info structures, its main output of this method
+    - `pcapfile` - lidar file
+    - `transformation` - transformation assigned to frames
+    - `timeoffset` - timestamp offset
+    - `stopcalculating` - disable/enable calculation
+
+&emsp;&emsp;If given file was init **returns size of output data**.
+```js
+int initFileWithTransformations(std::vector<FrameData> &outputData, std::string pcapfile, std::vector<Transformation> &transformation, int timeoffset, bool *stopcalculating = nullptr)
+``` 
+4. To set corrections for lidar data:
+  
+    - `corrections` -  new corrections
+
+```js
+void setLaserMeasurementCorrections(std::vector<compensationValues> corrections)
+``` 
+  
+5. To set info about frames- position("index") in lidar file and timestamp of each frame use method:
+  
+    - `newFrames` -  new info to be assigned
+
+```js
+void setFramesIDs(std::vector<FrameFileInfo> newFrames)
+``` 
+  
   
 2. To get some lidar frame use method **getLasFrame** on object:
   
