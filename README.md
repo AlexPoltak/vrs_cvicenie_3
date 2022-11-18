@@ -58,7 +58,9 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 ## baselidarreader is a template for all readers which inherit from this class.
   
  All reader inherited from this class should contain methods:
- ### getLasFrame, which Returns requested lidar frame.
+  
+ ### getLasFrame, which Returns requested lidar frame:
+  
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
   
