@@ -55,12 +55,24 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 <details><summary>baselidarreader</summary>
 <p>
   
-## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
-  - QMapControl Contact e-mail: kaiwinter@gmx.de
-  - QMapControl github: https://github.com/kaiwinter/QMapControl
-  - Changes were made by Martin Dekan for the purpose of trajectory selection</br>
+## baselidarreader is a template for all readers which inherit from this class.
   
- QMapControl is implemented in external libs of lidaretto project.
+ All reader inherited from this class should contain methods:
+ ### getLasFrame ### which Returns requested lidar frame.
+      - `localfile` - lidar file in which the frame will be searched
+      - `index` - index of frame, which should be returned
+      - `lidToFrame` - lidar transformation
+      - `restriction` - restriction to add some points to frame
+      - `openedFileID` - openedFileID
+      - `colormodel` - colormodel
+      - `minIntensityColor` - minimum intensity color
+      - `maxIntensityColor` - maximum intensity color
+This method returns  requested lidar frame
+```js
+BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor  )
+```
+  
+
 
 
 ### Getting Started
