@@ -9,7 +9,7 @@
 **This library is used in two main ways:**
 1. For transformation between devices(lidar,camera,imu) and also between  what the device is connected to(drone, car, pedestrian).
 2. For reading lidar file and manipulating with data obtainded from this file.<br />
-More in specific sections. <br /><br />
+<br />More in specific sections. <br /><br />
 This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
