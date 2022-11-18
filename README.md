@@ -59,7 +59,7 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
   
  All reader inherited from this class should contain methods:
   1. Open prepared file:<br />
-  If given file exists **returns true**, else **returns false**. 
+  If given file exists **returns true**, else **returns false**:
   
     - `pcapfile` -  name of lidar file
   
