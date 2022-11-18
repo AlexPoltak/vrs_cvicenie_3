@@ -45,7 +45,6 @@ QPoint getImagePosToWidgetPos(QPoint imagepos)
 </details>
 
 
-
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <details><summary>baselidarreader</summary>
@@ -170,7 +169,8 @@ This class also takes care of the interaction during measurement(in this frame) 
 ```js
 void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
 ```
-
+</p>
+</details>
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   
