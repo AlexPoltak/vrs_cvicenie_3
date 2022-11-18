@@ -61,18 +61,6 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
  ### getLasFrame ### which Returns requested lidar frame.
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
-
-  
-  
-  
-    - `localfile` - lidar file in which the frame will be searched
-    - `index` - index of frame, which should be returned
-    - `lidToFrame` - lidar transformation
-    - `restriction` - restriction to add some points to frame
-    - `openedFileID` - openedFileID
-    - `colormodel` - colormodel
-    - `minIntensityColor` - minimum intensity color
-    - `maxIntensityColor` - maximum intensity color
   
 This method returns  requested lidar frame
 ```js
