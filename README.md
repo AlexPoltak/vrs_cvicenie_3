@@ -58,15 +58,17 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 ## baselidarreader is a template for all readers which inherit from this class.
   
  All reader inherited from this class should contain methods:
- 
-    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is in common.h file) that should be added
-    - `recalcRGB` - whether point should be colored according to its intensity
+ 1. To get some lidar frame use method **getLasFrame** on object:
+  
+  
+    - `localfile` - lidar file in which the frame will be searched
+    - `index` - index of frame, which should be returned
 
-This method returns  requested lidar frame
 ```js
-BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor  )
+BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor  );
 ```
   
+
 
 
 
