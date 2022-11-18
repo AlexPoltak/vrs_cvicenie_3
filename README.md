@@ -58,17 +58,18 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 ## baselidarreader is a template for all readers which inherit from this class.
   
  All reader inherited from this class should contain methods:
+  
   1. Open prepared file:
   
     - `pcapfile` -  name of lidar file
-  
+
 If given file exists **returns true**, else **returns false**.
 ```js
 int openPreparedFile(std::string pcapfile)
 ``` 
   
   
- 1. To get some lidar frame use method **getLasFrame** on object:
+  1. To get some lidar frame use method **getLasFrame** on object:
   
   
     - `localfile` - lidar file in which the frame will be searched
