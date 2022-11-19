@@ -30,7 +30,7 @@ new BaseFrame();
 2. To add point to frame use method **addPoint** on object:
   
   
-    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is in common.h file) that should be added
+    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is defined in common.h file) that should be added
     - `r ,g, b` - defines a RGB color of point
 
 ```js
@@ -119,7 +119,7 @@ void setFramesIDs(std::vector<FrameFileInfo> newFrames)
 BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor);
 ```
 
-7. To get actual position of reading in lidar file use method:
+7. To get actual reading position in lidar file use method:
   
 ```js
 uint64_t getactualfilepos();
@@ -155,24 +155,39 @@ std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines
 <details><summary>clidartoframetrans</summary>
 <p>
 
-## Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
-This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+## This class is used for transformation of lidar to IMU based on transformation structures.
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame promoted to class **QCloudAerialView** to .ui file.
-
-2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
-  
-    - `inputcloud` - the entire cloud that generated the backend for display
-    - `llp1` - right centered point of cut(on right side of trajectory)
-    - `llc1` - centered point of cut, defined by user
-    - `llp2` - left centered point of cut(on left side of trajectory)
-    - `cutwidth` - distance from cut
-    - `newusedZones` - zones which are used
+1. To generate transformation matrix of lidar data to imu, call constructor of this class:
+    - `laserToBodyCalib` - calibration structure of transformation from lidar to imu
+    - `laserToBodyTransf` - transformation structure of lidar to imu
+    - `lidoffset` - offset of lidar
 
 ```js
-void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
+CLidarToFrameTrans(const Transformation &laserToBodyCalib,const Transformation &laserToBodyTransf,double lidoffset);
+
 ```
+2. To transform some point from lidar to imu call **rotatePointToFrame** on object of this class:
+  
+    - `point` - point that should be transformed
+  
+&emsp;&emsp;It returns basepointinfo structure(structure that holds transformed point info-it is defined in common.h file)
+```js
+basepointinfo rotatePointToFrame(basepointinfo point)
+```
+ 
+3. To get lidar to IMU transformation matrix call:
+  
+```js
+Eigen::Affine3f getLidarToImuRotation()
+``` 
+
+4. To get lidar offset call:
+  
+```js
+double getLidarRotOffset()
+``` 
+ 
 </p>
 </details>
 
