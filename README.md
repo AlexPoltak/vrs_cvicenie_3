@@ -1,9 +1,3 @@
-<script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
-<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"/>
-<style>body { color: red }</style>
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="left">
@@ -225,6 +219,17 @@ double getLidarRotOffset()
 ```js
 void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
 ```
+  
+  
+  ```render-babel
+class Demo extends React.Component {
+  componentDidMount() {
+    setInterval(() => this.forceUpdate(), 500)
+  }
+  render() {
+    return <h1>This is cool times {Date.now()}</h1>
+  }
+}
 
 </p>
 </details>
@@ -369,4 +374,6 @@ void setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
 ##### 5. GarminPlayer app
 ##### 6. GoProPlayer app
 
-
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@15.6.1/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.min.js"></script>
