@@ -480,15 +480,55 @@ bool isPointInZone(double x, double y)
 <details><summary>laserframerestriciton</summary>
 <p>
 
-## undoselectionstack is the class which holds history of selections, so you can go through this history.
+## laserframerestriciton is the class that defines restrictions to add point into frame.
+Filters are stored in registry.
+
+```diff
+- Please make sure, your application has correctly set OrganizationName and ApplicationName. Otherwise you wont find any filters.
+```
+
+The structure of registry entry is:<br> <br>HKEY_CURRENT_USER/SOFTWARE/ORGANIZATION_NAME/APPLICATION_NAME/filters/ID
+
+<br><br> Each filters entry has a name and an array of regions.
 
 ### Getting Started
-1. If you want to use this somewhere, first of all you have to call **createNewProject** on object of this class:
-     - `projj` - reference for changing trajectory states 
-```js
- void createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
-```  
+1. To start use constructor of this class and create object:
   
+```js
+laserFrameRestrictionBase::laserFrameRestrictionBase()
+```
+
+or
+
+     - `lidtrans` - lidar transformation to body data(see clidartoframetrans section)
+```js
+laserFrameRestrictionBase::laserFrameRestrictionBase(CLidarToFrameTrans *lidtrans)
+```
+
+or
+
+     - `whichRestrictions` - id of filter that will be used
+     - `lidtrans` - lidar transformation to body data(see clidartoframetrans section)
+
+
+```js
+laserFrameRestrictionBase::laserFrameRestrictionBase(int whichRestrictions, CLidarToFrameTrans *lidtrans)
+```
+
+2. To determine if point is in laser limits and inside the defined region use:
+   
+     - `point` - point(structure that holds point info, which we can get from lidar file- it is defined in common.h file) which is observed
+
+&emsp;&emsp;It **returns true** when point is in ranges, else **return false** - it should be filtered
+
+```js
+bool pointInRange(basepointinfo point)
+```
+
+
+
+
+
 ---  
   
 </p>
