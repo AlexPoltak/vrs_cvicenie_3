@@ -6,9 +6,10 @@
 </div>
   <h1 align="left">Libs LidarAndTrans</h1>
 
-## This library is used in two main ways: 
-1. For transformation between devices(lidar,camera,imu) and also between  what the device is connected to(drone, car, pedestrian).
-2. For reading lidar file and manipulating with data obtainded from this file.<br />
+## This library is used in three main ways: 
+1. For reading lidar file and manipulating with data obtainded from this file
+2. For transformation between devices(lidar,camera,imu) and also between  what the device is connected to(drone, car, pedestrian).
+3. It also includes methods for colorization of points by camera frames.<br />
 ### More in specific sections below. <br /><br />
 This library Consists of:
 
