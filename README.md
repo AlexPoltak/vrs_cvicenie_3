@@ -172,7 +172,7 @@ CLidarToFrameTrans(const Transformation &laserToBodyCalib,const Transformation &
   
     - `point` - point that should be transformed
   
-&emsp;&emsp;It returns basepointinfo structure(structure that holds transformed point info-it is defined in common.h file)
+&emsp;&emsp;It returns **basepointinfo structure**(structure that holds transformed point info-it is defined in common.h file)
 ```js
 basepointinfo rotatePointToFrame(basepointinfo point)
 ```
@@ -256,7 +256,7 @@ int getLaserModelType()
     - `colormodel` - color model
 
 ```js
-    BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel  );
+BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel  );
 
 ```
   
@@ -356,14 +356,14 @@ void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1
 ### Getting Started
 1. Most of the methods are inherited from baselidarreader class.
   
-2. To start use constructor of this class:
+2. To start use constructor of this class and create object:
 
     - `pcapfile` - lidar file
   
 ```js
 HesaiFileReader::HesaiFileReader(std::string pcapfile)
 ```
-2. Inherited method **getLaserModelType** for this class returns:
+3. Inherited method **getLaserModelType** for this class returns:
   
     - `0` - when model is XT32
     - `1` - when model is xt16
@@ -376,7 +376,7 @@ int getLaserModelType()
   <br>Another methods of this class:<br>
   
   
-3. To colorize frame with video from 360 camera call(It is not done yet):
+4. To colorize frame with video from 360 camera call(It is not done yet):
   
     - `frame` - frame that should be colored
     - `videodata` - video data(relation with trajectory and so on)
@@ -387,20 +387,20 @@ int getLaserModelType()
     void colorizeFrameWith360video(BaseFrame &frame,VideoInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
 ```
 
-4. To get number of frames call:
+5. To get number of frames call:
 
 ```js
 int getNumberOfFrames()
 ```
 
-5. To get Ids of frames(position of frames in lidar file) call:
+6. To get Ids of frames(position of frames in lidar file) call:
   
 ```js
 std::vector<FrameFileInfo> getFramesIDs()
 ```
 
 
-6. To check whether file is lidar file of this class:
+7. To check whether file is lidar file of this class:
   
     - `pcapfile` -  file
 
@@ -408,7 +408,7 @@ std::vector<FrameFileInfo> getFramesIDs()
 bool fileReader::isFileThisLidar(std::string pcapfile)
 ```
 
-7. To get ID of transformation based on given timestamp use:
+8. To get ID of transformation based on given timestamp use:
   
     - `pointTimestamp` -  timestamp of point
     - `transformation` -  vector of transformations, where is looking for specific transformation based on timestamp
@@ -428,15 +428,47 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>imageframerestriciton</summary>
 <p>
 
-## undoselectionstack is the class which holds history of selections, so you can go through this history.
+## imageframerestriciton is the class that manages filtering image parts for colorization.
+Filters are stored in registry and each filter can have multiple zones.
+Filters are defined as polygones where if a points falls into, it shouldnt be colored by this pixel.
+```diff
+- Please make sure, your application has correctly set OrganizationName and ApplicationName. Otherwise you wont find any filters.
+```
+
+The structure of registry entry is HKEY_CURRENT_USER/SOFTWARE/ORGANIZATION_NAME/APPLICATION_NAME/image_restriction_zones/ID
+ each image_restriction_zones entry has a name and an array of regions, each region has an array of points defined as x,y pairs, each in range<0,1>
 
 ### Getting Started
-1. If you want to use this somewhere, first of all you have to call **createNewProject** on object of this class:
-     - `projj` - reference for changing trajectory states 
-```js
- void createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
-```  
+1. To start use constructor of this class and create object:
   
+```js
+imageFrameRestriction::imageFrameRestriction()
+```
+2. To load some filter from registry by given name call:
+
+     - `filtername` - name of filter to be loaded, if not existing or "" filter is created empty
+```js
+void loadFilter(std::string filtername)
+```  
+
+3. To load some filter from registry by given id call:
+
+     - `filterid` - id of filter to be loaded, if not existing or less than 0, filter is created empty
+```js
+void loadFilter(int filterid)
+```  
+
+4. To check whether point is in filter zone and should be filtered call:
+     - `x` - x coordinate of point
+     - `y` - y coordinate of point
+     
+&emsp;&emsp;It **returns true** when point is in filter zone, else **return false**
+```js
+bool isPointInZone(double x, double y)
+```  
+
+
+
 ---  
   
 </p>
@@ -468,7 +500,6 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>OptechFileReader</summary>
 <p>
 
-
 ##  This class is used for reading and manipulating with Optech lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
     
@@ -482,11 +513,9 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 1. Most of the methods are inherited from baselidarreader class.
   
 2. To start use constructor of this class:
-
-    - `pcapfile` - lidar file
   
 ```js
-HesaiFileReader::HesaiFileReader(std::string pcapfile)
+OptechFileReader::OptechFileReader()
 ```
 2. Inherited method **getLaserModelType** for this class returns:
 
@@ -535,14 +564,63 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>optechinternalfilereader</summary>
 <p>
 
-## undoselectionstack is the class which holds history of selections, so you can go through this history.
-
+##  This clss is used for reading and manipulating with Optech lidar data, specifically stored on internal disk. 
+ These data are in
+ specific format. For manipulating with these data in this class, it is
+ necessary to change the internal data format to our format. This is done using
+ app InternalOptechToCreatorOptechModificator.
+ This class inherited methods from baselidarreader class.
+    
+```diff
+- see baselidarreader section
+```
+  You can call all this inherited method on object of this class.
+  This is implemented for model CL-360
+  
 ### Getting Started
-1. If you want to use this somewhere, first of all you have to call **createNewProject** on object of this class:
-     - `projj` - reference for changing trajectory states 
+1. Most of the methods are inherited from baselidarreader class.
+  
+2. To start use constructor of this class:
+  
 ```js
- void createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
-```  
+OptechInternalFileReader::OptechInternalFileReader()
+```
+2. Inherited method **getLaserModelType** for this class returns:
+
+    - `1` - when model is CL-360
+
+```js
+int getLaserModelType()
+```
+  
+  <br>Another methods of this class:<br>
+  
+
+3. To get Ids of frames(position of frames in lidar file) call:
+  
+```js
+std::vector<FrameFileInfo> getFramesIDs()
+```
+
+
+4. To check whether file is lidar file of this class:
+  
+    - `pcapfile` -  file
+
+```js
+bool fileReader::isFileThisLidar(std::string pcapfile)
+```
+
+5. To get ID of transformation based on given timestamp use:
+  
+    - `pointTimestamp` -  timestamp of point
+    - `transformation` -  vector of transformations, where is looking for specific transformation based on timestamp
+    - `previousID` -  previous transformation ID
+
+```js
+int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<Transformation> &transformation,int previousID)
+```
+
   
 ---  
   
