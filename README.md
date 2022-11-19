@@ -198,6 +198,9 @@ double getLidarRotOffset()
 
 ##  This library is used for reading and manipulating with Velodyne lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
+  
+  $${\color{red}see baselidarreader section}$$
+  
 ```diff
 - see baselidarreader section
 ```
