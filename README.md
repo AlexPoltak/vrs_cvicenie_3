@@ -54,9 +54,9 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 
 <details><summary>baselidarreader</summary>
 <p>
-  
-#baselidarreader is a template for all readers which inherit from this class
-#baselidarreader-is-a-template-for-all-readers-which-inherit-from-this-class
+  <h4 id="baselidarreader">
+baselidarreader is a template for all readers which inherit from this class
+</h4>
  All reader inherited from this class should contain methods:
   
 1. Open prepared file:
@@ -199,7 +199,7 @@ double getLidarRotOffset()
 ##  This library is used for reading and manipulating with Velodyne lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
   
-  You can call all this inherited method on object of this class. [Inherited methods](baselidarreader-is-a-template-for-all-readers-which-inherit-from-this-class)
+  You can call all this inherited method on object of this class. [Inherited methods](baselidarreader)
   
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
