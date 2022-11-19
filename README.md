@@ -347,7 +347,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrame(BaseFrame &frame,int frameID=0,int colormode=0);
 ```
 
-3. You get transformed frame(frame points) in global coordinates also by using method:
+3. You can get transformed frame(frame points) in global coordinates also by using method:
 
     - `frame` - frame that will be transformed
     - `frameID` - ID of frame
