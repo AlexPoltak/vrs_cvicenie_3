@@ -198,8 +198,9 @@ double getLidarRotOffset()
 
 ##  This library is used for reading and manipulating with Velodyne lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
-<span style="color: green"> See baselidarreader section</span>
-
+```diff
+- see baselidarreader section
+```
   You can call all this inherited method on object of this class. See the baselidarreader section
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
