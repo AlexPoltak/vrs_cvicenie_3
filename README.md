@@ -298,9 +298,6 @@ bool fileReader::isFileThisLidar(std::string pcapfile)
 std::vector<long long> calculateTimestampOffset()
 ```
 
-
-```
-
 </p>
 </details>
   
@@ -328,6 +325,7 @@ This class also takes care of the interaction during measurement(in this frame).
 void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
 ```
 
+---  
 </p>
 </details>
 
@@ -401,7 +399,7 @@ bool fileReader::isFileThisLidar(std::string pcapfile)
 ```
 
 
-  
+---  
 </p>
 </details>
 
