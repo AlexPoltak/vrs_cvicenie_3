@@ -435,8 +435,8 @@ Filters are defined as polygones where if a points falls into, it shouldnt be co
 - Please make sure, your application has correctly set OrganizationName and ApplicationName. Otherwise you wont find any filters.
 ```
 
-The structure of registry entry is HKEY_CURRENT_USER/SOFTWARE/ORGANIZATION_NAME/APPLICATION_NAME/image_restriction_zones/ID
-<br> Each image_restriction_zones entry has a name and an array of regions, each region has an array of points defined as x,y pairs, each in range<0,1>
+The structure of registry entry is:<br> HKEY_CURRENT_USER/SOFTWARE/ORGANIZATION_NAME/APPLICATION_NAME/image_restriction_zones/ID
+<br><br> Each image_restriction_zones entry has a name and an array of regions, each region has an array of points defined as x,y pairs, each in range<0,1>
 
 ### Getting Started
 1. To start use constructor of this class and create object:
