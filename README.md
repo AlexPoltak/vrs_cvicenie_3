@@ -201,7 +201,7 @@ double getLidarRotOffset()
   
   You can call all this inherited method on object of this class. 
   
-  [click on this link](#baselidarreader-is-a-template-for-all-readers-which-inherit-from-this-class)
+  [click on this link](#baselidarreader)
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
