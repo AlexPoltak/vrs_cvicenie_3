@@ -317,24 +317,52 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>globaltramsformation</summary>
 <p>
 
-## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way).</br>
-This class also takes care of the interaction during measurement(in this frame).
+## This class is used for transformation of points or camera to global coordinates.
+It is also used for colorization of points by camera frames.
+Colorization is implemented for camera models Garmin, LabPano and Sony.
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
+1. To start use constructor of this class:
 
-2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+    - `transformation` - lidar file
+    - `bodyToVehicle` - transformation structure between IMU and what the imu is attached to(drone, car, pedestrian)
+    - `boresighToVehicle` - transformation structure for boresight
+    - `iecalibparams` - transformation structure for compensation of bodyToVehicle rotation
+    - `restriction` - restriction to add some points into frame(see laserframerestriction section)
+    - `offset` - timestamp offset
+
   
-    - `inputcloud` - the entire cloud that generated the backend for display
-    - `llp1` - right centered point of cut(on right side of trajectory)
-    - `llc1` - centered point of cut, defined by user
-    - `llp2` - left centered point of cut(on left side of trajectory)
-    - `cutwidth` - distance from cut
-    - `newusedZones` - zones which are used
+```js
+globaltramsformation::globaltramsformation(std::vector<Transformation> *transformation,const Transformation &bodyToVehicle,const Transformation &boresighToVehicle,const Transformation &iecalibparams,laserFrameRestrictionBase *restriction,const int offset)
+```
+2. To get transformed frame(frame points) in global coordinates use method:
+
+    - `frame` - frame that will be transformed
+    - `frameID` - ID of frame
+    - `colormode` - color model
+
+&emsp;&emsp; - At first frame is transformed from IMU to what the IMU is attached to(drone, car, pedestrian).
+&emsp;&emsp; * Then this transformed frame is transform to global coordinates. </ol>
+```js
+    BaseFrame *transformFrame(BaseFrame &frame,int frameID=0,int colormode=0);
+```
+
+
+
+
+2. To set transformation matrix of camera to what the camera is attached to(drone, car, pedestrian) call:
+
+    - `CameraToVehicle` -  transformation structure of camera to what the camera is attached to(drone, car, pedestrian).
+    - `baseRot` -  rotation of camera which ensures that the axes of rotation about the Z axis coincide with the imu
+    - `offset` -  camera time offset
 
 ```js
-void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+    void setCameraToVeh(const Transformation &CameraToVehicle,double baseRot,const double offset);
 ```
+
+
+
+
 
 ---  
 </p>
