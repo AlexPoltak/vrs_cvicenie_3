@@ -1,3 +1,9 @@
+<script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"/>
+<style>body { color: red }</style>
+
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="left">
@@ -201,7 +207,7 @@ double getLidarRotOffset()
   
   You can call all this inherited method on object of this class. 
   
-  [click on this link](#baselidarreader)
+  [click on this link](#baselidarreader-is-a-template-for-all-readers-which-inherit-from-this-class)
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
