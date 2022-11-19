@@ -202,7 +202,7 @@ double getLidarRotOffset()
 ```diff
 - see baselidarreader section
 ```
-  You can call all this inherited method on object of this class. See the baselidarreader section
+  You can call all this inherited method on object of this class.
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
