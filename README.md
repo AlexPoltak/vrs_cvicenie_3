@@ -198,10 +198,13 @@ double getLidarRotOffset()
 
 ##  This library is used for reading and manipulating with Velodyne lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
+  
+  You can call all this inherited method on object of this class. [Inherited methods](## baselidarreader is a template for all readers which inherit from this class.)
+  
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
+1. Most of the methods are inherited from baselidarreader class
 
 2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
   
