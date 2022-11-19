@@ -138,12 +138,13 @@ int getLaserModelType()
 ``` 
 
 
-
-10. To get id of lines for a preset option. This output is used for filtering when only some of the laser data are wanted:
+10. To get id of lines for a preset option call **getUnusedLidarLinesForPresetOption**:
   
+    - `pcapfile` -  file
+
+&emsp;&emsp;This output is used for filtering when only some of the laser data are wanted
 ```js
-std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines)
-``` 
+std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines);
 
 ---
 
@@ -196,14 +197,14 @@ double getLidarRotOffset()
 <details><summary>fileReader</summary>
 <p>
 
-##  This library is used for reading and manipulating with Velodyne lidar data.
+##  This class is used for reading and manipulating with Velodyne lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
     
 ```diff
 - see baselidarreader section
 ```
   You can call all this inherited method on object of this class.
-  This is implemented for models VLP-16, Hi-Res and Ultra.
+ This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
 1. Most of the methods are inherited from baselidarreader class.
@@ -264,12 +265,41 @@ int getLaserModelType()
     - `frame` - frame that should be colored
     - `videodata` - video data(relation with trajectory and so on)
     - `cap` - video capture
+    - `openedFileID` - ID of opened file
 
 ```js
     void colorizeFrameWith360video(BaseFrame &frame,VideoInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
-
 ```
 
+6. To get number of frames call:
+
+```js
+int getNumberOfFrames()
+```
+
+7. To get Ids of frames(position of frames in lidar file) call:
+  
+```js
+std::vector<FrameFileInfo> getFramesIDs()
+```
+
+
+8. To check whether file is lidar file of this class:
+  
+    - `pcapfile` -  file
+
+```js
+bool fileReader::isFileThisLidar(std::string pcapfile)
+```
+
+9. To calculate and return timestamp offsets from file call:
+  
+```js
+std::vector<long long> calculateTimestampOffset()
+```
+
+
+```
 
 </p>
 </details>
@@ -306,17 +336,71 @@ void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1
 <details><summary>hesaifilereader</summary>
 <p>
 
-## qpolygonrubberband is class for painting polygon.
-
+##  This class is used for reading and manipulating with Hesai lidar data.
+  Most of the methods are inherited from baselidarreader class and implemented here.
+    
+```diff
+- see baselidarreader section
+```
+  You can call all this inherited method on object of this class.
+  This is implemented for models XT-32, XT-16 and XT32M2.
+  
 ### Getting Started
-1. To set polygon and draw it, call **setPolygon** on object of this class:
+1. Most of the methods are inherited from baselidarreader class.
+  
+2. To start use constructor of this class:
+
+    - `pcapfile` - lidar file
+  
 ```js
-void setPolygon(std::vector<QPoint> polygonPoints)
+HesaiFileReader::HesaiFileReader(std::string pcapfile)
 ```
-&emsp;&emsp;Or :
+2. Inherited method **getLaserModelType** for this class returns:
+  
+    - `0` - when model is XT32
+    - `1` - when model is xt16
+    - `2` - when model is xt32m2x
+
 ```js
-void setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
+int getLaserModelType()
 ```
+  
+  <br>Another methods of this class:<br>
+  
+  
+3. To colorize frame with video from 360 camera call(It is not done yet):
+  
+    - `frame` - frame that should be colored
+    - `videodata` - video data(relation with trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - ID of opened file
+
+```js
+    void colorizeFrameWith360video(BaseFrame &frame,VideoInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
+```
+
+4. To get number of frames call:
+
+```js
+int getNumberOfFrames()
+```
+
+5. To get Ids of frames(position of frames in lidar file) call:
+  
+```js
+std::vector<FrameFileInfo> getFramesIDs()
+```
+
+
+6. To check whether file is lidar file of this class:
+  
+    - `pcapfile` -  file
+
+```js
+bool fileReader::isFileThisLidar(std::string pcapfile)
+```
+
+
   
 </p>
 </details>
