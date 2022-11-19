@@ -221,7 +221,7 @@ void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1
 ```
   
   
-  ```render-babel
+```render-babel
 class Demo extends React.Component {
   componentDidMount() {
     setInterval(() => this.forceUpdate(), 500)
@@ -230,6 +230,12 @@ class Demo extends React.Component {
     return <h1>This is cool times {Date.now()}</h1>
   }
 }
+
+ReactDOM.render(
+  <Demo/>,
+  DOM_NODE
+)
+```
 
 </p>
 </details>
