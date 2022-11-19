@@ -347,7 +347,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrame(BaseFrame &frame,int frameID=0,int colormode=0);
 ```
 
-Or use:
+&emsp;&emsp;Or use:
 
     - `frame` - frame that will be transformed
     - `lidarToImuRot` - transformation matrix between lidar and IMU
