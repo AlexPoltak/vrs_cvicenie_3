@@ -196,8 +196,9 @@ double getLidarRotOffset()
 <details><summary>fileReader</summary>
 <p>
 
-## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
-This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+##  This library is used for reading and manipulating with Velodyne lidar data.
+  Most of the methods are inherited from baselidarreader class and implemented here.
+  This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
 1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
