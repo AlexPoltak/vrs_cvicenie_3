@@ -222,7 +222,7 @@ fileReader::fileReader(std::string pcapfile)
 int getLaserModelType()
 ```
   
-  Another methods of this class:
+  Another methods of this class:<br>
 3. To return requested lidar frame in sphere, call:
   
     - `localfile` - lidar file in which the frame will be searched
