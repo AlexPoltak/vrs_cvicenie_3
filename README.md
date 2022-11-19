@@ -217,7 +217,7 @@ double getLidarRotOffset()
 ```js
 fileReader::fileReader(std::string pcapfile)
 ```
-2. Inherited method **getLaserModelType** for this class returns:
+3. Inherited method **getLaserModelType** for this class returns:
   
     - `0` - when model is VLP16
     - `1` - when model is Ultra
@@ -229,7 +229,7 @@ int getLaserModelType()
   
   <br>Another methods of this class:<br>
   
-3. To return requested lidar frame in sphere, call:
+4. To return requested lidar frame in sphere, call:
   
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
@@ -245,7 +245,7 @@ int getLaserModelType()
 
 ```
  
-4. To get completed sphere call:
+5. To get completed sphere call:
   
     - `timestamp` - time stamp
     - `spheresize` - size of sphere
@@ -261,7 +261,7 @@ BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *
 
 ```
   
-5. To colorize frame with video from 360 camera call(It is not done yet):
+6. To colorize frame with video from 360 camera call(It is not done yet):
   
     - `frame` - frame that should be colored
     - `videodata` - video data(relation with trajectory and so on)
@@ -272,20 +272,20 @@ BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *
     void colorizeFrameWith360video(BaseFrame &frame,VideoInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
 ```
 
-6. To get number of frames call:
+7. To get number of frames call:
 
 ```js
 int getNumberOfFrames()
 ```
 
-7. To get Ids of frames(position of frames in lidar file) call:
+8. To get Ids of frames(position of frames in lidar file) call:
   
 ```js
 std::vector<FrameFileInfo> getFramesIDs()
 ```
 
 
-8. To check whether file is lidar file of this class:
+9. To check whether file is lidar file of this class:
   
     - `pcapfile` -  file
 
@@ -293,13 +293,13 @@ std::vector<FrameFileInfo> getFramesIDs()
 bool fileReader::isFileThisLidar(std::string pcapfile)
 ```
 
-9. To calculate and return timestamp offsets from file call:
+10. To calculate and return timestamp offsets from file call:
   
 ```js
 std::vector<long long> calculateTimestampOffset()
 ```
 
-10. To get ID of transformation based on given timestamp use:
+11. To get ID of transformation based on given timestamp use:
   
     - `pointTimestamp` -  timestamp of point
     - `transformation` -  vector of transformations, where is looking for specific transformation based on timestamp
@@ -350,7 +350,6 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 &emsp;&emsp;Or use:
 
     - `frame` - frame that will be transformed
-    - `lidarToImuRot` - transformation matrix between lidar and IMU
     - `frameID` - ID of frame
     - `colormode` - color model
 
