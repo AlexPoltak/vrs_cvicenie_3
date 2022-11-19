@@ -341,8 +341,8 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     - `frameID` - ID of frame
     - `colormode` - color model
 
-&emsp;&emsp; - At first frame is transformed from IMU to what the IMU is attached to(drone, car, pedestrian).
-&emsp;&emsp; * Then this transformed frame is transform to global coordinates. </ol>
+- At first frame is transformed from IMU to what the IMU is attached to(drone, car, pedestrian).
+* Then this transformed frame is transform to global coordinates. </ol>
 ```js
     BaseFrame *transformFrame(BaseFrame &frame,int frameID=0,int colormode=0);
 ```
