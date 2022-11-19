@@ -298,6 +298,16 @@ bool fileReader::isFileThisLidar(std::string pcapfile)
 std::vector<long long> calculateTimestampOffset()
 ```
 
+10. To get ID of transformation based on given timestamp use:
+  
+    - `pointTimestamp` -  timestamp of point
+    - `transformation` -  vector of transformations, where is looking for specific transformation based on timestamp
+    - `previousID` -  previous transformation ID
+
+```js
+int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<Transformation> &transformation,int previousID)
+```
+
 </p>
 </details>
   
@@ -398,6 +408,15 @@ std::vector<FrameFileInfo> getFramesIDs()
 bool fileReader::isFileThisLidar(std::string pcapfile)
 ```
 
+7. To get ID of transformation based on given timestamp use:
+  
+    - `pointTimestamp` -  timestamp of point
+    - `transformation` -  vector of transformations, where is looking for specific transformation based on timestamp
+    - `previousID` -  previous transformation ID
+
+```js
+int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<Transformation> &transformation,int previousID)
+```
 
 ---  
 </p>
@@ -449,15 +468,62 @@ bool fileReader::isFileThisLidar(std::string pcapfile)
 <details><summary>OptechFileReader</summary>
 <p>
 
-## undoselectionstack is the class which holds history of selections, so you can go through this history.
 
-### Getting Started
-1. If you want to use this somewhere, first of all you have to call **createNewProject** on object of this class:
-     - `projj` - reference for changing trajectory states 
-```js
- void createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
-```  
+##  This class is used for reading and manipulating with Optech lidar data.
+  Most of the methods are inherited from baselidarreader class and implemented here.
+    
+```diff
+- see baselidarreader section
+```
+  You can call all this inherited method on object of this class.
+  This is implemented for model CL-360
   
+### Getting Started
+1. Most of the methods are inherited from baselidarreader class.
+  
+2. To start use constructor of this class:
+
+    - `pcapfile` - lidar file
+  
+```js
+HesaiFileReader::HesaiFileReader(std::string pcapfile)
+```
+2. Inherited method **getLaserModelType** for this class returns:
+
+    - `1` - when model is CL-360
+
+```js
+int getLaserModelType()
+```
+  
+  <br>Another methods of this class:<br>
+  
+
+3. To get Ids of frames(position of frames in lidar file) call:
+  
+```js
+std::vector<FrameFileInfo> getFramesIDs()
+```
+
+
+4. To check whether file is lidar file of this class:
+  
+    - `pcapfile` -  file
+
+```js
+bool fileReader::isFileThisLidar(std::string pcapfile)
+```
+
+5. To get ID of transformation based on given timestamp use:
+  
+    - `pointTimestamp` -  timestamp of point
+    - `transformation` -  vector of transformations, where is looking for specific transformation based on timestamp
+    - `previousID` -  previous transformation ID
+
+```js
+int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<Transformation> &transformation,int previousID)
+```
+
 ---  
   
 </p>
