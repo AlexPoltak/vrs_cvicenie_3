@@ -199,43 +199,73 @@ double getLidarRotOffset()
 ##  This library is used for reading and manipulating with Velodyne lidar data.
   Most of the methods are inherited from baselidarreader class and implemented here.
   
-  You can call all this inherited method on object of this class. 
-  
-  [click on this link](#baselidarreader-is-a-template-for-all-readers-which-inherit-from-this-class)
+  You can call all this inherited method on object of this class. See the baselidarreader section
   This is implemented for models VLP-16, Hi-Res and Ultra.
   
 ### Getting Started
-1. Most of the methods are inherited from baselidarreader class
-
-2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+1. Most of the methods are inherited from baselidarreader class.
   
-    - `inputcloud` - the entire cloud that generated the backend for display
-    - `llp1` - right centered point of cut(on right side of trajectory)
-    - `llc1` - centered point of cut, defined by user
-    - `llp2` - left centered point of cut(on left side of trajectory)
-    - `cutwidth` - distance from cut
-    - `newusedZones` - zones which are used
+2. To start use constructor of this class:
+
+    - `pcapfile` - lidar file
+  
+```js
+fileReader::fileReader(std::string pcapfile)
+```
+2. Inherited method **getLaserModelType** for this class returns:
+  
+    - `0` - when model is VLP16
+    - `1` - when model is Ultra
+    - `2` - when model is Hi-Res
 
 ```js
-void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+int getLaserModelType()
 ```
   
+  Another methods of this class:
+3. To return requested lidar frame in sphere, call:
   
-```render-babel
-class Demo extends React.Component {
-  componentDidMount() {
-    setInterval(() => this.forceUpdate(), 500)
-  }
-  render() {
-    return <h1>This is cool times {Date.now()}</h1>
-  }
-}
+    - `localfile` - lidar file in which the frame will be searched
+    - `index` - index of frame, which should be returned
+    - `lidToFrame` - lidar transformation to imu
+    - `restriction` - restriction to add some points to frame(see laserFrameRestriction section)
+    - `videodata` - video data(relation with trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - its used for colorization(it is not used yet)
+    - `colormodel` - color model
 
-ReactDOM.render(
-  <Demo/>,
-  DOM_NODE
-)
+```js
+    BaseFrame getLasSphere(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel  );
+
 ```
+ 
+4. To get completed sphere call:
+  
+    - `timestamp` - time stamp
+    - `spheresize` - size of sphere
+    - `lidToFrame` - lidar transformation to imu
+    - `restriction` - restriction to add some points to frame(see laserFrameRestriction section)
+    - `videodata` - video data(relation with trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - its used for colorization(it is not used yet)
+    - `colormodel` - color model
+
+```js
+    BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel  );
+
+```
+  
+5. To colorize frame with video from 360 camera call(It is not done yet):
+  
+    - `frame` - frame that should be colored
+    - `videodata` - video data(relation with trajectory and so on)
+    - `cap` - video capture
+
+```js
+    void colorizeFrameWith360video(BaseFrame &frame,VideoInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
+
+```
+
 
 </p>
 </details>
