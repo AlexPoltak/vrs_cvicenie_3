@@ -317,8 +317,9 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>globaltramsformation</summary>
 <p>
 
-## This class is used for transformation of frame(frame points) or camera to global coordinates. Its returns especially frame object(baseframe) - see baseframe section or returns transformation matrixes<br>
-It is also used for colorization of points by camera frames.
+## This class is used primarily for two reasons: 
+- For transformation of frame(frame points) or camera to global coordinates. Its returns especially frame object(baseframe) - see baseframe section or returns transformation matrixes<br>
+- It is also used for colorization of points by camera frames.
 Colorization is implemented for camera models Garmin, LabPano and Sony.
   
 ### First we are getting Started With Transformations:
