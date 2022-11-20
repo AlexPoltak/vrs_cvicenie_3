@@ -419,15 +419,15 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 
 
-10. If you want to interpolate some data you can use:
+10. If you want to interpolate some data ( By Cubic Hermite Interpolation ) you can use: 
 
     - `A` - 1.control point
     - `B` - 2.control point
     - `C` - 3.control point
     - `D` - 4.control point
     - `t` - is a value that goes from 0 to 1 to interpolate in a continuous way across uniformly sampled data points. When t is 0, method will return B.  When t is 1, method will return C.
-
-This is Cubic Hermite Interpolation. [More you can read there](https://blog.demofox.org/2015/08/08/cubic-hermite-interpolation/)
+  
+&emsp;&emsp;[More about this interpolation you can read there](https://blog.demofox.org/2015/08/08/cubic-hermite-interpolation/)
 ```js
     double CubicHermiteL (const double &A, const double &B, const double &C, const double &D, const double &t);
 ```
