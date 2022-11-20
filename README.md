@@ -518,6 +518,28 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 ```
 
 
+4. If you want to colorize cloud by images from video use method **colorizeCloudByImages**:
+  
+    - `octree` - octree of cloud that stores colors of points after assignment
+    - `colors` - stores colors of points after assignment
+    - `mutexes` - mutexes that protect shared data from being simultaneously accessed by multiple threads
+    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `cameraIds` - ids of cameras from which are obtaining frame images
+    - `cap` - video capture
+    - `openedFileID` - ID of opened video file
+    - `timeshift` - time shift
+    - `imgFrameRestriction` - restriction to colorize zones of points
+    - `hsv_saturation` - saturation of colors would be changed based on this value
+    - `hsv_brightness` - brightness of colors would be changed based on this value
+    - `progress` - progress of colorization
+
+
+```js
+    void colorizeCloudByImages(octree_data<pcl::PointXYZI> &octree,std::vector<std::vector<std::uint32_t>> &colors,std::vector<std::mutex> &mutexes,CameraDataInfo &videodata,std::vector<int> cameraIds, cv::VideoCapture &cap,int &openedFileID,double timeshift,imageFrameRestriction *imgFrameRestriction,double hsv_saturation,double hsv_brightness,std::atomic_int &progress);
+
+```
+
+
 
 
 ---  
