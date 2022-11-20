@@ -105,7 +105,7 @@ void setFramesIDs(std::vector<FrameFileInfo> newFrames)
 ``` 
   
   
-6. To get some lidar frame use method **getLasFrame** on object:
+6. To obtain some lidar frame use method **getLasFrame** on object:
   
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
@@ -132,7 +132,7 @@ uint64_t getactualfilepos();
  uint64_t getmaxfilepos();
 ``` 
 
-9. To get model of lidar use method:
+9. If you want to find out the lidar model use method:
   
 ```js
 int getLaserModelType()
@@ -337,7 +337,7 @@ Colorization is implemented for camera models Garmin, LabPano and Sony.
 ```js
 globaltramsformation::globaltramsformation(std::vector<Transformation> *transformation,const Transformation &bodyToVehicle,const Transformation &boresighToVehicle,const Transformation &iecalibparams,laserFrameRestrictionBase *restriction,const int offset)
 ```
-2. To get transformed frame( frame points ) in global coordinates use method:
+2. To obtain transformed frame( frame points ) in global coordinates use method:
 
     - `frame` - frame that will be transformed
     - `frameID` - ID of frame
@@ -349,7 +349,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrame(BaseFrame &frame,int frameID=0,int colormode=0);
 ```
 
-3. You can get transformed frame(frame points) in global coordinates also by using method:
+3. You can obtain transformed frame(frame points) in global coordinates also by using method:
 
     - `frame` - frame that will be transformed
     - `lidarToImuRot` - transformation matrix between lidar and IMU
@@ -416,7 +416,6 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 ```js
     Eigen::Affine3f getTransformationFromTimestamp(long long pointTimestamp);
 ```
-
 
 
 10. If you want to interpolate some data ( By Cubic Hermite Interpolation ) you can use: 
@@ -583,7 +582,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 ```
 
-6. If you want to draw marker circle to frame from camera, use:
+6. To draw marker circle to frame from camera, use:
   
     - `marker` - marker that should be painted to image
     - `frame` - marker will be painted to this frame
@@ -630,7 +629,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     void rgb2hsv(double r, double g, double b, double &h,double &s, double &v);
 ```
 
-10. If you want to transform hsv color to rgb color call method:
+10. To transform hsv color to rgb color call method:
 
     - `h` - hue part of the hsv in range <0,360>
     - `s` - saturation part of the hsv in range <0,1>
