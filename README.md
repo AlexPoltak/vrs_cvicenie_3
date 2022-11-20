@@ -72,7 +72,7 @@ int openPreparedFile(std::string pcapfile)
   
     - `pcapfile` -  name of lidar file
 
-&emsp;&emsp;If given file was init **returns number of frames**.
+&emsp;&emsp;If given file was inited **returns number of frames**.
 ```js
 int initFile(std::string pcapfile)
 ``` 
@@ -84,7 +84,7 @@ int initFile(std::string pcapfile)
     - `timeoffset` - timestamp offset
     - `stopcalculating` - disable/enable calculation
 
-&emsp;&emsp;If given file was init **returns size of output data**.
+&emsp;&emsp;If given file was inited **returns size of output data**.
 ```js
 int initFileWithTransformations(std::vector<FrameData> &outputData, std::string pcapfile, std::vector<Transformation> &transformation, int timeoffset, bool *stopcalculating = nullptr)
 ``` 
