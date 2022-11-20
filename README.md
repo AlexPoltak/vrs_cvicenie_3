@@ -858,13 +858,4 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 #### This library is used in:
 ##### 1. Creator app. 
 -   qcloudaerialview, qcloudcutwindow, qsidewayview will be shown, when user selects **Profiles** from the side menu.
-  
-##### 2. ColorCalibrator app
-##### 3. GarminPlayer app
-##### 4. GlobalCloudColorizer app
-##### 5. GarminPlayer app
-##### 6. GoProPlayer app
 
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-<script src="https://unpkg.com/react@15.6.1/dist/react.min.js"></script>
-<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.min.js"></script>
