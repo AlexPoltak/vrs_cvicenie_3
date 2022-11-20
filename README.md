@@ -56,7 +56,7 @@ void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
 <details><summary>baselidarreader</summary>
 <p>
 
-### baselidarreader is a template for all readers which inherit from this class
+### baselidarreader is a template for all lidar file readers which inherit from this class
 
  All reader inherited from this class should contain methods:
   
