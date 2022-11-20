@@ -317,7 +317,7 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>globaltramsformation</summary>
 <p>
 
-## This class is used primarily for two reasons: 
+## This class is used for two reasons: 
 - For transformation of frame(frame points) or camera to global coordinates. Its returns especially frame object(baseframe) - see baseframe section or returns transformation matrixes<br>
 - It is also used for colorization of points by camera frames.
 Colorization is implemented for camera models Garmin, LabPano and Sony.
@@ -470,14 +470,52 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 ```js
     Eigen::Affine3f getInverseCameraTransf(Transformation globaltr,Transformation CameraToVehicle);
-
 ```
 
 ### Colorization of points by camera frames:
-  
-  
+ 
+1. To generate color image from video for defined frame use:
 
+    - `retfr` - assigned color image for given frame(main output of this method)
+    - `frame` - the frame for which the image is generated
+    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - ID of opened video file
 
+```js
+    void getColorimageForFrameByVirb(ColorizingInfo* retfr,BaseFrame &frame,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
+```
+
+2. Second method to generate color image from video is:
+  
+    - `retfr` - assigned color image for given frame(main output of this method)
+    - `frameID` - frame ID(used for indexing in videodata), ID of frame for which the image is generated
+    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - ID of opened video file
+
+```js
+    void getColorimageForFrameByVirb(ColorizingInfo* retfr,int imageID,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
+```
+
+3. If you want to colorize frame by image from video use method:
+  
+    - `frame` - frame that will be colorized
+    - `imgfr` - image from video for given frame. Frame is colorized based on this image( you can get it by method getColorimageForFrameByVirb)
+    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - ID of opened video file
+    - `timeshift` - time shift
+    - `imgFrameRestriction` - restriction to colorize zones of points(see imageframerestriction section)
+    - `hsv_saturation` - saturation of colors would be changed based on this value
+    - `hsv_brightness` - brightness of colors would be changed based on this value
+    - `removeOtherColor` - removeOtherColor whether actual colors of points in frame restriction zones would be replaced by color based on intensity
+
+&emsp;&emsp;It returns info about colorizing(indexes of points that were colorized and position of camera)
+
+```js
+    ColorizedDataInfo colorizeFrame(BaseFrame &frame,ColorizingInfo *imgfr,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID,double timeshift,imageFrameRestriction *imgFrameRestriction,double hsv_saturation,double hsv_brightness,bool removeOtherColor=true);
+```
 
 
 
