@@ -418,13 +418,9 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 ```
 
 
+### Camera Transformations
 
-
-
-### Colorization of points by camera frames:
-  
-  
-2. To set transformation matrix of camera to what the camera is attached to(drone, car, pedestrian) call:
+1. To set transformation matrix of camera to what the camera is attached to(drone, car, pedestrian) call:
 
     - `CameraToVehicle` -  transformation structure of camera to what the camera is attached to(drone, car, pedestrian).
     - `baseRot` -  rotation of camera which ensures that the axes of rotation about the Z axis coincide with the imu
@@ -433,6 +429,54 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 ```js
     void setCameraToVeh(const Transformation &CameraToVehicle,double baseRot,const double offset);
 ```
+
+2. To get global transformation matrix of camera for given timestamp use:
+
+    - `time` - transformation is searched  based on this timestamp
+
+```diff
+- First you have to set transformation matrix of camera to what the camera is attached to(method setCameraToVeh)
+```
+```js
+    Eigen::Affine3f getCameraTransf(long long time);
+```
+
+3. To get inverse global transformation matrix of camera for given timestamp use:
+
+    - `time` - transformation is searched  based on this timestamp
+
+```diff
+- First you have to set transformation matrix of camera to what the camera is attached to(method setCameraToVeh)
+```
+```js
+    Eigen::Affine3f getInverseCameraTransf(long long time);
+```
+
+4. To get inverse global transformation matrix of camera based on given global transformation use:
+
+    - `globaltr` - global transformation structure
+
+```diff
+- First you have to set transformation matrix of camera to what the camera is attached to(method setCameraToVeh)
+```
+```js
+    Eigen::Affine3f getInverseCameraTransf(Transformation globaltr);
+```
+
+5. To get inverse global transformation matrix of camera you can use also :
+
+    - `globaltr` - global transformation structure
+    - `CameraToVehicle` - transformation structure of camera to what the camera is attached to(drone, car, pedestrian...)
+
+```js
+    Eigen::Affine3f getInverseCameraTransf(Transformation globaltr,Transformation CameraToVehicle);
+
+```
+
+### Colorization of points by camera frames:
+  
+  
+
 
 
 
