@@ -317,11 +317,12 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <details><summary>globaltramsformation</summary>
 <p>
 
-## This class is used for transformation of points or camera to global coordinates.
+## This class is used for transformation of frame(frame points) or camera to global coordinates. Its returns especially frame object(baseframe) - see baseframe section or returns transformation matrixes<br>
 It is also used for colorization of points by camera frames.
 Colorization is implemented for camera models Garmin, LabPano and Sony.
   
-### Getting Started
+### First we are getting Started With Transformations:
+  
 1. To start use constructor of this class:
 
     - `transformation` - lidar file
@@ -361,7 +362,30 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrame(BaseFrame &frame,Eigen::Affine3f lidarToImuRot, int frameID=0,int colormode=0);
 ```
 
+4. To get transformed frame(frame points) of given area in global coordinates use:
+  
+    - `frame` - frame that will be transformed
+    - `frameID` - ID of frame
+    - `colormode` -color model
+    - `areaToCheck` - only frame points in this area will be transformed and returned
+  
+```js
+    BaseFrame *transformFrameToArea(BaseFrame &frame,int frameID,int colormode,ExportAreaUTM areaToCheck);
+```
+ 
+5. To get transformed frame(frame points) to what the IMU is attached to(drone, car, pedestrian) use method:
+  
+    - `frame` - frame that will be transformed
 
+```js
+    BaseFrame *transformFrameToVehicle(BaseFrame &frame);
+```
+  
+### Colorization of points by camera frames:
+  
+  
+  
+  
 2. To set transformation matrix of camera to what the camera is attached to(drone, car, pedestrian) call:
 
     - `CameraToVehicle` -  transformation structure of camera to what the camera is attached to(drone, car, pedestrian).
