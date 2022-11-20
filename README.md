@@ -498,7 +498,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     void getColorimageForFrameByVirb(ColorizingInfo* retfr,int imageID,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID);
 ```
 
-3. If you want to colorize frame by image from video use method:
+3. If you want to colorize frame by image from video use method **colorizeFrame**:
   
     - `frame` - frame that will be colorized
     - `imgfr` - image from video for given frame. Frame is colorized based on this image( you can get it by method getColorimageForFrameByVirb)
