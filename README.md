@@ -322,7 +322,7 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 - It is also used for colorization of points by camera frames.
 Colorization is implemented for camera models Garmin, LabPano and Sony.
   
-### First we are getting Started With Transformations:
+### First we are getting started with Transformations:
   
 1. To start use constructor of this class:
 
@@ -352,12 +352,13 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 3. You can get transformed frame(frame points) in global coordinates also by using method:
 
     - `frame` - frame that will be transformed
+    - `lidarToImuRot` - transformation matrix between lidar and IMU
     - `frameID` - ID of frame
     - `colormode` - color model
 
 - At first, frame is transformed from lidar to IMU.
 * Then this transformed frame is transformed from IMU to what the imu is attached to(drone, car, pedestrian).
-+ Finally is transform to global coordinates
++ Finally the frame is transform into global coordinates
 
 ```js
     BaseFrame *transformFrame(BaseFrame &frame,Eigen::Affine3f lidarToImuRot, int frameID=0,int colormode=0);
@@ -382,9 +383,45 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrameToVehicle(BaseFrame &frame);
 ```
   
+
+6. To get ID of transformation structure by given timestamp call:
+
+    - `pointTimestamp` - timestamp based on which is looking for ID
+
+```js
+    BaseFrame *transformFrameToVehicle(BaseFrame &frame);
+```
+
+7. To obtain transformation structure based on given id use:
+
+    - `id` - id of transformation which should be returned
+
+```js
+  Transformation getTransformationStructFromID(double id)
+```
+  
+8. To obtain transformation structure based on given timestamp use:
+
+    - `pointTimestamp` - Based on this timestamp is looking for transformation structure
+
+```js
+    Transformation getTransformationStructFromTimestamp(long long pointTimestamp);
+```
+
+
+9. To obtain transformation matrix based on given timestamp call:
+
+    - `pointTimestamp` - timestamp based on which is looking for matrix
+
+```js
+    Eigen::Affine3f getTransformationFromTimestamp(long long pointTimestamp);
+```
+
+
+
+
+
 ### Colorization of points by camera frames:
-  
-  
   
   
 2. To set transformation matrix of camera to what the camera is attached to(drone, car, pedestrian) call:
