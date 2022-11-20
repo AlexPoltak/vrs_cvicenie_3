@@ -31,14 +31,14 @@ new BaseFrame();
 2. To add point to frame use method **addPoint** on object:
   
   
-    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is defined in common.h file) that should be added
+    - `pointtoadd` - point( Structure that holds point info, which we can get from lidar file- it is defined in common.h file ) that should be added
     - `r ,g, b` - defines a RGB color of point
 
 ```js
 void BaseFrame::addPoint(basepointinfo &pointtoadd,int r,int g, int b)
 ```
 3. You can also add point by another method **addPoint** on object:
-    - `pointtoadd` - point(structure that holds point info, which we can get from lidar file- it is in common.h file) that should be added
+    - `pointtoadd` - point( Structure that holds point info, which we can get from lidar file- it is in common.h file ) that should be added
     - `recalcRGB` - whether point should be colored according to its intensity
 
 ```js
@@ -173,7 +173,7 @@ CLidarToFrameTrans(const Transformation &laserToBodyCalib,const Transformation &
   
     - `point` - point that should be transformed
   
-&emsp;&emsp;It returns **basepointinfo structure**(structure that holds transformed point info-it is defined in common.h file)
+&emsp;&emsp;It returns **basepointinfo structure**( Structure that holds transformed point info-it is defined in common.h file )
 ```js
 basepointinfo rotatePointToFrame(basepointinfo point)
 ```
@@ -234,14 +234,14 @@ int getLaserModelType()
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
     - `lidToFrame` - lidar transformation to imu
-    - `restriction` - restriction to add some points to frame(see laserFrameRestriction section)
-    - `videodata` - video data(relation with trajectory and so on)
+    - `restriction` - restriction to add some points to frame( See laserFrameRestriction section )
+    - `videodata` - video data( Relation with trajectory and so on )
     - `cap` - video capture
-    - `openedFileID` - its used for colorization(it is not used yet)
+    - `openedFileID` - its used for colorization( It is not used yet )
     - `colormodel` - color model
 
 ```js
-    BaseFrame getLasSphere(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel  );
+    BaseFrame getLasSphere(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel );
 
 ```
  
@@ -250,21 +250,21 @@ int getLaserModelType()
     - `timestamp` - time stamp
     - `spheresize` - size of sphere
     - `lidToFrame` - lidar transformation to imu
-    - `restriction` - restriction to add some points to frame(see laserFrameRestriction section)
-    - `videodata` - video data(relation with trajectory and so on)
+    - `restriction` - restriction to add some points to frame( See laserFrameRestriction section )
+    - `videodata` - video data( Relation with trajectory and so on )
     - `cap` - video capture
-    - `openedFileID` - its used for colorization(it is not used yet)
+    - `openedFileID` - its used for colorization( It is not used yet )
     - `colormodel` - color model
 
 ```js
-BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel  );
+BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,VideoInfo &videodata,cv::VideoCapture &cap,int &openedFileID,int colormodel );
 
 ```
   
-6. To colorize frame with video from 360 camera call(It is not done yet):
+6. To colorize frame with video from 360 camera call( It is not done yet ):
   
     - `frame` - frame that should be colored
-    - `videodata` - video data(relation with trajectory and so on)
+    - `videodata` - video data( Relation with trajectory and so on )
     - `cap` - video capture
     - `openedFileID` - ID of opened file
 
@@ -278,7 +278,7 @@ BaseFrame getLasCompleteSphere(int timestamp,int spheresize,CLidarToFrameTrans *
 int getNumberOfFrames()
 ```
 
-8. To get Ids of frames(position of frames in lidar file) call:
+8. To get Ids of frames( Position of frames in lidar file ) call:
   
 ```js
 std::vector<FrameFileInfo> getFramesIDs()
@@ -318,7 +318,7 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
 <p>
 
 ## This class is used for two reasons: 
-- For transformation of frame(frame points) or camera to global coordinates. Its returns especially frame object(baseframe) - see baseframe section or returns transformation matrixes<br>
+- For transformation of frame( frame points ) or camera to global coordinates. Its returns especially frame object(baseframe) - see baseframe section or returns transformation matrixes<br>
 - It is also used for colorization of points by camera frames.
 Colorization is implemented for camera models Garmin, LabPano and Sony.
   
@@ -330,14 +330,14 @@ Colorization is implemented for camera models Garmin, LabPano and Sony.
     - `bodyToVehicle` - transformation structure between IMU and what the imu is attached to(drone, car, pedestrian)
     - `boresighToVehicle` - transformation structure for boresight
     - `iecalibparams` - transformation structure for compensation of bodyToVehicle rotation
-    - `restriction` - restriction to add some points into frame(see laserframerestriction section)
+    - `restriction` - restriction to add some points into frame( See laserframerestriction section )
     - `offset` - timestamp offset
 
   
 ```js
 globaltramsformation::globaltramsformation(std::vector<Transformation> *transformation,const Transformation &bodyToVehicle,const Transformation &boresighToVehicle,const Transformation &iecalibparams,laserFrameRestrictionBase *restriction,const int offset)
 ```
-2. To get transformed frame(frame points) in global coordinates use method:
+2. To get transformed frame( frame points ) in global coordinates use method:
 
     - `frame` - frame that will be transformed
     - `frameID` - ID of frame
@@ -364,7 +364,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrame(BaseFrame &frame,Eigen::Affine3f lidarToImuRot, int frameID=0,int colormode=0);
 ```
 
-4. To get transformed frame(frame points) of given area in global coordinates use:
+4. To get transformed frame( frame points ) of given area in global coordinates use:
   
     - `frame` - frame that will be transformed
     - `frameID` - ID of frame
@@ -375,7 +375,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     BaseFrame *transformFrameToArea(BaseFrame &frame,int frameID,int colormode,ExportAreaUTM areaToCheck);
 ```
  
-5. To get transformed frame(frame points) to what the IMU is attached to(drone, car, pedestrian) use method:
+5. To get transformed frame( frame points ) to what the IMU is attached to(drone, car, pedestrian) use method:
   
     - `frame` - frame that will be transformed
 
@@ -476,9 +476,9 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
  
 1. To generate color image from video for defined frame use:
 
-    - `retfr` - assigned color image for given frame(main output of this method)
+    - `retfr` - assigned color image for given frame( Main output of this method )
     - `frame` - the frame for which the image is generated
-    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `videodata` - Data info for the given camera( Relational vector between video frames and trajectory and so on )
     - `cap` - video capture
     - `openedFileID` - ID of opened video file
 
@@ -488,9 +488,9 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 2. Second method to generate color image from video is:
   
-    - `retfr` - assigned color image for given frame(main output of this method)
-    - `frameID` - frame ID(used for indexing in videodata), ID of frame for which the image is generated
-    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `retfr` - assigned color image for given frame( Main output of this method )
+    - `frameID` - frame ID( Used for indexing in videodata ), ID of frame for which the image is generated
+    - `videodata` - Data info for the given camera( Relational vector between video frames and trajectory and so on )
     - `cap` - video capture
     - `openedFileID` - ID of opened video file
 
@@ -501,22 +501,22 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 3. If you want to colorize frame by image from video use method **colorizeFrame**:
   
     - `frame` - frame that will be colorized
-    - `imgfr` - image from video for given frame. Frame is colorized based on this image( you can get it by method getColorimageForFrameByVirb)
+    - `imgfr` - image from video for given frame. Frame is colorized based on this image( You can get it by method getColorimageForFrameByVirb )
     - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
     - `cap` - video capture
     - `openedFileID` - ID of opened video file
     - `timeshift` - time shift
-    - `imgFrameRestriction` - restriction to colorize zones of points(see imageframerestriction section)
+    - `imgFrameRestriction` - restriction to colorize zones of points( See imageframerestriction section )
     - `hsv_saturation` - saturation of colors would be changed based on this value
     - `hsv_brightness` - brightness of colors would be changed based on this value
     - `removeOtherColor` - removeOtherColor whether actual colors of points in frame restriction zones would be replaced by color based on intensity
 
-&emsp;&emsp;It returns info about colorizing(indexes of points that were colorized and position of camera)
+&emsp;&emsp;This method returns info structure about colorizing( Indexes of points that were colorized and position of camera )
 
 ```js
     ColorizedDataInfo colorizeFrame(BaseFrame &frame,ColorizingInfo *imgfr,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID,double timeshift,imageFrameRestriction *imgFrameRestriction,double hsv_saturation,double hsv_brightness,bool removeOtherColor=true);
 ```
-4. If you want to colorize frame by allimage from video use method **colorizeFrameByAllImages**:
+4. If you want to colorize frame by all images from video use method **colorizeFrameByAllImages**:
   
     - `frame` - frame that will be colorized
     - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
@@ -528,7 +528,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     - `hsv_brightness` - brightness of colors would be changed based on this value
     - `removeOtherColor` - removeOtherColor whether actual colors of points in frame restriction zones would be replaced by color based on intensity
 
-&emsp;&emsp;It returns info about colorizing(indexes of points that were colorized and position of camera)
+&emsp;&emsp;This method returns info structure about colorizing( Indexes of points that were colorized and position of camera )
 
 ```js
     ColorizedDataInfo colorizeFrame(BaseFrame &frame,ColorizingInfo *imgfr,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID,double timeshift,imageFrameRestriction *imgFrameRestriction,double hsv_saturation,double hsv_brightness,bool removeOtherColor=true);
@@ -556,20 +556,65 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 ```
 
-6. If you want to draw marker circle to frame from camera use:
+6. If you want to draw marker circle to frame from camera, use:
   
     - `marker` - marker that should be painted to image
     - `frame` - marker will be painted to this frame
     - `newCam` - transformation structure of camera to what the camera is attached to(drone, car, pedestrian...)
     - `framedata` - info about frame. Based on this data is looking for camera transformation
-    - `offset` - offset in timestamp
+    - `offset` - camera time offset
 
 ```js
     void colorFrameByDifferendVirb(MarkerLocations marker, cv::Mat &frame,Transformation newCam, FrameData &framedata,double &offset);
+```
+7. To draw marker you can use also method:
+  
+    - `marker` - marker that should be painted to image
+    - `frame` - marker will be painted to this frame
+    - `newCam` - transformation structure of camera to what the camera is attached to(drone, car, pedestrian...)
+    - `framedata` - info about frame. Based on this data is looking for camera transformation
+    - `offset` - camera time offset
 
+```js
+    void colorByTemporalMarker(MarkerLocations marker, cv::Mat &frame,Transformation newCam, FrameData &framedata,double &offset);
 ```
 
+8. To change saturation and value of color use:
+  
+    - `r` - red part of rgb for enhancement, range <0,255>
+    - `g` - green part of rgb for enhancement, range <0,255>
+    - `b` - blue part of rgb for enhancement, range <0,255>
+    - `saturationchange` - change in the saturation
+    - `valuechange` - change in value - brightness
 
+```js
+    void enhanceColor(unsigned char &r, unsigned char &g,unsigned char &b,double saturationchange,double valuechange);
+```
+9. If you want to transform rgb color to hsv color call method:
+
+    - `r` - red part of the rgb in range <0,1>
+    - `g` - green part of the rgb in range <0,1>
+    - `b` - blue part of the rgb in range <0,1>
+    - `h` - hue part of the hsv in range <0,360>
+    - `s` - saturation part of the hsv in range <0,1>
+    - `v` - value part of the hsv in range <0,1>
+
+```js
+    void rgb2hsv(double r, double g, double b, double &h,double &s, double &v);
+```
+
+10. If you want to transform hsv color to rgb color call method:
+
+    - `h` - hue part of the hsv in range <0,360>
+    - `s` - saturation part of the hsv in range <0,1>
+    - `v` - value part of the hsv in range <0,1>
+    - `r` - red part of the rgb in range <0,1>
+    - `g` - green part of the rgb in range <0,1>
+    - `b` - blue part of the rgb in range <0,1>
+
+```js
+    void hsv2rgb( double h,double s, double v,double &r, double &g, double &b);
+```
 
 ---  
 </p>
