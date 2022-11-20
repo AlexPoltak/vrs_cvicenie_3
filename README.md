@@ -516,9 +516,26 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 ```js
     ColorizedDataInfo colorizeFrame(BaseFrame &frame,ColorizingInfo *imgfr,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID,double timeshift,imageFrameRestriction *imgFrameRestriction,double hsv_saturation,double hsv_brightness,bool removeOtherColor=true);
 ```
+4. If you want to colorize frame by allimage from video use method **colorizeFrameByAllImages**:
+  
+    - `frame` - frame that will be colorized
+    - `videodata` - Data info for the given camera(Relational vector between video frames and trajectory and so on)
+    - `cap` - video capture
+    - `openedFileID` - ID of opened video file
+    - `timeshift` - time shift
+    - `imgFrameRestriction` - restriction to colorize zones of points(see imageframerestriction section)
+    - `hsv_saturation` - saturation of colors would be changed based on this value
+    - `hsv_brightness` - brightness of colors would be changed based on this value
+    - `removeOtherColor` - removeOtherColor whether actual colors of points in frame restriction zones would be replaced by color based on intensity
+
+&emsp;&emsp;It returns info about colorizing(indexes of points that were colorized and position of camera)
+
+```js
+    ColorizedDataInfo colorizeFrame(BaseFrame &frame,ColorizingInfo *imgfr,CameraDataInfo &videodata, cv::VideoCapture &cap,int &openedFileID,double timeshift,imageFrameRestriction *imgFrameRestriction,double hsv_saturation,double hsv_brightness,bool removeOtherColor=true);
+```
 
 
-4. If you want to colorize cloud by images from video use method **colorizeCloudByImages**:
+5. If you want to colorize cloud by images from video use method **colorizeCloudByImages**:
   
     - `octree` - octree of cloud that stores colors of points after assignment
     - `colors` - stores colors of points after assignment
@@ -539,6 +556,18 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 ```
 
+6. If you want to draw marker circle to frame from camera use:
+  
+    - `marker` - marker that should be painted to image
+    - `frame` - marker will be painted to this frame
+    - `newCam` - transformation structure of camera to what the camera is attached to(drone, car, pedestrian...)
+    - `framedata` - info about frame. Based on this data is looking for camera transformation
+    - `offset` - offset in timestamp
+
+```js
+    void colorFrameByDifferendVirb(MarkerLocations marker, cv::Mat &frame,Transformation newCam, FrameData &framedata,double &offset);
+
+```
 
 
 
