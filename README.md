@@ -343,7 +343,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     - `frameID` - ID of frame
     - `colormode` - color model
 
-- At first frame is transformed from IMU to what the IMU is attached to(drone, car, pedestrian).
+- At first, frame is transformed from IMU to what the IMU is attached to(drone, car, pedestrian).
 * Then this transformed frame is transformed to global coordinates.
 ```js
     BaseFrame *transformFrame(BaseFrame &frame,int frameID=0,int colormode=0);
@@ -358,7 +358,7 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
 
 - At first, frame is transformed from lidar to IMU.
 * Then this transformed frame is transformed from IMU to what the imu is attached to(drone, car, pedestrian).
-+ Finally the frame is transform into global coordinates
++ Finally the frame is transformed into global coordinates
 
 ```js
     BaseFrame *transformFrame(BaseFrame &frame,Eigen::Affine3f lidarToImuRot, int frameID=0,int colormode=0);
