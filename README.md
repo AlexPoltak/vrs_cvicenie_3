@@ -432,6 +432,18 @@ globaltramsformation::globaltramsformation(std::vector<Transformation> *transfor
     double CubicHermiteL (const double &A, const double &B, const double &C, const double &D, const double &t);
 ```
 
+11. If you want to interpolate some angle you can use improved Cubic Hermite Interpolation:
+  
+    - `A` - 1.control angle
+    - `B` - 2.control angle
+    - `C` - 3.control angle
+    - `D` - 4.control angle
+    - `t` - is a value that goes from 0 to 1 to interpolate in a continuous way across uniformly sampled data points. When t is 0, method will return B.  When t is 1, method will return C.
+
+```js
+    double CubicHermiteLAngle ( double A,  double B,  double C,  double D, const double t)
+```
+  
 
 ### Camera Transformations
 
