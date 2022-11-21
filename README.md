@@ -923,7 +923,7 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
  specific format. For manipulating with these data in this class, it is
  necessary to change the internal data format to our format. This is done using
  app InternalOptechToCreatorOptechModificator.
- This class inherited methods from baselidarreader class.
+ This class inherits methods from baselidarreader class.
     
 ```diff
 - see baselidarreader section
