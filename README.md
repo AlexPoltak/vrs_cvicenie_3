@@ -141,8 +141,14 @@ int getLaserModelType()
 
 10. To get id of lines for a preset option call **getUnusedLidarLinesForPresetOption**:
   
-    - `pcapfile` -  file
-
+| whichLines option | 
+| :-------------|
+| All           |
+| Central       | 
+| EverySecond   | 
+| HighRes       | 
+| UltraHighRes  |
+  
 &emsp;&emsp;This output is used for filtering, when only some of the laser data are wanted
 ```js
 std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines);
