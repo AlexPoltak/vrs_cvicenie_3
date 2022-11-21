@@ -143,10 +143,11 @@ int getLaserModelType()
   
     - `pcapfile` -  file
 
-&emsp;&emsp;This output is used for filtering when only some of the laser data are wanted
+&emsp;&emsp;This output is used for filtering, when only some of the laser data are wanted
 ```js
 std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines);
-
+```
+  
 ---
 
 </p>
