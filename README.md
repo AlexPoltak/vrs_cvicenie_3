@@ -812,14 +812,14 @@ The structure of registry entry is:<br> <br>HKEY_CURRENT_USER/SOFTWARE/ORGANIZAT
 laserFrameRestrictionBase::laserFrameRestrictionBase()
 ```
 
-or
+2. You can create object also by method:
 
      - `lidtrans` - lidar transformation to body data(see clidartoframetrans section)
 ```js
 laserFrameRestrictionBase::laserFrameRestrictionBase(CLidarToFrameTrans *lidtrans)
 ```
 
-or
+3. Or by method
 
      - `whichRestrictions` - id of filter that will be used
      - `lidtrans` - lidar transformation to body data(see clidartoframetrans section)
@@ -829,7 +829,7 @@ or
 laserFrameRestrictionBase::laserFrameRestrictionBase(int whichRestrictions, CLidarToFrameTrans *lidtrans)
 ```
 
-2. To determine if point is in laser limits and inside the defined region use:
+4. To determine if point is in laser limits and inside the defined region use:
    
      - `point` - point(structure that holds point info, which we can get from lidar file- it is defined in common.h file) which is observed
 
