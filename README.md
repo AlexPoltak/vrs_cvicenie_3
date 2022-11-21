@@ -326,7 +326,7 @@ Colorization is implemented for camera models Garmin, LabPano and Sony.
   
 1. To start use constructor of this class:
 
-    - `transformation` - lidar file
+    - `transformation` - vector of transformations
     - `bodyToVehicle` - transformation structure between IMU and what the imu is attached to(drone, car, pedestrian)
     - `boresighToVehicle` - transformation structure for boresight
     - `iecalibparams` - transformation structure for compensation of bodyToVehicle rotation
