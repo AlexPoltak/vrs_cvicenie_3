@@ -983,8 +983,3 @@ int getTransformationIdFromTimestamp(long long pointTimestamp,const std::vector<
  
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-
-#### This library is used in:
-##### 1. Creator app. 
--   qcloudaerialview, qcloudcutwindow, qsidewayview will be shown, when user selects **Profiles** from the side menu.
-
