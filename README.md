@@ -297,7 +297,7 @@ std::vector<FrameFileInfo> getFramesIDs()
     - `pcapfile` -  file
 
 ```js
-bool fileReader::isFileThisLidar(std::string pcapfile)
+bool isFileThisLidar(std::string pcapfile)
 ```
 
 10. To calculate and return timestamp offsets from file call:
@@ -719,7 +719,7 @@ std::vector<FrameFileInfo> getFramesIDs()
     - `pcapfile` -  file
 
 ```js
-bool fileReader::isFileThisLidar(std::string pcapfile)
+bool isFileThisLidar(std::string pcapfile)
 ```
 
 8. To get ID of transformation based on given timestamp use:
@@ -894,7 +894,7 @@ std::vector<FrameFileInfo> getFramesIDs()
     - `pcapfile` -  file
 
 ```js
-bool fileReader::isFileThisLidar(std::string pcapfile)
+bool isFileThisLidar(std::string pcapfile)
 ```
 
 5. To get ID of transformation based on given timestamp use:
@@ -962,7 +962,7 @@ std::vector<FrameFileInfo> getFramesIDs()
     - `pcapfile` -  file
 
 ```js
-bool fileReader::isFileThisLidar(std::string pcapfile)
+bool isFileThisLidar(std::string pcapfile)
 ```
 
 5. To get ID of transformation based on given timestamp use:
