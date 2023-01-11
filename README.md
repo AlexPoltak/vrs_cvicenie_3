@@ -21,11 +21,10 @@ This library Consists of:
 
 ## gpsnmeaparser is class using for parsing GNSS Logs, specifically GGA and RMC logs.
 
-  | $GPGGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh| |
-  | ------------------------------------|------------------- ------------- |
-  | Content Cell                        |                    Content Cell  |
-  | Content Cell                        |                    Content Cell  |
-
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
   
 ### Getting Started
 1. To start, simply create object of this class and then you can use corresponding methods.
