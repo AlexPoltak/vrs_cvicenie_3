@@ -21,7 +21,7 @@ This library Consists of:
 
 ## gpsnmeaparser is class using for parsing GNSS Logs, specifically GGA and RMC logs.
   GGA sentence looks like as follow:
-  <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_black.svg#gh-light-mode-only">
+  <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPPGAAsset%202.png">
 
 
 
