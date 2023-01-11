@@ -28,7 +28,7 @@ gpsNMEAparser();
 ```
 &emsp;Or:
 ```js
-gpsNMEAparser(std::string GGASentence,std::string RMCSentence){
+gpsNMEAparser(std::string GGASentence,std::string RMCSentence)
 ```  
   
   GGA sentence looks like as follow:
@@ -43,9 +43,23 @@ bool isValidGGA(const std::string GGASentence)
 2. To set class values parsed from GGA sentence use:
 
 ```js
-void setValuesGGA(std::string GGA){
+void setValuesGGA(std::string GGA)
 ```
   
+  RMC sentence looks like as follow:
+  <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPGGA.png">
+  
+1. To check whether some RMC sentence is valid use **isValidRMC** on object:
+  
+    - Returns true when sentence is valid GGA sentence, else returns false
+```js
+bool isValidRMC(const std::string RMCSentence)
+```
+2. To set class values parsed from RMC sentence use:
+
+```js
+void setValuesRMC(const std::string RMCSentence)
+```
 ---  
   
 </p>
@@ -111,95 +125,4 @@ void setFramesIDs(std::vector<FrameFileInfo> newFrames)
     - `localfile` - lidar file in which the frame will be searched
     - `index` - index of frame, which should be returned
     - `lidToFrame` - lidar transformation
-    - `restriction` - restriction to add some points to frame
-    - `openedFileID` - openedFileID
-    - `colormodel` - colormodel
-    - `minIntensityColor` - minimum intensity color
-    - `maxIntensityColor` - maximum intensity color
-
-```js
-BaseFrame getLasFrame(std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel,double minIntensityColor,double maxIntensityColor);
-```
-
-7. To get actual reading position in lidar file use method:
-  
-```js
-uint64_t getactualfilepos();
-``` 
-
-8. To get maximum position in lidar file use method:
-  
-```js
- uint64_t getmaxfilepos();
-``` 
-
-9. If you want to find out the lidar model use method:
-  
-```js
-int getLaserModelType()
-``` 
-
-
-10. To get id of lines for a preset option call **getUnusedLidarLinesForPresetOption**:
-  
-| whichLines option | 
-| :-------------|
-| All           |
-| Central       | 
-| EverySecond   | 
-| HighRes       | 
-| UltraHighRes  |
-  
-&emsp;&emsp;This output is used for filtering, when only some of the laser data are wanted
-```js
-std::vector<int> getUnusedLidarLinesForPresetOption(LidarLinesPresets whichLines);
-```
-  
----
-
-</p>
-</details>
-
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-<details><summary>rtkpoints</summary>
-<p>
-
-## This class is used for transformation of lidar to IMU based on transformation structures.
-  
-### Getting Started
-1. To generate transformation matrix of lidar data to imu, call constructor of this class:
-    - `laserToBodyCalib` - calibration structure of transformation from lidar to imu
-    - `laserToBodyTransf` - transformation structure of lidar to imu
-    - `lidoffset` - offset of lidar
-
-```js
-CLidarToFrameTrans(const Transformation &laserToBodyCalib,const Transformation &laserToBodyTransf,double lidoffset);
-
-```
-2. To transform some point from lidar to imu call **rotatePointToFrame** on object of this class:
-  
-    - `point` - point that should be transformed
-  
-&emsp;&emsp;It returns **basepointinfo structure**( Structure that holds transformed point info-it is defined in common.h file )
-```js
-basepointinfo rotatePointToFrame(basepointinfo point)
-```
- 
-3. To get lidar to IMU transformation matrix call:
-  
-```js
-Eigen::Affine3f getLidarToImuRotation()
-``` 
-
-4. To get lidar offset call:
-  
-```js
-double getLidarRotOffset()
-``` 
- 
-</p>
-</details>
-
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  
+    - `restriction` - restriction to add some points to 
