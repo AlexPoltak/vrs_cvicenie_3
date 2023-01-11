@@ -24,8 +24,7 @@ This library Consists of:
 <table>
     <thead>
         <tr>
-            <th>Layer 1</th>
-            <th>$GPGGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh</th>
+            <th colspan="2">$GPGGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh</th>
         </tr>
     </thead>
     <tbody>
