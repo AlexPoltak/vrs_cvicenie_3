@@ -32,7 +32,7 @@ gpsNMEAparser(std::string GGASentence,std::string RMCSentence){
 ```  
   
   GGA sentence looks like as follow:
-  <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPPGAAsset%202.png">
+  <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPGGA.png">
   
 1. To check whether some GGA sentence is valid use **isValidGGA** on object:
   
