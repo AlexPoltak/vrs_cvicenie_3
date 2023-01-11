@@ -21,17 +21,15 @@ This library Consists of:
 
 ## gpsnmeaparser is class using for parsing GNSS Logs, specifically GGA and RMC logs.
 
-{:color-style: style="background: black;"}
-{:color-style: style="color: white;"}
-{:text-style: style="font-weight: 800; text-decoration: underline;"}
-
-|:             Here's an Inline Attribute Lists example                :||||
-| ------- | ------------------ | -------------------- | ------------------ |
-|:       :|:  <div style="color: red;"> &lt; Normal HTML Block > </div> :|||
-| ^^      |   Red    {: .cls style="background: orange" }                |||
-| ^^ IALs |   Green  {: #id style="background: green; color: white" }    |||
-| ^^      |   Blue   {: style="background: blue; color: white" }         |||
-| ^^      |   Black  {: color-style text-style }                         |||
+| :                   MathJax \|\| Image                 : |||
+| :------------ | :-------- | :----------------------------- |
+| Apple         | : Apple : | Apple                          \
+| Banana        | Banana    | Banana                         \
+| Orange        | Orange    | Orange                         |
+| :     Rowspan is 4     : || :        How's it?           : |
+| ^^     A. Peach          ||    1. ![example][cell-image]   |
+| ^^     B. Orange         || ^^ 2. $I = \int \rho R^{2} dV$ |
+| ^^     C. Banana         || **It's OK!**                   |
   
 ### Getting Started
 1. To start, simply create object of this class and then you can use corresponding methods.
