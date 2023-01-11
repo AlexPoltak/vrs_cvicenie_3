@@ -4,13 +4,14 @@
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_black.svg#gh-light-mode-only">
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_white.svg#gh-dark-mode-only">
 </div>
-  <h1 align="left">Libs LidarAndTrans</h1>
+  <h1 align="left">Libs project</h1>
 
-## This library is used in three main ways: 
-1. For reading lidar file and manipulating with data obtainded from this file
-2. For transformation between devices(lidar,camera,imu) and also between  what the device is connected to(drone, car, pedestrian).
-3. It also includes methods for colorization of points by camera frames.<br />
-### More in specific sections below. <br /><br />
+## This library serves to manage the project defined by user.
+ - It combines creating, editing, opening project.
+ - Data for project are reads from lidar, camera, calibration and trajectory files.
+ - Project is XML file with suffix .PRJ
+ - Creation of project is defined in Creator app.
+ 
 This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
