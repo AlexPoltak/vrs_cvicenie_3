@@ -24,11 +24,11 @@ This library Consists of:
 1. To start, simply create object of this class and then you can use corresponding methods.
 2. You can also create and init object of this class by using conscructor:
 ```js
-new gpsNMEAparser();
+gpsNMEAparser();
 ```
-  Or:
+&emsp;Or:
 ```js
-gpsNMEAparser::gpsNMEAparser(std::string GGASentence,std::string RMCSentence){
+gpsNMEAparser(std::string GGASentence,std::string RMCSentence){
 ```  
   
   GGA sentence looks like as follow:
