@@ -51,7 +51,7 @@ void setValuesGGA(std::string GGA)
   
 1. To check whether some RMC sentence is valid use **isValidRMC** on object:
   
-    - Returns true when sentence is valid GGA sentence, else returns false
+    - Returns true when sentence is valid RMC sentence, else returns false
 ```js
 bool isValidRMC(const std::string RMCSentence)
 ```
