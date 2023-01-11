@@ -19,8 +19,12 @@ This library Consists of:
 <details><summary>gpsnmeaparser</summary>
 <p>
 
-## baseframe is class where we can store lidar frame with points.
-We can get some frame/s from lidar file by some file reader of this library(fileReader, hesaifilereader, OptechFileReader, optechinternalfilereader) and manipulate with this frame(points), colorize them and so on.
+## gpsnmeaparser is class using for parsing GNSS Logs, specifically GGA and RMC logs.
+
+| $GPGGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh |
+| ------------------------------------|------------------- ------------- |
+| Content Cell                        |                    Content Cell  |
+| Content Cell                        |                    Content Cell  |
 
   
 ### Getting Started
