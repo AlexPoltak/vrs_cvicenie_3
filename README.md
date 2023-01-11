@@ -33,25 +33,17 @@ gpsNMEAparser(std::string GGASentence,std::string RMCSentence){
   
   GGA sentence looks like as follow:
   <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPPGAAsset%202.png">
-
-
   
+1. To check whether some GGA sentence is valid use **isValidGGA** on object:
   
-2. To add point to frame use method **addPoint** on object:
-  
-  
-    - `pointtoadd` - point( Structure that holds point info, which we can get from lidar file- it is defined in common.h file ) that should be added
-    - `r ,g, b` - defines a RGB color of point
-
+    - Returns true when sentence is valid GGA sentence, else returns false
 ```js
-void BaseFrame::addPoint(basepointinfo &pointtoadd,int r,int g, int b)
+bool isValidGGA(const std::string GGASentence)
 ```
-3. You can also add point by another method **addPoint** on object:
-    - `pointtoadd` - point( Structure that holds point info, which we can get from lidar file- it is in common.h file ) that should be added
-    - `recalcRGB` - whether point should be colored according to its intensity
+2. To set class values parsed from GGA sentence use:
 
 ```js
-void BaseFrame::addPoint(basepointinfo &pointtoadd, bool recalcRGB)
+void setValuesGGA(std::string GGA){
 ```
   
 ---  
