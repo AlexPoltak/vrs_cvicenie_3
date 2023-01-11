@@ -20,18 +20,23 @@ This library Consists of:
 <p>
 
 ## gpsnmeaparser is class using for parsing GNSS Logs, specifically GGA and RMC logs.
+  ### Getting Started
+1. To start, simply create object of this class and then you can use corresponding methods.
+2. You can also create and init object of this class by using conscructor:
+```js
+new gpsNMEAparser();
+```
+  Or:
+```js
+gpsNMEAparser::gpsNMEAparser(std::string GGASentence,std::string RMCSentence){
+```  
+  
   GGA sentence looks like as follow:
   <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPPGAAsset%202.png">
 
 
-
   
-### Getting Started
-1. To start, simply create object of this class and then you can use corresponding methods.
-2. You can also create and init object of this class by using conscructor:
-```js
-new BaseFrame();
-```
+  
 2. To add point to frame use method **addPoint** on object:
   
   
