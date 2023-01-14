@@ -96,9 +96,22 @@ All this input parameters user can change in tab settings
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
   
-2. Basic Init of prepared file:
-  
-    - `pcapfile` - lidar file
+2. Then some required steps:
+    - Setting trajectory file path
+```js
+  void Project::setTrajectoryFilename(QString newTrajectoryFile)
+```  
+ 
+    - Setting lidar file path
+        - `index` - ID of lidar
+    
+```js
+  void Project::setLidarFilename(QString newLidarFile,int index)
+```  
+
+
+
+
 
 &emsp;&emsp;If given file was inited **returns number of frames**.
 ```js
