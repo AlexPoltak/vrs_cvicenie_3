@@ -81,7 +81,7 @@ Based on these files is created project thanks to which user can interact with a
 ```js
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>();
 ``` 
-  &emsp;Or:<br />
+  &emsp;Or:
 
     - `outputData` - holds all frames data info structures, its main output of this method
     - `pcapfile` - lidar file
