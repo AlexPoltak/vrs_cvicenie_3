@@ -103,6 +103,7 @@ All this input parameters user can change in tab settings
 ```  
  
     - Setting lidar file path
+    
         - `index` - ID of lidar
     
 ```js
