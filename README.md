@@ -97,12 +97,12 @@ All this input parameters user can change in tab settings
   ``` 
   
 2. Then some required steps:
-    - Setting trajectory file path
+    2.1 Setting trajectory file path
 ```js
   void Project::setTrajectoryFilename(QString newTrajectoryFile)
 ```  
  
-    - Setting lidar file path
+    2.2 Setting lidar file path
     
         - `index` - ID of lidar
     
