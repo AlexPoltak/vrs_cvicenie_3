@@ -71,7 +71,7 @@ void setValuesRMC(const std::string RMCSentence)
 <details><summary>project</summary>
 <p>
 
-### This class serves for manipulating with project that are created by user. Creation is done in the creator app where user have to load trajectory and lidar file(That files are required for project creation). Optionally user can load calibration and camera file, if were obtained.
+## This class serves for manipulating with project that are created by user. Creation is done in the creator app where user have to load trajectory and lidar file(That files are required for project creation). Optionally user can load calibration and camera file, if were obtained.
 Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profile generation and more).
 
   ### Getting Started
@@ -81,7 +81,7 @@ Based on these files is created project thanks to which user can interact with a
 ```js
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>();
 ``` 
-  &emsp;Or:
+  &emsp;Or:<br />
     - `outputData` - holds all frames data info structures, its main output of this method
     - `pcapfile` - lidar file
     - `transformation` - transformation assigned to frames
