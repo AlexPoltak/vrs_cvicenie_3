@@ -71,18 +71,26 @@ void setValuesRMC(const std::string RMCSentence)
 <details><summary>project</summary>
 <p>
 
-### baselidarreader is a template for all lidar file readers which inherit from this class
+### This class serves for manipulating with project that are created by user. Creation is done in the creator app where user have to load trajectory and lidar file(That files are required for project creation). Optionally user can load calibration and camera file, if were obtained.
+Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profile generation and more).
 
- All reader inherited from this class should contain methods:
+  ### Getting Started
   
-1. Open prepared file:
+1. For access to all methods first create object of this class:
   
-    - `pcapfile` - lidar file
-
-&emsp;&emsp;If given file exists **returns true**, else **returns false**.
 ```js
-int openPreparedFile(std::string pcapfile)
+    std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>();
 ``` 
+  &emsp;Or:
+    - `outputData` - holds all frames data info structures, its main output of this method
+    - `pcapfile` - lidar file
+    - `transformation` - transformation assigned to frames
+    - `timeoffset` - timestamp offset
+    - `stopcalculating` - disable/enable calculation
+ ```js
+    std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
+  ```  
+  
 2. Basic Init of prepared file:
   
     - `pcapfile` - lidar file
