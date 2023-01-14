@@ -78,12 +78,20 @@ Based on these files is created project thanks to which user can interact with a
   
 1. For access to all methods first create object of this class:
   
-    - `outputData` - holds all frames data info structures, its main output of this method
-    - `pcapfile` - lidar file
-    - `transformation` - transformation assigned to frames
-    - `timeoffset` - timestamp offset
-    - `stopcalculating` - disable/enable calculation
-
+    - `c_qualityType` - quality indicator displayed on trajectory(0 - position,1 - heading, 2 - PDOP, 3 - speed)
+    - `c_stdprecision` - maximum precision of position 
+    - `c_minstdprecision` - minimum precision of position 
+    - `c_stdprecisionHeading` - maximum heading precision
+    - `c_minstdprecisionHeading` - minimum heading precision
+    - `c_minPDOP` - disable/enable calculation
+    - `c_maxPDOP` - disable/enable calculation
+    - `c_minSpeed` - minimum speed precision
+    - `c_maxSpeed` - maximum speed precision
+    - `c_smartfilter` - whether smart filter is enabled(remove scans while standing)
+    - `c_speedfilter` - whether speed filter is enabled
+    - `c_speedfilterThreshold` - speed threshold for speed filter
+  
+All this input parameters user can change in tab settings
  ```js
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ```  
