@@ -83,12 +83,12 @@ Based on these files is created project thanks to which user can interact with a
 ``` 
   &emsp;Or:
 
-    - `outputData` - holds all frames data info structures, its main output of this method
-    - `pcapfile` - lidar file
-    - `transformation` - transformation assigned to frames
-    - `timeoffset` - timestamp offset
-    - `stopcalculating` - disable/enable calculation
-  
+          - `outputData` - holds all frames data info structures, its main output of this method
+          - `pcapfile` - lidar file
+          - `transformation` - transformation assigned to frames
+          - `timeoffset` - timestamp offset
+          - `stopcalculating` - disable/enable calculation
+
  ```js
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ```  
