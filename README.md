@@ -76,7 +76,7 @@ Based on these files is created project thanks to which user can interact with a
 
   ### Getting Started
   
-1. For access to all methods first create object of this class:
+For access to all methods first create object of this class:
   
     - `c_qualityType` - quality indicator displayed on trajectory(0 - position,1 - heading, 2 - PDOP, 3 - speed)
     - `c_stdprecision` - maximum precision of position 
@@ -96,14 +96,15 @@ All this input parameters user can change in tab settings
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
   
-2. Then some required steps:
-    - Setting trajectory file path
+#### Then some required steps:
+1. Setting trajectory file path
 ```js
   void Project::setTrajectoryFilename(QString newTrajectoryFile)
 ```  
  
-    - Setting lidar file path
-      - `index` - ID of lidar
+2. Setting lidar file path
+      
+     - `index` - ID of lidar
     
 ```js
   void Project::setLidarFilename(QString newLidarFile,int index)
