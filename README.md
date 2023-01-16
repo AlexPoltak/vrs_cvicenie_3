@@ -191,13 +191,82 @@ void Project::initDevices()
 ```js
 ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```  
-  
-
+ 
 > This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
 
   
+##### For manipulation with frames use:
+  
+  getSelectedFrames
+  getPerpendicularLineSegmentAtTrajectory
+  getFramesForPerpendicularLineSegment(pointcloud genetaring)
+  getPerpedicularLineSegmentForSidewayCut
+  getAngleBetweenLineCutSegmentZones
+  getTimeOfLineCutSegmentZone
+  
+  
+  clearLineCut
+  getFitpointsAsReference
+  addFitPoint
+  modifyFitPoint
+  addEndPointsToFitCorrections
+  calcCorrectionFromFitPoints
+  correctionExists
+  saveFitPoints
+  loadFitPoints
+  
+  getParamsForMapStruct
+ setVisualQualityParameter
+  
+  
+  getRTKpointsAsReference
+  filterRTKpointsByProjectBoundaries
+  addRTKpoint
+ 
   
 
+  getProjectFilename
+  getTrajectoryTransformation
+  getZeroPositionFromTransformation
+  getIMUtoVehicleRotation
+  getBoresightRotation
+  
+  
+  getFramesTrajectoryRelationsInfoAsReference
+  getTrajectoryRealtionInfoPtr(undostack)  
+  clearTrajectorySelection
+  getTrajectoryTimepositions
+  getTrajectoryLength
+  getTrajectoryRealtionInfoPtr
+  getTrajectoryIDOfLineCutSegmentZone
+  getTrajectoryCorrectionForZone
+  
+  
+  
+  settings---
+  
+  getVisualParameterStdPrecision
+  getVisualParameterMinStdPrecision
+  getVisualParameterSmartFilter
+  getVisualParameterSpeedFilter
+  getUseShakeFilter
+  getVisualParameterSpeedFilterThreshold
+  getVisualParameterMinStdPrecisionHeading
+  getVisualParameterStdPrecisionHeading
+  getVisualParameterMinPDOP
+  getVisualParameterMaxPDOP
+  getVisualParameterMinSpeed
+  getVisualParameterMaxSpeed
+  getVisualParameterQualityType
+  
+  
+   getRegistryEntryNameOfProject
+  
+  setTrajectoryDisabling
+  getLineCutSegmentZonesCount
+  
+  
+  
 &emsp;&emsp;If given file was inited **returns number of frames**.
 ```js
 int initFile(std::string pcapfile)
