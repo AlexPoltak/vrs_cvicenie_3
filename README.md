@@ -182,7 +182,7 @@ void Project::initDevices()
     void Project::saveProjectFile()
 ```  
   
-> This method contains method saveProjectFileToXml, that saves all values to XML file.
+> This method contains method **saveProjectFileToXml**, that saves all values to XML file.
 
 2. To open project file and read all values from it use:
 
@@ -193,7 +193,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```  
   
 
-> This method contains method readProjectFileFromXml(new project version),readProjectFile(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
+> This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
 
   
   
