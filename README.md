@@ -96,7 +96,7 @@ All this input parameters user can change in tab settings
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
   
-#### Then some required steps:
+#### Some required steps:
 1. Setting project path that contains project file name(to this file project will be saved)
 ```js
   void Project::setProjectFilename(QString newProjectFile)
@@ -114,13 +114,26 @@ All this input parameters user can change in tab settings
 ```js
   void Project::setLidarFilename(QString newLidarFile,int index)
 ```  
-##### Then you can do:
-
-1. Setting path to calibration file:
+  
+4. Setting path to calibration file:
 ```js
-  void Project::setProjectFilename(QString newProjectFile)
+  void Project::setCalibrationFilename(QString newCalibrationFile)
 ```  
-2. Setting path to camera files:
+5. Setting calibration values from file:
+  It returns true when everything was set correctly, else returns false
+```js
+  bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
+```  
+6. Preparing needed structure that holds all lidar and camera devices info:
+  It is used after setting of the calibration file
+     
+```js
+void Project::initDevices()
+```  
+  
+##### Then some other:
+
+1. Setting path to camera files:
 
      - `newCameraFile` - path to files
      
@@ -130,12 +143,34 @@ All this input parameters user can change in tab settings
         | labpano       | 
         | gopro         | 
         | sony          |
-     
+  
 ```js
-void Project::setCameraFilename(QString newCameraFile,VideoType type)
+  void Project::setCameraFilename(QString newCameraFile,VideoType type)
+```    
+  
+2. To check whether path to given camera(video,images) files is correct(whether directory contains relevant files) use:
+
+```js
+    int checkWhetherCameraPathCorrect(QString path,Project::VideoType videotype);
 ```  
 
+3. To set description from user about project use:
+  
+```js
+  void setProjectDescription(std::string descr)
+```  
+4. You can save this description also to file by:
 
+```js
+    void saveDescriptionToFile(std::string path)
+```  
+  
+```diff
+- Most of the previous method you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
+```
+  
+  
+  
 
 &emsp;&emsp;If given file was inited **returns number of frames**.
 ```js
