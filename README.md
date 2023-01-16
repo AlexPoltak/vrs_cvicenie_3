@@ -125,7 +125,7 @@ All this input parameters user can change in tab settings
   bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
 ```  
 6. Preparing needed structure that holds all lidar and camera devices info:
-  It is used after setting of the calibration file
+  It is used after setting the calibration file
      
 ```js
 void Project::initDevices()
