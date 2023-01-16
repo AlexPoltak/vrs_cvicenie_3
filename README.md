@@ -72,7 +72,7 @@ void setValuesRMC(const std::string RMCSentence)
 <p>
 
 #### This class serves for manipulating with project that are created by user. Creation is done in the creator app where user have to load trajectory, lidar and calibration file(That files are required for project creation). Optionally user can load camera file, if were obtained.
-Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profile generation and more).
+Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profiles generation and more).
 
   ### Getting Started
   
