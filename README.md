@@ -96,6 +96,12 @@ All this input parameters user can change in tab settings
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
   
+2. If you want to clear project and values in UI use:
+  
+```js
+  void Project::clearProject()
+```    
+  
 #### Some required steps:
 1. Setting project path that contains project file name(to this file project will be saved)
 ```js
@@ -131,7 +137,7 @@ All this input parameters user can change in tab settings
 void Project::initDevices()
 ```  
   
-##### Then some other:
+##### Some other methods to initialize the project:
 
 1. Setting path to camera files:
 
@@ -166,9 +172,30 @@ void Project::initDevices()
 ```  
   
 ```diff
-- Most of the previous method you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
+- Most of the previous methods you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
 ```
   
+##### Saving and opening/reading project:
+1. When the required steps have been taken or some modification in project have been made, to save project with all values use **saveProjectFile** method. Project will be saved to XML file with .PRJ sufix.
+
+```js
+    void Project::saveProjectFile()
+```  
+  
+```diff 
+ &emsp;This method contains method saveProjectFileToXml, that saves all values to XML file.
+```
+2. To open project file and read all values from it use:
+
+    - `filename` - path to project file
+
+```js
+ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
+```  
+  
+```diff 
+&emsp;This method contains method readProjectFileFromXml(new project version),readProjectFile(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
+```
   
   
 
