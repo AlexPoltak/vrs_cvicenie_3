@@ -124,12 +124,12 @@ All this input parameters user can change in tab settings
 
      - `newCameraFile` - path to files
      
-      | VideoType     | 
-      | :-------------| 
-      | garmin_virb   |
-      | labpano       | 
-      | gopro         | 
-      | sony          |
+        | VideoType     | 
+        | :-------------| 
+        | garmin_virb   |
+        | labpano       | 
+        | gopro         | 
+        | sony          |
      
 ```js
 void Project::setCameraFilename(QString newCameraFile,VideoType type)
