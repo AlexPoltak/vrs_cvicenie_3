@@ -97,20 +97,43 @@ All this input parameters user can change in tab settings
   ``` 
   
 #### Then some required steps:
-1. Setting trajectory file path
+1. Setting project path that contains project file name(to this file project will be saved)
+```js
+  void Project::setProjectFilename(QString newProjectFile)
+```  
+
+2. Setting trajectory file path
 ```js
   void Project::setTrajectoryFilename(QString newTrajectoryFile)
 ```  
  
-2. Setting lidar file path
+3. Setting lidar file path
       
      - `index` - ID of lidar
     
 ```js
   void Project::setLidarFilename(QString newLidarFile,int index)
 ```  
+##### Then you can do:
 
+1. Setting path to calibration file:
+```js
+  void Project::setProjectFilename(QString newProjectFile)
+```  
+2. Setting path to camera files:
 
+     - `newCameraFile` - path to files
+     
+| VideoType     | 
+| :-------------| 
+| garmin_virb   |
+| labpano       | 
+| gopro         | 
+| sony          |
+     
+```js
+void Project::setCameraFilename(QString newCameraFile,VideoType type)
+```  
 
 
 
