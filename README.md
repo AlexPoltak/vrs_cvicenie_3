@@ -137,7 +137,7 @@ All this input parameters user can change in tab settings
 void Project::initDevices()
 ```  
   
-##### Some other methods to initialize the project:
+#### Some other methods to initialize the project:
 
 1. Setting path to camera files:
 
@@ -175,7 +175,7 @@ void Project::initDevices()
 - Most of the previous methods you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
 ```
   
-##### Saving and opening/reading project:
+#### Saving and opening/reading project:
 1. When the required steps have been taken or some modification in project have been made, to save project with all values use **saveProjectFile** method. Project will be saved to XML file with .PRJ sufix.
 
 ```js
@@ -195,7 +195,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 > This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
 
   
-##### Manipulating with trajectory frames:
+#### Manipulating with trajectory frames:
   
 1. This returns indexes of **trajectory frames** that are selected(has state=2). :
   
