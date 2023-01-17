@@ -204,7 +204,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
   
   
   
-#### Manipulating with trajectory frames:
+#### Manipulating with trajectory, lidar frames:
   
 1. This returns indexes of **trajectory frames** that are selected(has state=2). :
   
@@ -236,9 +236,48 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
   
-#### Manipulating with trajectory frames:
-  
 
+5. To get index of **frame from lidar**(with given ID) which is placed at given trajectory position use:
+
+```js
+  int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
+```     
+  
+  
+  
+  
+  
+  
+6. To get indexes of lidar lines based on preset value call:
+  
+    - `whichlidar` - ID of lidar
+        | whichlines    | 
+        | :-------------| 
+        | All           |
+        | Central       | 
+        | EverySecond   | 
+        | HighRes       |
+        | UltraHighRes  |
+
+```js
+std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
+```     
+  
+  
+####  Wrappers for trajectory matters(inertial explorer filereader) :
+  
+1. To generate transformations for trajectory call **traj_generateTransformation**. It is used in projectcreationdialog class.
+  
+```js
+  void Project::traj_generateTransformation()
+```   
+  
+2. To read trajectory file and inits values for trajectory reader class(inertialExplorerFileReader) call **traj_readTrajectoryFromFile**. It is used in projectcreationdialog class and in project XML reading methods.
+  
+```js
+  int Project::traj_readTrajectoryFromFile(QString rawTrajFile)
+```     
+  
   
   getPerpendicularLineSegmentAtTrajectory
   getFramesForPerpendicularLineSegment(pointcloud genetaring)
