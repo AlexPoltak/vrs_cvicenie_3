@@ -195,6 +195,15 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 > This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
 
   
+3. To check whether given file is XML file use:
+  
+```js
+  bool Project::isProjectFileXML(QString fileName)
+```  
+   
+  
+  
+  
 #### Manipulating with trajectory frames:
   
 1. This returns indexes of **trajectory frames** that are selected(has state=2). :
@@ -218,7 +227,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```    
   
 4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use **getSelectedFilteredFramesForLidarDevice**:
- &emsp;If there are some missing trajectory indexes in input, the hole in lidar frames indexes will be filled in returns.
+ &emsp;If there are some missing trajectory indexes in input, the hole in lidar frames indexes will be filled in return.
 
     - `preselected` - IDs of trajectory points
     - `index` - lidar ID
@@ -227,8 +236,9 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
   
+#### Manipulating with trajectory frames:
   
-  
+
   
   getPerpendicularLineSegmentAtTrajectory
   getFramesForPerpendicularLineSegment(pointcloud genetaring)
@@ -274,8 +284,26 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
   getTrajectoryCorrectionForZone
   
   
+  #### Manipulating with visual parameters - this variables user can choose in settings tab:
+```diff
+- Most of this visual parameters are described in object creation method of this class.
+```
+1. To get values of this parameters use:
+
+```js
+ Project::getVisualParameter{name of paramter}()
+``` 
+2. For obtaining whether shake filter is enabled use:
+
+```js
+  bool getUseShakeFilter()
+``` 
   
-  settings---
+  &emsp;To set it use:
+```js
+  void setUseShakeFilter(bool usefilt)
+```  
+  
   
   getVisualParameterStdPrecision
   getVisualParameterMinStdPrecision
@@ -290,6 +318,22 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
   getVisualParameterMinSpeed
   getVisualParameterMaxSpeed
   getVisualParameterQualityType
+  
+  
+  
+      - `c_qualityType` - quality indicator displayed on trajectory(0 - position,1 - heading, 2 - PDOP, 3 - speed)
+    - `c_stdprecision` - maximum precision of position 
+    - `c_minstdprecision` - minimum precision of position 
+    - `c_stdprecisionHeading` - maximum heading precision
+    - `c_minstdprecisionHeading` - minimum heading precision
+    - `c_minPDOP` - disable/enable calculation
+    - `c_maxPDOP` - disable/enable calculation
+    - `c_minSpeed` - minimum speed precision
+    - `c_maxSpeed` - maximum speed precision
+    - `c_smartfilter` - whether smart filter is enabled(remove scans while standing)
+    - `c_speedfilter` - whether speed filter is enabled
+    - `c_speedfilterThreshold` - speed threshold for speed filter
+  
   
   
    getRegistryEntryNameOfProject
