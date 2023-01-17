@@ -195,9 +195,39 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 > This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
 
   
-##### For manipulation with frames use:
+##### Manipulating with trajectory frames:
   
-  getSelectedFrames
+1. This returns indexes of **trajectory frames** that are selected(has state=2). :
+  
+```js
+  std::vector<int> Project::getSelectedFrames()
+```  
+  
+2. This returns indexes of **lidar frames**, based on trajectory selections (where state=2). :
+  
+```js
+  std::vector<int> Project::getSelectedFramesForLidarDevice(int index)
+```  
+
+3. To get index of **frame from lidar**(with given ID) and that is placed at given trajectory position use:
+
+```js
+  int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
+```    
+  
+4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use:
+ &emsp;If there are some missing trajectory indexes in input, the hole in lidar frames indexes will be filled in returns.
+
+    - `preselected` - IDs of trajectory points
+    - `index` - lidar ID
+
+```js
+std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
+``` 
+  
+  
+  
+  
   getPerpendicularLineSegmentAtTrajectory
   getFramesForPerpendicularLineSegment(pointcloud genetaring)
   getPerpedicularLineSegmentForSidewayCut
@@ -266,43 +296,8 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
   getLineCutSegmentZonesCount
   
   
+1. To get name of registry for given project call:
   
-&emsp;&emsp;If given file was inited **returns number of frames**.
 ```js
-int initFile(std::string pcapfile)
+QString Project::getRegistryEntryNameOfProject()
 ``` 
-3. Inits frames data info structure based on the info from lidar file and given transformation:
-  
-    - `outputData` - holds all frames data info structures, its main output of this method
-    - `pcapfile` - lidar file
-    - `transformation` - transformation assigned to frames
-    - `timeoffset` - timestamp offset
-    - `stopcalculating` - disable/enable calculation
-
-&emsp;&emsp;If given file was inited **returns size of output data**.
-```js
-int initFileWithTransformations(std::vector<FrameData> &outputData, std::string pcapfile, std::vector<Transformation> &transformation, int timeoffset, bool *stopcalculating = nullptr)
-``` 
-4. To set corrections for lidar data:
-  
-    - `corrections` -  new corrections
-
-```js
-void setLaserMeasurementCorrections(std::vector<compensationValues> corrections)
-``` 
-  
-5. To set info about frames- position("index") in lidar file and timestamp of each frame use method:
-  
-    - `newFrames` -  new info to be assigned
-
-```js
-void setFramesIDs(std::vector<FrameFileInfo> newFrames)
-``` 
-  
-  
-6. To obtain some lidar frame use method **getLasFrame** on object:
-  
-    - `localfile` - lidar file in which the frame will be searched
-    - `index` - index of frame, which should be returned
-    - `lidToFrame` - lidar transformation
-    - `restriction` - restriction to add some points to 
