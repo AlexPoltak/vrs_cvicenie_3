@@ -288,7 +288,7 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
 ```
-1. To get values of this parameters use:
+1. To get value of specific visual parameter use:
 
 ```js
  Project::getVisualParameter{name of paramter}()
