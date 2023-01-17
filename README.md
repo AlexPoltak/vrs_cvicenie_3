@@ -211,7 +211,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
   std::vector<int> Project::getSelectedFramesForLidarDevice(int index)
 ```  
 
-3. To get index of **frame from lidar**(with given ID) and that is placed at given trajectory position use:
+3. To get index of **frame from lidar**(with given ID) which is placed at given trajectory position use:
 
 ```js
   int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
