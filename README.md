@@ -305,37 +305,6 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
 ```  
   
   
-  getVisualParameterStdPrecision
-  getVisualParameterMinStdPrecision
-  getVisualParameterSmartFilter
-  getVisualParameterSpeedFilter
-  getUseShakeFilter
-  getVisualParameterSpeedFilterThreshold
-  getVisualParameterMinStdPrecisionHeading
-  getVisualParameterStdPrecisionHeading
-  getVisualParameterMinPDOP
-  getVisualParameterMaxPDOP
-  getVisualParameterMinSpeed
-  getVisualParameterMaxSpeed
-  getVisualParameterQualityType
-  
-  
-  
-      - `c_qualityType` - quality indicator displayed on trajectory(0 - position,1 - heading, 2 - PDOP, 3 - speed)
-    - `c_stdprecision` - maximum precision of position 
-    - `c_minstdprecision` - minimum precision of position 
-    - `c_stdprecisionHeading` - maximum heading precision
-    - `c_minstdprecisionHeading` - minimum heading precision
-    - `c_minPDOP` - disable/enable calculation
-    - `c_maxPDOP` - disable/enable calculation
-    - `c_minSpeed` - minimum speed precision
-    - `c_maxSpeed` - maximum speed precision
-    - `c_smartfilter` - whether smart filter is enabled(remove scans while standing)
-    - `c_speedfilter` - whether speed filter is enabled
-    - `c_speedfilterThreshold` - speed threshold for speed filter
-  
-  
-  
    getRegistryEntryNameOfProject
   
   setTrajectoryDisabling
