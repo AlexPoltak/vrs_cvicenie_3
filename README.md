@@ -205,6 +205,8 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
   
 2. This returns indexes of **lidar frames**, based on trajectory selections (where state=2). :
   
+      - `index` - lidar ID
+
 ```js
   std::vector<int> Project::getSelectedFramesForLidarDevice(int index)
 ```  
