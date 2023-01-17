@@ -217,7 +217,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
   int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
 ```    
   
-4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use:
+4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use **getSelectedFilteredFramesForLidarDevice**:
  &emsp;If there are some missing trajectory indexes in input, the hole in lidar frames indexes will be filled in returns.
 
     - `preselected` - IDs of trajectory points
