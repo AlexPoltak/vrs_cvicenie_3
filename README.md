@@ -106,7 +106,7 @@ Based on these files is created project thanks to which user can interact with a
 1. Setting project path that contains project file name(to this file will be stored project values after saving)
 ```js
   void Project::setProjectFilename(QString newProjectFile)
-```  
+``` 
 
 2. Setting trajectory file path:
 ```js
@@ -200,8 +200,18 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```js
   bool Project::isProjectFileXML(QString fileName)
 ```  
-   
+
+4. To get name of current opened project use:
   
+```js
+  QString Project::getProjectFilename()
+```  
+   
+5. To get registry name of current opened project (it is used to add project to recent projects and so on) call:
+  
+```js
+QString Project::getRegistryEntryNameOfProject()
+``` 
   
   
 #### Manipulating with trajectory, lidar frames:
@@ -265,7 +275,16 @@ std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ```js
 std::vector<Transformation> &getTrajectoryTransformation(bool withModification=false)
 ```
+   &emsp; To get zero(first) transformation from this vector use:
   
+```js
+const Transformation &getZeroPositionFromTransformation()
+```
+   &emsp; To get length of transformation vector(length of trajectory) use method **getTrajectoryLength**. It is used in Graph making:
+
+```js
+  int getTrajectoryLength()
+```
   
 8. To get indexes of lidar lines based on preset value call:
   
@@ -281,6 +300,11 @@ std::vector<Transformation> &getTrajectoryTransformation(bool withModification=f
 ```js
 std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
 ```     
+  
+9. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
+```js
+  void Project::clearTrajectorySelection()
+```
   
   
 ####  Wrappers for trajectory matters(inertial explorer filereader) :
@@ -353,7 +377,13 @@ std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(d
     - [1] right centered point of cut(on right side of trajectory)<br>
     - [2] left centered point of cut(on left side of trajectory)
   
-4. To get angle between zones of points in prepared cutting line segment call:
+4. To get number of zones in current prepared line cut segment, use:
+  
+ ```js
+int getLineCutSegmentZonesCount()
+``` 
+  
+5. To get angle between zones of points in prepared cutting line segment call:
   
       - `firstZone` - ID of some zone in cutting line segment
       - `secondZone` - ID of another zone in cutting line segment
@@ -363,7 +393,7 @@ std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(d
 double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
 ```  
   
-5. To get GPS timestamp for given zone in prepared cutting line segment use:
+6. To get GPS timestamp for given zone in prepared cutting line segment use:
 
       - `i` - ID of zone in cutting line segment
 
@@ -371,7 +401,7 @@ double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone
 double Project::getTimeOfLineCutSegmentZone(int i)
 ```  
 
-6. To receive trajectory ID for given zone of prepared line cut segment use:
+7. To receive trajectory ID for given zone of prepared line cut segment use:
   
       - `i` - ID of zone in cutting line segment
 
@@ -379,7 +409,8 @@ double Project::getTimeOfLineCutSegmentZone(int i)
 int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
 ```  
   
-7. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
+
+8. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
   
 ```js
 void clearLineCut()
@@ -396,6 +427,8 @@ void clearLineCut()
   correctionExists
   saveFitPoints
   loadFitPoints
+  getTrajectoryCorrectionForZone
+  
   
   getParamsForMapStruct
  setVisualQualityParameter
@@ -406,19 +439,14 @@ void clearLineCut()
   addRTKpoint
  
   
-
-  getProjectFilename
-  getZeroPositionFromTransformation
   getIMUtoVehicleRotation
   getBoresightRotation
-  
-  
-  
-  clearTrajectorySelection
   getTrajectoryTimepositions
-  getTrajectoryLength
   
-  getTrajectoryCorrectionForZone
+  
+  
+  
+  
   
   
   #### Manipulating with visual parameters - this variables user can choose in settings tab:
@@ -428,8 +456,15 @@ void clearLineCut()
 1. To get value of specific visual parameter use:
 
 ```js
- Project::getVisualParameter{name of paramter}()
+{return type} Project::getVisualParameter{name of paramter}()
 ``` 
+  
+2.To set value of specific visual parameter use:
+
+```js
+    void setVisualParameter{name of parameter}(value)
+``` 
+  
 2. For obtaining whether shake filter is enabled use:
 
 ```js
@@ -444,11 +479,6 @@ void clearLineCut()
   
   
   setTrajectoryDisabling
-  getLineCutSegmentZonesCount
   
   
-1. To get name of project registry name call:
-  
-```js
-QString Project::getRegistryEntryNameOfProject()
-``` 
+ 
