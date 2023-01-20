@@ -322,7 +322,7 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 ```     
   
   
-#### Creating and manipulating with **line cutting segment**. 
+### Creating and manipulating with **line cutting segment**. 
   It is displayed in profile mode on map(creator app), when user clicks somewhere on trajectory. Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
 
 Line cut segment variable holds points that defines itself:
