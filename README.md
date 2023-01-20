@@ -102,7 +102,7 @@ Based on these files is created project thanks to which user can interact with a
   void Project::clearProject()
 ```    
   
-#### Some required steps:
+### Some required steps:
 1. Setting project path that contains project file name(to this file will be stored project values after saving)
 ```js
   void Project::setProjectFilename(QString newProjectFile)
@@ -137,7 +137,7 @@ Based on these files is created project thanks to which user can interact with a
 void Project::initDevices()
 ```  
   
-#### Some other methods to initialize the project:
+### Some other methods to initialize the project:
 
 1. Setting path to camera files:
 
@@ -175,7 +175,7 @@ void Project::initDevices()
 - Most of the previous methods you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
 ```
   
-#### Saving and opening/reading project:
+### Saving and opening/reading project:
 1. When the required steps have been taken or some modification in project have been made, to save project with all values use **saveProjectFile** method. Project will be saved to XML file with .PRJ sufix.
 
 ```js
@@ -214,7 +214,7 @@ QString Project::getRegistryEntryNameOfProject()
 ``` 
   
   
-#### Manipulating with trajectory, lidar frames:
+### Manipulating with trajectory, lidar frames:
   
 1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
   
@@ -307,7 +307,7 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 ```
   
   
-####  Wrappers for trajectory matters(inertial explorer filereader) :
+###  Wrappers for trajectory matters(inertial explorer filereader) :
   
 1. To generate transformations for trajectory call **traj_generateTransformation**. It is used in projectcreationdialog class.
   
@@ -416,7 +416,7 @@ int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
 void clearLineCut()
 ```  
   
-#### Some other methods for manipulating with trajectory:
+### Some other methods for manipulating with trajectory:
   
 
   getFitpointsAsReference
@@ -432,7 +432,8 @@ void clearLineCut()
   
   getParamsForMapStruct
  setVisualQualityParameter
-  
+    setTrajectoryDisabling
+
   
   getRTKpointsAsReference
   filterRTKpointsByProjectBoundaries
@@ -449,7 +450,7 @@ void clearLineCut()
   
   
   
-  #### Manipulating with visual parameters - this variables user can choose in settings tab:
+  ### Manipulating with visual parameters - this variables user can choose in settings tab:
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
 ```
@@ -476,9 +477,6 @@ void clearLineCut()
   void setUseShakeFilter(bool usefilt)
 ```  
   
-  
-  
-  setTrajectoryDisabling
   
   
  
