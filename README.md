@@ -284,9 +284,11 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajectoryID, double segmentLength,double segmentWidth,double cutWidth)
 ```    
   
+  
 ```diff
- Points of this line cut segment and more visual parameter you can get by method **getParamsForMapStruct()**
-```  
+- Points of this line cut segment and more visual parameter you can get by method getParamsForMapStruct()
+```
+  
   
   
   getFramesForPerpendicularLineSegment(pointcloud genetaring)
