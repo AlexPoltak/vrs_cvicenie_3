@@ -71,8 +71,8 @@ void setValuesRMC(const std::string RMCSentence)
 <details><summary>project</summary>
 <p>
 
-#### This class serves for manipulating with project that are created by user. Creation is done in the creator app where user have to load trajectory, lidar and calibration file(That files are required for project creation). Optionally user can load camera file, if were obtained.
-Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profiles generation and more).
+#### This class serves for manipulating with project that are created by user. Creation is done in the creator app(by projectcreationdialog class) where user have to load trajectory, lidar and calibration file(That files are required for project creation). Optionally user can load camera file, if were obtained.
+Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profiles generation and more).Most of operations with project are used in creator app(in corresponding classes)
 
   ### Getting Started
   
@@ -96,24 +96,24 @@ All this input parameters user can change in tab settings
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
   
-2. If you want to clear project and values in UI use:
+2. If you want to clear project and all values based on which informations are displayed in UI,  use:
   
 ```js
   void Project::clearProject()
 ```    
   
 #### Some required steps:
-1. Setting project path that contains project file name(to this file project will be saved)
+1. Setting project path that contains project file name(to this file will be stored project values after saving)
 ```js
   void Project::setProjectFilename(QString newProjectFile)
 ```  
 
-2. Setting trajectory file path
+2. Setting trajectory file path:
 ```js
   void Project::setTrajectoryFilename(QString newTrajectoryFile)
 ```  
  
-3. Setting lidar file path
+3. Setting lidar file path:
       
      - `index` - ID of lidar
     
@@ -125,7 +125,7 @@ All this input parameters user can change in tab settings
 ```js
   void Project::setCalibrationFilename(QString newCalibrationFile)
 ```  
-5. Setting calibration values from file:
+5. Setting calibration values from calibration file:
   It returns true when everything was set correctly, else returns false
 ```js
   bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
@@ -182,7 +182,7 @@ void Project::initDevices()
     void Project::saveProjectFile()
 ```  
   
-> This method contains method **saveProjectFileToXml**, that saves all values to XML file.
+> This method contains method **saveProjectFileToXml**, that saves all project values to XML file.
 
 2. To open project file and read all values from it use:
 
@@ -192,7 +192,7 @@ void Project::initDevices()
 ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```  
  
-> This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables.
+> This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables from them.
 
   
 3. To check whether given file is XML file use:
@@ -206,13 +206,13 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
   
 #### Manipulating with trajectory, lidar frames:
   
-1. This returns indexes of **trajectory frames** that are selected(has state=2). :
+1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
   
 ```js
   std::vector<int> Project::getSelectedFrames()
 ```  
   
-2. This returns indexes of **lidar frames**, based on trajectory selections (where state=2). :
+2. This returns indexes of **lidar frames**, based on trajectory selections (where state=2) :
   
       - `index` - lidar ID
 
@@ -221,15 +221,18 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```  
 
 3. To get index of **frame from lidar**(with given ID) which is placed at given trajectory position use:
+  
+      - `whichTrajectoryPoint` - ID of trajectory point at which the ID of lidar frame should be returned
+      - `whichLidar` - lidar ID
 
 ```js
   int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
 ```    
   
 4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use **getSelectedFilteredFramesForLidarDevice**:
- &emsp;If there are some missing trajectory indexes in input, the hole in lidar frames indexes will be filled in return.
+ &emsp;If there are some missing trajectory indexes in input, the space in corresponding lidar frames indexes will be filled in return.
 
-    - `preselected` - IDs of trajectory points
+    - `preselected` - IDs of trajectory points at which the IDs of lidar frame should be returned
     - `index` - lidar ID
 
 ```js
@@ -237,18 +240,7 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
 ``` 
   
 
-5. To get index of **frame from lidar**(with given ID) which is placed at given trajectory position use:
-
-```js
-  int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
-```     
-  
-  
-  
-  
-  
-  
-6. To get indexes of lidar lines based on preset value call:
+5. To get indexes of lidar lines based on preset value call:
   
     - `whichlidar` - ID of lidar
         | whichlines    | 
@@ -272,14 +264,31 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
   void Project::traj_generateTransformation()
 ```   
   
-2. To read trajectory file and inits values for trajectory reader class(inertialExplorerFileReader) call **traj_readTrajectoryFromFile**. It is used in projectcreationdialog class and in project XML reading methods.
+2. To read trajectory file and inits values for trajectory reader class(inertialExplorerFileReader) call **traj_readTrajectoryFromFile**. It is used in projectcreationdialog class and in project reading methods.
   
 ```js
   int Project::traj_readTrajectoryFromFile(QString rawTrajFile)
 ```     
   
   
-  getPerpendicularLineSegmentAtTrajectory
+#### Creating and manipulating with **line cutting segment**. It is displayed in profile mode on map(creator app). Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
+
+1. To prepare line cut segment points use method getPerpendicularLineSegmentAtTrajectory(). Line segment is generated perpendicular to given trajectory place.
+
+      - `trajectoryID` - ID of trajectory point to which the points of perpendicular line segment are calculated
+      - `segmentLength` - length of line segment(defined by user)
+      - `segmentWidth` - width of XY projection-aerial view(defined by user)
+      - `cutWidth` - width of cut (width of ZX projection-cut view defined by user)
+  
+```js
+std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajectoryID, double segmentLength,double segmentWidth,double cutWidth)
+```    
+  
+```diff
+ Points of this line cut segment and more visual parameter you can get by method **getParamsForMapStruct()**
+```  
+  
+  
   getFramesForPerpendicularLineSegment(pointcloud genetaring)
   getPerpedicularLineSegmentForSidewayCut
   getAngleBetweenLineCutSegmentZones
@@ -344,13 +353,12 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 ```  
   
   
-   getRegistryEntryNameOfProject
   
   setTrajectoryDisabling
   getLineCutSegmentZonesCount
   
   
-1. To get name of registry for given project call:
+1. To get name of project registry name call:
   
 ```js
 QString Project::getRegistryEntryNameOfProject()
