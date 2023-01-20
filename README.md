@@ -275,12 +275,13 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
   It is displayed in profile mode on map(creator app), when user clicks somewhere on trajectory. Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
 
 Line cut segment holds points that defines it:
-  - lineCutSegment->cutRectangle[0] is center of line( where user clicked on trajectory)
-  - from lineCutSegment->cutRectangle[1] to lineCutSegment->cutRectangle[4] are perimeter points of line that indicates width of XY projection-aerial view)
-  - from lineCutSegment->cutRectangle[5] to lineCutSegment->cutRectangle[8] are perimeter points of line that indicates width of ZX projection-cut view
-  - from lineCutSegment->cutRectangle[9] to lineCutSegment->cutRectangle[12] are perimeter points of line that indicates sideway cut
 
-
+| Range from                        | Range to                         |      | definition          |
+| :-------------                    | :-------------                   |------| :-------------      | 
+| lineCutSegment->cutRectangle[0]   |                                  |      | center of line( where user clicked on trajectory)     | 
+| lineCutSegment->cutRectangle[1]   | lineCutSegment->cutRectangle[4]  |      | perimeter points of line that indicates width of XY projection-aerial view    |
+| lineCutSegment->cutRectangle[5]   | lineCutSegment->cutRectangle[8]  |      | perimeter points of line that indicates width of ZX projection-cut view  |
+| lineCutSegment->cutRectangle[9]   | lineCutSegment->cutRectangle[12] |      | perimeter points of line that indicates sideway cut       | 
   
   
 1. To prepare line cut segment points use method getPerpendicularLineSegmentAtTrajectory(). Line segment is generated perpendicular to given trajectory place.
