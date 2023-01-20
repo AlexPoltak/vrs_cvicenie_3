@@ -472,7 +472,7 @@ void clearLineCut()
   bool getUseShakeFilter()
 ``` 
   
-  &emsp;To set it use:
+&emsp; &emsp;To set it use:
 ```js
   void setUseShakeFilter(bool usefilt)
 ```  
