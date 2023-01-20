@@ -321,7 +321,7 @@ std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPoin
 std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(double cx,double cy, double rx,double ry,int trajectoryID,int rtkID, double segmentLength,double segmentWidth,double cutWidth)
 
 ```  
-  It returns points of prepared line segment in order:
+ > It returns points of prepared line segment in order:
     - [0] center point of cutting line
     - [1] right centered point of cut(on right side of trajectory)
     - [2] left centered point of cut(on left side of trajectory)
