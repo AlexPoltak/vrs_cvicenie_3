@@ -271,8 +271,18 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 ```     
   
   
-#### Creating and manipulating with **line cutting segment**. It is displayed in profile mode on map(creator app). Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
+#### Creating and manipulating with **line cutting segment**. 
+  It is displayed in profile mode on map(creator app), when user clicks somewhere on trajectory. Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
 
+Line cut segment holds points that defines it:
+  - lineCutSegment->cutRectangle[0] is center of line( where user clicked on trajectory)
+  - from lineCutSegment->cutRectangle[1] to lineCutSegment->cutRectangle[4] are perimeter points of line that indicates width of XY projection-aerial view)
+  - from lineCutSegment->cutRectangle[5] to lineCutSegment->cutRectangle[8] are perimeter points of line that indicates width of ZX projection-cut view
+  - from lineCutSegment->cutRectangle[9] to lineCutSegment->cutRectangle[12] are perimeter points of line that indicates sideway cut
+
+
+  
+  
 1. To prepare line cut segment points use method getPerpendicularLineSegmentAtTrajectory(). Line segment is generated perpendicular to given trajectory place.
 
       - `trajectoryID` - ID of trajectory point to which the points of perpendicular line segment are calculated
@@ -289,15 +299,57 @@ std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajec
 - Points of this line cut segment and more visual parameter you can get by method getParamsForMapStruct()
 ```
   
+2. To obtain IDs of trajectory for prepared line segment use method **getFramesForPerpendicularLineSegment**. Based on this IDs is generated pointcloud for projections in creator app:
+
+      - `limits` - limits of line segment(you can use return value from method **getPerpendicularLineSegmentAtTrajectory**)
+      - `selectedId` - ID of trajectory where line segment is created
+      - `segmentWidth` - width of XY projection-aerial view( set by user)
+
+```js
+std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPointF> limits,int selectedId,double segmentWidth)
+```  
+  
+3. To prepare line cut segment for sideway view(ZY projection) use:
+
+      - `cx` - X position of sideway cutting line center
+      - `cy` - Y position of sideway cutting line center
+      - `rx` - direction vector of sideway cutting line
+      - `ry` - direction vector of sideway cutting line
+
+```js
+std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(double cx,double cy, double rx,double ry,int trajectoryID,int rtkID, double segmentLength,double segmentWidth,double cutWidth)
+
+```  
+  It returns points of prepared line segment in order:
+    - [0] center point of cutting line
+    - [1] right centered point of cut(on right side of trajectory)
+    - [2] left centered point of cut(on left side of trajectory)
+  
+4. To get angle between zones of points in prepared cutting line segment call:
+  
+      - `firstZone` - ID of some zone in cutting line segment
+      - `secondZone` - ID of another zone in cutting line segment
+
+Returns angle in radians. It is used in correction to shift zone in chosen angle.
+```js
+double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
+```  
+  
+5. To get GPS timestamp for given zone in prepared cutting line segment use:
+
+      - `i` - ID of zone in cutting line segment
+
+```js
+double Project::getTimeOfLineCutSegmentZone(int i)
+```  
+
+6. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
+  
+```js
+void clearLineCut()
+```  
   
   
-  getFramesForPerpendicularLineSegment(pointcloud genetaring)
-  getPerpedicularLineSegmentForSidewayCut
-  getAngleBetweenLineCutSegmentZones
-  getTimeOfLineCutSegmentZone
-  
-  
-  clearLineCut
   getFitpointsAsReference
   addFitPoint
   modifyFitPoint
