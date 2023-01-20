@@ -238,9 +238,36 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```js
 std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
-  
 
-5. To get indexes of lidar lines based on preset value call:
+5. To receive relational vector between lidar frames and trajectory use:
+```js
+std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
+``` 
+   &emsp; To get reference on this relational vector call:
+```js
+std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
+``` 
+
+6. To get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and so on:
+  
+```js
+  std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> getTrajectoryRealtionInfoPtr()
+```
+  
+>  It is generated from trajectoryTransformation vector that is prepared by trajectory reader in reading methods for opening project
+  
+  
+  
+7. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
+  
+      - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
+
+```js
+std::vector<Transformation> &getTrajectoryTransformation(bool withModification=false)
+```
+  
+  
+8. To get indexes of lidar lines based on preset value call:
   
     - `whichlidar` - ID of lidar
         | whichlines    | 
@@ -344,13 +371,23 @@ double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone
 double Project::getTimeOfLineCutSegmentZone(int i)
 ```  
 
-6. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
+6. To receive trajectory ID for given zone of prepared line cut segment use:
+  
+      - `i` - ID of zone in cutting line segment
+
+```js
+int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
+```  
+  
+7. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
   
 ```js
 void clearLineCut()
 ```  
   
+#### Some other methods for manipulating with trajectory:
   
+
   getFitpointsAsReference
   addFitPoint
   modifyFitPoint
@@ -371,19 +408,16 @@ void clearLineCut()
   
 
   getProjectFilename
-  getTrajectoryTransformation
   getZeroPositionFromTransformation
   getIMUtoVehicleRotation
   getBoresightRotation
   
   
-  getFramesTrajectoryRelationsInfoAsReference
-  getTrajectoryRealtionInfoPtr(undostack)  
+  
   clearTrajectorySelection
   getTrajectoryTimepositions
   getTrajectoryLength
-  getTrajectoryRealtionInfoPtr
-  getTrajectoryIDOfLineCutSegmentZone
+  
   getTrajectoryCorrectionForZone
   
   
