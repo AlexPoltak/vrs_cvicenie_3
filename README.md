@@ -91,7 +91,7 @@ Based on these files is created project thanks to which user can interact with a
     - `c_speedfilter` - whether speed filter is enabled
     - `c_speedfilterThreshold` - speed threshold for speed filter
   
-All this input parameters user can change in tab settings
+> All this input parameters user can change in tab settings
  ```js
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
@@ -331,7 +331,7 @@ std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(d
       - `firstZone` - ID of some zone in cutting line segment
       - `secondZone` - ID of another zone in cutting line segment
 
-Returns angle in radians. It is used in correction to shift zone in chosen angle.
+> Returns angle in radians. It is used in correction to shift zone in chosen angle.
 ```js
 double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
 ```  
