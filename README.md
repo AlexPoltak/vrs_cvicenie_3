@@ -460,13 +460,13 @@ void clearLineCut()
 {return type} Project::getVisualParameter{name of paramter}()
 ``` 
   
-2.To set value of specific visual parameter use:
+2. To set value of specific visual parameter use:
 
 ```js
     void setVisualParameter{name of parameter}(value)
 ``` 
   
-2. For obtaining whether shake filter is enabled use:
+3. For obtaining whether shake filter is enabled use:
 
 ```js
   bool getUseShakeFilter()
