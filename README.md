@@ -611,50 +611,49 @@ Line cut segment variable holds points that defines itself:
 <details><summary>&emsp;&emsp; Manipulating with transformations, rotations and time offsets of/between devices(lidar, camera, body) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
 #### Transformations
-1. Transformation of lidar device:
+1. Transformation of lidar device:<br>
 &emsp; &emsp;To set this transformation:
 ```js
   void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
 ```  
-&emsp; &emsp;To get this transformation:
+<br>&emsp; &emsp;To get this transformation:
 ```js
   Transformation Project::getLidarTransformation(int lidarIndex, double gain)
 ```   
   
-2. Transformation of camera device:
+2. Transformation of camera device:<br>
 &emsp; &emsp;To set this transformation:
 ```js
   void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
 ```  
-&emsp; &emsp;To get this transformation:
+<br>&emsp; &emsp;To get this transformation:
 ```js
   Transformation Project::getCameraTransformation(int cameraIndex, double gain)
 ```   
    
   
-3. Transformation between lidar and IMU:
+3. Transformation between lidar and IMU:<br>
 &emsp; &emsp;To set this transformation use:
 
 ```js
   void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
 ```  
-&emsp; &emsp;To get this transformation use:
+<br>&emsp; &emsp;To get this transformation use:
 ```js
   Transformation Project::getTransformationLidar_IMU(int lidarIndex,double gain)
 ```  
-&emsp; &emsp;To clear this transformation use:
+<br>&emsp; &emsp;To clear this transformation use:
 ```js
   void Project::clearTransformationLidar_IMU(int lidarIndex)
 ```  
   
-4. Transformation between camera and IMU:
+4. Transformation between camera and IMU:<br>
 &emsp; &emsp;To get this transformation use:
 ```js
   Transformation Project::getTransformationCamera_IMU(int cameraIndex)
 ```  
   
 5. Transformation between IMU and vehicle(what the devices are connected to):
-&emsp; &emsp;To get this transformation use:
 ```js
   Transformation Project::getTransformationIMU_Vehicle()
 ```  
@@ -673,12 +672,12 @@ Line cut segment variable holds points that defines itself:
   double Project::getLidarRotation(int lidarIndex)
 ```   
 
-3. Rotation of camera device:
+3. Rotation of camera device:<br>
 &emsp; &emsp;To set this rotation:
 ```js
   void Project::setCameraRotation(int cameraIndex,double rotation)
 ```  
-&emsp; &emsp;To get this rotation:
+<br>&emsp; &emsp;To get this rotation:
 ```js
   double Project::getCameraRotation(int cameraIndex)
 ```   
@@ -689,18 +688,18 @@ Line cut segment variable holds points that defines itself:
 ``` 
 #### Time offsets
 
-1. Time offset of lidar device:
+1. Time offset of lidar device:<br>
 &emsp; &emsp;To get this offset:
 ```js
   double getLidarTimeOffset(int lidarIndex)
 ```   
 
-2. Time offset of camera device:
+2. Time offset of camera device:<br>
 &emsp; &emsp;To set this offset:
 ```js
   void setCameraTimeOffset(int cameraIndex,double newOffset);
 ```  
-&emsp; &emsp;To get this offset:
+<br>&emsp; &emsp;To get this offset:
 ```js
   double getCameraTimeOffset(int cameraIndex);
 ```   
