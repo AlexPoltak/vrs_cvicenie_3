@@ -101,8 +101,8 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   void Project::clearProject()
 ```    
-  
-### Some required steps:
+<details><summary>&emsp;&emsp; Some required step to create project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
 1. Setting project path that contains project file name(to this file will be stored project values after saving)
 ```js
   void Project::setProjectFilename(QString newProjectFile)
@@ -137,7 +137,9 @@ Based on these files is created project thanks to which user can interact with a
 void Project::initDevices()
 ```  
   
-### Some other methods to initialize the project:
+</details>
+
+<details><summary>&emsp;&emsp; Some other methods to initialize the project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
 1. Setting path to camera files:
 
@@ -174,8 +176,11 @@ void Project::initDevices()
 ```diff
 - Most of the previous methods you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
 ```
-  
-### Saving and opening/reading project:
+</details>
+
+
+<details><summary>&emsp;&emsp; Saving and opening/reading project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
 1. When the required steps have been taken or some modification in project have been made, to save project with all values use **saveProjectFile** method. Project will be saved to XML file with .PRJ sufix.
 
 ```js
@@ -213,9 +218,10 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 QString Project::getRegistryEntryNameOfProject()
 ``` 
   
-  
-### Manipulating with trajectory, lidar frames:
-  
+</details>
+
+<details><summary>&emsp;&emsp; Manipulating with trajectory, lidar frames </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+    
 1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
   
 ```js
@@ -305,9 +311,11 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 ```js
   void Project::clearTrajectorySelection()
 ```
+
+</details>
   
   
-###  Wrappers for trajectory matters(inertial explorer filereader) :
+<details><summary>&emsp;&emsp; Wrappers for trajectory matters(inertial explorer filereader)  </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
   
 1. To generate transformations for trajectory call **traj_generateTransformation**. It is used in projectcreationdialog class.
   
@@ -322,7 +330,10 @@ std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarR
 ```     
   
   
-### Creating and manipulating with **line cutting segment**. 
+</details>
+  
+<details><summary>&emsp;&emsp; Creating and manipulating with line cutting segment </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
   It is displayed in profile mode on map(creator app), when user clicks somewhere on trajectory. Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
 
 Line cut segment variable holds points that defines itself:
@@ -415,8 +426,12 @@ int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
 ```js
 void clearLineCut()
 ```  
+
+</details>
   
-### Methods for creating and manipulating with corrections of pointcloud
+  
+<details><summary>&emsp;&emsp; Methods for creating and manipulating with corrections of pointcloud </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
   In profile mode user can click somewhere on trajectory and make corrections there in a few steps. Firstly user can measure in profile views with measurement tool(measurement button in menu among profile views), where pointcloud should be corrected. After measurement, user can create correction by pressing FIT button that is next to the measurement tool button.
   
 1. To add fit point use method **addFitPoint**.  It is point(with correction structure) on trajectory, where user wants to create correction. Correction structure holds user measurements, trajectory time and so on:
@@ -510,9 +525,12 @@ bool Project::loadFitPoints()
 correction Project::getTrajectoryCorrectionForZone(int i)
 ``` 
   
-    
+</details>
+
+
   
-### Manipulating with visual parameters - this variables user can choose in settings tab:
+<details><summary>&emsp;&emsp; Manipulating with visual parameters - this variables user can choose in settings tab </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
 ```
@@ -539,10 +557,12 @@ correction Project::getTrajectoryCorrectionForZone(int i)
   void setUseShakeFilter(bool usefilt)
 ```  
   
+</details>
   
   
   
-### Manipulating with transformations, rotations and offsets of/between devices(lidar, camera, body)
+<details><summary>&emsp;&emsp; Manipulating with transformations, rotations and offsets of/between devices(lidar, camera, body) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
 
 1. Transformation of lidar device:
 &emsp; &emsp;To set this transformation:
@@ -593,6 +613,8 @@ Transformation Project::getTransformationIMU_Vehicle()
 ```  
   
   
+  
+</details>
   
   getParamsForMapStruct
  setVisualQualityParameter
