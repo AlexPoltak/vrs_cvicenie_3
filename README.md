@@ -610,7 +610,7 @@ Line cut segment variable holds points that defines itself:
   
 <details><summary>&emsp;&emsp; Manipulating with transformations, rotations and time offsets of/between devices(lidar, camera, body) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
-####Transformations
+#### Transformations
 1. Transformation of lidar device:
 &emsp; &emsp;To set this transformation:
 ```js
@@ -659,7 +659,7 @@ Line cut segment variable holds points that defines itself:
   Transformation Project::getTransformationIMU_Vehicle()
 ```  
   
-####Rotations
+#### Rotations
 
 1. Rotation  between IMU and vehicle(what the devices are connected to):
 &emsp; &emsp;To get this transformation use:
@@ -687,7 +687,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   Transformation Project::getBoresightRotation()
 ``` 
-####Time offsets
+#### Time offsets
 
 1. Time offset of lidar device:
 &emsp; &emsp;To get this offset:
