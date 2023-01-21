@@ -220,7 +220,7 @@ QString Project::getRegistryEntryNameOfProject()
   
 </details>
 
-<details><summary>&emsp;&emsp; Manipulating with trajectory, lidar frames </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Manipulating with trajectory/lidar frames </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
     
 1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
   
@@ -264,19 +264,28 @@ std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
 std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ``` 
 
-6. To get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and so on:
+6. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
   
+&emsp; &emsp;To get this structure use:
+
 ```js
   std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> getTrajectoryRealtionInfoPtr()
 ```
-  
->  It is generated from trajectoryTransformation vector that is prepared by trajectory reader in reading methods for opening project
-  
-  
-  
+
+&emsp; &emsp;To fill this structure use:
+
+```js
+  void Project::fillFramesTrajectoryRelationsInfo(int trajectoryType)
+```
+
+```diff  
+ - It is generated/filled from trajectoryTransformation vector that is prepared by trajectory reader in reading methods for opening project
+```
+
+
 7. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
   
-      - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
+     - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
 
 ```js
 std::vector<Transformation> &getTrajectoryTransformation(bool withModification=false)
@@ -529,7 +538,7 @@ correction Project::getTrajectoryCorrectionForZone(int i)
 
 
   
-<details><summary>&emsp;&emsp; Manipulating with visual parameters - this variables user can choose in settings tab </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Manipulating with visual parameters - this variables user can choose in settings tab(contains filters that can be used) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
@@ -556,14 +565,27 @@ correction Project::getTrajectoryCorrectionForZone(int i)
 ```js
   void setUseShakeFilter(bool usefilt)
 ```  
+ 
+4. This sets prepared quality parameter to framesTrajectoryRelationsInfo structure. (It is used for coloring the trajectory by quality type in mymapcontrol class).
+
   
+```js
+  void Project::setVisualQualityParameter()
+```
+```diff
+- Use setVisualQualityParameter method when quality parameter was changed
+```
+
+
+   setVisualQualityParameter
+    setTrajectoryDisabling
 </details>
   
   
   
-<details><summary>&emsp;&emsp; Manipulating with transformations, rotations and offsets of/between devices(lidar, camera, body) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Manipulating with transformations, rotations and time offsets of/between devices(lidar, camera, body) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
-
+####Transformations
 1. Transformation of lidar device:
 &emsp; &emsp;To set this transformation:
 ```js
@@ -612,13 +634,57 @@ Transformation Project::getTransformationCamera_IMU(int cameraIndex)
 Transformation Project::getTransformationIMU_Vehicle()
 ```  
   
+####Rotations
+
+1. Rotation  between IMU and vehicle(what the devices are connected to):
+&emsp; &emsp;To get this transformation use:
+```js
+Transformation Project::getIMUtoVehicleRotation()
+```  
   
-  
+2. Rotation of lidar device:
+&emsp; &emsp;To get this rotation:
+```js
+  double Project::getLidarRotation(int lidarIndex)
+```   
+
+3. Rotation of camera device:
+&emsp; &emsp;To set this rotation:
+```js
+  void Project::setCameraRotation(int cameraIndex,double rotation)
+```  
+&emsp; &emsp;To get this rotation:
+```js
+  double Project::getCameraRotation(int cameraIndex)
+```   
+
+4. To get boresight rotation use :
+```js
+  Transformation Project::getBoresightRotation()
+``` 
+####Time offsets
+
+1. Time offset of lidar device:
+&emsp; &emsp;To get this offset:
+```js
+  double getLidarTimeOffset(int lidarIndex)
+```   
+
+2. Time offset of camera device:
+&emsp; &emsp;To set this offset:
+```js
+  void setCameraTimeOffset(int cameraIndex,double newOffset);
+```  
+&emsp; &emsp;To get this offset:
+```js
+  double getCameraTimeOffset(int cameraIndex);
+```   
+
+
 </details>
   
   getParamsForMapStruct
- setVisualQualityParameter
-    setTrajectoryDisabling
+
 
   
   getRTKpointsAsReference
