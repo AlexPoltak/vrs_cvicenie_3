@@ -270,19 +270,14 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
 ```js
   std::vector<int> Project::getSelectionFromXml()
 ```  
-
 > Method returns IDs of selected frames
 
-
-5. Transformation between IMU and vehicle(what the devices are connected to):
-&emsp; &emsp;To get this transformation use:
+6. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
 ```js
-Transformation Project::getTransformationIMU_Vehicle()
-```  
+  void Project::clearTrajectorySelection()
+```
 
-
-
-5. To receive relational vector between lidar frames and trajectory use:
+7. To receive relational vector between lidar frames and trajectory use:
 ```js
 std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
 ``` 
@@ -291,7 +286,7 @@ std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
 std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ``` 
 
-6. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
+8. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
   
 &emsp; &emsp;To get this structure use:
 
@@ -306,11 +301,11 @@ std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ```
 
 ```diff  
- - It is generated/filled from trajectoryTransformation vector that is prepared by trajectory reader in reading methods for opening project
+ - It is generated/filled with trajectoryTransformation vector that is prepared by trajectory reader in reading methods for opening project
 ```
 
 
-7. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
+9. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
   
      - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
 
@@ -328,7 +323,7 @@ const Transformation &getZeroPositionFromTransformation()
   int getTrajectoryLength()
 ```
   
-8. To get indexes of lidar lines based on preset value call:
+10. To get indexes of lidar lines based on preset value call:
   
     - `whichlidar` - ID of lidar
         | whichlines    | 
@@ -343,10 +338,7 @@ const Transformation &getZeroPositionFromTransformation()
 std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
 ```     
   
-9. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
-```js
-  void Project::clearTrajectorySelection()
-```
+
 
 </details>
   
