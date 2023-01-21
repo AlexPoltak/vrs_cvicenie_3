@@ -621,6 +621,7 @@ Line cut segment variable holds points that defines itself:
   Transformation Project::getLidarTransformation(int lidarIndex, double gain)
 ```   
  <br> 
+ 
 2. Transformation of camera device:<br>
   To set this transformation:
 ```js
@@ -632,6 +633,7 @@ Line cut segment variable holds points that defines itself:
 ```   
    
  <br> 
+ 
 3. Transformation between lidar and IMU:<br>
   To set this transformation use:
 
