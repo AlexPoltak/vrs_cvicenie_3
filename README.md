@@ -620,7 +620,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   Transformation Project::getLidarTransformation(int lidarIndex, double gain)
 ```   
-  
+ <br> 
 2. Transformation of camera device:<br>
   To set this transformation:
 ```js
@@ -631,7 +631,7 @@ Line cut segment variable holds points that defines itself:
   Transformation Project::getCameraTransformation(int cameraIndex, double gain)
 ```   
    
-  
+ <br> 
 3. Transformation between lidar and IMU:<br>
   To set this transformation use:
 
@@ -646,13 +646,15 @@ Line cut segment variable holds points that defines itself:
 ```js
   void Project::clearTransformationLidar_IMU(int lidarIndex)
 ```  
-  
+<br> 
+
 4. Transformation between camera and IMU:<br>
   To get this transformation use:
 ```js
   Transformation Project::getTransformationCamera_IMU(int cameraIndex)
 ```  
-  
+ <br> 
+ 
 5. Transformation between IMU and vehicle(what the devices are connected to):
 ```js
   Transformation Project::getTransformationIMU_Vehicle()
@@ -665,12 +667,14 @@ Line cut segment variable holds points that defines itself:
 ```js
   Transformation Project::getIMUtoVehicleRotation()
 ```  
+  <br> 
   
 2. Rotation of lidar device:
   To get this rotation:
 ```js
   double Project::getLidarRotation(int lidarIndex)
 ```   
+ <br> 
 
 3. Rotation of camera device:<br>
   To set this rotation:
@@ -681,6 +685,8 @@ Line cut segment variable holds points that defines itself:
 ```js
   double Project::getCameraRotation(int cameraIndex)
 ```   
+
+ <br> 
 
 4. To get boresight rotation use :
 ```js
@@ -693,6 +699,8 @@ Line cut segment variable holds points that defines itself:
 ```js
   double getLidarTimeOffset(int lidarIndex)
 ```   
+
+ <br> 
 
 2. Time offset of camera device:<br>
   To set this offset:
