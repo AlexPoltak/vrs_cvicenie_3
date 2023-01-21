@@ -419,7 +419,7 @@ void clearLineCut()
 ### Methods for creating and manipulating with corrections of pointcloud
   In profile mode user can click somewhere on trajectory and make corrections there in a few steps. Firstly user can measure in profile views with measurement tool(measurement button in menu among profile views), where pointcloud should be corrected. After measurement, user can create correction by pressing FIT button that is next to the measurement tool button.
   
-1. To add fit point use method **addFitPoint**.  It is point(with correction structure) on trajectory, where user wants to create correction:
+1. To add fit point use method **addFitPoint**.  It is point(with correction structure) on trajectory, where user wants to create correction. Correction structure holds user measurements, trajectory time and so on:
 
       - `positionID` - ID of trajectory position where correction should be made
       - `correctioninfo` -  correction info structure that will be added
@@ -454,21 +454,63 @@ bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,do
   
 > - If distance between neighboring fitpoints is lower than connectedDistance, existing end points will be shifted.<br>
 > - If distance between neighboring fitpoints is higher than connectedDistance, new end points will be added<br>
->  - Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. therefore when you want to access to trajectory, use abs of this value.
+>  - Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. Therefore, when you want to access to trajectory by ID use absolut value of this map key.
   
 
 ```js
 void Project::addEndPointsToFitCorrections(double connectedDistance,double fadeDistance)
 ```    
 
-  getFitpointsAsReference
-
-  addEndPointsToFitCorrections
-  calcCorrectionFromFitPoints
-  correctionExists
-  saveFitPoints
-  loadFitPoints
-  getTrajectoryCorrectionForZone
+4. To calculate and apply corrections based on added fitpoints use:
+  
+      - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
+      - `holdDistance` - if fit points are not connected, how far to hold the correction value
+      - `fadeDistance` - how far end points should be from relevant fit point
+  
+> This prepare **modifiedtrajectoryTransformation** variable which can be obtained by method **getTrajectoryTransformation** described in section ** Manipulating with trajectory, lidar frames**:
+  
+```js
+void Project::calcCorrectionFromFitPoints(double connectedDistance,double holdDistance,double fadeDistance)
+```   
+  
+5. To find out whether corrections were created use:
+  
+> It returns true when some corrections were created, else returns false  
+```js
+bool correctionExists()
+```   
+  
+6. To get reference of created fitpoints for access to them use:
+  
+```js
+std::shared_ptr<std::map<int,FITpointCorection>> Project::getFitpointsAsReference()
+```  
+7. To save all crated correction fit points for future reconstruction of corrections use:
+  
+```js
+bool Project::saveFitPoints()
+```  
+  
+8. To load saved fitpoints for reconstruction of created corrections call>
+  
+> It returns true when fitpoints were loaded, false when loading of fitpoint file was incorrect 
+  
+```js
+bool Project::loadFitPoints()
+``` 
+  
+  
+9. To obtain calculated trajectory corrections for zone in prepared cutting line segment use:
+  
+      - `holdDistance` - ID of zone in prepared cutting line segment
+  
+> Creating and manipulating with cutting line segment is described in section **Creating and manipulating with line cutting segment**
+  
+```js
+correction Project::getTrajectoryCorrectionForZone(int i)
+``` 
+  
+    
   
   
   getParamsForMapStruct
