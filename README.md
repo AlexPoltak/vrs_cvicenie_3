@@ -24,11 +24,11 @@ This library Consists of:
 1. To start, simply create object of this class and then you can use corresponding methods.
 2. You can also create and init object of this class by using conscructor:
 ```js
-gpsNMEAparser();
+  gpsNMEAparser();
 ```
 &emsp;Or:
 ```js
-gpsNMEAparser(std::string GGASentence,std::string RMCSentence)
+  gpsNMEAparser(std::string GGASentence,std::string RMCSentence)
 ```  
   
   GGA sentence looks like as follow:
@@ -38,12 +38,12 @@ gpsNMEAparser(std::string GGASentence,std::string RMCSentence)
   
     - Returns true when sentence is valid GGA sentence, else returns false
 ```js
-bool isValidGGA(const std::string GGASentence)
+  bool isValidGGA(const std::string GGASentence)
 ```
 2. To set class values parsed from GGA sentence use:
 
 ```js
-void setValuesGGA(std::string GGA)
+  void setValuesGGA(std::string GGA)
 ```
   
   RMC sentence looks like as follow:
@@ -53,12 +53,12 @@ void setValuesGGA(std::string GGA)
   
     - Returns true when sentence is valid RMC sentence, else returns false
 ```js
-bool isValidRMC(const std::string RMCSentence)
+  bool isValidRMC(const std::string RMCSentence)
 ```
 2. To set class values parsed from RMC sentence use:
 
 ```js
-void setValuesRMC(const std::string RMCSentence)
+  void setValuesRMC(const std::string RMCSentence)
 ```
 ---  
   
@@ -138,7 +138,7 @@ Based on these files is created project thanks to which user can interact with a
   It is used after setting the calibration file
      
 ```js
-void Project::initDevices()
+  void Project::initDevices()
 ```  
   
 </details>
@@ -163,7 +163,7 @@ void Project::initDevices()
 2. To check whether path to given camera(video,images) files is correct(whether directory contains relevant files) use:
 
 ```js
-    int checkWhetherCameraPathCorrect(QString path,Project::VideoType videotype);
+  int checkWhetherCameraPathCorrect(QString path,Project::VideoType videotype);
 ```  
 
 3. To set description from user about project use:
@@ -174,7 +174,7 @@ void Project::initDevices()
 4. You can save this description also to file by:
 
 ```js
-    void saveDescriptionToFile(std::string path)
+  void saveDescriptionToFile(std::string path)
 ```  
   
 ```diff
