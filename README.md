@@ -612,7 +612,7 @@ Line cut segment variable holds points that defines itself:
 
 #### Transformations
 1. Transformation of lidar device:<br>
-&emsp; &emsp;To set this transformation:
+  To set this transformation:
 ```js
   void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
 ```  
@@ -622,7 +622,7 @@ Line cut segment variable holds points that defines itself:
 ```   
   
 2. Transformation of camera device:<br>
-&emsp; &emsp;To set this transformation:
+  To set this transformation:
 ```js
   void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
 ```  
@@ -633,7 +633,7 @@ Line cut segment variable holds points that defines itself:
    
   
 3. Transformation between lidar and IMU:<br>
-&emsp; &emsp;To set this transformation use:
+  To set this transformation use:
 
 ```js
   void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
@@ -648,7 +648,7 @@ Line cut segment variable holds points that defines itself:
 ```  
   
 4. Transformation between camera and IMU:<br>
-&emsp; &emsp;To get this transformation use:
+  To get this transformation use:
 ```js
   Transformation Project::getTransformationCamera_IMU(int cameraIndex)
 ```  
@@ -661,19 +661,19 @@ Line cut segment variable holds points that defines itself:
 #### Rotations
 
 1. Rotation  between IMU and vehicle(what the devices are connected to):
-&emsp; &emsp;To get this transformation use:
+  To get this transformation use:
 ```js
   Transformation Project::getIMUtoVehicleRotation()
 ```  
   
 2. Rotation of lidar device:
-&emsp; &emsp;To get this rotation:
+  To get this rotation:
 ```js
   double Project::getLidarRotation(int lidarIndex)
 ```   
 
 3. Rotation of camera device:<br>
-&emsp; &emsp;To set this rotation:
+  To set this rotation:
 ```js
   void Project::setCameraRotation(int cameraIndex,double rotation)
 ```  
@@ -689,13 +689,13 @@ Line cut segment variable holds points that defines itself:
 #### Time offsets
 
 1. Time offset of lidar device:<br>
-&emsp; &emsp;To get this offset:
+  To get this offset:
 ```js
   double getLidarTimeOffset(int lidarIndex)
 ```   
 
 2. Time offset of camera device:<br>
-&emsp; &emsp;To set this offset:
+  To set this offset:
 ```js
   void setCameraTimeOffset(int cameraIndex,double newOffset);
 ```  
