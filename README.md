@@ -512,28 +512,7 @@ correction Project::getTrajectoryCorrectionForZone(int i)
   
     
   
-  
-  getParamsForMapStruct
- setVisualQualityParameter
-    setTrajectoryDisabling
-
-  
-  getRTKpointsAsReference
-  filterRTKpointsByProjectBoundaries
-  addRTKpoint
- 
-  
-  getIMUtoVehicleRotation
-  getBoresightRotation
-  getTrajectoryTimepositions
-  
-  
-  
-  
-  
-  
-  
-  ### Manipulating with visual parameters - this variables user can choose in settings tab:
+### Manipulating with visual parameters - this variables user can choose in settings tab:
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
 ```
@@ -559,6 +538,82 @@ correction Project::getTrajectoryCorrectionForZone(int i)
 ```js
   void setUseShakeFilter(bool usefilt)
 ```  
+  
+  
+  
+  
+### Manipulating with transformations, rotations and offsets of/between devices(lidar, camera, body)
+
+1. Transformation of lidar device:
+&emsp; &emsp;To set this transformation:
+```js
+void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
+```  
+&emsp; &emsp;To get this transformation:
+```js
+Transformation Project::getLidarTransformation(int lidarIndex, double gain)
+```   
+  
+2. Transformation of camera device:
+&emsp; &emsp;To set this transformation:
+```js
+void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
+```  
+&emsp; &emsp;To get this transformation:
+```js
+Transformation Project::getCameraTransformation(int cameraIndex, double gain)
+```   
+   
+  
+3. Transformation between lidar and IMU:
+&emsp; &emsp;To set this transformation use:
+
+```js
+void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
+```  
+&emsp; &emsp;To get this transformation use:
+```js
+Transformation Project::getTransformationLidar_IMU(int lidarIndex,double gain)
+```  
+&emsp; &emsp;To clear this transformation use:
+```js
+void Project::clearTransformationLidar_IMU(int lidarIndex)
+```  
+  
+4. Transformation between camera and IMU:
+&emsp; &emsp;To get this transformation use:
+```js
+Transformation Project::getTransformationCamera_IMU(int cameraIndex)
+```  
+  
+5. Transformation between IMU and vehicle(what the devices are connected to):
+&emsp; &emsp;To get this transformation use:
+```js
+Transformation Project::getTransformationIMU_Vehicle()
+```  
+  
+  
+  
+  getParamsForMapStruct
+ setVisualQualityParameter
+    setTrajectoryDisabling
+
+  
+  getRTKpointsAsReference
+  filterRTKpointsByProjectBoundaries
+  addRTKpoint
+ 
+  
+  getIMUtoVehicleRotation
+  getBoresightRotation
+  getTrajectoryTimepositions
+  
+  
+  
+  
+  
+  
+
   
   
   
