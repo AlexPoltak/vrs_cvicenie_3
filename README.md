@@ -453,8 +453,8 @@ bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,do
       - `fadeDistance` - how far end points should be from relevant fit point
   
 > - If distance between neighboring fitpoints is lower than connectedDistance, existing end points will be shifted.<br>
-  - If distance between neighboring fitpoints is higher than connectedDistance, new end points will be added<br>
-  - Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. therefore when you want to access to trajectory, use abs of this value.
+> - If distance between neighboring fitpoints is higher than connectedDistance, new end points will be added<br>
+>  - Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. therefore when you want to access to trajectory, use abs of this value.
   
 
 ```js
