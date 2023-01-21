@@ -417,9 +417,9 @@ void clearLineCut()
 ```  
   
 ### Methods for creating and manipulating with corrections of pointcloud
-  In profile mode user can click somewhere on trajectory and make corrections there in a few steps. Firstly user can measure in profile views with measurement tool(measurement button in menu among profile views), where pointcloud should be corrected. After measurement user can create correction by pressing FIT button next to the measurement tool button.
+  In profile mode user can click somewhere on trajectory and make corrections there in a few steps. Firstly user can measure in profile views with measurement tool(measurement button in menu among profile views), where pointcloud should be corrected. After measurement, user can create correction by pressing FIT button that is next to the measurement tool button.
   
-1. To add fit point use method **addFitPoint**.  It is point(with correction structure) on trajectory where user wants to create correction:
+1. To add fit point use method **addFitPoint**.  It is point(with correction structure) on trajectory, where user wants to create correction:
 
       - `positionID` - ID of trajectory position where correction should be made
       - `correctioninfo` -  correction info structure that will be added
@@ -447,14 +447,14 @@ bool Project::addFitPoint(int positionID, FITpointCorection correctioninfo,doubl
 bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
 ```   
  
-3.To add end points(where corrections on trajectory will end) for each fit point use:
+3. To add end points(where corrections on trajectory will end) for each fit point use:
   
       - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
       - `fadeDistance` - how far end points should be from relevant fit point
   
-> If distance between neighboring fitpoints is lower than connectedDistance, existing end points will be shifted.<br>
-  If distance between neighboring fitpoints is higher than connectedDistance, new end points will be added<br>
-  Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. therefore when you want to access to trajectory, use abs of this value.
+> - If distance between neighboring fitpoints is lower than connectedDistance, existing end points will be shifted.<br>
+  - If distance between neighboring fitpoints is higher than connectedDistance, new end points will be added<br>
+  - Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. therefore when you want to access to trajectory, use abs of this value.
   
 
 ```js
