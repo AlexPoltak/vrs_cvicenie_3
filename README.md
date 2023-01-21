@@ -616,7 +616,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
 ```  
-<br>&emsp; &emsp;To get this transformation:
+&emsp; &emsp;To get this transformation:
 ```js
   Transformation Project::getLidarTransformation(int lidarIndex, double gain)
 ```   
@@ -626,7 +626,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
 ```  
-<br>&emsp; &emsp;To get this transformation:
+&emsp; &emsp;To get this transformation:
 ```js
   Transformation Project::getCameraTransformation(int cameraIndex, double gain)
 ```   
@@ -638,11 +638,11 @@ Line cut segment variable holds points that defines itself:
 ```js
   void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
 ```  
-<br>&emsp; &emsp;To get this transformation use:
+&emsp; &emsp;To get this transformation use:
 ```js
   Transformation Project::getTransformationLidar_IMU(int lidarIndex,double gain)
 ```  
-<br>&emsp; &emsp;To clear this transformation use:
+&emsp; &emsp;To clear this transformation use:
 ```js
   void Project::clearTransformationLidar_IMU(int lidarIndex)
 ```  
@@ -677,7 +677,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   void Project::setCameraRotation(int cameraIndex,double rotation)
 ```  
-<br>&emsp; &emsp;To get this rotation:
+&emsp; &emsp;To get this rotation:
 ```js
   double Project::getCameraRotation(int cameraIndex)
 ```   
@@ -699,7 +699,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   void setCameraTimeOffset(int cameraIndex,double newOffset);
 ```  
-<br>&emsp; &emsp;To get this offset:
+&emsp; &emsp;To get this offset:
 ```js
   double getCameraTimeOffset(int cameraIndex);
 ```   
