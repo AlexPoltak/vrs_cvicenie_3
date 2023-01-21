@@ -78,7 +78,11 @@ Based on these files is created project thanks to which user can interact with a
   
 1. For access to all methods first create object of this class:
   
-    - `c_qualityType` - quality indicator displayed on trajectory(0 - position,1 - heading, 2 - PDOP, 3 - speed)
+    - `c_qualityType` - quality indicator displayed on trajectory<br>
+      0 - position<br>
+      1 - heading
+      2 - PDOP<br>
+      3 - speed
     - `c_stdprecision` - maximum precision of position 
     - `c_minstdprecision` - minimum precision of position 
     - `c_stdprecisionHeading` - maximum heading precision
