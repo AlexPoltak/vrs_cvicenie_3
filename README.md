@@ -188,7 +188,7 @@ Based on these files is created project thanks to which user can interact with a
 1. When the required steps have been taken or some modification in project have been made, to save project with all values use **saveProjectFile** method. Project will be saved to XML file with .PRJ sufix.
 
 ```js
-    void Project::saveProjectFile()
+  void Project::saveProjectFile()
 ```  
   
 > This method contains method **saveProjectFileToXml**, that saves all project values to XML file.
@@ -198,7 +198,7 @@ Based on these files is created project thanks to which user can interact with a
     - `filename` - path to project file
 
 ```js
-ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
+  ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 ```  
  
 > This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables from them.
@@ -219,7 +219,7 @@ ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
 5. To get registry name of current opened project (it is used to add project to recent projects and so on) call:
   
 ```js
-QString Project::getRegistryEntryNameOfProject()
+  QString Project::getRegistryEntryNameOfProject()
 ``` 
   
 </details>
@@ -256,13 +256,13 @@ QString Project::getRegistryEntryNameOfProject()
     - `index` - lidar ID
 
 ```js
-std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
+  std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
 
 5. To save/get selected frames(selected by user in selection mode) to/from file for access in another app use:
 &emsp; &emsp;To save use:
 ```js
-    bool saveProjectSelectionToXml();
+  bool saveProjectSelectionToXml();
 ```  
 > Method returns true when saving was successful, else returns false
 
@@ -279,11 +279,11 @@ std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<i
 
 7. To receive relational vector between lidar frames and trajectory use:
 ```js
-std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
+  std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
 ``` 
    &emsp; To get reference on this relational vector call:
 ```js
-std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
+  std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ``` 
 
 8. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
@@ -310,12 +310,12 @@ std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
      - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
 
 ```js
-std::vector<Transformation> &getTrajectoryTransformation(bool withModification=false)
+  std::vector<Transformation> &getTrajectoryTransformation(bool withModification=false)
 ```
    &emsp; To get zero(first) transformation from this vector use:
   
 ```js
-const Transformation &getZeroPositionFromTransformation()
+  const Transformation &getZeroPositionFromTransformation()
 ```
    &emsp; To get length of transformation vector(length of trajectory) use method **getTrajectoryLength**. It is used in Graph making:
 
@@ -335,7 +335,7 @@ const Transformation &getZeroPositionFromTransformation()
         | UltraHighRes  |
 
 ```js
-std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
+  std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
 ```     
   
 
@@ -382,9 +382,8 @@ Line cut segment variable holds points that defines itself:
       - `cutWidth` - width of cut (width of ZX projection-cut view defined by user)
   
 ```js
-std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajectoryID, double segmentLength,double segmentWidth,double cutWidth)
+  std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajectoryID, double segmentLength,double segmentWidth,double cutWidth)
 ```    
-  
   
 ```diff
 - Points of this line cut segment and more visual parameter you can get by method getParamsForMapStruct()
@@ -397,7 +396,7 @@ std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajec
       - `segmentWidth` - width of XY projection-aerial view( set by user)
 
 ```js
-std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPointF> limits,int selectedId,double segmentWidth)
+  std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPointF> limits,int selectedId,double segmentWidth)
 ```  
   
 3. To prepare line cut segment for sideway view(ZY projection) use:
@@ -408,7 +407,7 @@ std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPoin
       - `ry` - direction vector of sideway cutting line
 
 ```js
-std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(double cx,double cy, double rx,double ry,int trajectoryID,int rtkID, double segmentLength,double segmentWidth,double cutWidth)
+  std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(double cx,double cy, double rx,double ry,int trajectoryID,int rtkID, double segmentLength,double segmentWidth,double cutWidth)
 
 ```  
  > It returns points of prepared line segment in order:<br>
@@ -419,7 +418,7 @@ std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(d
 4. To get number of zones in current prepared line cut segment, use:
   
  ```js
-int getLineCutSegmentZonesCount()
+  int getLineCutSegmentZonesCount()
 ``` 
   
 5. To get angle between zones of points in prepared cutting line segment call:
@@ -429,7 +428,7 @@ int getLineCutSegmentZonesCount()
 
 > Returns angle in radians. It is used in correction to shift zone in chosen angle.
 ```js
-double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
+  double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
 ```  
   
 6. To get GPS timestamp for given zone in prepared cutting line segment use:
@@ -437,7 +436,7 @@ double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone
       - `i` - ID of zone in cutting line segment
 
 ```js
-double Project::getTimeOfLineCutSegmentZone(int i)
+  double Project::getTimeOfLineCutSegmentZone(int i)
 ```  
 
 7. To receive trajectory ID for given zone of prepared line cut segment use:
@@ -445,14 +444,14 @@ double Project::getTimeOfLineCutSegmentZone(int i)
       - `i` - ID of zone in cutting line segment
 
 ```js
-int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
+  int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
 ```  
   
 
 8. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
   
 ```js
-void clearLineCut()
+  void clearLineCut()
 ```  
 
 </details>
@@ -473,7 +472,7 @@ void clearLineCut()
 > Returns true when fitpoint was added, else returns false.
 
 ```js
-bool Project::addFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
+  bool Project::addFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
 ```  
 
 2. To modify existing fitpoint use:
@@ -487,7 +486,7 @@ bool Project::addFitPoint(int positionID, FITpointCorection correctioninfo,doubl
 > When point for modification does not exist, the new one will be added.
 
 ```js
-bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
+  bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
 ```   
  
 3. To add end points(where corrections on trajectory will end) for each fit point use:
@@ -501,7 +500,7 @@ bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,do
   
 
 ```js
-void Project::addEndPointsToFitCorrections(double connectedDistance,double fadeDistance)
+  void Project::addEndPointsToFitCorrections(double connectedDistance,double fadeDistance)
 ```    
 
 4. To calculate and apply corrections based on added fitpoints use:
@@ -513,25 +512,25 @@ void Project::addEndPointsToFitCorrections(double connectedDistance,double fadeD
 > This prepare **modifiedtrajectoryTransformation** variable which can be obtained by method **getTrajectoryTransformation** described in section ** Manipulating with trajectory, lidar frames**:
   
 ```js
-void Project::calcCorrectionFromFitPoints(double connectedDistance,double holdDistance,double fadeDistance)
+  void Project::calcCorrectionFromFitPoints(double connectedDistance,double holdDistance,double fadeDistance)
 ```   
   
 5. To find out whether corrections were created use:
   
 > It returns true when some corrections were created, else returns false  
 ```js
-bool correctionExists()
+  bool correctionExists()
 ```   
   
 6. To get reference of created fitpoints for access to them use:
   
 ```js
-std::shared_ptr<std::map<int,FITpointCorection>> Project::getFitpointsAsReference()
+  std::shared_ptr<std::map<int,FITpointCorection>> Project::getFitpointsAsReference()
 ```  
 7. To save all crated correction fit points for future reconstruction of corrections use:
   
 ```js
-bool Project::saveFitPoints()
+  bool Project::saveFitPoints()
 ```  
   
 8. To load saved fitpoints for reconstruction of created corrections call>
@@ -539,7 +538,7 @@ bool Project::saveFitPoints()
 > It returns true when fitpoints were loaded, false when loading of fitpoint file was incorrect 
   
 ```js
-bool Project::loadFitPoints()
+  bool Project::loadFitPoints()
 ``` 
   
   
@@ -550,7 +549,7 @@ bool Project::loadFitPoints()
 > Creating and manipulating with cutting line segment is described in section **Creating and manipulating with line cutting segment**
   
 ```js
-correction Project::getTrajectoryCorrectionForZone(int i)
+  correction Project::getTrajectoryCorrectionForZone(int i)
 ``` 
   
 </details>
@@ -565,13 +564,13 @@ correction Project::getTrajectoryCorrectionForZone(int i)
 1. To get value of specific visual parameter use:
 
 ```js
-{return type} Project::getVisualParameter{name of paramter}()
+  {return type} Project::getVisualParameter{name of paramter}()
 ``` 
   
 2. To set value of specific visual parameter use:
 
 ```js
-    void setVisualParameter{name of parameter}(value)
+  void setVisualParameter{name of parameter}(value)
 ``` 
   
 3. For obtaining whether shake filter is enabled use:
@@ -595,9 +594,16 @@ correction Project::getTrajectoryCorrectionForZone(int i)
 - Use setVisualQualityParameter method when quality parameter was changed
 ```
 
+5. To set trajectory disabling based on filters in usage use:
+```js
+  void Project::setTrajectoryDisabling()
+```
+   
+6. To clear all trajectory disabling use:
+```js
+  void Project::clearTrajectoryDisabling()
+```
 
-   setVisualQualityParameter
-    setTrajectoryDisabling
 </details>
   
   
@@ -608,21 +614,21 @@ correction Project::getTrajectoryCorrectionForZone(int i)
 1. Transformation of lidar device:
 &emsp; &emsp;To set this transformation:
 ```js
-void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
+  void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
 ```  
 &emsp; &emsp;To get this transformation:
 ```js
-Transformation Project::getLidarTransformation(int lidarIndex, double gain)
+  Transformation Project::getLidarTransformation(int lidarIndex, double gain)
 ```   
   
 2. Transformation of camera device:
 &emsp; &emsp;To set this transformation:
 ```js
-void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
+  void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
 ```  
 &emsp; &emsp;To get this transformation:
 ```js
-Transformation Project::getCameraTransformation(int cameraIndex, double gain)
+  Transformation Project::getCameraTransformation(int cameraIndex, double gain)
 ```   
    
   
@@ -630,27 +636,27 @@ Transformation Project::getCameraTransformation(int cameraIndex, double gain)
 &emsp; &emsp;To set this transformation use:
 
 ```js
-void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
+  void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
 ```  
 &emsp; &emsp;To get this transformation use:
 ```js
-Transformation Project::getTransformationLidar_IMU(int lidarIndex,double gain)
+  Transformation Project::getTransformationLidar_IMU(int lidarIndex,double gain)
 ```  
 &emsp; &emsp;To clear this transformation use:
 ```js
-void Project::clearTransformationLidar_IMU(int lidarIndex)
+  void Project::clearTransformationLidar_IMU(int lidarIndex)
 ```  
   
 4. Transformation between camera and IMU:
 &emsp; &emsp;To get this transformation use:
 ```js
-Transformation Project::getTransformationCamera_IMU(int cameraIndex)
+  Transformation Project::getTransformationCamera_IMU(int cameraIndex)
 ```  
   
 5. Transformation between IMU and vehicle(what the devices are connected to):
 &emsp; &emsp;To get this transformation use:
 ```js
-Transformation Project::getTransformationIMU_Vehicle()
+  Transformation Project::getTransformationIMU_Vehicle()
 ```  
   
 ####Rotations
@@ -658,7 +664,7 @@ Transformation Project::getTransformationIMU_Vehicle()
 1. Rotation  between IMU and vehicle(what the devices are connected to):
 &emsp; &emsp;To get this transformation use:
 ```js
-Transformation Project::getIMUtoVehicleRotation()
+  Transformation Project::getIMUtoVehicleRotation()
 ```  
   
 2. Rotation of lidar device:
