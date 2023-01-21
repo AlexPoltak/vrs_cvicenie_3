@@ -95,12 +95,12 @@ Based on these files is created project thanks to which user can interact with a
     - `c_speedfilter` - whether speed filter is enabled
     - `c_speedfilterThreshold` - speed threshold for speed filter
   
-> All this input parameters user can change in tab settings
+> All this input parameters user can change in tab settings.(It is done by minmaxprecisiondialog class in creator app)
  ```js
     std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
   ``` 
   
-2. If you want to clear project and all values based on which informations are displayed in UI,  use:
+2. If you want to clear project values based on which informations are displayed in UI,  use:
   
 ```js
   void Project::clearProject()
@@ -258,6 +258,29 @@ QString Project::getRegistryEntryNameOfProject()
 ```js
 std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
+
+5. To save/get selected frames(selected by user in selection mode) to/from file for access in another app use:
+&emsp; &emsp;To save use:
+```js
+    bool saveProjectSelectionToXml();
+```  
+> Method returns true when saving was successful, else returns false
+
+&emsp; &emsp;To get selected frames from saved file use:
+```js
+  std::vector<int> Project::getSelectionFromXml()
+```  
+
+> Method returns IDs of selected frames
+
+
+5. Transformation between IMU and vehicle(what the devices are connected to):
+&emsp; &emsp;To get this transformation use:
+```js
+Transformation Project::getTransformationIMU_Vehicle()
+```  
+
+
 
 5. To receive relational vector between lidar frames and trajectory use:
 ```js
