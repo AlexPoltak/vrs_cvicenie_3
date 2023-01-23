@@ -381,10 +381,11 @@ Based on these files is created project thanks to which user can interact with a
   
 </details>
   
-<details><summary>&emsp;&emsp; Creating and manipulating with line cutting segment </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Creating and manipulating with line cutting segment and relevant zones </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
   It is displayed in profile mode on map(creator app), when user clicks somewhere on trajectory. Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
 
+#### Line cut segment
 Line cut segment variable holds points that defines itself:
 
 | Range from                        | Range to                         |      | definition          |
@@ -436,13 +437,21 @@ Line cut segment variable holds points that defines itself:
     - [1] right centered point of cut(on right side of trajectory)<br>
     - [2] left centered point of cut(on left side of trajectory)
   
-4. To get number of zones in current prepared line cut segment, use:
+  
+ 4. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
+  
+```js
+  void clearLineCut()
+```  
+
+#### Zones
+1. To get number of zones in current prepared line cut segment, use:
   
  ```js
   int getLineCutSegmentZonesCount()
 ``` 
   
-5. To get angle between zones of points in prepared cutting line segment call:
+2. To get angle between zones of points in prepared cutting line segment call:
   
       - `firstZone` - ID of some zone in cutting line segment
       - `secondZone` - ID of another zone in cutting line segment
@@ -452,7 +461,7 @@ Line cut segment variable holds points that defines itself:
   double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
 ```  
   
-6. To get GPS timestamp for given zone in prepared cutting line segment use:
+3. To get GPS timestamp for given zone in prepared cutting line segment use:
 
       - `i` - ID of zone in cutting line segment
 
@@ -460,7 +469,7 @@ Line cut segment variable holds points that defines itself:
   double Project::getTimeOfLineCutSegmentZone(int i)
 ```  
 
-7. To receive trajectory ID for given zone of prepared line cut segment use:
+4. To receive trajectory ID for given zone of prepared line cut segment use:
   
       - `i` - ID of zone in cutting line segment
 
@@ -468,12 +477,6 @@ Line cut segment variable holds points that defines itself:
   int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
 ```  
   
-
-8. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
-  
-```js
-  void clearLineCut()
-```  
 
 </details>
   
