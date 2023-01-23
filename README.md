@@ -602,7 +602,17 @@ Line cut segment variable holds points that defines itself:
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
 ```
-1. To get value of specific visual parameter use:
+
+1. These visual parameters, cutting line segment and more you can obtain in structure by method **getParamsForMapStruct**:
+
+> This structure is used in mymapcontrol class to draw trajectory, line cutting segment and other stuff on map.
+
+```js
+  ParametersForMapInteraction Project::getParamsForMapStruct()
+``` 
+ <br>  <br> 
+ 
+2. To get value of specific visual parameter use:
 
 ```js
   {return type} Project::getVisualParameter{name of paramter}()
@@ -610,7 +620,7 @@ Line cut segment variable holds points that defines itself:
   
   <br> 
   
-2. To set value of specific visual parameter use:
+3. To set value of specific visual parameter use:
 
 ```js
   void setVisualParameter{name of parameter}(value)
@@ -618,7 +628,7 @@ Line cut segment variable holds points that defines itself:
   
   <br> 
   
-3. For obtaining whether shake filter is enabled use:
+4. For obtaining whether shake filter is enabled use:
 
 ```js
   bool getUseShakeFilter()
@@ -631,7 +641,7 @@ Line cut segment variable holds points that defines itself:
  
  <br> 
  
-4. This sets prepared quality parameter to framesTrajectoryRelationsInfo structure. (It is used for coloring the trajectory by quality type in mymapcontrol class).
+5. This sets prepared quality parameter to framesTrajectoryRelationsInfo structure. (It is used for coloring the trajectory by quality type in mymapcontrol class).
 
   
 ```js
@@ -643,7 +653,7 @@ Line cut segment variable holds points that defines itself:
 
 <br> 
 
-5. To use trajectory disabling based on filters in usage use:
+6. To use trajectory disabling based on filters in usage use:
 ```js
   void Project::setTrajectoryDisabling()
 ```
@@ -659,14 +669,14 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 
 <br> 
    
-6. To clear all trajectory disabling use:
+7. To clear all trajectory disabling use:
 ```js
   void Project::clearTrajectoryDisabling()
 ```
 
 <br>
 
-7. To get indexes of lidar lines based on preset value call:
+8. To get indexes of lidar lines based on preset value call:
   
     - `whichlidar` - ID of lidar
         | whichlines    | 
@@ -795,7 +805,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 
 </details>
   
-  getParamsForMapStruct
+  
 
 
   
@@ -804,8 +814,6 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   addRTKpoint
  
   
-  getIMUtoVehicleRotation
-  getBoresightRotation
   getTrajectoryTimepositions
   
   
