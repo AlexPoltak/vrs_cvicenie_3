@@ -625,7 +625,7 @@ Line cut segment variable holds points that defines itself:
 
 <br> 
 
-5. To set trajectory disabling based on filters in usage use:
+5. To use trajectory disabling based on filters in usage use:
 ```js
   void Project::setTrajectoryDisabling()
 ```
@@ -645,6 +645,8 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   void Project::clearTrajectoryDisabling()
 ```
+
+<br>
 
 7. To get indexes of lidar lines based on preset value call:
   
