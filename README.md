@@ -260,7 +260,22 @@ Based on these files is created project thanks to which user can interact with a
   std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
 
-5. To save/get selected frames(selected by user in selection mode) to/from file for access in another app use:
+5. To get lidar frame structure use:
+
+    - `whichLidar` - ID of lidar whose frame will be returned
+    - `localfile` - lidar file in which the frame will be searched
+    - `index` - index of frame, which should be returned
+    - `lidToFrame` - lidar transformation
+    - `restriction` - restriction to add some points to frame
+
+> It is used for export in pointcloudExporter class
+
+```js
+  BaseFrame Project::getLidarFrameFromLidar(int whichLidar,std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel ,double minIntensityColor,double maxIntensityColor )
+``` 
+
+
+6. To save/get selected frames(selected by user in selection mode) to/from file for access in another app use:
 &emsp; &emsp;To save use:
 ```js
   bool saveProjectSelectionToXml();
@@ -273,12 +288,12 @@ Based on these files is created project thanks to which user can interact with a
 ```  
 > Method returns IDs of selected frames
 
-6. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
+7. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
 ```js
   void Project::clearTrajectorySelection()
 ```
 
-7. To receive relational vector between lidar frames and trajectory use:
+8. To receive relational vector between lidar frames and trajectory use:
 ```js
   std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
 ``` 
@@ -287,7 +302,7 @@ Based on these files is created project thanks to which user can interact with a
   std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ``` 
 
-8. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
+9. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
   
 &emsp; &emsp;To get this structure use:
 
@@ -306,7 +321,7 @@ Based on these files is created project thanks to which user can interact with a
 ```
 
 
-9. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
+10. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
   
      - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
 
