@@ -567,11 +567,15 @@ Line cut segment variable holds points that defines itself:
   {return type} Project::getVisualParameter{name of paramter}()
 ``` 
   
+  <br> 
+  
 2. To set value of specific visual parameter use:
 
 ```js
   void setVisualParameter{name of parameter}(value)
 ``` 
+  
+  <br> 
   
 3. For obtaining whether shake filter is enabled use:
 
@@ -584,6 +588,8 @@ Line cut segment variable holds points that defines itself:
   void setUseShakeFilter(bool usefilt)
 ```  
  
+ <br> 
+ 
 4. This sets prepared quality parameter to framesTrajectoryRelationsInfo structure. (It is used for coloring the trajectory by quality type in mymapcontrol class).
 
   
@@ -594,15 +600,29 @@ Line cut segment variable holds points that defines itself:
 - Use setVisualQualityParameter method when quality parameter was changed
 ```
 
+<br> 
+
 5. To set trajectory disabling based on filters in usage use:
 ```js
   void Project::setTrajectoryDisabling()
 ```
+
+&emsp;It contains disableTrajectoryPartsByDiff method that represents shake filter:
+     - `secAfter` - seconds after problem point. 
+
+> It is used in method setTrajectoryDisabling(). Points that are in given time(secAfter input) from problem point, will be also disabled.
+
+```js
+void Project::disableTrajectoryPartsByDiff(int secAfter)
+```
+
+<br> 
    
 6. To clear all trajectory disabling use:
 ```js
   void Project::clearTrajectoryDisabling()
 ```
+
 
 </details>
   
