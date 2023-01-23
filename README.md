@@ -816,7 +816,17 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 
 </details>
   
-  
+<details><summary>&emsp;&emsp; Adding RTK points </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
+```diff
+- This methods serves to add RTK points, when user load them, to project file.<br>
+- Loading of RTK points is done in CreatorMainWindow class speciffically by AddRtkPointDialog widget class<br>
+- Manipulating with RTK points and making some corrections by them is done in class rtkpoints also described in this README.
+```
+
+
+</details>
+
   
   
   
@@ -825,14 +835,10 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>Adding RTK points</summary>
+<details><summary>rtkpoints</summary>
 <p>
   
-```diff
-- This methods serves to add RTK points, when user load them, to project file.<br>
-- Loading of RTK points is done in CreatorMainWindow class speciffically by AddRtkPointDialog widget class<br>
-- Manipulating with RTK points and making some corrections by them is done in class rtkpoints also described in this README.
-```
+
 
 
 </p>
