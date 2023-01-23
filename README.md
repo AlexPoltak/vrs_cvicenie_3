@@ -579,7 +579,7 @@ Line cut segment variable holds points that defines itself:
   
 <details><summary>&emsp;&emsp; Manipulating with visual parameters (contains filters and auxliary methods that can be used) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
-User can change visual parameters in settings tab
+ - User can change visual parameters in settings tab
 
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
