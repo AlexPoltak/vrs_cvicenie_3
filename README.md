@@ -393,7 +393,18 @@ Based on these files is created project thanks to which user can interact with a
   int Project::traj_readTrajectoryFromFile(QString rawTrajFile)
 ```     
   
+3. To inits relational vector between lidar data and trajectory file use **traj_initFileWithTransformations**. It is used in projectcreationdialog class.
   
+```js
+  void Project::traj_initFileWithTransformations(int index)
+```
+
+4. To obtain trajectory constrains use **traj_getFileConstrains**. It is used in projectcreationdialog class.
+  
+```js
+  void Project::traj_getFileConstrains(InertialExplorerBoxData &constrains)
+```
+
 </details>
   
 <details><summary>&emsp;&emsp; Creating and manipulating with line cutting segment and relevant zones </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
@@ -806,16 +817,22 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 </details>
   
   
+<details><summary>&emsp;&emsp; Adding RTK points </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
+```diff
+- This methods serves to add RTK points, when user load them, to project file.<br>
+- Loading of RTK points is done in CreatorMainWindow class speciffically by AddRtkPointDialog widget class<br>
+- Manipulating with RTK points and making some corrections by them is done in class rtkpoints also described in this README.
+```
 
 
+</details>
   
   getRTKpointsAsReference
   filterRTKpointsByProjectBoundaries
   addRTKpoint
  
-  
-  getTrajectoryTimepositions
-  
+    
   
   
   
