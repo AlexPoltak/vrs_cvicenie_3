@@ -60,6 +60,7 @@ This library Consists of:
 ```js
   void setValuesRMC(const std::string RMCSentence)
 ```
+  
 ---  
   
 </p>
@@ -828,7 +829,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 </details>
 
   
-  
+---   
   
 </p>
 </details>
