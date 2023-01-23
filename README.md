@@ -608,9 +608,9 @@ Line cut segment variable holds points that defines itself:
 ```
 
 &emsp;It contains disableTrajectoryPartsByDiff method that represents shake filter:<br> 
- &emsp;    - `secAfter` - seconds after problem point. 
+&emsp;&emsp;    - `secAfter` - seconds after problem point. 
 
-> It is used in method setTrajectoryDisabling(). Points that are in given time(secAfter input) from problem point, will be also disabled.
+> Points that are in given time(secAfter input) from problem point, will be also disabled.
 
 ```js
 void Project::disableTrajectoryPartsByDiff(int secAfter)
