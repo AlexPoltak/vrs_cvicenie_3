@@ -224,7 +224,8 @@ Based on these files is created project thanks to which user can interact with a
   
 </details>
 
-<details><summary>&emsp;&emsp; Manipulating with trajectory/lidar frames </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Manipulating with trajectory/lidar frames/points </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+#### Frames
     
 1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
   
@@ -301,7 +302,7 @@ Based on these files is created project thanks to which user can interact with a
 ```
 
 ```diff  
- - It is generated/filled with trajectoryTransformation vector that is prepared by trajectory reader in reading methods for opening project
+ - It is generated/filled with **trajectoryTransformation** vector that is prepared by trajectory reader in reading methods for opening project
 ```
 
 
@@ -322,23 +323,43 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   int getTrajectoryLength()
 ```
-  
-10. To get indexes of lidar lines based on preset value call:
-  
-    - `whichlidar` - ID of lidar
-        | whichlines    | 
-        | :-------------| 
-        | All           |
-        | Central       | 
-        | EverySecond   | 
-        | HighRes       |
-        | UltraHighRes  |
+<br>
+
+#### Points
+
+1. To find the point that is at given distance before the point with given ID use:
+
+    - `fromWhichpoint` - ID of trajectory point(in framesTrajectoryRelationsInfo structure) from which the point before it is searched.
+    - `dist` - distance from "fromWhichpoint" point
+ 
+> It returns transformation ID of point that is at given distance
 
 ```js
-  std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
-```     
-  
+  int Project::findPointTrajectoryInDistBefore(int fromWhichpoint, double dist)
+```
+<br>
 
+2. To find the point that is at given distance after the point with given ID use:
+
+    - `fromWhichpoint` - ID of trajectory point(in framesTrajectoryRelationsInfo structure) from which the point behind it is searched.
+    - `dist` - distance from "fromWhichpoint" point
+
+> It returns transformation ID of point that is at given distance
+
+```js
+  int Project::findPointTrajectoryInDistAfter(int fromWhichpoint, double dist)
+```
+
+<br>
+
+3. To find out the distance between two trajectory points use method:
+
+    - `first` - ID of first trajectory point(in framesTrajectoryRelationsInfo structure)
+    - `second` - ID of second trajectory point(in framesTrajectoryRelationsInfo structure)
+
+```js
+  double Project::findDistBetweenTrajectoryPoints(int first, int second)
+```
 
 </details>
   
@@ -556,7 +577,9 @@ Line cut segment variable holds points that defines itself:
 
 
   
-<details><summary>&emsp;&emsp; Manipulating with visual parameters - this variables user can choose in settings tab(contains filters that can be used) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp; Manipulating with visual parameters (contains filters and auxliary methods that can be used) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
+User can change visual parameters in settings tab
 
 ```diff
 - Most of this visual parameters are described in object creation method of this class.
@@ -607,7 +630,7 @@ Line cut segment variable holds points that defines itself:
   void Project::setTrajectoryDisabling()
 ```
 
-&emsp;It contains disableTrajectoryPartsByDiff method that represents shake filter:<br> 
+&emsp;It contains **disableTrajectoryPartsByDiff** method that represents shake filter:<br> 
 &emsp;&emsp;    - `secAfter` - seconds after problem point. 
 
 > Points that are in given time(secAfter input) from problem point, will be also disabled.
@@ -622,6 +645,21 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   void Project::clearTrajectoryDisabling()
 ```
+
+7. To get indexes of lidar lines based on preset value call:
+  
+    - `whichlidar` - ID of lidar
+        | whichlines    | 
+        | :-------------| 
+        | All           |
+        | Central       | 
+        | EverySecond   | 
+        | HighRes       |
+        | UltraHighRes  |
+
+```js
+  std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
+```     
 
 
 </details>
