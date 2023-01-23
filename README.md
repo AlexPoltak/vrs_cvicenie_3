@@ -825,9 +825,45 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 - Manipulating with RTK points and making some corrections by them is done in class rtkpoints also described in this README.
 ```
 
+1. To add/prepare RTK point to RTK vector variable use:
+
+> This is used in **reconstructProfile method** to reconstruct profiles from fitpoint that user choosed. Fitpoint is there added to RTK point vector.
+
+```js
+  void addRTKpoint(RtkPoint newPoint);
+```   
+
+2. This saves all RTK points(previous added RTK points with appended input RTK points) to project file :
+
+    - `pointsToAdd` - These points will be appended to RTK vector
+
+```js
+  void Project::addRTKpoint(std::shared_ptr<std::vector<RtkPoint>> pointsToAdd)
+```   
+
+3. To filter given RTK by trajectory boundaries use:
+
+    - `pointsToFilter` - RTK Points to filter. These vector after filtering will hold only RTK points inside the boundaries
+
+> This method returns number of filtered RTK points
+
+```js
+  int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
+```   
 
 </details>
 
+
+4. To get reference of prepared/loaded RTK points vector use:
+```js
+  std::shared_ptr<std::vector<RtkPoint>> Project::getRTKpointsAsReference()
+```   
+
+
+5. To clear vector that holds RTK points use:
+```js
+  void Project::clearRtkPoints()
+```   
   
 ---   
   
