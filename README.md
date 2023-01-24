@@ -31,7 +31,7 @@ This library Consists of:
   gpsNMEAparser(std::string GGASentence,std::string RMCSentence)
 ```  
   
-  GGA sentence looks like as follow:
+  **GGA sentence looks like as follow**:
   <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPGGA.png">
   
 1. To check whether some GGA sentence is valid use **isValidGGA** on object:
@@ -47,7 +47,7 @@ This library Consists of:
 ```
   <br>
   
-  RMC sentence looks like as follow:
+  **RMC sentence looks like as follow**:
   <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPMRCAsset%201.png">
   
 1. To check whether some RMC sentence is valid use **isValidRMC** on object:
