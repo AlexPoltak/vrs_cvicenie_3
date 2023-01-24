@@ -10,7 +10,7 @@
  - It combines creating, editing, opening project.
  - Data for project are reads from lidar, camera, calibration and trajectory files.
  - Project is XML file with suffix .PRJ
- - Creation of project is defined in Creator app.
+ - Creation of project is defined in Creator app with projectcrationdialog class.
  
 This library Consists of:
 
@@ -926,9 +926,27 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```   
 </details>
 
+2. To obtain filename of first video for given camera call:
+```js
+    QString getFirstVideoFilenameForCamera(int cameraIndex)
+```   
   
+3. To obtain transformation timestamp of given camera:
+    - `cameraIndex` - ID of camera 
+    - `id` - ID in relation vector between video frames and trajectory(cameraDataToTrajectoryRelVec)
+
+```js
+    double getTransformationTimestampForCameraRelVecID(int cameraIndex, int id)
+```   
   
-  
+4. To obtain transformation ID of given camera:
+    - `cameraIndex` - ID of camera 
+    - `id` - ID in relation vector between video frames and trajectory(cameraDataToTrajectoryRelVec)
+
+```js
+    double getTransformationIDForCameraRelVecID(int cameraIndex, int id)
+```   
+
 ---   
   
 </p>
@@ -939,9 +957,66 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 <details><summary>rtkpoints</summary>
 <p>
   
+ #### Real-time kinematic positioning(RTK). These points are from other receiver-fixed base station. <br>
+- It is used to provide corrections and increase the accuracy of points GNSS positions. <br>
+- This class enables loading RTK points from file and transform them from/to chosen coordinate system to/from UTM. <br>
+- Loading of RTK points is implemented by addrtkpointsdialog class in creator app. Dialog will open when user choose in profile mode the GCP in right menu and there press **add points** button.
+ 
+  ### Getting Started
+  
+1. To start, simply create object of this class and then you can use corresponding methods.
+```js
+  rtkPoints::rtkPoints()
+```
+  
+2. To set transformation(datum, coordinate grid system) use:
+  
+> It is used in addrtkpointsdialog. There user can choose the datum that will be used. This method set that this datum(transformation) will be used
+  
+    - `gridname` - name of cadastral coordinate grid
+    - `geoidname` - name of geoid model
+    - `transfromationID` - ID of selected datum transformation. 
+    - `utmzone` - number of UTM zone
+    - `UTMzoneText` - UTM zone
 
+```js
+  void rtkPoints::setTransformation(std::string gridname,std::string geoidname, int transfromationID,int utmzone,char UTMzoneText[])
+```
+  
+```diff
+- Transformation(datum) have to be set before loading RTK points  
+- Datums that user can choose in **addrtkpointsdialog UI** are manage in **proj4transforms class** and overall in lib Datums.
+```
 
+3. To load RTK points from file use:
+    - `RTKpoints` - there will be append the RTK points loaded from file
+    - `filename` - path to file with RTK points
+    - `trajectoryTransformation` - trajectory transformations. Can be get by method getTrajectoryTransformation in project class
+    -   | format - format of points that  shoul be used   | 
+        | :-------------                                  | 
+        | IDXYZ                                           |
+        | IDYXZ                                           |
 
+    - `ignorefirstLine` - number of lines in file that should be ignored/skipped
+    - `geoidname` - name of geoid model
+
+> If points were loaded correctly, this method will return number of RTK points that are outside the trajectory boundaries(points that were not added).
+  If file was not opened correctly, returns -1
+  
+```js
+  int rtkPoints::loadRtkPoints(std::shared_ptr<std::vector<RtkPoint>> RTKpoints,std::string filename,std::vector<Transformation> &trajectoryTransformation,fileFormat format, int ignorefirstLine)
+```
+  
+   &emsp; **All loaded RTK points are transformed to chosen transformation(datum) by method**
+  
+```diff
+- Transformation(datum) have to be set before using this method.
+```
+  
+```js
+int rtkPoints::transformPoint(RtkPoint &point)
+```
+  
 </p>
 </details>
 
