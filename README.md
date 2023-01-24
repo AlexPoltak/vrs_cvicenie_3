@@ -138,7 +138,8 @@ Based on these files is created project thanks to which user can interact with a
   bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
 ```  
 6. Preparing needed structure that holds all lidar and camera devices info:
-  It is used after setting the calibration file
+  
+ > It is used after setting the calibration file
      
 ```js
   void Project::initDevices()
