@@ -977,7 +977,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
     - `utmzone` - number of UTM zone
     - `UTMzoneText` - UTM zone
 
-> It is used in addrtkpointsdialog. There user can choose the datum. By this method transformation(datum) chosen by user will be set and then applied on RTK points.
+> It is used in addrtkpointsdialog. There user can choose the datum. By this method the transformation(datum), chosen by user, will be set and then applied on RTK points.
   
 ```js
   void rtkPoints::setTransformation(std::string gridname,std::string geoidname, int transfromationID,int utmzone,char UTMzoneText[])
