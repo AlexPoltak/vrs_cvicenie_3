@@ -982,6 +982,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 - It is used to provide corrections and increase the accuracy of points GNSS positions. <br>
 - This class enables loading RTK points from file and transform them from/to chosen coordinate system to/from UTM. <br>
 - Loading of RTK points is implemented by addrtkpointsdialog class in creator app. Dialog will open when user choose in profile mode the GCP in right menu and there press **add points** button.
+- To add RTK points to project, see section **Adding RTK points** in project dropdown of this README
  
   ### Getting Started
   
