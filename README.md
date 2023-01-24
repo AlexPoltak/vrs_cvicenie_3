@@ -893,11 +893,9 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   
  1. To prepare structure that holds camera data, info use:<br>
  
- > This method load camera files and prepare relational vector between video frames and trajectory. It is used for having access to specific video frame at given trajectory position and so on
-
-
     - `cameraIndex` - ID of camera for which all should be prepared
-    - `filename` - path to camera files<br>
+    - `filename` - path to camera files
+    
         | video_type-type of camera     | 
         | :-------------                | 
         | garmin_virb                   |
@@ -905,6 +903,8 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
         | gopro                         | 
         | sony                          |
 
+ > This method load camera files and prepare relational vector between video frames and trajectory. It is used for having access to specific video frame at given trajectory position and so on
+ 
 ```js
   int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
 ```   
