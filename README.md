@@ -906,9 +906,24 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
  > This method load camera files and prepare relational vector between video frames and trajectory. It is used for having access to specific video frame at given trajectory position and so on
  
 ```js
-  int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
+    int prepareAllVideoStuffForOneCamera(int cameraIndex, QString filename="", VideoType video_type=VideoType::garmin_virb);
+```   
+  &emsp;  Based on type of camera one of this relevant method is called in previous method :
+  
+  ##### For Garmin camera preparation
+```js
+    int prepareAllVideoStuffForOneCameraAsGarmin(int cameraIndex,QString filename="");
 ```   
 
+  ##### For LabPano camera preparation
+```js
+    int prepareAllVideoStuffForOneCameraAsLabPano(int cameraIndex,QString filename="");
+```   
+
+  ##### For Sony camera preparation
+```js
+    int prepareAllImageStuffForOneCameraAsSony(int cameraIndex,QString filename="");
+```   
 </details>
 
   
