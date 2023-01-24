@@ -846,7 +846,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   Transformation Project::getTransformationIMU_Vehicle()
 ```  
-
+<br> 
 
 6. To obtain transformation ID of given frame for given lidar use:
     - `whichDevice` - ID of lidar
@@ -857,7 +857,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   int Project::getTransformationPostionOfDeviceFrame(int whichDevice, int whichFrame)
 ```   
-  
+<br>   
   
 7. To obtain transformation ID of given frame for given camera use:
     - `whichDevice` - ID of camera
