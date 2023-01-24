@@ -885,7 +885,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   void Project::clearRtkPoints()
 ```   
   
-  --- 
+--- 
   
 </details>
 
@@ -951,6 +951,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 
 
 </details>
+
 ---   
   
 </p>
