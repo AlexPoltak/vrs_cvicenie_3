@@ -32,7 +32,7 @@ This library Consists of:
 ```  
   
   **GGA sentence looks like as follow**:
-  <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPGGA.png">
+  <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/GPGGA.png">
   
 1. To check whether some GGA sentence is valid use **isValidGGA** on object:
   
@@ -48,7 +48,7 @@ This library Consists of:
   <br>
   
   **RMC sentence looks like as follow**:
-  <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPMRCAsset%201.png">
+  <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/GPMRC.png">
   
 1. To check whether some RMC sentence is valid use **isValidRMC** on object:
   
