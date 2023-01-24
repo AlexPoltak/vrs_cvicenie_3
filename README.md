@@ -150,7 +150,7 @@ Based on these files is created project thanks to which user can interact with a
 
      - `newCameraFile` - path to files
      
-        | VideoType     | 
+     -  | VideoType     | 
         | :-------------| 
         | garmin_virb   |
         | labpano       | 
@@ -691,7 +691,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 8. To get indexes of lidar lines based on preset value call:
   
     - `whichlidar` - ID of lidar
-        | whichlines    | 
+    -   | whichlines    | 
         | :-------------| 
         | All           |
         | Central       | 
