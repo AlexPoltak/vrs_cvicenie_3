@@ -971,14 +971,14 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   
 2. To set transformation(datum, coordinate grid system) use:
   
-> It is used in addrtkpointsdialog. There user can choose the datum. By this method this transformation(datum) will be set and then applied on RTK points, that will be loaded by  **loadRtkPoints** method.
-  
     - `gridname` - name of cadastral coordinate grid
     - `geoidname` - name of geoid model
     - `transfromationID` - ID of selected datum transformation. 
     - `utmzone` - number of UTM zone
     - `UTMzoneText` - UTM zone
 
+> It is used in addrtkpointsdialog. There user can choose the datum. By this method this transformation(datum) will be set and then applied on RTK points, that will be loaded by  **loadRtkPoints** method.
+  
 ```js
   void rtkPoints::setTransformation(std::string gridname,std::string geoidname, int transfromationID,int utmzone,char UTMzoneText[])
 ```
@@ -991,7 +991,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 3. To load RTK points from file use:
     - `RTKpoints` - there will be append the RTK points loaded from file
     - `filename` - path to file with RTK points
-    - `trajectoryTransformation` - trajectory transformations. Can be get by method getTrajectoryTransformation in project class
+    - `trajectoryTransformation` - trajectory transformations. Can be get by method **getTrajectoryTransformation** in project class
     -   | format - format of points that  shoul be used   | 
         | :-------------                                  | 
         | IDXYZ                                           |
