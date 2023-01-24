@@ -1008,14 +1008,14 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   
  <br> 
   
-   &emsp; **All loaded RTK points are first transformed to chosen transformation(datum) by method**
+   &emsp; **All loaded RTK points are first transformed from chosen transformation(datum) to UTM by method**
   
 ```js
 int rtkPoints::transformPoint(RtkPoint &point)
 ```
 
 ```diff
-- before loading points by method **loadRtkPoints** have to be set Transformation(datum) using method **setTransformation** in step 2.
+- before loading points by method **loadRtkPoints** have to be set Transformation(datum) using method **setTransformation** described in step 2.
 ```
   
 </p>
