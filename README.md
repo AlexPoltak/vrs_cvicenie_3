@@ -131,7 +131,9 @@ Based on these files is created project thanks to which user can interact with a
   void Project::setCalibrationFilename(QString newCalibrationFile)
 ```  
 5. Setting calibration values from calibration file:
-  It returns true when everything was set correctly, else returns false
+  
+ > It returns true when everything was set correctly, else returns false
+  
 ```js
   bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
 ```  
