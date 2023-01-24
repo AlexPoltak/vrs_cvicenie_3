@@ -226,7 +226,8 @@ Based on these files is created project thanks to which user can interact with a
 </details>
 
 <details><summary>&emsp;&emsp; Manipulating with trajectory/lidar frames/points </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-#### Frames
+
+####  Frames
     
 1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
   
