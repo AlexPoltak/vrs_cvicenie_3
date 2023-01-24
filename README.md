@@ -992,16 +992,15 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
     - `RTKpoints` - there will be append the RTK points loaded from file
     - `filename` - path to file with RTK points
     - `trajectoryTransformation` - trajectory transformations. Can be get by method **getTrajectoryTransformation** in project class
-    -   | format - format of points that  shoul be used   | 
+    -   | format - format of points that  should be used   | 
         | :-------------                                  | 
         | IDXYZ                                           |
         | IDYXZ                                           |
 
     - `ignorefirstLine` - number of lines in file that should be ignored/skipped
-    - `geoidname` - name of geoid model
 
-> If points were loaded correctly, this method will return number of RTK points that are outside the trajectory boundaries(points that were not added).
-  If file was not opened correctly, returns -1
+> - If points were loaded correctly, this method will return number of RTK points that are outside of trajectory boundaries(points that were not added).
+  - If file was not opened correctly, returns -1
   
 ```js
   int rtkPoints::loadRtkPoints(std::shared_ptr<std::vector<RtkPoint>> RTKpoints,std::string filename,std::vector<Transformation> &trajectoryTransformation,fileFormat format, int ignorefirstLine)
