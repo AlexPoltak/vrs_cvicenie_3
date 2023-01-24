@@ -1000,20 +1000,22 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
     - `ignorefirstLine` - number of lines in file that should be ignored/skipped
 
 > - If points were loaded correctly, this method will return number of RTK points that are outside of trajectory boundaries(points that were not added).
-  - If file was not opened correctly, returns -1
+> - If file was not opened correctly, returns -1
   
 ```js
   int rtkPoints::loadRtkPoints(std::shared_ptr<std::vector<RtkPoint>> RTKpoints,std::string filename,std::vector<Transformation> &trajectoryTransformation,fileFormat format, int ignorefirstLine)
 ```
   
-   &emsp; **All loaded RTK points are transformed to chosen transformation(datum) by method**
+ <br> 
   
-```diff
-- Transformation(datum) have to be set before using this method.
-```
+   &emsp; **All loaded RTK points are first transformed to chosen transformation(datum) by method**
   
 ```js
 int rtkPoints::transformPoint(RtkPoint &point)
+```
+
+```diff
+- before loading points by method **loadRtkPoints** have to be set Transformation(datum) using method **setTransformation** in step 2.
 ```
   
 </p>
