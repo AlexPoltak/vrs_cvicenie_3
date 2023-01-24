@@ -885,6 +885,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   void Project::clearRtkPoints()
 ```   
   
+  --- 
   
 </details>
 
@@ -924,7 +925,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
     int prepareAllImageStuffForOneCameraAsSony(int cameraIndex,QString filename="");
 ```   
-</details>
+
 
 2. To obtain filename of first video for given camera call:
 ```js
@@ -947,6 +948,9 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
     double getTransformationIDForCameraRelVecID(int cameraIndex, int id)
 ```   
 
+
+
+</details>
 ---   
   
 </p>
