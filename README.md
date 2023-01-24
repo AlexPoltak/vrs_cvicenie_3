@@ -761,7 +761,28 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   Transformation Project::getTransformationIMU_Vehicle()
 ```  
+
+
+6. To obtain transformation ID of given frame for given lidar use:
+    - `whichDevice` - ID of lidar
+    - `whichFrame` - ID of frame for which the ID of transformation should be returned
+   
+> It is used in pointcloudexporter class
   
+```js
+  int Project::getTransformationPostionOfDeviceFrame(int whichDevice, int whichFrame)
+```   
+  
+  
+7. To obtain transformation ID of given frame for given camera use:
+    - `whichDevice` - ID of camera
+    - `whichFrame` - ID of frame for which the ID of transformation should be returned
+
+> It is used in pointcloudexporter class
+
+```js
+  int Project::getTransformationPostionOfDeviceFrame(int whichDevice, int whichFrame)
+```   
 #### Rotations
 
 1. Rotation  between IMU and vehicle(what the devices are connected to):
@@ -851,8 +872,6 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
 ```   
 
-</details>
-
 
 4. To get reference of prepared/loaded RTK points vector use:
 ```js
@@ -864,6 +883,36 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   void Project::clearRtkPoints()
 ```   
+  
+  
+</details>
+
+
+ <details><summary>&emsp;&emsp; Camera files preparation</summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+ 
+  
+ 1. To prepare structure that holds camera data, info use:<br>
+ 
+ > This method load camera files and prepare relational vector between video frames and trajectory. It is used for having access to specific video frame at given trajectory position and so on
+
+
+    - `cameraIndex` - ID of camera for which all should be prepared
+    - `filename` - path to camera files<br>
+        | video_type-type of camera     | 
+        | :-------------                | 
+        | garmin_virb                   |
+        | labpano                       | 
+        | gopro                         | 
+        | sony                          |
+
+```js
+  int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
+```   
+
+</details>
+
+  
+  
   
 ---   
   
@@ -881,19 +930,3 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 </p>
 </details>
 
-
-  getRTKpointsAsReference
-  filterRTKpointsByProjectBoundaries
-  addRTKpoint
- 
-    
-  
-  
-  
-  
-  
-
-  
-  
-  
- 
