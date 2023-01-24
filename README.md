@@ -895,8 +895,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
  
     - `cameraIndex` - ID of camera for which all should be prepared
     - `filename` - path to camera files
-    
-        | video_type-type of camera     | 
+    -   | video_type-type of camera     | 
         | :-------------                | 
         | garmin_virb                   |
         | labpano                       | 
