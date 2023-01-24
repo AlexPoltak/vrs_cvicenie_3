@@ -910,17 +910,17 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```   
   &emsp;  Based on type of camera one of this relevant method is called in previous method :
   
-   &emsp; ##### For Garmin camera preparation
+   &emsp; **For Garmin camera preparation**
 ```js
     int prepareAllVideoStuffForOneCameraAsGarmin(int cameraIndex,QString filename="");
 ```   
 
-  ##### For LabPano camera preparation
+   &emsp; **For LabPano camera preparation**
 ```js
     int prepareAllVideoStuffForOneCameraAsLabPano(int cameraIndex,QString filename="");
 ```   
 
-  ##### For Sony camera preparation
+   &emsp; **For Sony camera preparation**
 ```js
     int prepareAllImageStuffForOneCameraAsSony(int cameraIndex,QString filename="");
 ```   
