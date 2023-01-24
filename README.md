@@ -971,7 +971,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   
 2. To set transformation(datum, coordinate grid system) use:
   
-> It is used in addrtkpointsdialog. There user can choose the datum that will be used. This method set that this datum(transformation) will be used
+> It is used in addrtkpointsdialog. There user can choose the datum. By this method this transformation(datum) will be set and then applied on RTK points, that will be loaded by  **loadRtkPoints** method.
   
     - `gridname` - name of cadastral coordinate grid
     - `geoidname` - name of geoid model
