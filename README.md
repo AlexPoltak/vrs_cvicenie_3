@@ -1008,7 +1008,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   
  <br> 
   
-   &emsp; **All loaded RTK points are first transformed from chosen transformation(datum) to UTM by method**
+   &emsp; All RTK points are in this method transformed from chosen transformation(datum) to UTM by:
   
 ```js
 int rtkPoints::transformPoint(RtkPoint &point)
