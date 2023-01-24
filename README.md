@@ -142,6 +142,8 @@ Based on these files is created project thanks to which user can interact with a
   void Project::initDevices()
 ```  
   
+---   
+  
 </details>
 
 <details><summary>&emsp;&emsp; Some other methods to initialize the project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
@@ -181,6 +183,9 @@ Based on these files is created project thanks to which user can interact with a
 ```diff
 - Most of the previous methods you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
 ```
+
+---   
+  
 </details>
 
 
@@ -222,6 +227,8 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   QString Project::getRegistryEntryNameOfProject()
 ``` 
+ 
+---   
   
 </details>
 
@@ -378,6 +385,8 @@ Based on these files is created project thanks to which user can interact with a
   double Project::findDistBetweenTrajectoryPoints(int first, int second)
 ```
 
+--- 
+
 </details>
   
   
@@ -406,6 +415,8 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   void Project::traj_getFileConstrains(InertialExplorerBoxData &constrains)
 ```
+
+--- 
 
 </details>
   
@@ -504,7 +515,8 @@ Line cut segment variable holds points that defines itself:
 ```js
   int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
 ```  
-  
+ 
+--- 
 
 </details>
   
@@ -603,6 +615,8 @@ Line cut segment variable holds points that defines itself:
 ```js
   correction Project::getTrajectoryCorrectionForZone(int i)
 ``` 
+  
+ ---  
   
 </details>
 
@@ -704,6 +718,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
 ```     
 
+--- 
 
 </details>
   
@@ -836,6 +851,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   double getCameraTimeOffset(int cameraIndex);
 ```   
 
+--- 
 
 </details>
   
