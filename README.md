@@ -45,6 +45,7 @@ This library Consists of:
 ```js
   void setValuesGGA(std::string GGA)
 ```
+  <br>
   
   RMC sentence looks like as follow:
   <img src="https://github.com/AlexPoltak/vrs_cvicenie_3/blob/main/Src/GPMRCAsset%201.png">
@@ -112,12 +113,15 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   void Project::setProjectFilename(QString newProjectFile)
 ``` 
-
+<br>
+  
 2. Setting trajectory file path:
 ```js
   void Project::setTrajectoryFilename(QString newTrajectoryFile)
 ```  
  
+<br>
+  
 3. Setting lidar file path:
       
      - `index` - ID of lidar
@@ -126,10 +130,15 @@ Based on these files is created project thanks to which user can interact with a
   void Project::setLidarFilename(QString newLidarFile,int index)
 ```  
   
+<br>  
+  
 4. Setting path to calibration file:
 ```js
   void Project::setCalibrationFilename(QString newCalibrationFile)
 ```  
+  
+<br> 
+  
 5. Setting calibration values from calibration file:
   
  > It returns true when everything was set correctly, else returns false
@@ -137,6 +146,9 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
 ```  
+  
+<br>  
+  
 6. Preparing needed structure that holds all lidar and camera devices info:
   
  > It is used after setting the calibration file
@@ -166,17 +178,24 @@ Based on these files is created project thanks to which user can interact with a
   void Project::setCameraFilename(QString newCameraFile,VideoType type)
 ```    
   
+<br>  
+  
 2. To check whether path to given camera(video,images) files is correct(whether directory contains relevant files) use:
 
 ```js
   int checkWhetherCameraPathCorrect(QString path,Project::VideoType videotype);
 ```  
 
+<br>  
+  
 3. To set description from user about project use:
   
 ```js
   void setProjectDescription(std::string descr)
 ```  
+  
+ <br> 
+  
 4. You can save this description also to file by:
 
 ```js
@@ -202,6 +221,8 @@ Based on these files is created project thanks to which user can interact with a
   
 > This method contains method **saveProjectFileToXml**, that saves all project values to XML file.
 
+<br>  
+  
 2. To open project file and read all values from it use:
 
     - `filename` - path to project file
@@ -212,6 +233,7 @@ Based on these files is created project thanks to which user can interact with a
  
 > This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables from them.
 
+<br>  
   
 3. To check whether given file is XML file use:
   
@@ -219,11 +241,15 @@ Based on these files is created project thanks to which user can interact with a
   bool Project::isProjectFileXML(QString fileName)
 ```  
 
+<br>
+  
 4. To get name of current opened project use:
   
 ```js
   QString Project::getProjectFilename()
 ```  
+ 
+<br>  
    
 5. To get registry name of current opened project (it is used to add project to recent projects and so on) call:
   
@@ -244,6 +270,7 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   std::vector<int> Project::getSelectedFrames()
 ```  
+<br>
   
 2. This returns indexes of **lidar frames**, based on trajectory selections (where state=2) :
   
@@ -252,6 +279,7 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   std::vector<int> Project::getSelectedFramesForLidarDevice(int index)
 ```  
+<br>
 
 3. To get index of **frame from lidar**(with given ID) which is placed at given trajectory position use:
   
@@ -262,6 +290,8 @@ Based on these files is created project thanks to which user can interact with a
   int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
 ```    
   
+<br>
+
 4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use **getSelectedFilteredFramesForLidarDevice**:
  &emsp;If there are some missing trajectory indexes in input, the space in corresponding lidar frames indexes will be filled in return.
 
@@ -271,6 +301,8 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
 ``` 
+
+<br>
 
 5. To get lidar frame structure use:
 
@@ -285,7 +317,7 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   BaseFrame Project::getLidarFrameFromLidar(int whichLidar,std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel ,double minIntensityColor,double maxIntensityColor )
 ``` 
-
+<br>
 
 6. To save/get selected frames(selected by user in selection mode) to/from file for access in another app use:
 &emsp; &emsp;To save use:
@@ -300,10 +332,13 @@ Based on these files is created project thanks to which user can interact with a
 ```  
 > Method returns IDs of selected frames
 
+<br>
+
 7. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
 ```js
   void Project::clearTrajectorySelection()
 ```
+<br>
 
 8. To receive relational vector between lidar frames and trajectory use:
 ```js
@@ -313,6 +348,7 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
 ``` 
+<br>
 
 9. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
   
@@ -332,6 +368,7 @@ Based on these files is created project thanks to which user can interact with a
  - It is generated/filled with **trajectoryTransformation** vector that is prepared by trajectory reader in reading methods for opening project
 ```
 
+<br>
 
 10. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
   
@@ -400,6 +437,8 @@ Based on these files is created project thanks to which user can interact with a
 ```js
   void Project::traj_generateTransformation()
 ```   
+ 
+<br> 
   
 2. To read trajectory file and inits values for trajectory reader class(inertialExplorerFileReader) call **traj_readTrajectoryFromFile**. It is used in projectcreationdialog class and in project reading methods.
   
@@ -407,11 +446,14 @@ Based on these files is created project thanks to which user can interact with a
   int Project::traj_readTrajectoryFromFile(QString rawTrajFile)
 ```     
   
+<br> 
+ 
 3. To inits relational vector between lidar data and trajectory file use **traj_initFileWithTransformations**. It is used in projectcreationdialog class.
   
 ```js
   void Project::traj_initFileWithTransformations(int index)
 ```
+<br>
 
 4. To obtain trajectory constrains use **traj_getFileConstrains**. It is used in projectcreationdialog class.
   
@@ -453,6 +495,8 @@ Line cut segment variable holds points that defines itself:
 - Points of this line cut segment and more visual parameter you can get by method getParamsForMapStruct()
 ```
   
+<br>  
+  
 2. To obtain IDs of trajectory for prepared line segment use method **getFramesForPerpendicularLineSegment**. Based on this IDs is generated pointcloud for projections in creator app:
 
       - `limits` - limits of line segment(you can use return value from method **getPerpendicularLineSegmentAtTrajectory**)
@@ -462,6 +506,8 @@ Line cut segment variable holds points that defines itself:
 ```js
   std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPointF> limits,int selectedId,double segmentWidth)
 ```  
+  
+<br>  
   
 3. To prepare line cut segment for sideway view(ZY projection) use:
 
@@ -479,6 +525,7 @@ Line cut segment variable holds points that defines itself:
     - [1] right centered point of cut(on right side of trajectory)<br>
     - [2] left centered point of cut(on left side of trajectory)
   
+<br>  
   
  4. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
   
@@ -492,6 +539,7 @@ Line cut segment variable holds points that defines itself:
  ```js
   int getLineCutSegmentZonesCount()
 ``` 
+<br>  
   
 2. To get angle between zones of points in prepared cutting line segment call:
   
@@ -503,6 +551,8 @@ Line cut segment variable holds points that defines itself:
   double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
 ```  
   
+<br>  
+  
 3. To get GPS timestamp for given zone in prepared cutting line segment use:
 
       - `i` - ID of zone in cutting line segment
@@ -510,6 +560,8 @@ Line cut segment variable holds points that defines itself:
 ```js
   double Project::getTimeOfLineCutSegmentZone(int i)
 ```  
+
+<br>
 
 4. To receive trajectory ID for given zone of prepared line cut segment use:
   
@@ -542,6 +594,8 @@ Line cut segment variable holds points that defines itself:
   bool Project::addFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
 ```  
 
+<br>
+
 2. To modify existing fitpoint use:
   
       - `positionID` - ID of trajectory position where correction should be modified
@@ -556,6 +610,8 @@ Line cut segment variable holds points that defines itself:
   bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
 ```   
  
+<br> 
+ 
 3. To add end points(where corrections on trajectory will end) for each fit point use:
   
       - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
@@ -569,6 +625,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   void Project::addEndPointsToFitCorrections(double connectedDistance,double fadeDistance)
 ```    
+<br>
 
 4. To calculate and apply corrections based on added fitpoints use:
   
@@ -582,23 +639,31 @@ Line cut segment variable holds points that defines itself:
   void Project::calcCorrectionFromFitPoints(double connectedDistance,double holdDistance,double fadeDistance)
 ```   
   
+<br>  
+  
 5. To find out whether corrections were created use:
   
 > It returns true when some corrections were created, else returns false  
 ```js
   bool correctionExists()
-```   
+```  
+
+<br>
   
 6. To get reference of created fitpoints for access to them use:
   
 ```js
   std::shared_ptr<std::map<int,FITpointCorection>> Project::getFitpointsAsReference()
 ```  
+
+<br>
+
 7. To save all crated correction fit points for future reconstruction of corrections use:
   
 ```js
   bool Project::saveFitPoints()
 ```  
+<br>
   
 8. To load saved fitpoints for reconstruction of created corrections call>
   
@@ -608,6 +673,7 @@ Line cut segment variable holds points that defines itself:
   bool Project::loadFitPoints()
 ``` 
   
+<br>  
   
 9. To obtain calculated trajectory corrections for zone in prepared cutting line segment use:
   
@@ -640,7 +706,7 @@ Line cut segment variable holds points that defines itself:
 ```js
   ParametersForMapInteraction Project::getParamsForMapStruct()
 ``` 
- <br>  <br> 
+ <br> 
  
 2. To get value of specific visual parameter use:
 
@@ -873,6 +939,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   void addRTKpoint(RtkPoint newPoint);
 ```   
+<br>
 
 2. This saves all RTK points(previous added RTK points with appended input RTK points) to project file :
 
@@ -881,6 +948,7 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   void Project::addRTKpoint(std::shared_ptr<std::vector<RtkPoint>> pointsToAdd)
 ```   
+<br>
 
 3. To filter given RTK by trajectory boundaries use:
 
@@ -891,13 +959,14 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
   int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
 ```   
-
+<br>
 
 4. To get reference of prepared/loaded RTK points vector use:
 ```js
   std::shared_ptr<std::vector<RtkPoint>> Project::getRTKpointsAsReference()
 ```   
 
+<br>
 
 5. To clear vector that holds RTK points use:
 ```js
@@ -945,11 +1014,14 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
     int prepareAllImageStuffForOneCameraAsSony(int cameraIndex,QString filename="");
 ```   
 
+<br>
 
 2. To obtain filename of first video for given camera call:
 ```js
     QString getFirstVideoFilenameForCamera(int cameraIndex)
 ```   
+  
+<br>  
   
 3. To obtain transformation timestamp of given camera:
     - `cameraIndex` - ID of camera 
@@ -958,6 +1030,8 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 ```js
     double getTransformationTimestampForCameraRelVecID(int cameraIndex, int id)
 ```   
+  
+<br>  
   
 4. To obtain transformation ID of given camera:
     - `cameraIndex` - ID of camera 
@@ -994,6 +1068,8 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
   rtkPoints::rtkPoints()
 ```
   
+<br>  
+  
 2. To set transformation(datum, coordinate grid system) use:
   
     - `gridname` - name of cadastral coordinate grid
@@ -1013,6 +1089,8 @@ void Project::disableTrajectoryPartsByDiff(int secAfter)
 - Datums that user can choose in **addrtkpointsdialog UI** are manage in **proj4transforms class** and overall in lib Datums.
 ```
 
+<br>  
+  
 3. To load RTK points from file use:
     - `RTKpoints` - there will be append the RTK points loaded from file
     - `filename` - path to file with RTK points
