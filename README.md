@@ -150,7 +150,8 @@ void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 &emsp; Selection button is promoted to **SelectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
 
 <br>
-
+  
+2. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
 Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
 
     * `isModeActive` - whether selection in main menu is chosen
