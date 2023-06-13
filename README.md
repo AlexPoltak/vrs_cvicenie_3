@@ -17,16 +17,10 @@ This App Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>mymapcontrol</summary>
+<details><summary>CreatorMainWindow</summary>
 <p>
   
-## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
-  - QMapControl Contact e-mail: kaiwinter@gmx.de
-  - QMapControl github: https://github.com/kaiwinter/QMapControl
-  - Changes were made by Martin Dekan for the purpose of trajectory selection</br>
-  
- QMapControl is implemented in external libs of lidaretto project.
-
+## CreatorMainWindow is the main window, where all other apps and actions can be called.
 
 ### Getting Started
 <details><summary>&emsp;&emsp;  Top main .ui menu </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
