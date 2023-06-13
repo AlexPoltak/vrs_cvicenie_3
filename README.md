@@ -86,56 +86,6 @@ void CreatorMainWindow::initAppsToButtonsAction()
 ```
 </details>
 
-<details><summary>&emsp;&emsp; Methods for manipulation with map position, size</summary> <!--/////////////////////////////////////////////// --></br>
-  
-1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
-```js
-void setView(const QPointF& coordinate)
-```
-2. To Keep the center of the map on the Geometry, even when it moves, call **followGeometry** on map QFrame:
-```js
-void followGeometry ( const Geometry* geometry )
-```
-3. If the view is set to follow a Geometry this method stops the trace:
-```js
-void stopFollowing ( const Geometry* geometry )
-```
-4. To move smoothly the center of the view to the given Coordinate, call **moveTo** on map QFrame:
-
-```js
-void moveTo ( QPointF coordinate )
-```
-5. To get the coordinate of the center of the map, call **currentCoordinate** on map QFrame:
-```js
-QPointF	currentCoordinate()
-```
-6. To scroll the view to the left, call **scrollLeft** on map QFrame:
-```js
-void scrollLeft ( int pixel)
-```
-7. To scroll the view to the right, call **scrollRight** on map QFrame:
-```js
-void scrollRight ( int pixel)
-```
-8. To scroll the view up, call **scrollUp** on map QFrame:
-```js
-void scrollUp ( int pixel)
-```
-9. To scroll the view down, call **scrollDown** on map QFrame:
-```js
-void scrollDown ( int pixel)
-```
-10. To scroll the view by the given point, call **scroll** on map QFrame:
-```js
-void scroll ( const QPoint scroll )
-```
-
-11. To resize the map to the given size, call **resize** on map QFrame:
-```js
-void resize(const QSize newSize)
-```
-</details>
-
 
 <details><summary>&emsp;&emsp; 
 Methods for displaying add-ons on the map </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
