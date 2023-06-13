@@ -33,7 +33,10 @@
 ```diff
 - See section projectcreationdialog
 ```
-  - 2.The project is created based on values in loaded calibration,lidar,camera files. See **Project** library, where project creation and modifications are defined. The project is created to .PRJ file.
+  - 2.The project is created based on values in loaded calibration,lidar,camera files.
+```diff
+- See **Project** library, where project creation and modifications are defined. The project is created to .PRJ file.
+```
   - 3.The created project is opened and all ui. elements are inits with the project values. 
   
 <br>
