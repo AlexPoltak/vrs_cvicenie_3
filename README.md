@@ -89,8 +89,8 @@ void CreatorMainWindow::on_actionSettings_triggered()
 ```
  
 ```diff
-- In on_actionSettings_triggered is opened **MinMaxPrecisionDialog** where some app settings can be changed. 
-  See section minmaxprecisiondialog
+ In on_actionSettings_triggered is opened **MinMaxPrecisionDialog** where some app settings can be changed. 
+- See section minmaxprecisiondialog
 ```
  
 <br>
