@@ -14,15 +14,23 @@
 <br />
 This App Consists of:
 
+
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>CreatorMainWindow</summary>
+<details><summary>mymapcontrol</summary>
 <p>
   
-## CreatorMainWindow is the main window, where all other apps and actions can be called.
+## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
+  - QMapControl Contact e-mail: kaiwinter@gmx.de
+  - QMapControl github: https://github.com/kaiwinter/QMapControl
+  - Changes were made by Martin Dekan for the purpose of trajectory selection</br>
+  
+ QMapControl is implemented in external libs of lidaretto project.
+
 
 ### Getting Started
-<details><summary>&emsp;&emsp; Top main .ui menu </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+<details><summary>&emsp;&emsp;  Top main .ui menu </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
 
 1. To use the application, it is necessary to create a project at the beginning. The project can be created with UI by button **New** in the top main menu. With this button the action  **on_actionNew_triggered** is called:
 
@@ -82,7 +90,24 @@ void CreatorMainWindow::on_actionGoogle_Earth_triggered()
 void CreatorMainWindow::initAppsToButtonsAction()
 ```
 <br>
+</details>
+
+<details><summary>&emsp;&emsp; Methods for manipulation with map position, size</summary> <!
+  -/////////////////////////////////////////////// --></br>
   
+1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
+```js
+void setView(const QPointF& coordinate)
+```
+
+10. To scroll the view by the given point, call **scroll** on map QFrame:
+```js
+void scroll ( const QPoint scroll )
+```
+
+11. To resize the map to the given size, call **resize** on map QFrame:
+```js
+void resize(const QSize newSize)
 ```
 </details>
 
@@ -136,215 +161,15 @@ void setInfo(int info)
   
 </details>  
 
-
-
-<details><summary>&emsp;&emsp; Methods of selecting trajectory points </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
-Points of trajectory can be in 4 different states:
-
-| state number  | state                          |
-| :-------------| :-------------                 | 
-| 0             | not selected                   |
-| 1             | during selection(prepared)     |
-| 2             | selected                       |
-| 3             | split point                    |
-
-1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
-
-| enum MouseMode      | enum MouseMode-Description                          |      | enum SelectionType  |
-| :-------------      | :-------------                                      |------| :-------------      | 
-| Panning             | The map can be moved                                |      | CircleSelection     | 
-| Dragging            | Selection rectangular area can be drawn in the map  |      | PolygonSelection    |
-| None                | Mouse move events have no efect to the map          |      | RectangleSelection  |
-| Selecting           | Selecting a trajectory                              |      | TimeSelection       | 
-| Deselecting         | Deselecting a trajectory                            |      | AreaSelection       | 
-| InsertSplitPoint    | Inserting split point                               |      | CircleDeselection   |
-| PointInfoSelection  | Painting info about selected point on trajectory    |      | RectangleDeselection|
-| LineForCut_Selecting| It is used to select point for cutting line         |      | TimeDeselection     |
-
-
-```js
-void setMouseMode(MouseMode mousemode,SelectionType selectiontype )
-```
-
-
-2. To select all points among defined points(to change state to "selected"), call **selectInTrajectory** on map QFrame: 
-
-    - `start` - index of start point
-    - `goal` - index of end point
-
-```js
-void selectInTrajectory(int fromPoint,int toPoint)
-```
-3. To deselect all points among defined points(to change state to "not selected"), call **deselectInTrajectory** on map QFrame: 
-
-    - `start` - index of start point
-    - `goal` - index of end point
-
-```js
-void deselectInTrajectory(int fromPoint,int toPoint)
-```
-4.  To select or deselect all points among defined points, based on mouse mode, call **doWithTrajectoryBetweenPoints** on map QFrame: 
-    - `when mouse mode is Selecting ` - selectInTrajectory is called
-    - `when mouse mode is Deselecting` - deselectInTrajectory is called
-```js
-void MyMapControl::doWithTrajectoryBetweenPoints(int lastIndex,int newindex)
-```
-
-5. To select all prepared points(to change points states from "during selection" to "selected"), call **SelectPreparedPoints** on map QFrame: 
-```js
-void SelectPreparedPoints()
-```
-6. To deselect all prepared points(to change points states from "during selection" to "not selected"), call **DeselectPreparedPoints** on map QFrame: 
-```js
-void DeselectPreparedPoints()
-```
-
-7. To select all trajectory points(to change points states to "selected"), call **selectWholeTrajectory** on map QFrame: 
-```js
-void selectWholeTrajectory()
-```
-8. To deselect all trajectory points(to change points states to "not selected"), call **deselectWholeTrajectory** on map QFrame: 
-```js
-void deselectWholeTrajectory()
-```
- 
-</details>  
-
-<details><summary>&emsp;&emsp; Methods for checking whether the points are in the defined area</summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
-
-1. To find points that are in the selection rectangle and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithRectangle** on map QFrame: 
-
-```js
-void checkColisionWithRectangle()
-```
-
-2. To points that are in the deselection rectangle and changes their state from 2-"selected" to 1-"during selection" state, call **checkDeColisionWithRectangle** on map QFrame: 
-
-```js
-void checkDeColisionWithRectangle()
-```
-
-3. To find points that are in the selection polygon and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithPolygon** on map QFrame: 
-
-```js
-void checkColisionWithPolygon()
-```
-4. To find out if some trajectory point is in defined circle and get its index, call **checkColisionWithCircle** on map QFrame: 
-
-    - `center` - center of area
-    - `radius` - radius of area
-    - `previousIndexOfInterest` 
- 
-| previousIndexOfInterest condition        | Description                                                                  |   
-| :-------------                           | :-------------                                                               |
-| When (previousIndexOfInterest is -1      | checks if some trajectory point is in defined area and returns its index     | 
-| When (previousIndexOfInterest is not -1) | checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest) and returns its index                                                                            | 
-| In both cases, when no point was finded  | returns -1                                                                   | 
-
-```js
-int MyMapControl::checkColisionWithCircle(QPoint center,double radius,int previousIndexOfInterest)
-```
-
-5. To find out if some split point is in defined area and get its index, call **checkSplitpointAroundPoint** on map QFrame: 
-```js
-int MyMapControl::checkSplitpointAroundPoint(int indexintraj,int areaofinterest)
-```
-6. To find out if some RTK point is in defined area and get its index, call **checkColisionWithRtkPoint** on map QFrame:
-
-    - `center` - center of area
-    - `radius` - radius of area
-```js
-int MyMapControl::checkColisionWithRtkPoint(QPoint center,double radius)
-```
-
-7. To find points that are not "selected" among the defined indexes and change their state to "during selection", call **CheckPointsBetweenPoints** on map QFrame: 
-
-    - `start` - index of start point
-    - `goal` - index of end point
-    
-```js
-void MyMapControl::CheckPointsBetweenPoints(int start, int goal)
-```
-
-</details>  
-
-
-
-<details><summary>&emsp;&emsp; Methods for manipulation with map layers </summary> <br/> <!--/////////////////////////////////////////////////////////////////////// --> 
-  
-If multiple layers are added, they are painted in the added order. <br/>
-
-  
-1. To add new layer, call **addLayer** on map QFrame: 
-```js
-void addLayer ( Layer* layer )
-```
-2. To remove layer, call **removeLayer** on map QFrame: 
-```js
-void removeLayer ( Layer* layer )
-```
-3. To get layer by given name, call **layer** on map QFrame: 
-```js
-Layer* layer ( const QString& layername )
-```
-4. To get names of all layers, call **layers** on map QFrame: 
-```js
-QList<QString> layers()
-```
-5. To get number of layers, call **numberOfLayers** on map QFrame: 
-```js
-int numberOfLayers()
-```
-6. To update view, call **updateView** on map QFrame: 
-```js
-void updateView()
-``` 
-
-  
-</details>  
-
-<details><summary>&emsp;&emsp; Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
-
-1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
-```js
-void setImageZoomLimit(int newLimit)
-```
-2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
-```js
-int getImageZoomLimit()
-```
-3. To set current zoom, call **setZoom** on map QFrame: 
-```js
-void setZoom ( int zoomlevel )
-```
-4. To zoom in one step, call **zoomIn** on map QFrame: 
-```js
-void zoomIn()
-```
-5. To zoom out in one step, call **zoomOut** on map QFrame: 
-```js
-void zoomOut()
-```
-6. To enable or disable mouse wheel events(zooming), call **enableMouseWheelEvents** on map QFrame: 
-```js
-void enableMouseWheelEvents( bool enabled )
-```
-7. To get if mouse wheel events(zooming) is enabled/disabled, call **mouseWheelEventsEnabled** on map QFrame: 
-```js
-bool mouseWheelEventsEnabled()
-``` 
-8. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
-```js
-void setCenterAndMaxZoomForProject()
-```
-  
-</details>  
-
-
 ---
 
 </p>
 </details>
+
+
+
+
+
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
