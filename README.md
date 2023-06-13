@@ -82,6 +82,22 @@ void CreatorMainWindow::on_actionGoogle_Earth_triggered()
 void CreatorMainWindow::initAppsToButtonsAction()
 ```
 <br>
+  
+8. With **Settings** button is called action **on_actionSettings_triggered**.
+```js
+void CreatorMainWindow::on_actionSettings_triggered()
+```
+ 
+```diff
+- In on_actionSettings_triggered is opened **MinMaxPrecisionDialog** where some app settings can be changed. 
+  See section minmaxprecisiondialog
+```
+ 
+<br>
+  
+  
+  
+  
 </details>
 
 <details><summary>&emsp;&emsp; Methods for manipulation with map position, size</summary> <!
