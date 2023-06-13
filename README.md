@@ -25,9 +25,9 @@ This App Consists of:
 ```js
   void CreatorMainWindow::on_actionNew_triggered(bool checked)
 ```
-    - 1. After calling the **on_actionNew_triggered**, a **ProjectCreationDialog** dialog is opened. In this dialog all necessary files for creating the project are selected. See section **projectcreationdialog**.
-    - 2. The project is created based on values in loaded calibration,lidar,camera files. See **Project** library, where project creation and modifications are defined. The project is created to .PRJ file.
-    - 3. The created project is opened and all ui. elements are inits with the project values. 
+  - 1. After calling the **on_actionNew_triggered**, a **ProjectCreationDialog** dialog is opened. In this dialog all necessary files for creating the project are selected. See section **projectcreationdialog**.
+  - 2. The project is created based on values in loaded calibration,lidar,camera files. See **Project** library, where project creation and modifications are defined. The project is created to .PRJ file.
+  - 3. The created project is opened and all ui. elements are inits with the project values. 
   
 
   
