@@ -135,7 +135,7 @@ void CreatorMainWindow::on_toolButton_select_all_clicked()
 ```
 
   * this is the first level of bullet points, made up of <space><space>*<space>
-    * this is more indented, composed of <space><space><space><space>*<space>
+    * `filename` - filename of .PRJ file   <space><space><space><space>*<space>
 
 2. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
 Change selection in **Select by**  button trigger **onSelectionButton**  slot.
