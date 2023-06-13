@@ -4,19 +4,20 @@
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_black.svg#gh-light-mode-only">
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_white.svg#gh-dark-mode-only">
 </div>
-  <h1 align="left">Libs MAPInteraction</h1>
+  <h1 align="left">Creator App</h1>
 
-**This library is used to display and interact with the map.**<br />
-More in specific sections. <br /><br />
-This library Consists of:
+**Creator is the main/default app, where project is created and modified.**
+ - All other applications can be launched from this application with the appropriate button.
+ - The main window is **CreatorMainWindow** and app contains multiple dialogs
+<br /> More in specific sections. <br /> 
+
+<br />
+This App Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>cvwidget</summary>
+<details><summary>CreatorMainWindow</summary>
 <p>
-
-## cvwidget is widget class where defined image is rendered.
-There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
   
 ### Getting Started
 1. When you want to use this widget somewhere, first of all you have to add widget promoted to class **CQtOpenCVViewerGl** to .ui file.
