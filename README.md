@@ -155,6 +155,7 @@ void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 
     * `isModeActive` - whether deselection in main menu is chosen    <space><space><space><space><space>
     * `selectMode` - which subdeselection is chosen   <space><space><space><space><space>
+  
 ```js
 void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode) //exclude part
 ```
