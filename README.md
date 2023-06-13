@@ -51,16 +51,38 @@ int CreatorMainWindow::openProject(QString filename)
   - 2.All ui. elements are inits with the project values.
 
 <br>
+  
+4. Graphs displaying trajectory informations can be created and displayed by **Graphs** button, which calls action  **on_actionGraphs_triggered**. 
+```js
+void CreatorMainWindow::on_actionGraphs_triggered()
+```
+<br>
 
-3. If you want to get position on image, where user clicked, call **getImageClickPos** on widget:
+5. **Outputs** button opens the folder, where all the exported files are. It calls action **on_actionOpen_Output_triggered**.
+```js
+void CreatorMainWindow::on_actionOpen_Output_triggered()
+```
+<br>
 
-    - `widgetpos` - position of widget from global
- ```js
-QPoint getImageClickPos(QPoint widgetpos)
-``` 
-4. If you want to get position of point, which should be at the same position on image, also when widget is resized, call **getImagePosToWidgetPos** on widget: :
- ```js
-QPoint getImagePosToWidgetPos(QPoint imagepos)
+6. With **Google Earth** button is called action **on_actionGoogle_Earth_triggered**, where is created KML file from trajectory. KML file can be displayed in Google Earth.
+```js
+void CreatorMainWindow::on_actionGoogle_Earth_triggered()
+```
+<br>
+  
+7. With **Tools** button can be some tool apps opened:
+   - `Gopro Player.`- see **GoProPlayer** app
+   - `360 Video Player` - see **GarminPlayer** app
+   - `UAV Flight Planner` - see **FlightParameters** app
+   - `Cloud Calibrator` - see **CloudCalibration** app
+   - `Panorama Generator` - see **ImageGenerator** app
+
+   - The tool actions are inits in **initAppsToButtonsAction** method.
+```js
+void CreatorMainWindow::initAppsToButtonsAction()
+```
+<br>
+  
 ```
 </details>
 
