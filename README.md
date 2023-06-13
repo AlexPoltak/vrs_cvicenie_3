@@ -29,7 +29,7 @@ This App Consists of:
   - 2.The project is created based on values in loaded calibration,lidar,camera files. See **Project** library, where project creation and modifications are defined. The project is created to .PRJ file.
   - 3.The created project is opened and all ui. elements are inits with the project values. 
   
-
+<br>
   
 2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing.</br>
 If image shows properly this function **returns true**, else **returns false**. Function **showImage**:
