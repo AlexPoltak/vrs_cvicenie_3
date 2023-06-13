@@ -151,7 +151,7 @@ void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 
 <br>
 
-&emsp;&ensp; Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
+Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
 
     * `isModeActive` - whether selection in main menu is chosen
     * `selectMode` - which subselection is chosen
