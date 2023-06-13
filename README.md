@@ -151,7 +151,7 @@ void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 &emsp;&ensp; Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
 
       - `isModeActive` - whether deselection in main menu is chosen 
-      - `selectMode` - which subdeselection is chosen
+   - `selectMode` - which subdeselection is chosen
 
 ```js
 void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode) //exclude part
