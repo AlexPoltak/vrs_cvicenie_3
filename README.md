@@ -4,62 +4,645 @@
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_black.svg#gh-light-mode-only">
 <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/logo_white.svg#gh-dark-mode-only">
 </div>
-  <h1 align="left">Libs project</h1>
+  <h1 align="left">Libs MAPInteraction</h1>
 
-## This library serves to manage the project defined by user.
- - It combines creating, editing, opening project.
- - Data for project are reads from lidar, camera, calibration and trajectory files.
- - Project is XML file with suffix .PRJ
- - Creation of project is defined in Creator app with projectcrationdialog class.
- 
+**This library is used to display and interact with the map.**<br />
+More in specific sections. <br /><br />
 This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>gpsnmeaparser</summary>
+<details><summary>cvwidget</summary>
 <p>
 
-## gpsnmeaparser is class using for parsing GNSS Logs, specifically GGA and RMC logs.
-  ### Getting Started
-1. To start, simply create object of this class and then you can use corresponding methods.
-2. You can also create and init object of this class by using conscructor:
+## cvwidget is widget class where defined image is rendered.
+There is included QT class QOpenGLWidget: <a href="https://doc.qt.io/qt-6/qopenglwidget.html">Show documentation</a>, thanks to which we can display OpenGL graphics.
+  
+### Getting Started
+1. When you want to use this widget somewhere, first of all you have to add widget promoted to class **CQtOpenCVViewerGl** to .ui file.
+  
+2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing.</br>
+If image shows properly this function **returns true**, else **returns false**. Function **showImage**:
 ```js
-  gpsNMEAparser();
+bool showImage(const cv::Mat& image)
 ```
-&emsp;Or:
-```js
-  gpsNMEAparser(std::string GGASentence,std::string RMCSentence)
-```  
-  
-  **GGA sentence looks like as follow**:
-  <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/GPGGA.png">
-  
-1. To check whether some GGA sentence is valid use **isValidGGA** on object:
-  
-    - Returns true when sentence is valid GGA sentence, else returns false
-```js
-  bool isValidGGA(const std::string GGASentence)
+3. If you want to get position on image, where user clicked, call **getImageClickPos** on widget:
+
+    - `widgetpos` - position of widget from global
+ ```js
+QPoint getImageClickPos(QPoint widgetpos)
+``` 
+4. If you want to get position of point, which should be at the same position on image, also when widget is resized, call **getImagePosToWidgetPos** on widget: :
+ ```js
+QPoint getImagePosToWidgetPos(QPoint imagepos)
 ```
-2. To set class values parsed from GGA sentence use:
+  
+---  
+  
+</p>
+</details>
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>mymapcontrol</summary>
+<p>
+  
+## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
+  - QMapControl Contact e-mail: kaiwinter@gmx.de
+  - QMapControl github: https://github.com/kaiwinter/QMapControl
+  - Changes were made by Martin Dekan for the purpose of trajectory selection</br>
+  
+ QMapControl is implemented in external libs of lidaretto project.
+
+
+### Getting Started
+<details><summary>&emsp;&emsp; Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
+1. To display the map and control it, first of all you have to add some container with QFrame class to .ui file.
+2. Then promote this QFrame to class **MyMapControl**.
+3. Add this <a href="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/Includes_for_mymapcontrol.txt">Includes</a> to .pro file of app.
+4. Include to header file of application:
+    - `#include "mymapcontrol.h"`
+    - `#include <osmmapadapter.h>`
+    - `#include <maplayer.h>`
+    - `#include "common.h"`
+
+5. You need to create new map adapter(example is for OpenStreetMap):
+    
+    - `MapAdapter* mapadapter;`
+```js
+mapadapter = new OSMMapAdapter();
+```
+6. Create new layer with map adapter created in previous step:
+    
+    - `Layer* mainlayer;`
+```js
+mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
+```
+7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values:
+```js
+ void __init()
+```
+8. To add layer created in step 6(or another layer) to layers of map, call **addLayer** on map QFrame:
+```js
+void addLayer(Layer* layer)
+```
+</details>
+
+<details><summary>&emsp;&emsp; Methods for manipulation with map position, size</summary> <!--/////////////////////////////////////////////// --></br>
+  
+1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
+```js
+void setView(const QPointF& coordinate)
+```
+2. To Keep the center of the map on the Geometry, even when it moves, call **followGeometry** on map QFrame:
+```js
+void followGeometry ( const Geometry* geometry )
+```
+3. If the view is set to follow a Geometry this method stops the trace:
+```js
+void stopFollowing ( const Geometry* geometry )
+```
+4. To move smoothly the center of the view to the given Coordinate, call **moveTo** on map QFrame:
 
 ```js
-  void setValuesGGA(std::string GGA)
+void moveTo ( QPointF coordinate )
 ```
-  <br>
-  
-  **RMC sentence looks like as follow**:
-  <img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/GPMRC.png">
-  
-1. To check whether some RMC sentence is valid use **isValidRMC** on object:
-  
-    - Returns true when sentence is valid RMC sentence, else returns false
+5. To get the coordinate of the center of the map, call **currentCoordinate** on map QFrame:
 ```js
-  bool isValidRMC(const std::string RMCSentence)
+QPointF	currentCoordinate()
 ```
-2. To set class values parsed from RMC sentence use:
+6. To scroll the view to the left, call **scrollLeft** on map QFrame:
+```js
+void scrollLeft ( int pixel)
+```
+7. To scroll the view to the right, call **scrollRight** on map QFrame:
+```js
+void scrollRight ( int pixel)
+```
+8. To scroll the view up, call **scrollUp** on map QFrame:
+```js
+void scrollUp ( int pixel)
+```
+9. To scroll the view down, call **scrollDown** on map QFrame:
+```js
+void scrollDown ( int pixel)
+```
+10. To scroll the view by the given point, call **scroll** on map QFrame:
+```js
+void scroll ( const QPoint scroll )
+```
+
+11. To resize the map to the given size, call **resize** on map QFrame:
+```js
+void resize(const QSize newSize)
+```
+</details>
+
+
+<details><summary>&emsp;&emsp; 
+Methods for displaying add-ons on the map </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
+
+| name of cursor                  | image of cursor                                                       |   
+| :-------------                  | :-------------                                                        |
+| default_hand_open               | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/default_hand_open.png"></p>                | 
+| default_hand_closed             | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/default_hand_closed.png"></p>              | 
+| circle_selecting_hand_open      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_hand_open.png"></p>              | 
+| circle_selecting_hand_closed    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_hand_closed.png"></p>            | 
+| circle_selecting_notSelecting   | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_noselect.png"></p>               |  
+| circle_selecting_selecting      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting.png"></p>                        | 
+| circle_selecting_polygon        | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/polygonSelecting.png"></p>                 | 
+| circle_selecting_rectangle      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/rectangleSelect.png"></p>                  | 
+| circle_selecting_time           | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/timeSelection.png"></p>                    | 
+| circle_deselecting_hand_open    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting_hand_open.png"></p>            | 
+| circle_deselecting_hand_closed  | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting_hand_closed.png"></p>          | 
+| circle_deselecting_notSelecting | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting_noselect.png"></p>             | 
+| circle_deselecting_selecting    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting.png"></p>                      | 
+| circle_deselecting_rectangle    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/rectangleDeSelect.png"></p>                | 
+| adding_splitpoint_hand_open     | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/splitpoint_hand_open.png"></p>             | 
+| adding_splitpoint_hand_closed   | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/splitpoint_hand_closed.png"></p>           | 
+| adding_splitpoint_adding        | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/SplitPoint.png"></p>                       | 
+| info_point_select               | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/basic.png"></p>                            |
 
 ```js
-  void setValuesRMC(const std::string RMCSentence)
+void setCursorFromList(int index)
+```
+
+2. To display the scale within the widget, call **showScale** with "true" in input on map QFrame: 
+```js
+void showScale ( bool visible )
+```
+3. To display crosshairs, call **showCrosshairs** with "true" in input on map QFrame:
+```js
+void showCrosshairs ( bool visible )
+```
+4. To display information about trajectory point defined by index, call **setInfo** on map QFrame: <br />
+Information is also displayed when mouse mode is set to "PointInfoSelection" and user clickes somewhere on trajectory.
+
+    - `info` - index of point whose information should be displayed
+
+```js
+void setInfo(int info)
+```
+
+  
+</details>  
+
+
+
+<details><summary>&emsp;&emsp; Methods of selecting trajectory points </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+Points of trajectory can be in 4 different states:
+
+| state number  | state                          |
+| :-------------| :-------------                 | 
+| 0             | not selected                   |
+| 1             | during selection(prepared)     |
+| 2             | selected                       |
+| 3             | split point                    |
+
+1. To set type of mouse mode and type of selection, call **setMouseMode** on map QFrame: 
+
+| enum MouseMode      | enum MouseMode-Description                          |      | enum SelectionType  |
+| :-------------      | :-------------                                      |------| :-------------      | 
+| Panning             | The map can be moved                                |      | CircleSelection     | 
+| Dragging            | Selection rectangular area can be drawn in the map  |      | PolygonSelection    |
+| None                | Mouse move events have no efect to the map          |      | RectangleSelection  |
+| Selecting           | Selecting a trajectory                              |      | TimeSelection       | 
+| Deselecting         | Deselecting a trajectory                            |      | AreaSelection       | 
+| InsertSplitPoint    | Inserting split point                               |      | CircleDeselection   |
+| PointInfoSelection  | Painting info about selected point on trajectory    |      | RectangleDeselection|
+| LineForCut_Selecting| It is used to select point for cutting line         |      | TimeDeselection     |
+
+
+```js
+void setMouseMode(MouseMode mousemode,SelectionType selectiontype )
+```
+
+
+2. To select all points among defined points(to change state to "selected"), call **selectInTrajectory** on map QFrame: 
+
+    - `start` - index of start point
+    - `goal` - index of end point
+
+```js
+void selectInTrajectory(int fromPoint,int toPoint)
+```
+3. To deselect all points among defined points(to change state to "not selected"), call **deselectInTrajectory** on map QFrame: 
+
+    - `start` - index of start point
+    - `goal` - index of end point
+
+```js
+void deselectInTrajectory(int fromPoint,int toPoint)
+```
+4.  To select or deselect all points among defined points, based on mouse mode, call **doWithTrajectoryBetweenPoints** on map QFrame: 
+    - `when mouse mode is Selecting ` - selectInTrajectory is called
+    - `when mouse mode is Deselecting` - deselectInTrajectory is called
+```js
+void MyMapControl::doWithTrajectoryBetweenPoints(int lastIndex,int newindex)
+```
+
+5. To select all prepared points(to change points states from "during selection" to "selected"), call **SelectPreparedPoints** on map QFrame: 
+```js
+void SelectPreparedPoints()
+```
+6. To deselect all prepared points(to change points states from "during selection" to "not selected"), call **DeselectPreparedPoints** on map QFrame: 
+```js
+void DeselectPreparedPoints()
+```
+
+7. To select all trajectory points(to change points states to "selected"), call **selectWholeTrajectory** on map QFrame: 
+```js
+void selectWholeTrajectory()
+```
+8. To deselect all trajectory points(to change points states to "not selected"), call **deselectWholeTrajectory** on map QFrame: 
+```js
+void deselectWholeTrajectory()
+```
+ 
+</details>  
+
+<details><summary>&emsp;&emsp; Methods for checking whether the points are in the defined area</summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+
+1. To find points that are in the selection rectangle and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithRectangle** on map QFrame: 
+
+```js
+void checkColisionWithRectangle()
+```
+
+2. To points that are in the deselection rectangle and changes their state from 2-"selected" to 1-"during selection" state, call **checkDeColisionWithRectangle** on map QFrame: 
+
+```js
+void checkDeColisionWithRectangle()
+```
+
+3. To find points that are in the selection polygon and changes their state from 0-"not selected" to 1-"during selection" state, call **checkColisionWithPolygon** on map QFrame: 
+
+```js
+void checkColisionWithPolygon()
+```
+4. To find out if some trajectory point is in defined circle and get its index, call **checkColisionWithCircle** on map QFrame: 
+
+    - `center` - center of area
+    - `radius` - radius of area
+    - `previousIndexOfInterest` 
+ 
+| previousIndexOfInterest condition        | Description                                                                  |   
+| :-------------                           | :-------------                                                               |
+| When (previousIndexOfInterest is -1      | checks if some trajectory point is in defined area and returns its index     | 
+| When (previousIndexOfInterest is not -1) | checks if some trajectory point is in defined area and whether is close to the previous one point (at previousIndexOfInterest) and returns its index                                                                            | 
+| In both cases, when no point was finded  | returns -1                                                                   | 
+
+```js
+int MyMapControl::checkColisionWithCircle(QPoint center,double radius,int previousIndexOfInterest)
+```
+
+5. To find out if some split point is in defined area and get its index, call **checkSplitpointAroundPoint** on map QFrame: 
+```js
+int MyMapControl::checkSplitpointAroundPoint(int indexintraj,int areaofinterest)
+```
+6. To find out if some RTK point is in defined area and get its index, call **checkColisionWithRtkPoint** on map QFrame:
+
+    - `center` - center of area
+    - `radius` - radius of area
+```js
+int MyMapControl::checkColisionWithRtkPoint(QPoint center,double radius)
+```
+
+7. To find points that are not "selected" among the defined indexes and change their state to "during selection", call **CheckPointsBetweenPoints** on map QFrame: 
+
+    - `start` - index of start point
+    - `goal` - index of end point
+    
+```js
+void MyMapControl::CheckPointsBetweenPoints(int start, int goal)
+```
+
+</details>  
+
+
+
+<details><summary>&emsp;&emsp; Methods for manipulation with map layers </summary> <br/> <!--/////////////////////////////////////////////////////////////////////// --> 
+  
+If multiple layers are added, they are painted in the added order. <br/>
+
+  
+1. To add new layer, call **addLayer** on map QFrame: 
+```js
+void addLayer ( Layer* layer )
+```
+2. To remove layer, call **removeLayer** on map QFrame: 
+```js
+void removeLayer ( Layer* layer )
+```
+3. To get layer by given name, call **layer** on map QFrame: 
+```js
+Layer* layer ( const QString& layername )
+```
+4. To get names of all layers, call **layers** on map QFrame: 
+```js
+QList<QString> layers()
+```
+5. To get number of layers, call **numberOfLayers** on map QFrame: 
+```js
+int numberOfLayers()
+```
+6. To update view, call **updateView** on map QFrame: 
+```js
+void updateView()
+``` 
+
+  
+</details>  
+
+<details><summary>&emsp;&emsp; Methods for manipulation with zoom </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+
+1. To set zoom limit, call **setImageZoomLimit** on map QFrame: 
+```js
+void setImageZoomLimit(int newLimit)
+```
+2. To get zoom limit, call **getImageZoomLimit** on map QFrame: 
+```js
+int getImageZoomLimit()
+```
+3. To set current zoom, call **setZoom** on map QFrame: 
+```js
+void setZoom ( int zoomlevel )
+```
+4. To zoom in one step, call **zoomIn** on map QFrame: 
+```js
+void zoomIn()
+```
+5. To zoom out in one step, call **zoomOut** on map QFrame: 
+```js
+void zoomOut()
+```
+6. To enable or disable mouse wheel events(zooming), call **enableMouseWheelEvents** on map QFrame: 
+```js
+void enableMouseWheelEvents( bool enabled )
+```
+7. To get if mouse wheel events(zooming) is enabled/disabled, call **mouseWheelEventsEnabled** on map QFrame: 
+```js
+bool mouseWheelEventsEnabled()
+``` 
+8. To set the center of the view to the center point of the trajectory and also set the zoom to maximum to display the entire trajectory, call **setCenterAndMaxZoomForProject** on map QFrame: 
+```js
+void setCenterAndMaxZoomForProject()
+```
+  
+</details>  
+
+
+---
+
+</p>
+</details>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>qcloudaerialview</summary>
+<p>
+
+## Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
+This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+  
+### Getting Started
+1. When you want to use this view somewhere, first of all you have to add frame promoted to class **QCloudAerialView** to .ui file.
+
+2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
+  
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
+
+```js
+void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
+```
+
+3. If you want to set colorization pallete, call **setColorizationPallete** on this frame:</br>
+  types of palletes</br>
+                    - `QCloudAerialView::intenzity`</br>
+                    - `QCloudAerialView::zone`</br>
+                    - `QCloudAerialView::elevation`
+```js
+void setColorizationPallete(ColorPalette palette)
+```
+
+4. If you want to set mouse mode, call **setMouseMode** on this frame:</br>
+  types of mouse mode</br>
+                    - `Dragging`- To move with the content in the frame</br>
+                    - `Measuring`- To enable measuring in this frame</br>
+                    - `sideWayPicker`- to select cutting line
+```js
+void setMouseMode(MouseMode newmode)
+```
+
+5. To get mouse mode, call **getMouseMode** on this frame:</br>
+```js
+MouseMode getMouseMode()
+```
+
+6. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
+  
+    - `cx` - X position of center
+    - `cy` - Y position of center
+    - `rx` - direction vector
+    - `ry` - direction vector
+
+
+```js
+void setSidewayCutParams(double cx,double cy,double rx,double ry)
+```
+
+7. To hide cutting line, call on this frame function:
+```js
+void hideSidewayCut()
+```
+
+8. To set visual parameters of this frame, call **setVisualParams** on this frame:
+  
+    - `PiZoom` - actual zoom in frame
+    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
+    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
+
+```js
+void setVisualParams(double PiZoom,double PiXoff,double PiYoff)
+```
+
+9. To get visual parameters of this frame, call **getVisualParams** on this frame:
+  
+    - `PiZoom` - actual zoom in frame
+    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
+    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
+
+```js
+void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
+```
+
+10. To set RTKPoints, call **setRtkPoints** on this frame:
+-
+    - `newPoints` - new RTK points
+    - `lc1` - centered point of cut, defined by user
+    - `lp1` - right centered point of cut(on right side of trajectory)
+    - `lp2` - left centered point of cut(on left side of trajectory)
+    - `widthd` - distance from cut
+    - 
+```js
+void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
+```
+
+- Or only:
+  
+    - `newPoints` - new RTK points
+    - `widthd` - distance from cut
+```js
+void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
+```
+
+11. To set used zones, call **setUsedZones** on this frame:
+
+```js
+void setUsedZones(std::map<int, bool> newusedZones)
+```
+
+---
+
+</p>
+</details>
+  
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  
+<details><summary>qcloudcutwindow</summary>
+<p>
+
+## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
+This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+  
+### Getting Started
+1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
+
+2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+  
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
+
+```js
+void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+```
+
+3. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
+  
+    - `cx` - X position of center
+    - `cy` - Y position of center
+
+```js
+void setSidewayCutParams(double cx,double cy)
+```
+
+4. To get distance of two points, selected by user in Measuring mode, call **getDists** on this frame:
+  
+    - `x` - distance in x axis
+    - `y` - distance in y axis
+
+```js
+void getDists(double &x,double &y )
+```
+All this methods are same like in qcloudaerialview: 
+  - setColorizationPallete
+  - setMouseMode
+  - getMouseMode
+  - setVisualParams
+  - getVisualParams
+  - setRtkPoints
+  - setUsedZones
+
+---
+
+</p>
+</details>
+  
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>qsidewayview</summary>
+<p>
+
+## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(side way).</br>
+This class also takes care of the interaction during measurement(in this frame).
+  
+### Getting Started
+1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
+
+2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+  
+    - `inputcloud` - the entire cloud that generated the backend for display
+    - `llp1` - right centered point of cut(on right side of trajectory)
+    - `llc1` - centered point of cut, defined by user
+    - `llp2` - left centered point of cut(on left side of trajectory)
+    - `cutwidth` - distance from cut
+    - `newusedZones` - zones which are used
+
+```js
+void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+```
+
+3. To clear cloud and measured distances from view, call **removeCloud** on this frame:
+```js
+void removeCloud()
+```
+
+4. To get distance of two points, selected by user in Measuring mode, call **getDists** on this frame:
+  
+    - `x` - distance in x axis
+    - `y` - distance in y axis
+
+```js
+void getDists(double &x,double &y )
+```
+All this methods are same like in qcloudaerialview: 
+  - setColorizationPallete
+  - setMouseMode
+  - getMouseMode
+  - setVisualParams
+  - getVisualParams
+  - setRtkPoints
+  - setUsedZones
+  - hideSidewayCut
+
+---
+
+</p>
+</details>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>qpolygonrubberband</summary>
+<p>
+
+## qpolygonrubberband is class for painting polygon.
+
+### Getting Started
+1. To set polygon and draw it, call **setPolygon** on object of this class:
+```js
+void setPolygon(std::vector<QPoint> polygonPoints)
+```
+&emsp;&emsp;Or :
+```js
+void setPolygon(std::vector<QPoint> polygonPoints,QPoint lastPoint)
+```
+  
+2. To change color of polygon  call **changeColor** on object of this class:
+```js
+void changeColor(QColor newcolor)
 ```
   
 ---  
@@ -70,1057 +653,47 @@ This library Consists of:
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>project</summary>
+<details><summary>undoselectionstack</summary>
 <p>
 
-#### This class serves for manipulating with project that are created by user. Creation is done in the creator app(by projectcreationdialog class) where user have to load trajectory, lidar and calibration file(That files are required for project creation). Optionally user can load camera file, if were obtained.
-Based on these files is created project thanks to which user can interact with all basic stuff(Trajectory displaying, selection, showing informations, profiles generation and more).Most of operations with project are used in creator app(in corresponding classes)
+## undoselectionstack is the class which holds history of selections, so you can go through this history.
 
-  ### Getting Started
-  
-1. For access to all methods first create object of this class:
-  
-    - `c_qualityType` - quality indicator displayed on trajectory:&emsp;0 - position<br>     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-1 - heading<br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-2 - PDOP<br>     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-3 - speed
-    - `c_stdprecision` - maximum precision of position 
-    - `c_minstdprecision` - minimum precision of position 
-    - `c_stdprecisionHeading` - maximum heading precision
-    - `c_minstdprecisionHeading` - minimum heading precision
-    - `c_minPDOP` - disable/enable calculation
-    - `c_maxPDOP` - disable/enable calculation
-    - `c_minSpeed` - minimum speed precision
-    - `c_maxSpeed` - maximum speed precision
-    - `c_smartfilter` - whether smart filter is enabled(remove scans while standing)
-    - `c_speedfilter` - whether speed filter is enabled
-    - `c_speedfilterThreshold` - speed threshold for speed filter
-  
-> All this input parameters user can change in tab settings.(It is done by minmaxprecisiondialog class in creator app)
- ```js
-    std::shared_ptr<Project> nameOfProjectObject=std::make_shared<Project>( int c_qualityType, double c_stdprecision, double c_minstdprecision, double c_stdprecisionHeading, double c_minstdprecisionHeading,double c_minPDOP, double c_maxPDOP,double c_minSpeed, double c_maxSpeed, bool c_smartfilter, bool c_speedfilter, double c_speedfilterThreshold)
-  ``` 
-  
-2. If you want to clear project values based on which informations are displayed in UI,  use:
-  
+### Getting Started
+1. If you want to use this somewhere, first of all you have to call **createNewProject** on object of this class:
+     - `projj` - reference for changing trajectory states 
 ```js
-  void Project::clearProject()
-```    
-<details><summary>&emsp;&emsp; Some required step to create project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-1. Setting project path that contains project file name(to this file will be stored project values after saving)
-```js
-  void Project::setProjectFilename(QString newProjectFile)
-``` 
-<br>
-  
-2. Setting trajectory file path:
-```js
-  void Project::setTrajectoryFilename(QString newTrajectoryFile)
-```  
- 
-<br>
-  
-3. Setting lidar file path:
-      
-     - `index` - ID of lidar
-    
-```js
-  void Project::setLidarFilename(QString newLidarFile,int index)
+ void createNewProject(std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> projj)
 ```  
   
-<br>  
-  
-4. Setting path to calibration file:
+2. Then call addNewSelection on object of this class, whenever something in the selection changes:
 ```js
-  void Project::setCalibrationFilename(QString newCalibrationFile)
-```  
-  
-<br> 
-  
-5. Setting calibration values from calibration file:
-  
- > It returns true when everything was set correctly, else returns false
-  
-```js
-  bool Project::setCoreConfigurationFromCalibrationFile(const char *filename)
-```  
-  
-<br>  
-  
-6. Preparing needed structure that holds all lidar and camera devices info:
-  
- > It is used after setting the calibration file
-     
-```js
-  void Project::initDevices()
-```  
-  
----   
-  
-</details>
-
-<details><summary>&emsp;&emsp; Some other methods to initialize the project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-1. Setting path to camera files:
-
-     - `newCameraFile` - path to files
-     
-     -  | VideoType     | 
-        | :-------------| 
-        | garmin_virb   |
-        | labpano       | 
-        | gopro         | 
-        | sony          |
-  
-```js
-  void Project::setCameraFilename(QString newCameraFile,VideoType type)
-```    
-  
-<br>  
-  
-2. To check whether path to given camera(video,images) files is correct(whether directory contains relevant files) use:
-
-```js
-  int checkWhetherCameraPathCorrect(QString path,Project::VideoType videotype);
-```  
-
-<br>  
-  
-3. To set description from user about project use:
-  
-```js
-  void setProjectDescription(std::string descr)
-```  
-  
- <br> 
-  
-4. You can save this description also to file by:
-
-```js
-  void saveDescriptionToFile(std::string path)
-```  
-  
-```diff
-- Most of the previous methods you can see in creator app, specificaly in projectcrationdialog class. This dialog box show up when the user selects option to create new project.
+void addNewSelection()
 ```
 
----   
-  
-</details>
-
-
-<details><summary>&emsp;&emsp; Saving and opening/reading project </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-1. When the required steps have been taken or some modification in project have been made, to save project with all values use **saveProjectFile** method. Project will be saved to XML file with .PRJ sufix.
-
+3. Then if you want to go through the history of selections, call **redo** to go to upcoming states or **undo** to go to previous states of trajectory:
 ```js
-  void Project::saveProjectFile()
-```  
-  
-> This method contains method **saveProjectFileToXml**, that saves all project values to XML file.
-
-<br>  
-  
-2. To open project file and read all values from it use:
-
-    - `filename` - path to project file
-
-```js
-  ProjectOpeningStatus Project::openProjectFromFile(QString fileName)
-```  
- 
-> This method contains method **readProjectFileFromXml**(new project version),**readProjectFile**(old project version) that serves to parse all values from lidar, calibration,trajectory and camera files and assigns all needed variables from them.
-
-<br>  
-  
-3. To check whether given file is XML file use:
-  
-```js
-  bool Project::isProjectFileXML(QString fileName)
-```  
-
-<br>
-  
-4. To get name of current opened project use:
-  
-```js
-  QString Project::getProjectFilename()
-```  
- 
-<br>  
-   
-5. To get registry name of current opened project (it is used to add project to recent projects and so on) call:
-  
-```js
-  QString Project::getRegistryEntryNameOfProject()
-``` 
- 
----   
-  
-</details>
-
-<details><summary>&emsp;&emsp; Manipulating with trajectory/lidar frames/points </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-####  Frames
-    
-1. This returns indexes of **trajectory frames** that are selected(has state=2) - trajectory frames that user selects in selection mode :
-  
-```js
-  std::vector<int> Project::getSelectedFrames()
-```  
-<br>
-  
-2. This returns indexes of **lidar frames**, based on trajectory selections (where state=2) :
-  
-      - `index` - lidar ID
-
-```js
-  std::vector<int> Project::getSelectedFramesForLidarDevice(int index)
-```  
-<br>
-
-3. To get index of **frame from lidar**(with given ID) which is placed at given trajectory position use:
-  
-      - `whichTrajectoryPoint` - ID of trajectory point at which the ID of lidar frame should be returned
-      - `whichLidar` - lidar ID
-
-```js
-  int Project::getLidarFrameFromTrajectoryRelationInfo(int whichTrajectoryPoint, int whichLidar)
-```    
-  
-<br>
-
-4. To obtain **lidar frames** indexes based on given trajectory indexes and lidar ID use **getSelectedFilteredFramesForLidarDevice**:
- &emsp;If there are some missing trajectory indexes in input, the space in corresponding lidar frames indexes will be filled in return.
-
-    - `preselected` - IDs of trajectory points at which the IDs of lidar frame should be returned
-    - `index` - lidar ID
-
-```js
-  std::vector<int>  Project::getSelectedFilteredFramesForLidarDevice(std::vector<int> &preselected,int index)
-``` 
-
-<br>
-
-5. To get lidar frame structure use:
-
-    - `whichLidar` - ID of lidar whose frame will be returned
-    - `localfile` - lidar file in which the frame will be searched
-    - `index` - index of frame, which should be returned
-    - `lidToFrame` - lidar transformation
-    - `restriction` - restriction to add some points to frame
-
-> It is used for export in pointcloudExporter class
-
-```js
-  BaseFrame Project::getLidarFrameFromLidar(int whichLidar,std::ifstream &localfile,int index,CLidarToFrameTrans *lidToFrame,laserFrameRestrictionBase *restriction,int &openedFileID,int colormodel ,double minIntensityColor,double maxIntensityColor )
-``` 
-<br>
-
-6. To save/get selected frames(selected by user in selection mode) to/from file for access in another app use:
-&emsp; &emsp;To save use:
-```js
-  bool saveProjectSelectionToXml();
-```  
-> Method returns true when saving was successful, else returns false
-
-&emsp; &emsp;To get selected frames from saved file use:
-```js
-  std::vector<int> Project::getSelectionFromXml()
-```  
-> Method returns IDs of selected frames
-
-<br>
-
-7. To clear selection of trajectory(changing value of all trajectory states to state=0) call:
-```js
-  void Project::clearTrajectorySelection()
+void redo()
 ```
-<br>
-
-8. To receive relational vector between lidar frames and trajectory use:
 ```js
-  std::vector<FrameData>& Project::getFramesTrajectoryRelationsInfoAsReference()
-``` 
-   &emsp; To get reference on this relational vector call:
-```js
-  std::vector<FrameData>* Project::getFramesTrajectoryRelationsInfoAsPointer()
-``` 
-<br>
-
-9. To fill/get trajectory frames structure(info about selected frames and so on) call **getTrajectoryRealtionInfoPtr()**. It is used for undostack operations and for some visualizations on map...:
-  
-&emsp; &emsp;To get this structure use:
-
-```js
-  std::shared_ptr<std::vector<framesTrajectoryRelationsInfoStruct>> getTrajectoryRealtionInfoPtr()
-```
-
-&emsp; &emsp;To fill this structure use:
-
-```js
-  void Project::fillFramesTrajectoryRelationsInfo(int trajectoryType)
-```
-
-```diff  
- - It is generated/filled with **trajectoryTransformation** vector that is prepared by trajectory reader in reading methods for opening project
-```
-
-<br>
-
-10. To obtain trajectory transformations vector, that is prepared by trajectory reader in reading methods for opening project, call:
-  
-     - `withModification` - when is true and some modification by fit points are done, the modified trajectory transformations will be returned
-
-```js
-  std::vector<Transformation> &getTrajectoryTransformation(bool withModification=false)
-```
-   &emsp; To get zero(first) transformation from this vector use:
-  
-```js
-  const Transformation &getZeroPositionFromTransformation()
-```
-   &emsp; To get length of transformation vector(length of trajectory) use method **getTrajectoryLength**. It is used in Graph making:
-
-```js
-  int getTrajectoryLength()
-```
-<br>
-
-#### Points
-
-1. To find the point that is at given distance before the point with given ID use:
-
-    - `fromWhichpoint` - ID of trajectory point(in framesTrajectoryRelationsInfo structure) from which the point before it is searched.
-    - `dist` - distance from "fromWhichpoint" point
- 
-> It returns transformation ID of point that is at given distance
-
-```js
-  int Project::findPointTrajectoryInDistBefore(int fromWhichpoint, double dist)
-```
-<br>
-
-2. To find the point that is at given distance after the point with given ID use:
-
-    - `fromWhichpoint` - ID of trajectory point(in framesTrajectoryRelationsInfo structure) from which the point behind it is searched.
-    - `dist` - distance from "fromWhichpoint" point
-
-> It returns transformation ID of point that is at given distance
-
-```js
-  int Project::findPointTrajectoryInDistAfter(int fromWhichpoint, double dist)
-```
-
-<br>
-
-3. To find out the distance between two trajectory points use method:
-
-    - `first` - ID of first trajectory point(in framesTrajectoryRelationsInfo structure)
-    - `second` - ID of second trajectory point(in framesTrajectoryRelationsInfo structure)
-
-```js
-  double Project::findDistBetweenTrajectoryPoints(int first, int second)
-```
-
---- 
-
-</details>
-  
-  
-<details><summary>&emsp;&emsp; Wrappers for trajectory matters(inertial explorer filereader)  </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-  
-1. To generate transformations for trajectory call **traj_generateTransformation**. It is used in projectcreationdialog class.
-  
-```js
-  void Project::traj_generateTransformation()
-```   
- 
-<br> 
-  
-2. To read trajectory file and inits values for trajectory reader class(inertialExplorerFileReader) call **traj_readTrajectoryFromFile**. It is used in projectcreationdialog class and in project reading methods.
-  
-```js
-  int Project::traj_readTrajectoryFromFile(QString rawTrajFile)
-```     
-  
-<br> 
- 
-3. To inits relational vector between lidar data and trajectory file use **traj_initFileWithTransformations**. It is used in projectcreationdialog class.
-  
-```js
-  void Project::traj_initFileWithTransformations(int index)
-```
-<br>
-
-4. To obtain trajectory constrains use **traj_getFileConstrains**. It is used in projectcreationdialog class.
-  
-```js
-  void Project::traj_getFileConstrains(InertialExplorerBoxData &constrains)
-```
-
---- 
-
-</details>
-  
-<details><summary>&emsp;&emsp; Creating and manipulating with line cutting segment and relevant zones </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-  It is displayed in profile mode on map(creator app), when user clicks somewhere on trajectory. Based on this line segment(frames that are inside) is generated pointcloud to display in profiles.:
-
-#### Line cut segment
-Line cut segment variable holds points that defines itself:
-
-| Range from                        | Range to                         |      | definition          |
-| :-------------                    | :-------------                   |------| :-------------      | 
-| lineCutSegment->cutRectangle[0]   |                                  |      | center of line( where user clicked on trajectory)     | 
-| lineCutSegment->cutRectangle[1]   | lineCutSegment->cutRectangle[4]  |      | perimeter points of line that indicates width of XY projection-aerial view    |
-| lineCutSegment->cutRectangle[5]   | lineCutSegment->cutRectangle[8]  |      | perimeter points of line that indicates width of ZX projection-cut view  |
-| lineCutSegment->cutRectangle[9]   | lineCutSegment->cutRectangle[12] |      | perimeter points of line that indicates sideway cut       | 
-  
-  
-1. To prepare line cut segment points use method getPerpendicularLineSegmentAtTrajectory(). Line segment is generated perpendicular to given trajectory place.
-
-      - `trajectoryID` - ID of trajectory point to which the points of perpendicular line segment are calculated
-      - `segmentLength` - length of line segment(defined by user)
-      - `segmentWidth` - width of XY projection-aerial view(defined by user)
-      - `cutWidth` - width of cut (width of ZX projection-cut view defined by user)
-  
-```js
-  std::vector<QPointF> Project::getPerpendicularLineSegmentAtTrajectory(int trajectoryID, double segmentLength,double segmentWidth,double cutWidth)
-```    
-  
-```diff
-- Points of this line cut segment and more visual parameter you can get by method getParamsForMapStruct()
+void undo()
 ```
   
-<br>  
-  
-2. To obtain IDs of trajectory for prepared line segment use method **getFramesForPerpendicularLineSegment**. Based on this IDs is generated pointcloud for projections in creator app:
-
-      - `limits` - limits of line segment(you can use return value from method **getPerpendicularLineSegmentAtTrajectory**)
-      - `selectedId` - ID of trajectory where line segment is created
-      - `segmentWidth` - width of XY projection-aerial view( set by user)
-
-```js
-  std::vector<int> Project::getFramesForPerpendicularLineSegment(std::vector<QPointF> limits,int selectedId,double segmentWidth)
-```  
-  
-<br>  
-  
-3. To prepare line cut segment for sideway view(ZY projection) use:
-
-      - `cx` - X position of sideway cutting line center
-      - `cy` - Y position of sideway cutting line center
-      - `rx` - direction vector of sideway cutting line
-      - `ry` - direction vector of sideway cutting line
-
-```js
-  std::vector<pcl::PointXYZRGB> Project::getPerpedicularLineSegmentForSidewayCut(double cx,double cy, double rx,double ry,int trajectoryID,int rtkID, double segmentLength,double segmentWidth,double cutWidth)
-
-```  
- > It returns points of prepared line segment in order:<br>
-    - [0] center point of cutting line<br>
-    - [1] right centered point of cut(on right side of trajectory)<br>
-    - [2] left centered point of cut(on left side of trajectory)
-  
-<br>  
-  
- 4. To clear line cut segment variable that holds zones and points of cutting lines use **clearLineCut** method.
-  
-```js
-  void clearLineCut()
-```  
-
-#### Zones
-1. To get number of zones in current prepared line cut segment, use:
-  
- ```js
-  int getLineCutSegmentZonesCount()
-``` 
-<br>  
-  
-2. To get angle between zones of points in prepared cutting line segment call:
-  
-      - `firstZone` - ID of some zone in cutting line segment
-      - `secondZone` - ID of another zone in cutting line segment
-
-> Returns angle in radians. It is used in correction to shift zone in chosen angle.
-```js
-  double Project::getAngleBetweenLineCutSegmentZones(int firstZone, int secondZone)
-```  
-  
-<br>  
-  
-3. To get GPS timestamp for given zone in prepared cutting line segment use:
-
-      - `i` - ID of zone in cutting line segment
-
-```js
-  double Project::getTimeOfLineCutSegmentZone(int i)
-```  
-
-<br>
-
-4. To receive trajectory ID for given zone of prepared line cut segment use:
-  
-      - `i` - ID of zone in cutting line segment
-
-```js
-  int Project::getTrajectoryIDOfLineCutSegmentZone(int i)
-```  
- 
---- 
-
-</details>
-  
-  
-<details><summary>&emsp;&emsp; Methods for creating and manipulating with corrections of pointcloud </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-  In profile mode user can click somewhere on trajectory and make corrections there in a few steps. Firstly user can measure in profile views with measurement tool(measurement button in menu among profile views), where pointcloud should be corrected. After measurement, user can create correction by pressing FIT button that is next to the measurement tool button.
-  
-1. To add fit point use method **addFitPoint**.  It is point(with correction structure) on trajectory, where user wants to create correction. Correction structure holds user measurements, trajectory time and so on:
-
-      - `positionID` - ID of trajectory position where correction should be made
-      - `correctioninfo` -  correction info structure that will be added
-      - `nearestPosible` - treshold to add fitpoint. If given fit point is closer to some existing fitpoint than this value,then this fitpoint will not be added.
-      - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
-      - `fadeDistance` - how far end points should be from relevant fit point
-
-> Returns true when fitpoint was added, else returns false.
-
-```js
-  bool Project::addFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
-```  
-
-<br>
-
-2. To modify existing fitpoint use:
-  
-      - `positionID` - ID of trajectory position where correction should be modified
-      - `correctioninfo` -  correction info structure that will replace the previous one
-      - `nearestPosible` - it is not used there
-      - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
-      - `fadeDistance` - how far end points should be from relevant fit point
-
-> When point for modification does not exist, the new one will be added.
-
-```js
-  bool Project::modifyFitPoint(int positionID, FITpointCorection correctioninfo,double nearestPosible,double connectedDistance,double fadeDistance)
-```   
- 
-<br> 
- 
-3. To add end points(where corrections on trajectory will end) for each fit point use:
-  
-      - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
-      - `fadeDistance` - how far end points should be from relevant fit point
-  
-> - If distance between neighboring fitpoints is lower than connectedDistance, existing end points will be shifted.<br>
-> - If distance between neighboring fitpoints is higher than connectedDistance, new end points will be added<br>
->  - Endpoints in fitpoints std::map variable have for distinctions negative value of trajectory ID. Therefore, when you want to access to trajectory by ID use absolut value of this map key.
-  
-
-```js
-  void Project::addEndPointsToFitCorrections(double connectedDistance,double fadeDistance)
-```    
-<br>
-
-4. To calculate and apply corrections based on added fitpoints use:
-  
-      - `connectedDistance` - how far trajectory points can be from each other to be connected to same correction.
-      - `holdDistance` - if fit points are not connected, how far to hold the correction value
-      - `fadeDistance` - how far end points should be from relevant fit point
-  
-> This prepare **modifiedtrajectoryTransformation** variable which can be obtained by method **getTrajectoryTransformation** described in section ** Manipulating with trajectory, lidar frames**:
-  
-```js
-  void Project::calcCorrectionFromFitPoints(double connectedDistance,double holdDistance,double fadeDistance)
-```   
-  
-<br>  
-  
-5. To find out whether corrections were created use:
-  
-> It returns true when some corrections were created, else returns false  
-```js
-  bool correctionExists()
-```  
-
-<br>
-  
-6. To get reference of created fitpoints for access to them use:
-  
-```js
-  std::shared_ptr<std::map<int,FITpointCorection>> Project::getFitpointsAsReference()
-```  
-
-<br>
-
-7. To save all crated correction fit points for future reconstruction of corrections use:
-  
-```js
-  bool Project::saveFitPoints()
-```  
-<br>
-  
-8. To load saved fitpoints for reconstruction of created corrections call>
-  
-> It returns true when fitpoints were loaded, false when loading of fitpoint file was incorrect 
-  
-```js
-  bool Project::loadFitPoints()
-``` 
-  
-<br>  
-  
-9. To obtain calculated trajectory corrections for zone in prepared cutting line segment use:
-  
-      - `holdDistance` - ID of zone in prepared cutting line segment
-  
-> Creating and manipulating with cutting line segment is described in section **Creating and manipulating with line cutting segment**
-  
-```js
-  correction Project::getTrajectoryCorrectionForZone(int i)
-``` 
-  
- ---  
-  
-</details>
-
-
-  
-<details><summary>&emsp;&emsp; Manipulating with visual parameters (contains filters and auxliary methods that can be used) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-#### User can change visual parameters in settings tab
-
-```diff
-- Most of this visual parameters are described in object creation method of this class.
-```
-
-1. These visual parameters, cutting line segment and more you can obtain in structure by method **getParamsForMapStruct**:
-
-> This structure is used in mymapcontrol class to draw trajectory, line cutting segment and other stuff on map.
-
-```js
-  ParametersForMapInteraction Project::getParamsForMapStruct()
-``` 
- <br> 
- 
-2. To get value of specific visual parameter use:
-
-```js
-  {return type} Project::getVisualParameter{name of paramter}()
-``` 
-  
-  <br> 
-  
-3. To set value of specific visual parameter use:
-
-```js
-  void setVisualParameter{name of parameter}(value)
-``` 
-  
-  <br> 
-  
-4. For obtaining whether shake filter is enabled use:
-
-```js
-  bool getUseShakeFilter()
-``` 
-  
-&emsp; &emsp;To set it use:
-```js
-  void setUseShakeFilter(bool usefilt)
-```  
- 
- <br> 
- 
-5. This sets prepared quality parameter to framesTrajectoryRelationsInfo structure. (It is used for coloring the trajectory by quality type in mymapcontrol class).
-
-  
-```js
-  void Project::setVisualQualityParameter()
-```
-```diff
-- Use setVisualQualityParameter method when quality parameter was changed
-```
-
-<br> 
-
-6. To use trajectory disabling based on filters in usage use:
-```js
-  void Project::setTrajectoryDisabling()
-```
-
-&emsp;It contains **disableTrajectoryPartsByDiff** method that represents shake filter:<br> 
-&emsp;&emsp;    - `secAfter` - seconds after problem point. 
-
-> Points that are in given time(secAfter input) from problem point, will be also disabled.
-
-```js
-void Project::disableTrajectoryPartsByDiff(int secAfter)
-```
-
-<br> 
-   
-7. To clear all trajectory disabling use:
-```js
-  void Project::clearTrajectoryDisabling()
-```
-
-<br>
-
-8. To get indexes of lidar lines based on preset value call:
-  
-    - `whichlidar` - ID of lidar
-    -   | whichlines    | 
-        | :-------------| 
-        | All           |
-        | Central       | 
-        | EverySecond   | 
-        | HighRes       |
-        | UltraHighRes  |
-
-```js
-  std::vector<int> Project::getUnusedLaserLinesForLidar(int whichlidar, BaseLidarReader::LidarLinesPresets whichlines)
-```     
-
---- 
-
-</details>
-  
-  
-  
-<details><summary>&emsp;&emsp; Manipulating with transformations, rotations and time offsets of/between devices(lidar, camera, body) </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-#### Transformations
-1. Transformation of lidar device:<br>
-  To set this transformation:
-```js
-  void Project::setLidarTransformation(Transformation newTransform, int lidarIndex, double gain)
-```  
-&emsp; &emsp;To get this transformation:
-```js
-  Transformation Project::getLidarTransformation(int lidarIndex, double gain)
-```   
- <br> 
- 
-2. Transformation of camera device:<br>
-  To set this transformation:
-```js
-  void Project::setCameraTransformation(Transformation newTransform, int cameraIndex, double gain)
-```  
-&emsp; &emsp;To get this transformation:
-```js
-  Transformation Project::getCameraTransformation(int cameraIndex, double gain)
-```   
-   
- <br> 
- 
-3. Transformation between lidar and IMU:<br>
-  To set this transformation use:
-
-```js
-  void Project::setTransformationLidar_IMU(Transformation newTransform, int lidarIndex, double gain)
-```  
-&emsp; &emsp;To get this transformation use:
-```js
-  Transformation Project::getTransformationLidar_IMU(int lidarIndex,double gain)
-```  
-&emsp; &emsp;To clear this transformation use:
-```js
-  void Project::clearTransformationLidar_IMU(int lidarIndex)
-```  
-<br> 
-
-4. Transformation between camera and IMU:<br>
-  To get this transformation use:
-```js
-  Transformation Project::getTransformationCamera_IMU(int cameraIndex)
-```  
- <br> 
- 
-5. Transformation between IMU and vehicle(what the devices are connected to):
-```js
-  Transformation Project::getTransformationIMU_Vehicle()
-```  
-<br> 
-
-6. To obtain transformation ID of given frame for given lidar use:
-    - `whichDevice` - ID of lidar
-    - `whichFrame` - ID of frame for which the ID of transformation should be returned
-   
-> It is used in pointcloudexporter class
-  
-```js
-  int Project::getTransformationPostionOfDeviceFrame(int whichDevice, int whichFrame)
-```   
-<br>   
-  
-7. To obtain transformation ID of given frame for given camera use:
-    - `whichDevice` - ID of camera
-    - `whichFrame` - ID of frame for which the ID of transformation should be returned
-
-> It is used in pointcloudexporter class
-
-```js
-  int Project::getTransformationPostionOfDeviceFrame(int whichDevice, int whichFrame)
-```   
-#### Rotations
-
-1. Rotation  between IMU and vehicle(what the devices are connected to):
-  To get this transformation use:
-```js
-  Transformation Project::getIMUtoVehicleRotation()
-```  
-  <br> 
-  
-2. Rotation of lidar device:
-  To get this rotation:
-```js
-  double Project::getLidarRotation(int lidarIndex)
-```   
- <br> 
-
-3. Rotation of camera device:<br>
-  To set this rotation:
-```js
-  void Project::setCameraRotation(int cameraIndex,double rotation)
-```  
-&emsp; &emsp;To get this rotation:
-```js
-  double Project::getCameraRotation(int cameraIndex)
-```   
-
- <br> 
-
-4. To get boresight rotation use :
-```js
-  Transformation Project::getBoresightRotation()
-``` 
-#### Time offsets
-
-1. Time offset of lidar device:<br>
-  To get this offset:
-```js
-  double getLidarTimeOffset(int lidarIndex)
-```   
-
- <br> 
-
-2. Time offset of camera device:<br>
-  To set this offset:
-```js
-  void setCameraTimeOffset(int cameraIndex,double newOffset);
-```  
-&emsp; &emsp;To get this offset:
-```js
-  double getCameraTimeOffset(int cameraIndex);
-```   
-
---- 
-
-</details>
-  
-<details><summary>&emsp;&emsp; Adding RTK points </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-```diff
-- This methods serves to add RTK points, when user load them, to project file.
-- Loading of RTK points is done in CreatorMainWindow class speciffically by AddRtkPointDialog widget class
-- Manipulating with RTK points and making some corrections by them is done in class rtkpoints also described in this README.
-```
-
-1. To add/prepare RTK point to RTK vector variable use:
-
-> This is used in **reconstructProfile method** to reconstruct profiles from fitpoint that user choosed. Fitpoint is there added to RTK point vector.
-
-```js
-  void addRTKpoint(RtkPoint newPoint);
-```   
-<br>
-
-2. This saves all RTK points(previous added RTK points with appended input RTK points) to project file :
-
-    - `pointsToAdd` - These points will be appended to RTK vector
-
-```js
-  void Project::addRTKpoint(std::shared_ptr<std::vector<RtkPoint>> pointsToAdd)
-```   
-<br>
-
-3. To filter given RTK by trajectory boundaries use:
-
-    - `pointsToFilter` - RTK Points to filter. These vector after filtering will hold only RTK points inside the boundaries
-
-> This method returns number of filtered RTK points
-
-```js
-  int Project::filterRTKpointsByProjectBoundaries(std::shared_ptr<std::vector<RtkPoint>> pointsToFilter)
-```   
-<br>
-
-4. To get reference of prepared/loaded RTK points vector use:
-```js
-  std::shared_ptr<std::vector<RtkPoint>> Project::getRTKpointsAsReference()
-```   
-
-<br>
-
-5. To clear vector that holds RTK points use:
-```js
-  void Project::clearRtkPoints()
-```   
-  
---- 
-  
-</details>
-
-
- <details><summary>&emsp;&emsp; Camera files preparation</summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
- 
-  
- 1. To prepare structure that holds camera data, info use:<br>
- 
-    - `cameraIndex` - ID of camera for which all should be prepared
-    - `filename` - path to camera files
-    -   | video_type-type of camera     | 
-        | :-------------                | 
-        | garmin_virb                   |
-        | labpano                       | 
-        | gopro                         | 
-        | sony                          |
-
- > This method load camera files and prepare relational vector between video frames and trajectory. It is used for having access to specific video frame at given trajectory position and so on
- 
-```js
-    int prepareAllVideoStuffForOneCamera(int cameraIndex, QString filename="", VideoType video_type=VideoType::garmin_virb);
-```   
-  &emsp;  Based on type of camera one of this relevant method is called in previous method :
-  
-   &emsp; **For Garmin camera preparation**
-```js
-    int prepareAllVideoStuffForOneCameraAsGarmin(int cameraIndex,QString filename="");
-```   
-
-   &emsp; **For LabPano camera preparation**
-```js
-    int prepareAllVideoStuffForOneCameraAsLabPano(int cameraIndex,QString filename="");
-```   
-
-   &emsp; **For Sony camera preparation**
-```js
-    int prepareAllImageStuffForOneCameraAsSony(int cameraIndex,QString filename="");
-```   
-
-<br>
-
-2. To obtain filename of first video for given camera call:
-```js
-    QString getFirstVideoFilenameForCamera(int cameraIndex)
-```   
-  
-<br>  
-  
-3. To obtain transformation timestamp of given camera:
-    - `cameraIndex` - ID of camera 
-    - `id` - ID in relation vector between video frames and trajectory(cameraDataToTrajectoryRelVec)
-
-```js
-    double getTransformationTimestampForCameraRelVecID(int cameraIndex, int id)
-```   
-  
-<br>  
-  
-4. To obtain transformation ID of given camera:
-    - `cameraIndex` - ID of camera 
-    - `id` - ID in relation vector between video frames and trajectory(cameraDataToTrajectoryRelVec)
-
-```js
-    double getTransformationIDForCameraRelVecID(int cameraIndex, int id)
-```   
-
-
-
-</details>
-
----   
+---  
   
 </p>
 </details>
-
+ 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>rtkpoints</summary>
-<p>
-  
- #### Real-time kinematic positioning(RTK). These points are from other receiver-fixed base station. <br>
-- It is used to provide corrections and increase the accuracy of points GNSS positions. <br>
-- This class enables loading RTK points from file and transform them from/to chosen coordinate system to/from UTM. <br>
-- Loading of RTK points is implemented by addrtkpointsdialog class in creator app. Dialog will open when user choose in profile mode the GCP in right menu and there press **add points** button.
-- To add RTK points to project, see section **Adding RTK points** in project dropdown of this README
- 
-  ### Getting Started
-  
-1. To start, simply create object of this class and then you can use corresponding methods.
-```js
-  rtkPoints::rtkPoints()
-```
-  
-<br>  
-  
-2. To set transformation(datum, coordinate grid system) use:
-  
-    - `gridname` - name of cadastral coordinate grid
-    - `geoidname` - name of geoid model
-    - `transfromationID` - ID of selected datum transformation. 
-    - `utmzone` - number of UTM zone
-    - `UTMzoneText` - UTM zone
 
-> It is used in addrtkpointsdialog. There user can choose the datum. By this method the transformation(datum), chosen by user, will be set and then applied on RTK points.
+#### This library is used in:
+##### 1. Creator app. 
+-   qcloudaerialview, qcloudcutwindow, qsidewayview will be shown, when user selects **Profiles** from the side menu.
   
-```js
-  void rtkPoints::setTransformation(std::string gridname,std::string geoidname, int transfromationID,int utmzone,char UTMzoneText[])
-```
-  
-```diff
-- Transformation(datum) have to be set by this method before loading RTK points with method **loadRtkPoints**
-- Datums that user can choose in **addrtkpointsdialog UI** are manage in **proj4transforms class** and overall in lib Datums.
-```
+##### 2. ColorCalibrator app
+##### 3. GarminPlayer app
+##### 4. GlobalCloudColorizer app
+##### 5. GarminPlayer app
+##### 6. GoProPlayer app
 
-<br>  
-  
-3. To load RTK points from file use:
-    - `RTKpoints` - there will be append the RTK points loaded from file
-    - `filename` - path to file with RTK points
-    - `trajectoryTransformation` - trajectory transformations. Can be get by method **getTrajectoryTransformation** in project class
-    -   | format - format of points that  should be used   | 
-        | :-------------                                  | 
-        | IDXYZ                                           |
-        | IDYXZ                                           |
-
-    - `ignorefirstLine` - number of lines in file that should be ignored/skipped
-
-> - If points were loaded correctly, this method will return number of RTK points that are outside of trajectory boundaries(points that were not added).
-> - If file was not opened correctly, returns -1
-  
-```js
-  int rtkPoints::loadRtkPoints(std::shared_ptr<std::vector<RtkPoint>> RTKpoints,std::string filename,std::vector<Transformation> &trajectoryTransformation,fileFormat format, int ignorefirstLine)
-```
-  
- <br> 
-  
-   &emsp; All RTK points are in this method transformed from chosen transformation(datum) to UTM by:
-  
-```js
-int rtkPoints::transformPoint(RtkPoint &point)
-```
-
-```diff
-- before loading points by method **loadRtkPoints** have to be set Transformation(datum) using method **setTransformation** described in step 2.
-```
-  
-</p>
-</details>
 
