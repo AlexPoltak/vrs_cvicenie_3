@@ -20,7 +20,7 @@ This App Consists of:
 <p>
   
 ### Getting Started
-1. To use the application, it is necessary to create a project at the beginning. The project can be created by button **New** in the top main menu. With this button the action  **on_actionNew_triggered** is called:
+1. To use the application, it is necessary to create a project at the beginning. The project can be created with UI by button **New** in the top main menu. With this button the action  **on_actionNew_triggered** is called:
 
 ```js
   void CreatorMainWindow::on_actionNew_triggered(bool checked)
@@ -31,11 +31,23 @@ This App Consists of:
   
 <br>
   
-2. Then you just call only function **showImage** on this widget, and defined image in widget will be rendered, also on resizing.</br>
-If image shows properly this function **returns true**, else **returns false**. Function **showImage**:
+2. The already created project can be loaded in UI by **Open** button in the top main menu.
+With this button the action  **on_actionOpenProj_triggered** is called. In action the **openProject** method is called:
 ```js
-bool showImage(const cv::Mat& image)
+void CreatorMainWindow::on_actionOpenProj_triggered()
 ```
+<br>
+  
+3. The already created project can be loaded by **openProject** method:
+   - `filename` - filename of .PRJ file  
+```js
+int CreatorMainWindow::openProject(QString filename)
+```  
+  - 1.The project is opened based on values loaded from .PRJ file.
+  - 2.All ui. elements are inits with the project values.
+
+<br>
+
 3. If you want to get position on image, where user clicked, call **getImageClickPos** on widget:
 
     - `widgetpos` - position of widget from global
