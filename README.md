@@ -153,14 +153,13 @@ void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 
 &emsp;&ensp; Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
 
-     - `isModeActive` - whether deselection in main menu is chosen 
-   - `selectMode` - which subdeselection is chosen
-
+    * `isModeActive` - whether deselection in main menu is chosen    <space><space><space><space><space>
+    * `selectMode` - which subdeselection is chosen   <space><space><space><space><space>
 ```js
 void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode) //exclude part
 ```
-Based on "deselectMode" the two deselections can be done(by hand,rectangle).\n
-Deselection button is promoted to **DeselectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
+&emsp;&ensp;Based on "deselectMode" the two deselections can be done(by hand,rectangle).\n
+&emsp;&ensp;Deselection button is promoted to **DeselectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
 
 11. To resize the map to the given size, call **resize** on map QFrame:
 ```js
