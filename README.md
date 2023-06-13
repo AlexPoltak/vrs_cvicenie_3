@@ -135,7 +135,7 @@ void CreatorMainWindow::on_toolButton_select_all_clicked()
 ```
 
 
-2. To select/deselect some part of trajectory are used **Select/Deselect by** buttons. <br />
+2. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
 Change selection in **Select by**  button trigger **onSelectionButton**  slot.
    - `isModeActive` - whether selection in main menu is chosen 
    - `selectMode` - which subselection is chosen
@@ -143,12 +143,12 @@ Change selection in **Select by**  button trigger **onSelectionButton**  slot.
 ```js
 void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 ```
-Based on "selectMode" the four selections can be done: (by hand,time,polygon,rectangle).<br />
-Selection button is promoted to **SelectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
+&emsp; Based on "selectMode" the four selections can be done: (by hand,time,polygon,rectangle).<br />
+&emsp; Selection button is promoted to **SelectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
 
 <br>
 
-Change selection in **Dselct by**  button trigger **onDeselectionButton**  slot.
+Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
    - `isModeActive` - whether deselection in main menu is chosen 
    - `selectMode` - which subdeselection is chosen
 
