@@ -19,7 +19,11 @@ This App Consists of:
 <details><summary>CreatorMainWindow</summary>
 <p>
   
+## CreatorMainWindow is the main window, where all other apps and actions can be called.
+
 ### Getting Started
+<details><summary>&emsp;&emsp; Top main .ui menu </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
+
 1. To use the application, it is necessary to create a project at the beginning. The project can be created with UI by button **New** in the top main menu. With this button the action  **on_actionNew_triggered** is called:
 
 ```js
@@ -57,59 +61,6 @@ QPoint getImageClickPos(QPoint widgetpos)
 4. If you want to get position of point, which should be at the same position on image, also when widget is resized, call **getImagePosToWidgetPos** on widget: :
  ```js
 QPoint getImagePosToWidgetPos(QPoint imagepos)
-```
-  
----  
-  
-</p>
-</details>
-
-
-
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-<details><summary>mymapcontrol</summary>
-<p>
-  
-## mymapcontrol is used to interact with the map. This class is part of an open-source cross-platform map widget QMapControl. 
-  - QMapControl Contact e-mail: kaiwinter@gmx.de
-  - QMapControl github: https://github.com/kaiwinter/QMapControl
-  - Changes were made by Martin Dekan for the purpose of trajectory selection</br>
-  
- QMapControl is implemented in external libs of lidaretto project.
-
-
-### Getting Started
-<details><summary>&emsp;&emsp; Needed steps to show map </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
-
-1. To display the map and control it, first of all you have to add some container with QFrame class to .ui file.
-2. Then promote this QFrame to class **MyMapControl**.
-3. Add this <a href="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/Includes_for_mymapcontrol.txt">Includes</a> to .pro file of app.
-4. Include to header file of application:
-    - `#include "mymapcontrol.h"`
-    - `#include <osmmapadapter.h>`
-    - `#include <maplayer.h>`
-    - `#include "common.h"`
-
-5. You need to create new map adapter(example is for OpenStreetMap):
-    
-    - `MapAdapter* mapadapter;`
-```js
-mapadapter = new OSMMapAdapter();
-```
-6. Create new layer with map adapter created in previous step:
-    
-    - `Layer* mainlayer;`
-```js
-mainlayer = new MapLayer("OpenStreetMap-Layer", mapadapter);
-```
-7. Call **__init()** on map QFrame (created in 1. and 2. step) to initialize all needed values:
-```js
- void __init()
-```
-8. To add layer created in step 6(or another layer) to layers of map, call **addLayer** on map QFrame:
-```js
-void addLayer(Layer* layer)
 ```
 </details>
 
