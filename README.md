@@ -134,9 +134,6 @@ void CreatorMainWindow::on_actionExport_triggered()
 void CreatorMainWindow::on_toolButton_select_all_clicked()
 ```
 
-  * this is the first level of bullet points, made up of <space><space>*<space>
-    * `filename` - filename of .PRJ file   <space><space><space><space>*<space>
-
 2. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
 Change selection in **Select by**  button trigger **onSelectionButton**  slot.
 
@@ -162,11 +159,25 @@ void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode)
 ```
 &emsp;&ensp;Based on "deselectMode" the two deselections can be done(by hand,rectangle).\n
 &emsp;&ensp;Deselection button is promoted to **DeselectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
+<br>
 
-11. To resize the map to the given size, call **resize** on map QFrame:
+3. The **Split Point** button trigger **on_toolButton_split_point_clicked** slot:
+  Enables/disables to add split point on trajectory, by clicking somewhere on trajectory.
 ```js
-void resize(const QSize newSize)
+void CreatorMainWindow::on_toolButton_split_point_clicked()
 ```
+  <br>
+
+4. The **Undo** button trigger **on_toolButton_undo_clicked** slot:
+  Removes the last trajectory selection made. 
+```js
+void CreatorMainWindow::on_toolButton_split_point_clicked()
+```
+```diff
+ To get previous selection is used UndoSelectionStack.
+- See undoselectionstack in MapInteraction lib
+``` 
+
 </details>
 
 
