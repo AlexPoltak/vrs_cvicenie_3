@@ -35,7 +35,7 @@
 ```
   - 2.The project is created based on values in loaded calibration,lidar,camera files.
 ```diff
-- See **Project** library, where project creation and modifications are defined. The project is created to .PRJ file.
+- See **Project** library, where project creation and modifications are defined. The project is created and saved to .PRJ file.
 ```
   - 3.The created project is opened and all ui. elements are inits with the project values. 
   
@@ -95,29 +95,68 @@ void CreatorMainWindow::on_actionSettings_triggered()
 ```
  
 ```diff
- In on_actionSettings_triggered is opened **MinMaxPrecisionDialog** where some app settings can be changed. 
+ In on_actionSettings_triggered the **MinMaxPrecisionDialog** is opened. In this dialog some app settings can be changed. 
 - See section minmaxprecisiondialog
+``` 
+<br>
+  
+  
+9. With **history** button can be displayed all project exports in right tab. It runs action **on_pushButton_OpenHistory_clicked**.
+  
+```js
+void CreatorMainWindow::on_pushButton_OpenHistory_clicked()
 ```
+  - Exports can be opened, delete in history tab 
  
 <br>
   
+  
+10. With **Export** button is called action **on_actionExport_triggered**.
+  
+```js
+void CreatorMainWindow::on_actionExport_triggered()
+```
+```diff
+ In on_actionExport_triggered the **ExportDialog** is opened. In this dialog can be set preferences for cloud export. Everything is exported on dialog confirmation.
+- See section exportdialog
+``` 
+<br>
   
   
   
 </details>
 
-<details><summary>&emsp;&emsp; Methods for manipulation with map position, size</summary> <!
+<details><summary>&emsp;&emsp; Right .ui menu for manipulating with trajectory </summary> <!
   -/////////////////////////////////////////////// --></br>
   
-1. To set the middle of the map to the given coordinate, call **setView** on map QFrame:
+1. To select/deselect whole trajectory is used **Select/Deselect All** button, which runs **on_toolButton_select_all_clicked** slot:
 ```js
-void setView(const QPointF& coordinate)
+void CreatorMainWindow::on_toolButton_select_all_clicked()
 ```
 
-10. To scroll the view by the given point, call **scroll** on map QFrame:
+
+2. To select/deselect some part of trajectory are used **Select/Deselect by** buttons.
+Change selection in **Select by**  button trigger **onSelectionButton**  slot.
+   - `isModeActive` - whether selection in main menu is chosen 
+   - `selectMode` - which subselection is chosen
+
 ```js
-void scroll ( const QPoint scroll )
+void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 ```
+Based on "selectMode" the four selections can be done: (by hand,time,polygon,rectangle).\n
+Selection button is promoted to **SelectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
+
+<br>
+
+Change selection in **Dselct by**  button trigger **onDeselectionButton**  slot.
+   - `isModeActive` - whether deselection in main menu is chosen 
+   - `selectMode` - which subdeselection is chosen
+
+```js
+void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode) //exclude part
+```
+Based on "deselectMode" the two deselections can be done(by hand,rectangle).\n
+Deselection button is promoted to **DeselectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
 
 11. To resize the map to the given size, call **resize** on map QFrame:
 ```js
