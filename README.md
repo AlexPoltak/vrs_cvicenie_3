@@ -140,8 +140,8 @@ void CreatorMainWindow::on_toolButton_select_all_clicked()
 2. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
 Change selection in **Select by**  button trigger **onSelectionButton**  slot.
 
-   - `isModeActive` - whether selection in main menu is chosen 
-   - `selectMode` - which subselection is chosen
+    * `isModeActive` - whether selection in main menu is chosen    <space><space><space><space><space>
+    * `selectMode` - which subselection is chosen   <space><space><space><space><space>
 
 ```js
 void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
