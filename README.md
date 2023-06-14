@@ -204,6 +204,11 @@ Profile mode </summary> <!--////////////////////////////////////////////////////
 
 - In default cut(ZX projection), aerial(XY projection) profiles are displayed.
 - Sideway(ZY projection) is displayed with sideway button
+```diff
+- Projections are managed in qcloudaerialview, qcloudcutwindow, qsidewayview classes
+- See it in **MapInteraction lib**
+``` 
+
 
 1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
 
