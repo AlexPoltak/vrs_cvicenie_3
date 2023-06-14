@@ -29,7 +29,7 @@
 ```js
   void CreatorMainWindow::on_actionNew_triggered(bool checked)
 ```
-  - 1.After calling the **on_actionNew_triggered**, a **ProjectCreationDialog** dialog is opened. In this dialog all necessary files for creating the project are selected. See section **projectcreationdialog**.
+    - 1.After calling the **on_actionNew_triggered**, a **ProjectCreationDialog** dialog is opened. In this dialog all necessary files for creating the project are selected. See section **projectcreationdialog**.
 ```diff
 - See section projectcreationdialog
 ```
