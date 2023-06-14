@@ -376,22 +376,23 @@ void ProjectCreationDialog::createProjectDataAndSave()
 void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
 ```
 &emsp;&emsp; - Inits all .ui elements with project settings<br>
-  
+   
+  <br>
   
 2. In dialog can be set datum for export. Button to manage datums is next to Coordinate System dropdown, where the datum can be selected.
 ```diff
 - See section transformationpickerdialog
 ``` 
 
+   <br>
   
 3. In dialog can be set range filter for export. Button to manage range filters is next to Range Filter dropdown, where the range filter can be selected.
   
 &emsp;&emsp; - 1.Firstly the **ChooseFromExistingFiltersDialog** dialog is opened to choose existing range filter, or select to create new one.<br>
 
-&emsp;&emsp; - 2.Opens **LidarFilterDialog** dialog to define ranges for filter.<br>
-```diff
-- See section lidarfilterdialog
-``` 
+&emsp;&emsp; - 2.Opens **LidarFilterDialog** dialog to define ranges for selected or new filter.<br>
+
+   <br>
   
  4. In dialog can be set image filters for export. Button to manage image filters is next to Image Filter dropdown, where the image filter can be selected.
   
@@ -400,6 +401,8 @@ void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
 - See section imagerestrictionsettingsdialog
 ``` 
 
+   <br>
+  
 5. Clicks on **Advanced Filtering** button displays **simpleoctomapfiltersettingsdialog**, where some others settings for export can be defined.
 
   
