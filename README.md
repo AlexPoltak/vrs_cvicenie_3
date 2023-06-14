@@ -17,7 +17,7 @@
 
 <details><summary>CreatorMainWindow</summary>
 <p>
-  
+  <span style="background-color: #FFFF00">Marked text</span>
 ## CreatorMainWindow is the main window, where all other apps and actions can be called.
 
 ### Getting Started
