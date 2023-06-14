@@ -203,44 +203,23 @@ Profile mode </summary> <!--////////////////////////////////////////////////////
 > Profile mode is activated by "Profiles" button in right menu 
 
 - In default cut(ZX projection), aerial(XY projection) profiles are displayed.
-- Sideway(ZY projection) is displayed with sideway button
+- Sideway(ZY projection) is enabled with sideway button and displayed with click somewhere in aerial or cut vindow.
 ```diff
 - Projections are managed in qcloudaerialview, qcloudcutwindow, qsidewayview classes
 - See it in **MapInteraction lib**
 ``` 
 
 
-1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
-
-| name of cursor                  | image of cursor                                                       |   
-| :-------------                  | :-------------                                                        |
-| default_hand_open               | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/default_hand_open.png"></p>                | 
-| default_hand_closed             | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/default_hand_closed.png"></p>              | 
-| circle_selecting_hand_open      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_hand_open.png"></p>              | 
-| circle_selecting_hand_closed    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_hand_closed.png"></p>            | 
-| circle_selecting_notSelecting   | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting_noselect.png"></p>               |  
-| circle_selecting_selecting      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/selecting.png"></p>                        | 
-| circle_selecting_polygon        | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/polygonSelecting.png"></p>                 | 
-| circle_selecting_rectangle      | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/rectangleSelect.png"></p>                  | 
-| circle_selecting_time           | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/timeSelection.png"></p>                    | 
-| circle_deselecting_hand_open    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting_hand_open.png"></p>            | 
-| circle_deselecting_hand_closed  | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting_hand_closed.png"></p>          | 
-| circle_deselecting_notSelecting | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting_noselect.png"></p>             | 
-| circle_deselecting_selecting    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/deselecting.png"></p>                      | 
-| circle_deselecting_rectangle    | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/rectangleDeSelect.png"></p>                | 
-| adding_splitpoint_hand_open     | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/splitpoint_hand_open.png"></p>             | 
-| adding_splitpoint_hand_closed   | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/splitpoint_hand_closed.png"></p>           | 
-| adding_splitpoint_adding        | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/SplitPoint.png"></p>                       | 
-| info_point_select               | <p align="center"><img src="https://github.com/dekdekan/lidaretto-desktop/blob/completeRefactor_change_cuts/README_images/cursor/basic.png"></p>                            |
+1. With click on trajectory in profile mode is triggered a **lineCutFinished** slot: 
+   - `lineCutPoint` - ndex of trajectory point, where was clicked  
 
 ```js
-void setCursorFromList(int index)
+void CreatorMainWindow::lineCutFinished(int lineCutPoint)
 ```
+&emsp;&emsp; - Prepares perpendicular line segment to trajectory(displayed on map) at given point, where was clicked .<br>
+&emsp;&emsp; - Takes frames that corresponds to prepared line segment and generates cloud.<br>
+&emsp;&emsp; - This cloud then displays to projection views(cut and aerial view)
 
-2. To display the scale within the widget, call **showScale** with "true" in input on map QFrame: 
-```js
-void showScale ( bool visible )
-```
 3. To display crosshairs, call **showCrosshairs** with "true" in input on map QFrame:
 ```js
 void showCrosshairs ( bool visible )
