@@ -17,7 +17,7 @@
 
 <details><summary>CreatorMainWindow</summary>
 <p>
-<span style="color: green"> Some green text </span>
+$${\color{red}Red}$$
   
 ## CreatorMainWindow is the main window, where all other apps and actions can be called.
 
