@@ -481,7 +481,7 @@ void imageRestrictionSettingsDialog::on_pushButton_export_clicked()
 ## This dialog serves to control user license before starting the creator. It is used iin main.cpp
   Firstly user need to send us a code based on which we can generate serial key. Based on serial key user can activate creator. 
 > __Note__ 
-> Example of code can be **1024228818019aw3CGkj1tO961Ll**
+> Example of final code, that is send from customer to us, can be **1024228818019aw3CGkj1tO961Ll**
   
 ### Code is created with some steps:
   - 1.Firstly we generate some random 16chars string to registry, for example **9aw3CGkj1tO961Ll**
@@ -493,12 +493,7 @@ void imageRestrictionSettingsDialog::on_pushButton_export_clicked()
   - 7.The random code from step 1. is attached at the end of final code. **102422881801~~9aw3CGkj1tO961Ll~~**
   
   
-  ### Getting Started
-1. New filter can be add with + button.
-```js
-void imageRestrictionSettingsDialog::on_pushButton_add_filter_clicked()
-```
-   <br>
+  ### The creation of serial, to send customer for activation, is done in **licenseCreator** app. Serial code is generated based on code described above.
 
 
 ---
