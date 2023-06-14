@@ -488,7 +488,7 @@ void imageRestrictionSettingsDialog::on_pushButton_export_clicked()
   - 2.Getting CPUID of user PC. CPU ID example is **906A3**.
   - 3.Appending some random hex chars to have 8 chars(seed) along with CPUID. Example **906A3E09**
   - 4.We change this seed to decimal values. Decimal values from step 2. for example is **2422881801**
-  - 5.The final code that is send to us has at the beginning length of seed to recover hexadecimal values from decimal when we will generate serial code. The first 2 chars defines length. In example code **~~10~~24228818019aw3CGkj1tO961Ll** , *10* is the length of seed. When length would be **9** at the beginning would be **09**.
+  - 5.The final code that is send to us has at the beginning length of seed to recover hexadecimal values from decimal when we will generate serial code. The first 2 chars defines length. In example code **~~10~~24228818019aw3CGkj1tO961Ll** , **10** is the length of seed. When length would be **9** at the beginning would be **09**.
   - 6.The next chars(with defined length in step 5., specifically **10**) in code  are seed in decimal form from step 4. **10~~2422881801~~9aw3CGkj1tO961Ll**
   - 7.The random code from step 1. is attached at the end of final code. **102422881801~~9aw3CGkj1tO961Ll~~**
   
