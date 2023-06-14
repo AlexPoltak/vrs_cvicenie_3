@@ -17,12 +17,9 @@
 
 <details><summary>CreatorMainWindow</summary>
 <p>
-  
-> __Note__  
-  
+    
 ## CreatorMainWindow is the main window, where all other apps and actions can be called.
 
-  <span style="background-color: #FFFF00">Marked text</span>
 ### Getting Started
 <details><summary>&emsp;&emsp;  Top main .ui menu </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
@@ -151,7 +148,7 @@ void CreatorMainWindow::onSelectionButton(bool isModeActive, int selectMode)
 
 <br>
   
-2. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
+3. To select/deselect some part of trajectory is used **Select/Deselect by** button. <br />
 Change selection in **Deselect by**  button trigger **onDeselectionButton**  slot.
 
     * `isModeActive` - whether selection in main menu is chosen
@@ -164,28 +161,47 @@ void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode)
 &emsp;&ensp;Deselection button is promoted to **DeselectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
 <br>
 
-3. The **Split Point** button trigger **on_toolButton_split_point_clicked** slot:<br>
+4. The **Split Point** button trigger **on_toolButton_split_point_clicked** slot:<br>
   Enables/disables to add split point on trajectory, by clicking somewhere on trajectory.
 ```js
 void CreatorMainWindow::on_toolButton_split_point_clicked()
 ```
   <br>
 
-4. The **Undo** button trigger **on_toolButton_undo_clicked** slot:<br>
+5. The **Undo** button trigger **on_toolButton_undo_clicked** slot:<br>
   Removes the last trajectory selection made. 
 ```js
 void CreatorMainWindow::on_toolButton_split_point_clicked()
 ```
 ```diff
- To get previous selection is used UndoSelectionStack.
+ For getting previous selection is used UndoSelectionStack.
 - See undoselectionstack in MapInteraction lib
 ``` 
+  <br>
 
+6. The **Info** button trigger **on_toolButton_info_clicked** slot:<br>
+  Enables/disables to show information about trajectory point(selected by clicking on the trajectory). 
+```js
+void CreatorMainWindow::on_toolButton_info_clicked()
+```
+
+7. The **Profiles** button trigger **on_toolButton_profiles_clicked** slot:<br>
+  ```diff
+  Opens views, where profiles can be displayed. In profile mode can be done some corrections and so on.
+- See section in MapInteraction lib
+``` 
+```js
+void CreatorMainWindow::on_toolButton_info_clicked()
+```
 </details>
 
 
 <details><summary>&emsp;&emsp; 
-Methods for displaying add-ons on the map </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+Profile mode </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+
+> __Profile mode is activated by "Profiles" button in right menu__  
+
+
 1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
 
 | name of cursor                  | image of cursor                                                       |   
