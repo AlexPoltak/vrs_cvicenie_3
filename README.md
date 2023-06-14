@@ -353,9 +353,10 @@ void ProjectCreationDialog::createProjectDataAndSave()
    - Dark style is defined in **:/qdarkstyle/light/darkstyle.qss** file
    - Light style is defined in **:/qdarkstyle/light/lightstyle.qss** file
   
-```diff
-- In qss files are defined styles for each ui element. The right way to write qss and all properties you can see in this link  [https://github.com/kaiwinter/QMapControl](https://doc.qt.io/qt-6/stylesheet-reference.html)
-``` 
+
+> __Note__ 
+> In qss files are defined styles for each ui element. The right way to write qss and all properties you can see in this link https://doc.qt.io/qt-6/stylesheet-reference.html
+
  <br>
 
 ---
