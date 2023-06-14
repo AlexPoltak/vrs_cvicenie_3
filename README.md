@@ -290,13 +290,9 @@ void CreatorMainWindow::on_pushButton_addRTKPoints_clicked()
 void CreatorMainWindow::on_pushButton_profiles_rangeFilters_clicked()
 ```
 &emsp;&emsp; - 1.Firstly the **ChooseFromExistingFiltersDialog** dialog is opened to choose existing range filter, or select to create new one.<br>
-```diff
-- See section choosefromexistingfiltersdialog
-``` 
+
 &emsp;&emsp; - 2.Opens **LidarFilterDialog** dialog to define ranges for filter.<br>
-```diff
-- See section lidarfilterdialog
-``` 
+
 &emsp;&emsp; - 3.On confirmation the new range filter is created to project.<br>
   <br>
 
@@ -420,6 +416,63 @@ void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
 </p>
 </details>
 
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>imagerestrictionsettingsdialog</summary>
+<p>
+
+## In this dialog can be defined image filters
+  
+### Getting Started
+1. New filter can be add with + button.
+```js
+void imageRestrictionSettingsDialog::on_pushButton_add_filter_clicked()
+```
+   <br>
+
+2. Filters can be also imported from saved file.
+```js
+void imageRestrictionSettingsDialog::on_pushButton_import_clicked()
+```
+   <br>
+
+3. Right click on filter trigger **showContextMenu** slot that shows menu
+```js
+void imageRestrictionSettingsDialog::showContextMenu(const QPoint &pos)
+```
+&emsp;&emsp; - In menu the filter can be deleted or new filter zone can be added.
+  
+ <br>
+  
+4. Right click on filter zone trigger **deleteZone** slot that deletes zone
+```js
+void imageRestrictionSettingsDialog::deleteZone(std::vector<QTreeWidgetItem*> fitID)
+```  
+ <br>
+  
+5. Filter zone can be add by right click on filter and choose **Add Zone** from menu.
+  - Then the zones can be selected in video view
+  - The zones can be saved to registry with **save** button which will show.
+ <br>
+  
+6. Image filter can be exported to file with **export** button, that trigger **on_pushButton_export_clicked** slot.
+```js
+void imageRestrictionSettingsDialog::on_pushButton_export_clicked()
+```  
+&emsp;&emsp; - Filters are saved to defined XML file with suffix .IRF
+
+  
+  
+---
+
+</p>
+</details>
+  
+  
+  
+  
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   
 <details><summary>qcloudcutwindow</summary>
