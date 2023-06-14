@@ -387,9 +387,7 @@ void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
 3. In dialog can be set range filter for export. Button to manage range filters is next to Range Filter dropdown, where the range filter can be selected.
   
 &emsp;&emsp; - 1.Firstly the **ChooseFromExistingFiltersDialog** dialog is opened to choose existing range filter, or select to create new one.<br>
-```diff
-- See section choosefromexistingfiltersdialog
-``` 
+
 &emsp;&emsp; - 2.Opens **LidarFilterDialog** dialog to define ranges for filter.<br>
 ```diff
 - See section lidarfilterdialog
