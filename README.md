@@ -416,6 +416,31 @@ void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
 </p>
 </details>
 
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>transformationpickerdialog</summary>
+<p>
+
+##  Class serves to manage datums transformations, manage grids, geoids.\n
+  
+### Getting Started
+1. The upper list contains all Datums from which the user can select the ones he wants to have in usage
+2. In bottom list are currently used Datums for which can be defined Grid and Geoid. The button **Set Grid/Geoid** displays **selectgridandgeoiddialog** dialog, where gird and geoid can be choosen from options.
+  
+> __Note__ 
+> We have 12 specialized Datums, which are defined in library **Datums**
+  
+> __Warning__ 
+> All other EPSG Datums are defined in file **epsg_correct**, that should be in release/bin folder
+
+ <br>
+
+---
+
+</p>
+</details>
+
+
 
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
