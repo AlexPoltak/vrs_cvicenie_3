@@ -184,6 +184,7 @@ void CreatorMainWindow::on_toolButton_split_point_clicked()
 ```js
 void CreatorMainWindow::on_toolButton_info_clicked()
 ```
+  <br>
 
 7. The **Profiles** button trigger **on_toolButton_profiles_clicked** slot:<br>
   ```diff
@@ -197,7 +198,7 @@ void CreatorMainWindow::on_toolButton_profiles_clicked()
 
 
 <details><summary>&emsp;&emsp; 
-Profile mode </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
+Profile mode(Projections, corrections,RTK points) </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
 > __Note__ 
 > Profile mode is activated by "Profiles" button in right menu 
@@ -220,20 +221,56 @@ void CreatorMainWindow::lineCutFinished(int lineCutPoint)
 &emsp;&emsp; - Takes frames that corresponds to prepared line segment and generates cloud.<br>
 &emsp;&emsp; - This cloud then displays to projection views(cut and aerial view)
 
-3. To display crosshairs, call **showCrosshairs** with "true" in input on map QFrame:
+  <br>
+
+2. Sideway(ZY projection) is enabled with sideway button and displayed with click somewhere in aerial or cut vindow. Click trigger slot **sideWayCutSelected**:
+   - `cx` - X position of cutting line center
+   - `cy` - Y position of cutting line center  
+   - `rx` - direction vector of cutting line 
+   - `ry` - direction vector of cutting line
+
 ```js
-void showCrosshairs ( bool visible )
+void CreatorMainWindow::sideWayCutSelected(double cx, double cy, double rx, double ry)
 ```
-4. To display information about trajectory point defined by index, call **setInfo** on map QFrame: <br />
-Information is also displayed when mouse mode is set to "PointInfoSelection" and user clickes somewhere on trajectory.
+&emsp;&emsp; - Slot that prepares and show cloud in sideway view.
 
-    - `info` - index of point whose information should be displayed
-
-```js
-void setInfo(int info)
-```
-
+  <br>
   
+3. Width, length of cutting line can be changed in right menu and confirm with **Recalc** button:
+   - `retainZoomAndOffsets` - whether zoom and offset should be retained
+
+```js
+void CreatorMainWindow::recalcProfile(bool retainZoomAndOffsets)
+```
+&emsp;&emsp; - Method **recalcProfile** recalculates profiles based on values of cutting line and used zones
+
+  <br>
+
+4. Measurements can be enabled with measurement button and done with clicks in profile windows.
+  Measurement button trigger slot **on_pushButton_measureProfiles_clicked**, which enables measurements in profile windows.
+
+```js
+void CreatorMainWindow::on_pushButton_measureProfiles_clicked()
+```
+  <br>
+
+ 5. After measurements can be created corrections of cloud. Correction can be created with FIT button after measurement is done. FIT button trigger slot **on_pushButton_FitProfiles_clicked**.
+
+```js
+void CreatorMainWindow::on_pushButton_FitProfiles_clicked()
+```
+&emsp;&emsp; - Firstly opens dialog with list of zones that corresponds to cutting line and waits for selection
+and confirmation of a some zone(correction will be made for this zone).<br>
+&emsp;&emsp; - Based on measurements prepares and makes correction of chosen zone.
+  
+> __Note__ 
+> Corrections can be edited in FIT tab.
+
+  <br>
+
+
+
+
 </details>  
 
 ---
