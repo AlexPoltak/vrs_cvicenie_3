@@ -161,14 +161,14 @@ void CreatorMainWindow::onDeselectionButton(bool isModeActive, int deselectMode)
 &emsp;&ensp;Deselection button is promoted to **DeselectButton class**, that inherits from **MultiModeButton class(defined in GuiComponents lib)**
 <br>
 
-3. The **Split Point** button trigger **on_toolButton_split_point_clicked** slot:
+3. The **Split Point** button trigger **on_toolButton_split_point_clicked** slot:<br>
   Enables/disables to add split point on trajectory, by clicking somewhere on trajectory.
 ```js
 void CreatorMainWindow::on_toolButton_split_point_clicked()
 ```
   <br>
 
-4. The **Undo** button trigger **on_toolButton_undo_clicked** slot:
+4. The **Undo** button trigger **on_toolButton_undo_clicked** slot:<br>
   Removes the last trajectory selection made. 
 ```js
 void CreatorMainWindow::on_toolButton_split_point_clicked()
