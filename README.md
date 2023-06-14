@@ -314,119 +314,55 @@ void CreatorMainWindow::on_pushButton_profiles_rangeFilters_clicked()
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<details><summary>qcloudaerialview</summary>
+<details><summary>projectcreationdialog</summary>
 <p>
 
-## Is frame class which projects cloud points into one coordination plane. Specifically to the plane XY(aerial).</br>
-This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+## This dialog shows in creator app when "New" project button is pressed. Dialog serves to manage creation of new project.
   
 ### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame promoted to class **QCloudAerialView** to .ui file.
-
-2. To show this view with painted cloud points, call **addAndShowCloud** on this frame:
-  
-    - `inputcloud` - the entire cloud that generated the backend for display
-    - `llp1` - right centered point of cut(on right side of trajectory)
-    - `llc1` - centered point of cut, defined by user
-    - `llp2` - left centered point of cut(on left side of trajectory)
-    - `cutwidth` - distance from cut
-    - `newusedZones` - zones which are used
-
+1. In this dialog should be set files needed for project creation.(Trajectory,lidar,calibration and optional camera file).<br>
+ After confirmation of this dialog the dialog **saveprojectdialog** displays, where name,description and output path to new project can be entered. On confirmation the **createProjectDataAndSave** method ic called:
 ```js
-void QCloudAerialView::addAndShowCloud(cloudViz inputcloud,pcl::PointXYZRGB llp1,pcl::PointXYZRGB llc1,pcl::PointXYZRGB llp2,double cutwidth,std::map<int, bool> newusedZones)
+void ProjectCreationDialog::createProjectDataAndSave()
 ```
+  &emsp;&emsp; - Method **createProjectDataAndSave** starts thread to generate new project based on trajectory,lidar,calibration,camera files, that were chosen in .ui. The project is opened after creation. <br>
 
-3. If you want to set colorization pallete, call **setColorizationPallete** on this frame:</br>
-  types of palletes</br>
-                    - `QCloudAerialView::intenzity`</br>
-                    - `QCloudAerialView::zone`</br>
-                    - `QCloudAerialView::elevation`
-```js
-void setColorizationPallete(ColorPalette palette)
-```
-
-4. If you want to set mouse mode, call **setMouseMode** on this frame:</br>
-  types of mouse mode</br>
-                    - `Dragging`- To move with the content in the frame</br>
-                    - `Measuring`- To enable measuring in this frame</br>
-                    - `sideWayPicker`- to select cutting line
-```js
-void setMouseMode(MouseMode newmode)
-```
-
-5. To get mouse mode, call **getMouseMode** on this frame:</br>
-```js
-MouseMode getMouseMode()
-```
-
-6. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
-  
-    - `cx` - X position of center
-    - `cy` - Y position of center
-    - `rx` - direction vector
-    - `ry` - direction vector
-
-
-```js
-void setSidewayCutParams(double cx,double cy,double rx,double ry)
-```
-
-7. To hide cutting line, call on this frame function:
-```js
-void hideSidewayCut()
-```
-
-8. To set visual parameters of this frame, call **setVisualParams** on this frame:
-  
-    - `PiZoom` - actual zoom in frame
-    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
-    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
-
-```js
-void setVisualParams(double PiZoom,double PiXoff,double PiYoff)
-```
-
-9. To get visual parameters of this frame, call **getVisualParams** on this frame:
-  
-    - `PiZoom` - actual zoom in frame
-    - `PiXoff` - X position of image center(recalculates when user moves or zooms in/out)
-    - `PiYoff` - Y position of image center(recalculates when user moves or zooms in/out)
-
-```js
-void getVisualParams(double &PiZoom,double &PiXoff,double &PiYoff)
-```
-
-10. To set RTKPoints, call **setRtkPoints** on this frame:
--
-    - `newPoints` - new RTK points
-    - `lc1` - centered point of cut, defined by user
-    - `lp1` - right centered point of cut(on right side of trajectory)
-    - `lp2` - left centered point of cut(on left side of trajectory)
-    - `widthd` - distance from cut
-    - 
-```js
-void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints, pcl::PointXYZRGB lc1, pcl::PointXYZRGB lp1, pcl::PointXYZRGB lp2, double widthd)
-```
-
-- Or only:
-  
-    - `newPoints` - new RTK points
-    - `widthd` - distance from cut
-```js
-void setRtkPoints( std::shared_ptr<std::vector<RtkPoint>> newPoints,double widthd)
-```
-
-11. To set used zones, call **setUsedZones** on this frame:
-
-```js
-void setUsedZones(std::map<int, bool> newusedZones)
-```
+ <br>
 
 ---
 
 </p>
 </details>
   
+  
+  
+  
+  
+  
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>minmaxprecisiondialog</summary>
+<p>
+
+##  Class that serves to manage some basic settings .<br>
+   - This dialog shows in creator app when "Settings" button is pressed.
+   - In this dialog can be set language, quality indicator, usage of some filters and more.
+  
+### Getting Started
+1. In settings can be also changed appearance(font size,dark/light mode)
+   - Dark style is defined in **:/qdarkstyle/light/darkstyle.qss** file
+   - Light style is defined in **:/qdarkstyle/light/lightstyle.qss** file
+  
+```diff
+- In qss files are defined styles for each ui element. The right way to write qss and all properties you can see in this link  [https://github.com/kaiwinter/QMapControl](https://doc.qt.io/qt-6/stylesheet-reference.html)
+``` 
+ <br>
+
+---
+
+</p>
+</details>
+
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   
 <details><summary>qcloudcutwindow</summary>
@@ -595,16 +531,4 @@ void undo()
 </details>
  
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
-### This library is used in:
-##### 1. Creator app. 
--   qcloudaerialview, qcloudcutwindow, qsidewayview will be shown, when user selects **Profiles** from the side menu.
-  
-##### 2. ColorCalibrator app
-##### 3. GarminPlayer app
-##### 4. GlobalCloudColorizer app
-##### 5. GarminPlayer app
-##### 6. GoProPlayer app
-
 
