@@ -364,6 +364,62 @@ void ProjectCreationDialog::createProjectDataAndSave()
 </p>
 </details>
 
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<details><summary>exportdialog</summary>
+<p>
+
+##  Class serves to display settings of export before export.\n
+   - This dialog shows in creator app when "export" button is pressed.\n
+   - In this dialog can be set colorization of exported cloud, some filters, usage of FIT corrections and many more.
+  
+### Getting Started
+1. To set project that should be exported use method **setWorkingProject** on object:
+```js
+void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
+```
+&emsp;&emsp; - Inits all .ui elements with project settings<br>
+  
+  
+2. In dialog can be set datum for export. Button to manage datums is next to Coordinate System dropdown, where the datum can be selected.
+```diff
+- See section transformationpickerdialog
+``` 
+
+  
+3. In dialog can be set range filter for export. Button to manage range filters is next to Range Filter dropdown, where the range filter can be selected.
+  
+&emsp;&emsp; - 1.Firstly the **ChooseFromExistingFiltersDialog** dialog is opened to choose existing range filter, or select to create new one.<br>
+```diff
+- See section choosefromexistingfiltersdialog
+``` 
+&emsp;&emsp; - 2.Opens **LidarFilterDialog** dialog to define ranges for filter.<br>
+```diff
+- See section lidarfilterdialog
+``` 
+  
+ 4. In dialog can be set image filters for export. Button to manage image filters is next to Image Filter dropdown, where the image filter can be selected.
+  
+&emsp;&emsp; - **imageRestrictionSettingsDialog** is shown after the button is pressed 
+```diff
+- See section imagerestrictionsettingsdialog
+``` 
+
+5. Clicks on **Advanced Filtering** button displays **simpleoctomapfiltersettingsdialog**, where some others settings for export can be defined.
+
+  
+> __Note__ 
+> On confirmation the export settings are saved to registry
+
+
+ <br>
+
+---
+
+</p>
+</details>
+
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   
 <details><summary>qcloudcutwindow</summary>
