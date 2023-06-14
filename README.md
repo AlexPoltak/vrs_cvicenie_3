@@ -267,7 +267,17 @@ and confirmation of a some zone(correction will be made for this zone).<br>
 > Corrections can be edited in FIT tab.
 
   <br>
-
+  
+ 6. RTK points can be add in GCP tab with **Add Points** button.
+```js
+void CreatorMainWindow::on_pushButton_addRTKPoints_clicked()
+```
+&emsp;&emsp; - Opens file dialog to load RTK point from file.<br>
+&emsp;&emsp; - After loading of RTK points file the **addrtkpointsdialog**  dialog is opened to manage and add this points.
+```diff
+- See section addrtkpointsdialog
+```  
+&emsp;&emsp; - On confirmation of dialog adds RTK points to project.
 
 
 
