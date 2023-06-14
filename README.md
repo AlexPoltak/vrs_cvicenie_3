@@ -188,10 +188,10 @@ void CreatorMainWindow::on_toolButton_info_clicked()
 7. The **Profiles** button trigger **on_toolButton_profiles_clicked** slot:<br>
   ```diff
   Opens views, where profiles can be displayed. In profile mode can be done some corrections and so on.
-- See section in MapInteraction lib
+- See section Profile mode
 ``` 
 ```js
-void CreatorMainWindow::on_toolButton_info_clicked()
+void CreatorMainWindow::on_toolButton_profiles_clicked()
 ```
 </details>
 
@@ -202,6 +202,8 @@ Profile mode </summary> <!--////////////////////////////////////////////////////
 > __Note__ 
 > Profile mode is activated by "Profiles" button in right menu 
 
+- In default cut(ZX projection), aerial(XY projection) profiles are displayed.
+- Sideway(ZY projection) is displayed with sideway button
 
 1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
 
