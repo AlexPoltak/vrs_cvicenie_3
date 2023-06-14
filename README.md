@@ -199,7 +199,8 @@ void CreatorMainWindow::on_toolButton_info_clicked()
 <details><summary>&emsp;&emsp; 
 Profile mode </summary> <!--/////////////////////////////////////////////////////////////////////// --></br>
 
-> __Profile mode is activated by "Profiles" button in right menu__  
+> __Note__ 
+> Profile mode is activated by "Profiles" button in right menu 
 
 
 1. To set another cursor, call **setCursorFromList** with "true" in input on map QFrame: 
