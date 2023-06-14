@@ -279,7 +279,26 @@ void CreatorMainWindow::on_pushButton_addRTKPoints_clicked()
 ```  
 &emsp;&emsp; - On confirmation of dialog adds RTK points to project.
 
+> __Note__ 
+> RTK points can be edited in GCP tab.
 
+  <br>
+
+ 7. Range filter can be created with button next to range filter dropbox in right menu. This button trigger slot 
+**on_pushButton_profiles_rangeFilters_clicked**
+```js
+void CreatorMainWindow::on_pushButton_profiles_rangeFilters_clicked()
+```
+&emsp;&emsp; - 1.Firstly the **ChooseFromExistingFiltersDialog** dialog is opened to choose existing range filter, or select to create new one.<br>
+```diff
+- See section choosefromexistingfiltersdialog
+``` 
+&emsp;&emsp; - 2.Opens **LidarFilterDialog** dialog to define ranges for filter.<br>
+```diff
+- See section lidarfilterdialog
+``` 
+&emsp;&emsp; - 3.On confirmation the new range filter is created to project.<br>
+  <br>
 
 </details>  
 
