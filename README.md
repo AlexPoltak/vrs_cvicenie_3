@@ -475,53 +475,32 @@ void imageRestrictionSettingsDialog::on_pushButton_export_clicked()
   
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   
-<details><summary>qcloudcutwindow</summary>
+<details><summary>licensedialog</summary>
 <p>
 
-## Is frame class which projects cloud points into one coordination plane. Specifically to plane ZX(cloud cut).</br>
-This class also takes care of the interaction during measurement(in this frame) or selection cutting line(emits to each projection frame except ZX-side way).
+## This dialog serves to control user license before starting the creator. It is used iin main.cpp
+  Firstly user need to send us a code based on which we can generate serial key. Based on serial key user can activate creator. 
+> __Note__ 
+> Example of code can be **1024228818019aw3CGkj1tO961Ll**
   
-### Getting Started
-1. When you want to use this view somewhere, first of all you have to add frame promoted to class **qcloudcutwindow** to .ui file.
-
-2. To show this view with painted cloud points, call **addAndShowCut** on this frame:
+### Code is created with some steps:
+  - 1. Firstly we generate some random 16chars string to registry, for example **9aw3CGkj1tO961Ll**
+  - 2. Getting CPUID of user PC. CPU ID example is **906A3**.
+  - 3. Appending some random hex chars to have 8 chars(seed) along with CPUID. Example **906A3E09**
+  - 4. We change this seed to decimal values. Decimal values from step 2. for example is **2422881801**
+  - 5. The final code that is send to us has at the beginning length of seed to recover hexadecimal values from decimal. 
+  The first 2 chars defines length. In example code **~~10~~24228818019aw3CGkj1tO961Ll** , *10* is the length of seed. When length would be **9** at the beginning would be **09**.
+  - 6. The next chars(with defined length in step 5.) in code  are seed in decimal form from step 4.
+  - 7.  The random code from step 1. is attached at the end of final code.
   
-    - `inputcloud` - the entire cloud that generated the backend for display
-    - `llp1` - right centered point of cut(on right side of trajectory)
-    - `llc1` - centered point of cut, defined by user
-    - `llp2` - left centered point of cut(on left side of trajectory)
-    - `cutwidth` - distance from cut
-    - `newusedZones` - zones which are used
-
+  
+  ### Getting Started
+1. New filter can be add with + button.
 ```js
-void addAndShowCut(cloudViz inputcloud,pcl::PointXYZRGB lp1,pcl::PointXYZRGB lc1,pcl::PointXYZRGB lp2,double cutwidth,std::map<int, bool> newusedZones);
+void imageRestrictionSettingsDialog::on_pushButton_add_filter_clicked()
 ```
+   <br>
 
-3. To set parameters and enable cutting line painting, call **setSidewayCutParams** on this frame:
-  
-    - `cx` - X position of center
-    - `cy` - Y position of center
-
-```js
-void setSidewayCutParams(double cx,double cy)
-```
-
-4. To get distance of two points, selected by user in Measuring mode, call **getDists** on this frame:
-  
-    - `x` - distance in x axis
-    - `y` - distance in y axis
-
-```js
-void getDists(double &x,double &y )
-```
-All this methods are same like in qcloudaerialview: 
-  - setColorizationPallete
-  - setMouseMode
-  - getMouseMode
-  - setVisualParams
-  - getVisualParams
-  - setRtkPoints
-  - setUsedZones
 
 ---
 
