@@ -20,6 +20,7 @@
   <span style="background-color: #FFFF00">Marked text</span>
 ## CreatorMainWindow is the main window, where all other apps and actions can be called.
 
+  <span style="background-color: #FFFF00">Marked text</span>
 ### Getting Started
 <details><summary>&emsp;&emsp;  Top main .ui menu </summary>  <!--////////////////////////////////////////////////////////////////////// --></br>
 
