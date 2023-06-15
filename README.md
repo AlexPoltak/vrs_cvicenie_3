@@ -434,6 +434,9 @@ void ExportDialog::setWorkingProject(std::shared_ptr<Project> newproject)
 > __Warning__ 
 > All other EPSG Datums are defined in file **epsg_correct**, that should be in release/bin folder
 
+> __Note__ 
+> Datums that are currently in use are saved in registry
+  
  <br>
 
 ---
